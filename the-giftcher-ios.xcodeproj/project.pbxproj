@@ -13,6 +13,9 @@
 		237BFC4F244915FF00AC8F98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237BFC4D244915FF00AC8F98 /* Main.storyboard */; };
 		237BFC512449160500AC8F98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237BFC502449160500AC8F98 /* Assets.xcassets */; };
 		237BFC542449160500AC8F98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 237BFC522449160500AC8F98 /* LaunchScreen.storyboard */; };
+		237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */; };
+		237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */; };
+		237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC60244B492C00AC8F98 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		237BFC502449160500AC8F98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		237BFC532449160500AC8F98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		237BFC552449160500AC8F98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		237BFC60244B492C00AC8F98 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,26 @@
 		237BFC46244915FF00AC8F98 /* the-giftcher-ios */ = {
 			isa = PBXGroup;
 			children = (
+				237BFC5F244B245500AC8F98 /* UserControllers */,
 				237BFC47244915FF00AC8F98 /* AppDelegate.swift */,
 				237BFC49244915FF00AC8F98 /* SceneDelegate.swift */,
 				237BFC4B244915FF00AC8F98 /* ViewController.swift */,
+				237BFC60244B492C00AC8F98 /* MainTabBarController.swift */,
 				237BFC4D244915FF00AC8F98 /* Main.storyboard */,
 				237BFC502449160500AC8F98 /* Assets.xcassets */,
 				237BFC522449160500AC8F98 /* LaunchScreen.storyboard */,
 				237BFC552449160500AC8F98 /* Info.plist */,
 			);
 			path = "the-giftcher-ios";
+			sourceTree = "<group>";
+		};
+		237BFC5F244B245500AC8F98 /* UserControllers */ = {
+			isa = PBXGroup;
+			children = (
+				237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */,
+				237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */,
+			);
+			path = UserControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
+				237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */,
+				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */,
 				237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */,
