@@ -10,21 +10,26 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var nameInput: UITextField!
+    @IBOutlet weak var surnameInput: UITextField!
+    @IBOutlet weak var emailInput: UITextField!
+    @IBOutlet weak var userNameInput: UITextField!
+    @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet weak var repPasswordInput: UITextField!
+    @IBOutlet weak var birthdayButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        confirmButton.layer.cornerRadius = 20
+        confirmButton.layer.borderWidth = 1
+        confirmButton.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
+        confirmButton.backgroundColor = UIColor.white
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
