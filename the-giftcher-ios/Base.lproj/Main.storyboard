@@ -10,27 +10,51 @@
         <!--Perfil-->
         <scene sceneID="o3M-qe-pva">
             <objects>
-                <viewController id="llb-NQ-xbT" sceneMemberID="viewController">
+                <viewController id="llb-NQ-xbT" customClass="ProfileVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LoH-DS-YNr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scg-PW-s5e">
+                                <rect key="frame" x="173.66666666666666" y="437.66666666666669" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Scg-PW-s5e" firstAttribute="centerY" secondItem="LoH-DS-YNr" secondAttribute="centerY" id="FRi-9T-0op"/>
+                            <constraint firstItem="Scg-PW-s5e" firstAttribute="centerX" secondItem="LoH-DS-YNr" secondAttribute="centerX" id="Knr-lm-u4F"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aek-Cb-wt3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Perfil" image="005-cerebro" landscapeImage="005-cerebro" largeContentSizeImage="005-cerebro" selectedImage="005-cerebro" id="Zka-Gp-ECh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gR1-RP-eRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="1585"/>
+            <point key="canvasLocation" x="248" y="1385"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="HzU-3e-34J">
             <objects>
-                <viewController id="To1-O0-Bcr" sceneMemberID="viewController">
+                <viewController id="To1-O0-Bcr" customClass="SearchVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rlq-w5-BP6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96D-sy-TMK">
+                                <rect key="frame" x="174" y="437.66666666666669" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="96D-sy-TMK" firstAttribute="centerY" secondItem="Rlq-w5-BP6" secondAttribute="centerY" id="15H-Pl-gFC"/>
+                            <constraint firstItem="96D-sy-TMK" firstAttribute="centerX" secondItem="Rlq-w5-BP6" secondAttribute="centerX" id="vdO-r1-Mzf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="l0M-9D-DTp"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Buscar" image="001-lupa" landscapeImage="001-lupa" largeContentSizeImage="001-lupa" selectedImage="001-lupa" id="lhL-TY-eDO">
@@ -39,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lx-nV-qja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="-1296"/>
+            <point key="canvasLocation" x="927.536231884058" y="-1296.4285714285713"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="aVq-zp-FdT">
@@ -73,11 +97,23 @@
         <!--Amigos-->
         <scene sceneID="tP2-hB-I3K">
             <objects>
-                <viewController id="Lxc-HI-Web" sceneMemberID="viewController">
+                <viewController id="Lxc-HI-Web" customClass="FriendsVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3cz-FL-awe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRIENDS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rim-Fv-nPy">
+                                <rect key="frame" x="172.66666666666666" y="437.66666666666669" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rim-Fv-nPy" firstAttribute="centerX" secondItem="3cz-FL-awe" secondAttribute="centerX" id="5dU-cF-YCh"/>
+                            <constraint firstItem="rim-Fv-nPy" firstAttribute="centerY" secondItem="3cz-FL-awe" secondAttribute="centerY" id="zX0-xq-HTk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ubv-tI-USf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Amigos" image="002-apoyar" landscapeImage="002-apoyar" largeContentSizeImage="002-apoyar" selectedImage="002-apoyar" id="YK0-5n-89a"/>
@@ -89,35 +125,73 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RCh-f7-V4s">
+                                <rect key="frame" x="87" y="119" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikl-xr-k3s">
+                                        <rect key="frame" x="99" y="31" width="42" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="elU-WU-KAA"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SfV-9h-Hfw"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="Cm3-tV-V5x" firstAttribute="trailing" secondItem="RCh-f7-V4s" secondAttribute="trailing" id="1Pc-4z-AGZ"/>
+                            <constraint firstItem="Cm3-tV-V5x" firstAttribute="bottom" secondItem="RCh-f7-V4s" secondAttribute="bottom" id="HN5-4k-zd7"/>
+                            <constraint firstItem="RCh-f7-V4s" firstAttribute="leading" secondItem="Cm3-tV-V5x" secondAttribute="leading" id="VlL-Vh-XXv"/>
+                            <constraint firstItem="RCh-f7-V4s" firstAttribute="top" secondItem="Cm3-tV-V5x" secondAttribute="top" id="X4n-eu-1em"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cm3-tV-V5x"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="004-casa" landscapeImage="004-casa" largeContentSizeImage="004-casa" selectedImage="004-casa" id="vrX-ah-I1X"/>
                     <navigationItem key="navigationItem" id="6fz-hQ-UXc"/>
+                    <size key="freeformSize" width="414" height="1200"/>
+                    <connections>
+                        <outlet property="scrollview" destination="RCh-f7-V4s" id="WPG-pG-ShN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="885"/>
+            <point key="canvasLocation" x="927.536231884058" y="884.59821428571422"/>
         </scene>
         <!--Añadir Deseo-->
         <scene sceneID="dbj-FD-uey">
             <objects>
-                <viewController id="Ha0-uh-sIt" sceneMemberID="viewController">
+                <viewController id="Ha0-uh-sIt" customClass="AddWishVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mdr-QM-AbK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD WISH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLC-Iy-imf">
+                                <rect key="frame" x="165.66666666666666" y="437.66666666666669" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PLC-Iy-imf" firstAttribute="centerY" secondItem="Mdr-QM-AbK" secondAttribute="centerY" id="7qI-Dt-Tq7"/>
+                            <constraint firstItem="PLC-Iy-imf" firstAttribute="centerX" secondItem="Mdr-QM-AbK" secondAttribute="centerX" id="bbb-bm-Zb5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdp-cu-xC2"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Añadir Deseo" image="003-boton" landscapeImage="003-boton" largeContentSizeImage="003-boton" selectedImage="003-boton" id="IRC-9R-Akh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4F-W5-a2i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="167"/>
+            <point key="canvasLocation" x="927.536231884058" y="166.74107142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kx6-3N-Fx0">

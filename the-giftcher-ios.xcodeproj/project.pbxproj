@@ -16,6 +16,12 @@
 		237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */; };
 		237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */; };
 		237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC60244B492C00AC8F98 /* MainTabBarController.swift */; };
+		C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887B244C660500CB0A7A /* HomeVC.swift */; };
+		C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887D244C673F00CB0A7A /* BaseVC.swift */; };
+		C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08881244C68A800CB0A7A /* ProfileVC.swift */; };
+		C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08883244C68DA00CB0A7A /* AddWishVC.swift */; };
+		C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08885244C68FE00CB0A7A /* SearchVC.swift */; };
+		C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08887244C69CB00CB0A7A /* FriendsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		237BFC60244B492C00AC8F98 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C6C0887B244C660500CB0A7A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		C6C0887D244C673F00CB0A7A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		C6C08881244C68A800CB0A7A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		C6C08883244C68DA00CB0A7A /* AddWishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWishVC.swift; sourceTree = "<group>"; };
+		C6C08885244C68FE00CB0A7A /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		C6C08887244C69CB00CB0A7A /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +92,12 @@
 			children = (
 				237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */,
 				237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */,
+				C6C0887B244C660500CB0A7A /* HomeVC.swift */,
+				C6C0887D244C673F00CB0A7A /* BaseVC.swift */,
+				C6C08881244C68A800CB0A7A /* ProfileVC.swift */,
+				C6C08883244C68DA00CB0A7A /* AddWishVC.swift */,
+				C6C08885244C68FE00CB0A7A /* SearchVC.swift */,
+				C6C08887244C69CB00CB0A7A /* FriendsVC.swift */,
 			);
 			path = UserControllers;
 			sourceTree = "<group>";
@@ -155,8 +173,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
+				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
+				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
+				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
 				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
+				C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */,
 				237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */,
+				C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */,
