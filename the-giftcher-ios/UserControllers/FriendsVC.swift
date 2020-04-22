@@ -10,9 +10,14 @@ import UIKit
 
 class FriendsVC: BaseVC {
 
+    @IBOutlet weak var friendSearch: UITextField!
+    @IBOutlet weak var friendTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Friends"
     }
     
+    @IBAction func friendsearchSubmit(_ sender: UIButton) {
+    }
 }

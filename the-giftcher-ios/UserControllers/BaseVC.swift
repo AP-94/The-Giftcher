@@ -18,6 +18,8 @@ class BaseVC: UIViewController {
     
     func navigationModifier() {
         self.tabBarController?.navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 217.0/255.0, green: 48.0/255.0, blue: 69.0/255.0, alpha: 1)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        //self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
     }
 }
