@@ -18,5 +18,6 @@ class BaseVC: UIViewController {
     
     func navigationModifier() {
         self.tabBarController?.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 217.0/255.0, green: 48.0/255.0, blue: 69.0/255.0, alpha: 1)
     }
 }

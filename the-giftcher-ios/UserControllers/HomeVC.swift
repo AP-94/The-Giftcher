@@ -9,13 +9,30 @@
 import UIKit
 
 class HomeVC: BaseVC{
-    var joks: String?
-    @IBOutlet weak var scrollview: UIScrollView!
+    
+    @IBOutlet weak var moreInfoButton: UIButton!
+    @IBOutlet weak var firstSV: UIStackView!
+    @IBOutlet weak var mainStackV: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Home"
+        setLabels()
+        setStacksView()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.title = "Home"
+    }
+    
+    func setLabels() {
+        moreInfoButton.layer.cornerRadius = 15
+        moreInfoButton.layer.borderWidth = 1
+        moreInfoButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    func setStacksView() {
     }
     
     
