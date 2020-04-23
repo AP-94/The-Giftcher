@@ -8,16 +8,24 @@
 
 import UIKit
 
-class HomeVC: BaseVC{
+private let reuseIdentifier = "homeCell"
+private let itemsPerRow = 7
+
+class HomeVC: BaseVC {
     
+    //Buttons, labesl and stackviews outlets
     @IBOutlet weak var moreInfoButton: UIButton!
     @IBOutlet weak var firstSV: UIStackView!
     @IBOutlet weak var mainStackV: UIStackView!
+    @IBOutlet weak var bannerView: UIView!
+    
+    //Colecction View outlets
+    @IBOutlet weak var firstCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Home"
-        setLabels()
+        setModifieres()
         setStacksView()
         
     }
@@ -26,15 +34,36 @@ class HomeVC: BaseVC{
         self.tabBarController?.title = "Home"
     }
     
-    func setLabels() {
+    func setModifieres() {
         moreInfoButton.layer.cornerRadius = 15
         moreInfoButton.layer.borderWidth = 1
         moreInfoButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    }
-    
+        }
+        
     func setStacksView() {
     }
-    
-    
 
+}
+
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+           return 1
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           return 5
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+          // let cell : CollectionViewCell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
+           
+           //cell.backgroundColor = .black
+          // cell.wishName.text = "Index: \(indexPath.row)"
+           let cell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: "holaCelda", for: indexPath) as? MyCollectionViewCell
+           
+           cell?.myLabel.text = "Ineex: \(indexPath.row)"
+           
+           
+           return cell!
+       }
 }
