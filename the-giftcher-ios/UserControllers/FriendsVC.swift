@@ -15,7 +15,7 @@ class FriendsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = "Friends"
+        self.tabBarController?.title = "Amigos"
     }
     
     @IBAction func friendsearchSubmit(_ sender: UIButton) {
