@@ -55,10 +55,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
        }
        
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          // let cell : CollectionViewCell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
-           
-           //cell.backgroundColor = .black
-          // cell.wishName.text = "Index: \(indexPath.row)"
            let cell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: "holaCelda", for: indexPath) as? MyCollectionViewCell
            
            cell?.myLabel.text = "Ineex: \(indexPath.row)"
