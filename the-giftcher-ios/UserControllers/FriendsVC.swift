@@ -10,8 +10,8 @@ import UIKit
 
 class FriendsVC: BaseVC {
 
-    @IBOutlet weak var friendSearch: UITextField!
     @IBOutlet weak var friendTableView: UITableView!
+    @IBOutlet weak var friendSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
