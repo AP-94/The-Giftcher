@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchVC: BaseVC {
+class SearchVC: BaseVC, UISearchBarDelegate{
 
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var searchEngine: UISearchBar!
@@ -16,12 +16,23 @@ class SearchVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Search"
+        self.searchEngine.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Search"
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchEngine.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
+        searchEngine.resignFirstResponder()
+    }
 }
+
 
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
