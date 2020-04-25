@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddFriendsVC: FriendsVC, UITableViewDelegate, UITableViewDataSource {
+class AddFriendsVC: FriendsVC {
     
 
     @IBOutlet weak var findNewFriendsSearchBar: UISearchBar!
@@ -19,15 +19,6 @@ class AddFriendsVC: FriendsVC, UITableViewDelegate, UITableViewDataSource {
 
         // Do any additional setup after loading the view.
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
     
 
 }
