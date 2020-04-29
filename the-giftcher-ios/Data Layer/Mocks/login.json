@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "username": "pruebaiOS",
+    "name": "Carlos",
+    "lastName": "Peñarol",
+    "mail": "carlucho@gmail.com",
+    "password": "$2a$10$rjaxqpyiF7WtOrz1A6uLr.YZlFwiDcDS0GyhlwFKTxJInXgVbgAHS",
+    "birthday": "1985-12-27",
+    "imageName": "d0ebb6a1-3d0e-4b3e-8ffc-189d90acfcb2.jpg",
+    "imagePath": "https://storage.googleapis.com/thegiftcher/d0ebb6a1-3d0e-4b3e-8ffc-189d90acfcb2.jpg",
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcGFjZTI4IiwiZXhwIjozNzM1NjY2MTY1LCJpYXQiOjE1ODgxODI1MTh9.SwJQP8mAkZBkGvWrjViETYqLz56hIZb9B1Ubtqf0kX4-LBqJDQSy0gDfi5y8QHHs-t2ui55ojwXmOe_VvpIK6Q"
+}
