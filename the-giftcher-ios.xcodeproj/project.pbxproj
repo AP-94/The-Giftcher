@@ -27,6 +27,7 @@
 		C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08885244C68FE00CB0A7A /* SearchVC.swift */; };
 		C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08887244C69CB00CB0A7A /* FriendsVC.swift */; };
 		C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */; };
+		C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E19FFB2459E3F300C864A9 /* WishDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		C6C08885244C68FE00CB0A7A /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		C6C08887244C69CB00CB0A7A /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6E19FFB2459E3F300C864A9 /* WishDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		237BFC46244915FF00AC8F98 /* the-giftcher-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C6DCF41D2459DDD4006C94F1 /* Data Layer */,
 				237BFC682450FA7900AC8F98 /* Models */,
 				237BFC5F244B245500AC8F98 /* UserControllers */,
 				237BFC47244915FF00AC8F98 /* AppDelegate.swift */,
@@ -114,6 +117,7 @@
 				C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */,
 				237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */,
 				237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */,
+				C6E19FFB2459E3F300C864A9 /* WishDetailVC.swift */,
 			);
 			path = UserControllers;
 			sourceTree = "<group>";
@@ -131,6 +135,45 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C6DCF41D2459DDD4006C94F1 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				C6DCF4212459DEF8006C94F1 /* Data Mapper */,
+				C6DCF4202459DEEB006C94F1 /* Session & Connection */,
+				C6DCF41F2459DEDA006C94F1 /* Data Model */,
+				C6DCF41E2459DDE4006C94F1 /* Mocks */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		C6DCF41E2459DDE4006C94F1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		C6DCF41F2459DEDA006C94F1 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		C6DCF4202459DEEB006C94F1 /* Session & Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Session & Connection";
+			sourceTree = "<group>";
+		};
+		C6DCF4212459DEF8006C94F1 /* Data Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Mapper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +261,7 @@
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,
+				C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */,
 				237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */,
 				237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */,
 				237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */,
@@ -363,25 +407,23 @@
 		237BFC592449160500AC8F98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BNC5UMV9K;
+				DEVELOPMENT_TEAM = 9BPL4R75T5;
 				INFOPLIST_FILE = "the-giftcher-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cursocev.the-giftcher-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = TheGiftcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		237BFC5A2449160500AC8F98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BNC5UMV9K;
 				INFOPLIST_FILE = "the-giftcher-ios/Info.plist";
@@ -392,7 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cursocev.the-giftcher-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

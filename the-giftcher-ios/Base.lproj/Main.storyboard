@@ -48,13 +48,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Fjm-LN-0xu">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Pulsa para buscar deseos" showsCancelButton="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjm-LN-0xu">
                                 <rect key="frame" x="31" y="11" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="axd-Qf-81M"/>
                                     <constraint firstAttribute="width" constant="353" id="nN5-yC-7Tf"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3eI-aZ-TuK">
                                 <rect key="frame" x="31" y="76" width="353" height="649"/>
@@ -111,9 +115,20 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="353" height="150"/>
+                                        <connections>
+                                            <segue destination="F7D-wI-qnJ" kind="push" id="ooO-T2-GcB"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bon-48-PTn">
+                                <rect key="frame" x="137" y="55" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="F7D-wI-qnJ" kind="show" id="UwN-2p-7jH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -137,14 +152,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lx-nV-qja" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927.536231884058" y="-1296.4285714285713"/>
+            <point key="canvasLocation" x="286" y="-1533"/>
+        </scene>
+        <!--Wish DetailVC-->
+        <scene sceneID="sM3-cM-eTb">
+            <objects>
+                <viewController id="F7D-wI-qnJ" customClass="WishDetailVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cqt-0C-LTF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono tg white mode" translatesAutoresizingMaskIntoConstraints="NO" id="Ayp-d4-gCX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7fC-AM-RPz">
+                                <rect key="frame" x="20" y="20" width="374" height="632"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ayp-d4-gCX" firstAttribute="trailing" secondItem="fQZ-n9-31A" secondAttribute="trailing" id="5jC-t6-qIS"/>
+                            <constraint firstItem="fQZ-n9-31A" firstAttribute="bottom" secondItem="Ayp-d4-gCX" secondAttribute="bottom" id="cLm-gB-0Sp"/>
+                            <constraint firstItem="Ayp-d4-gCX" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" id="mx5-77-2ZS"/>
+                            <constraint firstItem="Ayp-d4-gCX" firstAttribute="top" secondItem="fQZ-n9-31A" secondAttribute="top" id="vMo-WO-Smk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fQZ-n9-31A"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CDS-TK-D9c"/>
+                    <connections>
+                        <outlet property="wishBackground" destination="7fC-AM-RPz" id="c0o-Eg-04L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rZv-gR-xC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037.68115942029" y="-1533.4821428571429"/>
         </scene>
         <!--gghgg-->
         <scene sceneID="aVq-zp-FdT">
             <objects>
                 <tabBarController id="nlZ-0Z-7X6" customClass="MainTabBarController" customModule="the_giftcher_ios" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="gghgg" id="m0y-j5-L42">
-                        <barButtonItem key="rightBarButtonItem" image="pencil.circle.fill" catalog="system" id="oYK-gA-GX9"/>
+                        <barButtonItem key="rightBarButtonItem" image="icono_blanco24px-1" id="oYK-gA-GX9"/>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EwR-cP-YX7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1367,6 +1418,9 @@
             <point key="canvasLocation" x="1709" y="-863"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ooO-T2-GcB"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="001-lupa" width="24" height="24"/>
         <image name="002-apoyar" width="24" height="24"/>
@@ -1377,9 +1431,9 @@
         <image name="calendar" width="64" height="64"/>
         <image name="degradado_navBar" width="4167" height="4167"/>
         <image name="icono tg white mode" width="872" height="936"/>
+        <image name="icono_blanco24px-1" width="8" height="8"/>
         <image name="images" width="183" height="275"/>
         <image name="logo tg white mode" width="818" height="654"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="teclado" width="466" height="418"/>
     </resources>
 </document>
