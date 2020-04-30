@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var repPasswordInput: UITextField!
     @IBOutlet weak var birthdayButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
-    
+    @IBOutlet weak var backToLoginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,13 @@ class RegisterViewController: UIViewController {
         confirmButton.layer.borderWidth = 1
         confirmButton.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
         confirmButton.backgroundColor = UIColor.white
+        
+        backToLoginButton.layer.cornerRadius = 20
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func backToLoginAction(_ sender: UIButton) {
+    }
+    
 }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		235FD038245AD62D00B5F7B2 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD037245AD62D00B5F7B2 /* SettingsVC.swift */; };
+		235FD03A245AD72A00B5F7B2 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD039245AD72A00B5F7B2 /* EditProfileVC.swift */; };
+		235FD03C245AD77800B5F7B2 /* TermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */; };
+		235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */; };
+		235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03F245AD7F700B5F7B2 /* HelpVC.swift */; };
 		237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC47244915FF00AC8F98 /* AppDelegate.swift */; };
 		237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC49244915FF00AC8F98 /* SceneDelegate.swift */; };
 		237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC4B244915FF00AC8F98 /* ViewController.swift */; };
@@ -41,6 +46,11 @@
 
 /* Begin PBXFileReference section */
 		0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		235FD037245AD62D00B5F7B2 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		235FD039245AD72A00B5F7B2 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsVC.swift; sourceTree = "<group>"; };
+		235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
+		235FD03F245AD7F700B5F7B2 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		237BFC44244915FF00AC8F98 /* the-giftcher-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the-giftcher-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		237BFC47244915FF00AC8F98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237BFC49244915FF00AC8F98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +152,11 @@
 				237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */,
 				237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */,
 				C6E19FFB2459E3F300C864A9 /* WishDetailVC.swift */,
+				235FD037245AD62D00B5F7B2 /* SettingsVC.swift */,
+				235FD039245AD72A00B5F7B2 /* EditProfileVC.swift */,
+				235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */,
+				235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */,
+				235FD03F245AD7F700B5F7B2 /* HelpVC.swift */,
 			);
 			path = UserControllers;
 			sourceTree = "<group>";
@@ -349,16 +364,21 @@
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
 				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
+				235FD038245AD62D00B5F7B2 /* SettingsVC.swift in Sources */,
 				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
 				C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */,
 				C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */,
 				237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */,
 				237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */,
 				C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */,
+				235FD03C245AD77800B5F7B2 /* TermsAndConditionsVC.swift in Sources */,
 				C6E1A00D2459F4B300C864A9 /* MSMutableDataExtension.swift in Sources */,
 				C6E19FFE2459F05300C864A9 /* Connection.swift in Sources */,
 				C6E1A0122459F6E000C864A9 /* DataMapper.swift in Sources */,
+				235FD03A245AD72A00B5F7B2 /* EditProfileVC.swift in Sources */,
+				235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
+				235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,
 				C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */,
