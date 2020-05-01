@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseVC {
 
+    let dataMapper = DataMapper()
     
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -19,20 +21,49 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setModifiers()
+        keyboardActions()
+
+    }
+    
+    func setModifiers() {
         loginButton.layer.cornerRadius = 20
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
         loginButton.backgroundColor = UIColor.white
-        
         registerButton.layer.cornerRadius = 20
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
     @IBAction func loginSubmit(_ sender: UIButton) {
-        
-        performSegue(withIdentifier: "HomeView", sender: self)
+        let inputLogin = InputLogin(email: userInput.text, pass: passwordInput.text)
+        doLoginRequest(inputLogin: inputLogin)
+    }
+    
+    func doLoginRequest(inputLogin: InputLogin){
+        print("Do Login Request")
+        dataMapper.loginRequest(inputLogin: inputLogin) {
+            success, result, error in
+            if let result = result as? UserModel {
+                
+                let currentSession = Session.current
+                currentSession.token = result.token
+                currentSession.userName = result.username
+                currentSession.id = result.id
+                currentSession.userModel = result
+                
+                print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
+                
+                Session.save()
+                 
+                if Session.isValid() {
+                 self.performSegue(withIdentifier: "HomeView", sender: nil)
+                 }
+            } else {
+                
+            }
+            
+        }
     }
     
 

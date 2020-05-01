@@ -9,15 +9,15 @@
 import Foundation
 
 class InputLogin: Mappable {
-    var email: String = ""
+    var username: String = ""
     var pass: String = ""
     
     init(email: String?, pass: String?) {
-        self.email = email ?? ""
+        self.username = email ?? ""
         self.pass = pass ?? ""
     }
     
     var params: [String: Any] {
-        return ["email":email, "password": pass]
+        return ["username":username, "password": pass]
     }
 }

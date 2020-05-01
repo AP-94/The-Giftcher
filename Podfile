@@ -12,6 +12,9 @@ pod 'Alamofire', '~> 4.7'
 #Image From URL
 pod 'AlamofireImage', '~> 3.5'
 
+#Custom Indicator View
+pod 'SVProgressHUD', '2.2.5'
+
 # Pods for the-giftcher-ios
 
 end
