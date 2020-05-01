@@ -36,7 +36,7 @@ class LoginViewController: BaseVC {
     }
     
     @IBAction func loginSubmit(_ sender: UIButton) {
-        let inputLogin = InputLogin(email: userInput.text, pass: passwordInput.text)
+        let inputLogin = InputLogin(username: userInput.text, pass: passwordInput.text)
         doLoginRequest(inputLogin: inputLogin)
     }
     
@@ -60,7 +60,7 @@ class LoginViewController: BaseVC {
                  self.performSegue(withIdentifier: "HomeView", sender: nil)
                  }
             } else {
-                
+                print("ERROR EN LA PETICIÓN DE LOGIN")
             }
             
         }

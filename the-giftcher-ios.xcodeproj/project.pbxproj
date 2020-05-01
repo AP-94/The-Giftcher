@@ -26,6 +26,7 @@
 		237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */; };
 		237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */; };
 		801336C2617B27D3754CEF27 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */; };
+		C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF33245C90A10021E9DE /* InputRegister.swift */; };
 		C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887B244C660500CB0A7A /* HomeVC.swift */; };
 		C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887D244C673F00CB0A7A /* BaseVC.swift */; };
 		C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08881244C68A800CB0A7A /* ProfileVC.swift */; };
@@ -69,6 +70,7 @@
 		237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
 		555E94C1DB5489E4E04AF4EB /* Pods-the-giftcher-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.release.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.release.xcconfig"; sourceTree = "<group>"; };
 		57E344FF23855232109D91C8 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		C6A3EF33245C90A10021E9DE /* InputRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRegister.swift; sourceTree = "<group>"; };
 		C6C0887B244C660500CB0A7A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C6C0887D244C673F00CB0A7A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		C6C08881244C68A800CB0A7A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				C6E1A0012459F0B800C864A9 /* UserModel.swift */,
 				C6E1A0152459F96900C864A9 /* InputLogin.swift */,
+				C6A3EF33245C90A10021E9DE /* InputRegister.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				C6E1A0002459F07900C864A9 /* Session.swift in Sources */,
 				C6E1A0092459F29E00C864A9 /* String+Utils.swift in Sources */,
 				C6E1A0022459F0B800C864A9 /* UserModel.swift in Sources */,
+				C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */,
 				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,

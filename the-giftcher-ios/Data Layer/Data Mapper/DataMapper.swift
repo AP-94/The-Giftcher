@@ -73,4 +73,26 @@ class DataMapper {
             }
         }
     }
+    
+    func registerRequest(fake: String? = nil, inputRegister: InputRegister , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/register"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutToken(url, params: inputRegister.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = UserModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
 }

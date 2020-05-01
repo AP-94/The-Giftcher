@@ -12,8 +12,8 @@ class InputLogin: Mappable {
     var username: String = ""
     var pass: String = ""
     
-    init(email: String?, pass: String?) {
-        self.username = email ?? ""
+    init(username: String?, pass: String?) {
+        self.username = username ?? ""
         self.pass = pass ?? ""
     }
     
