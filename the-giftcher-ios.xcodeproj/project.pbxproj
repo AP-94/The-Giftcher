@@ -12,6 +12,7 @@
 		235FD03C245AD77800B5F7B2 /* TermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */; };
 		235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */; };
 		235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD03F245AD7F700B5F7B2 /* HelpVC.swift */; };
+		235FD042245C920B00B5F7B2 /* ContactFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235FD041245C920B00B5F7B2 /* ContactFormVC.swift */; };
 		237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC47244915FF00AC8F98 /* AppDelegate.swift */; };
 		237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC49244915FF00AC8F98 /* SceneDelegate.swift */; };
 		237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC4B244915FF00AC8F98 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
 		235FD03F245AD7F700B5F7B2 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
+		235FD041245C920B00B5F7B2 /* ContactFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormVC.swift; sourceTree = "<group>"; };
 		237BFC44244915FF00AC8F98 /* the-giftcher-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the-giftcher-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		237BFC47244915FF00AC8F98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		237BFC49244915FF00AC8F98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */,
 				235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */,
 				235FD03F245AD7F700B5F7B2 /* HelpVC.swift */,
+				235FD041245C920B00B5F7B2 /* ContactFormVC.swift */,
 			);
 			path = UserControllers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
 				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
+				235FD042245C920B00B5F7B2 /* ContactFormVC.swift in Sources */,
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
 				235FD038245AD62D00B5F7B2 /* SettingsVC.swift in Sources */,
 				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
