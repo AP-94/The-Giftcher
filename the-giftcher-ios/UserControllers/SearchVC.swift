@@ -28,6 +28,10 @@ class SearchVC: BaseVC, UISearchBarDelegate{
         searchEngine.endEditing(true)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchEngine.endEditing(true)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         searchEngine.resignFirstResponder()
     }

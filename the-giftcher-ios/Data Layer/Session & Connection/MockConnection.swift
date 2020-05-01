@@ -43,7 +43,7 @@ class MockConnection: RestManager {
         completion(200, nil, [:], nil)
     }
     
-    func postArrayJson(_ endpoint: String, params: [Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+    func postWithoutToken(_ endpoint: String, params: [String : Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
         processFake(endpoint, params: [:], completion:  completion)
     }
 

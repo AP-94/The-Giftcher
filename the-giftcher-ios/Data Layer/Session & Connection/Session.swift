@@ -13,11 +13,10 @@ class Session: Codable {
     static var current = Session()
     private static let kArchiveKey = "AE4545"
     
-    var id: String?
+    var id: Int?
     var token: String?
     var userName: String?
     var userModel: UserModel?
-    var lang: String?
     
     private init() {
 
@@ -27,7 +26,6 @@ class Session: Codable {
                 userName = savedSession.userName
                 id = savedSession.id
                 userModel = savedSession.userModel
-                lang = savedSession.lang
             }
         }
     }
@@ -36,7 +34,6 @@ class Session: Codable {
         guard current.token != "" && current.token != nil   else {  return false }
         guard current.userName != "" && current.userName != nil   else {  return false }
         guard current.id != nil   else {  return false }
-        guard current.lang != "" && current.lang != nil   else {  return false }
         
         return true
     }

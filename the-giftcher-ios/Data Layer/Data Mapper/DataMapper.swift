@@ -25,7 +25,7 @@ class DataMapper {
           case 200..<299:
               return true
           case 401:
-              print("problema de autorizacion, enviar password o user incorrect")
+              print("problema de autorizacion, password o user incorrecto")
               return false
           case 403:
               Session.clean()
@@ -62,19 +62,15 @@ class DataMapper {
             connection = Connection()
         }
         
-        // prepare here params if any
-        connection.post(url, params: inputLogin.params, encode: URLEncoding.default) {
+        connection.postWithoutToken(url, params: inputLogin.params, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let item = UserModel(jsonData: try? json.rawData())
-                completion(true, item, nil)
+                let result = UserModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }
-            
         }
-        
-        
     }
 }

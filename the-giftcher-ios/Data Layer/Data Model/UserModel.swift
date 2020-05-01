@@ -9,12 +9,14 @@
 import Foundation
 
 class UserModel: Mappable {
-    var id: String = ""
-    var username: String? = ""
-    var name: String? = ""
-    var last_name: String? = ""
-    var birthday: Date?
-    var image_name: String? = ""
-    var image_path: String? = ""
-    var token: String? = ""
+    var id: Int?
+    var username: String?
+    var name: String?
+    var lastName: String?
+    var mail: String?
+    var password: String?
+    var birthday: String?
+    var imageName: String?
+    var imagePath: String?
+    var token: String?
 }
