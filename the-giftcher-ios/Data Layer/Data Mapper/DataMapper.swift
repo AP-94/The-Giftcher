@@ -95,4 +95,26 @@ class DataMapper {
             }
         }
     }
+    
+    func wishPostRequest(fake: String? = nil, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
+           
+           var url = "/wishes/"
+           if fake != nil  {
+               url = fake!
+               connection = MockConnection()
+           }else{
+               connection = Connection()
+           }
+           
+           connection.post(url, params: inputWish.params, encode: JSONEncoding.default) {
+               httpStatus, json, responseHeaders, error in
+               
+               if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                   let result = Wish(jsonData: try? json.rawData())
+                   completion(true, result, nil)
+               } else {
+                   completion(false ,nil, error)
+               }
+           }
+       }
 }
