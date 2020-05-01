@@ -12,6 +12,7 @@ class HelpVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Ayuda"
 
         // Do any additional setup after loading the view.
     }

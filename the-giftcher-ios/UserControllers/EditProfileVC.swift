@@ -12,6 +12,7 @@ class EditProfileVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Editar Perfil"
 
         // Do any additional setup after loading the view.
     }
