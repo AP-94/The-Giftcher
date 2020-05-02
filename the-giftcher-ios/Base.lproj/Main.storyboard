@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMs-su-UwS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260.8695652173915" y="1660.7142857142856"/>
+            <point key="canvasLocation" x="1774" y="1659"/>
         </scene>
         <!--Terms And ConditionsVC-->
         <scene sceneID="A2P-x7-3CI">
@@ -461,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6BK-RF-ufc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260.8695652173915" y="1007.8125"/>
+            <point key="canvasLocation" x="1774" y="1006"/>
         </scene>
         <!--Edit ProfileVC-->
         <scene sceneID="Leq-cw-XY0">
@@ -587,6 +587,9 @@
                                                 <state key="normal" title="Cambiar">
                                                     <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="3uf-lM-TYi" kind="show" id="cBc-b0-Qjb"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cambiar perfil a público" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-Vc-zzl">
                                                 <rect key="frame" x="42" y="560" width="329" height="31"/>
@@ -774,6 +777,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRD-3h-g4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="921.73913043478262" y="2488.3928571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XIY-MI-p11">
+            <objects>
+                <viewController id="3uf-lM-TYi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hGt-Nt-INF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="glS-OH-TXF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E5E-JX-W23"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mB5-TW-4yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="3269"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="HzU-3e-34J">
@@ -2298,7 +2317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBI-rp-ULq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="2388"/>
+            <point key="canvasLocation" x="1774" y="2386"/>
         </scene>
         <!--Contact FormVC-->
         <scene sceneID="XrN-bm-BIy">
@@ -2420,12 +2439,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kr3-ev-QCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3100.0000000000005" y="2387.9464285714284"/>
+            <point key="canvasLocation" x="2613" y="2386"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="cna-C0-n9X"/>
-        <segue reference="ooO-T2-GcB"/>
+        <segue reference="UwN-2p-7jH"/>
         <segue reference="RGE-dQ-Ly5"/>
     </inferredMetricsTieBreakers>
     <resources>
