@@ -53,6 +53,9 @@ class LoginViewController: BaseVC {
     
     func doLoginRequest(inputLogin: InputLogin){
         print("Do Login Request")
+        activityIndicator.sizeToFit()
+        activityIndicator.alignmentRect(forFrame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height+150))
+        view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         dataMapper.loginRequest(inputLogin: inputLogin) {
             success, result, error in

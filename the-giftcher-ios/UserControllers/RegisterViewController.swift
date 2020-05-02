@@ -50,8 +50,18 @@ class RegisterViewController: BaseVC {
     
     
     @IBAction func doRegisterRequest(_ sender: Any) {
+        fieldsValidator()
         let inputRegister = InputRegister(name: nameInput.text, username: userNameInput.text, lastName: surnameInput.text, mail: emailInput.text, password: passwordInput.text, birthday: birthdayInput.text)
         doRegisterRequest(inputRegister: inputRegister)
+    }
+    
+    func fieldsValidator() {
+        if nameInput.text == "" || userNameInput.text == "" || surnameInput.text == "" || emailInput.text == "" || passwordInput.text == "" || birthdayInput.text == "" {
+            if emailInput.text!.isValidEmail {
+                
+            }
+        }
+        
     }
     
     

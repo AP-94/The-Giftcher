@@ -47,10 +47,6 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationModifier()
-        
-        activityIndicator.sizeToFit()
-        view.addSubview(activityIndicator)
-
     }
     
     func navigationModifier() {

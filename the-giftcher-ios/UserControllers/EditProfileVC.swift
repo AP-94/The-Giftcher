@@ -120,7 +120,7 @@ class EditProfileVC: BaseVC {
     }
     
     func doUpdateRequest(inputUpdateUser: InputUpdateUser){
-        print("Do Login Request")
+        print("Do Update Request")
         dataMapper.updateUserRequest(inputUpdateUser: inputUpdateUser) {
             success, result, error in
             if let result = result as? UserModel {
