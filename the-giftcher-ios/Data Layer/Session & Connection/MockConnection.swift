@@ -18,7 +18,14 @@ class MockConnection: RestManager {
         
     }
     
-
+    func getWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+           processFakeNoParams(endpoint, completion: completion)
+       }
+    
+    func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        processFakeNoParams(endpoint, completion: completion)
+    }
+    
     func post(_ endpoint: String, params: [String : Any]?, encode :ParameterEncoding = URLEncoding.default,  completion: @escaping ConnectionCompletion) {
         processFake(endpoint, params: params, completion:  completion)
     }
@@ -35,11 +42,11 @@ class MockConnection: RestManager {
         completion(200, nil, [:], nil)
     }
     
-    func imageUploadRequest(_ data: NSData, _ endpoint: String, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
+    func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
         processFake(endpoint, params: params, completion:  completion)
     }
     
-    func delete(_ endpoint: String, params: [String : Any]?, encode :ParameterEncoding = URLEncoding.default,  completion: @escaping ConnectionCompletion) {
+    func delete(_ endpoint: String, encode :ParameterEncoding = URLEncoding.default,  completion: @escaping ConnectionCompletion) {
         completion(200, nil, [:], nil)
     }
     
@@ -50,6 +57,36 @@ class MockConnection: RestManager {
     
     
     func processFake(_ endpoint: String, params: [String : Any]?, completion: @escaping ConnectionCompletion){
+        
+        print("""
+        ---------------------------------------------------------------------
+        ---------------------------------------------------------------------
+        ---------         ---------------------------------------------------
+        ---------   ---------------------------------------------------------
+        ---------   ---------------------------------------------------------
+        ---------         ---------------------------------------------------
+        ---------   ---------------------------------------------------------
+        ---------   ---------------------------------------------------------
+        ---------   ----de FAKE----------------------------------------------
+        ---------------------------------------------------------------------
+        ---------------------------------------------------------------------
+        """)
+        
+        
+        guard let path = Bundle.main.path(forResource: endpoint, ofType: "json") else {
+            completion(404, nil, [:], nil)
+            return
+        }
+        
+        if let data = try? NSData(contentsOfFile: path) as Data {
+            let json = try? JSON(data: data)
+            completion(200, json, [:], nil)
+        }else{
+            completion(404, nil, [:], nil)
+        }
+    }
+    
+    func processFakeNoParams(_ endpoint: String, completion: @escaping ConnectionCompletion){
         
         print("""
         ---------------------------------------------------------------------

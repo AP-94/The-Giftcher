@@ -16,13 +16,20 @@ typealias ConnectionPdf = (_ httpStatus: Int, _ response: Data?, _ responseHeade
 protocol RestManager {
     var httpHeaders: HTTPHeaders? { get set }
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
-    func getPdf(_ endpoint: String, params: [String: Any]?, completion: @escaping ConnectionPdf)
-    func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
-    func imageUploadRequest(_ data: NSData,_ endpoint: String, params: [String: Any]?, completion: @escaping ConnectionCompletion)
-    func delete(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    //POSTS
     func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func postWithoutToken(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
+    func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String: Any]?, completion: @escaping ConnectionCompletion)
+    func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    //GETS
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
+    func getWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    func getPdf(_ endpoint: String, params: [String: Any]?, completion: @escaping ConnectionPdf)
+    //PUTS
+    func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    //DELETES
+    func delete(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    
 }
 
 class Connection: RestManager {
@@ -30,14 +37,14 @@ class Connection: RestManager {
     let baseUrlString = Constants.baseUrlString
     var sessionManager: SessionManager
     var httpHeaders: HTTPHeaders?
-
+    
     init() {
         // get the default headers
         var headers = Alamofire.SessionManager.defaultHTTPHeaders
         // add your custom header
         //headers["Authorization"] = "Bearer \(Session.current.token)"
         headers["Content-Type"] = "application/json"
-
+        
         // create a custom session configuration
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 0
@@ -53,37 +60,34 @@ class Connection: RestManager {
     }
     
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
-        
-        var headers = Alamofire.SessionManager.defaultHTTPHeaders
-        headers["Authorization"] = "Bearer \(Session.current.token ?? "")"
-        headers["Content-Type"] = "application/json"
-        
-
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 0
-        configuration.httpAdditionalHeaders = headers
-        sessionManager = Alamofire.SessionManager(configuration: configuration)
-        // make calls with the session manager
-        sessionManager.request(url, method: method, parameters: params,encoding: encode, headers: httpHeaders).responseJSON {
-            response in
+        if let url = URL(string: url){
+            var request = URLRequest(url: url)
             
-            // Do whatever task with response data
-            // debugPrint(response)
+            request.httpMethod = method.rawValue
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer \(Session.current.token ?? "")", forHTTPHeaderField: "Authorization")
+            request.httpBody = try! JSONSerialization.data(withJSONObject: params ?? [])
             
-            let httpCode = response.response?.statusCode ?? 0
-            print("---> HTTP code: ", httpCode)
-            print("---> URL: ", url)
-            print("---> PARAMS: ", params ?? "")
-            let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
             
-            var json: JSON? = nil
-            
-            if let data = response.data {
-                try? print("---> JSON: ", JSON(data: data))
-                json = try? JSON(data: data)
-                //                completion(httpCode, data, responseHeaders, response.error)
+            Alamofire.request(request).responseJSON {
+                response in
+                
+                let httpCode = response.response?.statusCode ?? 0
+                print("---> HTTP code: ", httpCode)
+                print("---> URL: ", url)
+                print("---> PARAMS: ", params ?? "")
+                
+                let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
+                
+                var json: JSON? = nil
+                if let data = response.data{
+                    json = try? JSON(data: data)
+                    print("---> JSON: \(json ?? "NO JSON")")
+                }
+                
+                completion(httpCode, json, responseHeaders, response.error)
+                
             }
-            completion(httpCode, json, responseHeaders, response.error)
         }
     }
     
@@ -126,14 +130,12 @@ class Connection: RestManager {
         let boundary = "0xKhTmLbOuNdArY"
         
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(Session.current.token ?? "")"]
         
         //        let imageData = imageView.jpegData(compressionQuality: 1)
         let imageData = data
         
         //        if(imageData==nil)  { return }
-        
-        
-        request.allHTTPHeaderFields = ["Authorization": Session.current.token, "API-Version": "1.0"] as? [String : String]
         
         request.httpBody = createBodyWithParameters(parameters: params , filePathKey: "file", imageDataKey: imageData as NSData, boundary: boundary) as Data
         
@@ -209,36 +211,92 @@ class Connection: RestManager {
     
     func withoutTokenConnect(to url: String, method: HTTPMethod, params: [String :
         Any]?,  encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
-            if let url = URL(string: url){
-                var request = URLRequest(url: url)
-                request.httpMethod = method.rawValue
-                //request.setValue(Session.current.token,
-                                // forHTTPHeaderField: "Authorization")
+        if let url = URL(string: url){
+            var request = URLRequest(url: url)
+            request.httpMethod = method.rawValue
+            //request.setValue(Session.current.token,
+            // forHTTPHeaderField: "Authorization")
+            
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = try! JSONSerialization.data(withJSONObject: params ?? [])
+            
+            
+            Alamofire.request(request).responseJSON {
+                response in
                 
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.httpBody = try! JSONSerialization.data(withJSONObject: params ?? [])
+                let httpCode = response.response?.statusCode ?? 0
+                print("---> HTTP code: ", httpCode)
+                print("---> URL: ", url)
+                print("---> PARAMS: ", params ?? "")
                 
+                let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
                 
-                Alamofire.request(request).responseJSON {
-                    response in
-                    
-                    let httpCode = response.response?.statusCode ?? 0
-                               print("---> HTTP code: ", httpCode)
-                               print("---> URL: ", url)
-                               print("---> PARAMS: ", params ?? "")
-                    
-                    let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
-                    
-                    var json: JSON? = nil
-                    if let data = response.data{
-                        json = try? JSON(data: data)
-                        print("---> JSON: \(json ?? "NO JSON")")
-                    }
-                    
-                    completion(httpCode, json, responseHeaders, response.error)
-
+                var json: JSON? = nil
+                if let data = response.data{
+                    json = try? JSON(data: data)
+                    print("---> JSON: \(json ?? "NO JSON")")
                 }
+                
+                completion(httpCode, json, responseHeaders, response.error)
+                
             }
+        }
+    }
+    
+    func withoutParamsConnect(to url: String, method: HTTPMethod, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
+        if let url = URL(string: url){
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = method.rawValue
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer \(Session.current.token ?? "")", forHTTPHeaderField: "Authorization")
+            
+            Alamofire.request(request).responseJSON {
+                response in
+                
+                let httpCode = response.response?.statusCode ?? 0
+                print("---> HTTP code: ", httpCode)
+                print("---> URL: ", url)
+                
+                let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
+                
+                var json: JSON? = nil
+                if let data = response.data{
+                    json = try? JSON(data: data)
+                    print("---> JSON: \(json ?? "NO JSON")")
+                }
+                
+                completion(httpCode, json, responseHeaders, response.error)
+                
+            }
+        }
+    }
+    
+    func connectNoParamsNoToken(to url: String, method: HTTPMethod, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
+        if let url = URL(string: url){
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = method.rawValue
+            
+            Alamofire.request(request).responseJSON {
+                response in
+                
+                let httpCode = response.response?.statusCode ?? 0
+                print("---> HTTP code: ", httpCode)
+                print("---> URL: ", url)
+                
+                let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
+                
+                var json: JSON? = nil
+                if let data = response.data{
+                    json = try? JSON(data: data)
+                    print("---> JSON: \(json ?? "NO JSON")")
+                }
+                
+                completion(httpCode, json, responseHeaders, response.error)
+                
+            }
+        }
     }
     
     func completeUrlString(forEndpoint endpoint: String) -> String {
@@ -253,18 +311,18 @@ class Connection: RestManager {
     }
     
     
-    func imageUploadRequest(_ data: NSData, _ endpoint: String, params: [String : Any]?,  completion: @escaping ConnectionCompletion) {
+    func imageUploadRequest(_ endpoint: String, _ data: NSData, params: [String : Any]?,  completion: @escaping ConnectionCompletion) {
         uploadImage(data, completeUrlString(forEndpoint: endpoint), params: params,  completion: completion)
     }
     
-    func delete(_ endpoint: String, params: [String: Any]?, encode :ParameterEncoding = URLEncoding.default, completion: @escaping ConnectionCompletion) {
-        connect(to: completeUrlString(forEndpoint: endpoint), method: .delete, params: params, encode: encode, completion: completion)
+    func delete(_ endpoint: String, encode :ParameterEncoding = URLEncoding.default, completion: @escaping ConnectionCompletion) {
+        withoutParamsConnect(to: completeUrlString(forEndpoint: endpoint), method: .delete, encode: encode, completion: completion)
     }
     
     func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()?.isReachable ?? false
     }
-
+    
     func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .post, params: params, encode: encode,  completion: completion)
     }
@@ -272,7 +330,11 @@ class Connection: RestManager {
     func postWithoutToken(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         withoutTokenConnect(to: completeUrlString(forEndpoint: endpoint), method: .post, params: params, encode: encode,  completion: completion)
     }
-
+    
+    func getWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        withoutParamsConnect(to: completeUrlString(forEndpoint: endpoint), method: .get, encode: encode,  completion: completion)
+    }
+    
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .get, params: params, encode: encode,  completion: completion)
     }
@@ -280,6 +342,11 @@ class Connection: RestManager {
     func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .put, params: params, encode: encode,  completion: completion)
     }
+    
+    func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        connectNoParamsNoToken(to: completeUrlString(forEndpoint: endpoint), method: .post, encode: encode,  completion: completion)
+    }
+        
     
     
 }

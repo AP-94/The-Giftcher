@@ -2,12 +2,30 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - MarqueeLabel (4.0.2)
+  - MaterialComponents/ActivityIndicator (109.1.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
+  - MaterialComponents/Palettes (109.1.0)
+  - MaterialComponents/private/Application (109.1.0)
+  - MDFInternationalization (2.0.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
+  - NotificationBannerSwift (3.0.2):
+    - MarqueeLabel (~> 4.0.0)
+    - SnapKit (~> 5.0.0)
+  - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.5)
+  - MaterialComponents/ActivityIndicator
+  - NotificationBannerSwift (~> 3.0.0)
   - SVProgressHUD (= 2.2.5)
   - SwiftyJSON (= 4.2)
 
@@ -15,15 +33,29 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - MarqueeLabel
+    - MaterialComponents
+    - MDFInternationalization
+    - MotionAnimator
+    - MotionInterchange
+    - NotificationBannerSwift
+    - SnapKit
     - SVProgressHUD
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
+  MaterialComponents: 194731e6041c0f05798867af15389f261332c330
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  NotificationBannerSwift: 713e20f21b6105f4a36a00e5d9fa414a930d3d8e
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 29317da56908d2be39b6523267bedda7189d110f
+PODFILE CHECKSUM: 78366fb544370c99f56733641739faf17a7a3a37
 
 COCOAPODS: 1.9.1

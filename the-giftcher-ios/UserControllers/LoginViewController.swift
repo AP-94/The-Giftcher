@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import SVProgressHUD
+import NotificationBannerSwift
+import MaterialComponents.MaterialActivityIndicator
 
 class LoginViewController: BaseVC {
-
+    
     let dataMapper = DataMapper()
     
     @IBOutlet weak var userInput: UITextField!
@@ -23,7 +24,7 @@ class LoginViewController: BaseVC {
         super.viewDidLoad()
         setModifiers()
         keyboardActions()
-
+        
     }
     
     func setModifiers() {
@@ -36,8 +37,20 @@ class LoginViewController: BaseVC {
     }
     
     @IBAction func loginSubmit(_ sender: UIButton) {
-        let inputLogin = InputLogin(username: userInput.text, pass: passwordInput.text)
-        doLoginRequest(inputLogin: inputLogin)
+        
+        if !userInput.text!.isEmpty {
+            if !passwordInput.text!.isEmpty {
+                let inputLogin = InputLogin(username: userInput.text, pass: passwordInput.text)
+                doLoginRequest(inputLogin: inputLogin)
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo contraseña", style: .danger)
+                banner.show()
+            }
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo de usuario", style: .danger)
+            banner.show()
+            
+        }
     }
     
     func doLoginRequest(inputLogin: InputLogin){
@@ -55,10 +68,10 @@ class LoginViewController: BaseVC {
                 print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
                 
                 Session.save()
-                 
+                
                 if Session.isValid() {
-                 self.performSegue(withIdentifier: "HomeView", sender: nil)
-                 }
+                    self.performSegue(withIdentifier: "HomeView", sender: nil)
+                }
             } else {
                 print("ERROR EN LA PETICIÓN DE LOGIN")
             }
@@ -66,5 +79,5 @@ class LoginViewController: BaseVC {
         }
     }
     
-
+    
 }

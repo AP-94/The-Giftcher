@@ -52,6 +52,8 @@ class DataMapper {
           }
       }
     
+    //MARK:: USERS REQUESTS --------------------------------------------------------------
+    
     func loginRequest(fake: String? = nil, inputLogin: InputLogin , completion: @escaping DataMapperCompletion) {
         
         var url = "/user/login"
@@ -96,6 +98,166 @@ class DataMapper {
         }
     }
     
+    func getAllUsersRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/get_users"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return UserModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func getUserByIdRequest(fake: String? = nil, id: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/\(String(describing: id))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let user = UserModel(jsonData: try? json.rawData())
+                completion(true, user, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func addProfileImageRequest(fake: String? = nil, inputProfileImage: InputProfileImage , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/google_cloud_image"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        //Invesitgar como enviar imagen swift, con este imageUploadRequest tenemos que enviar paramentros e Data, buscar más informacion de como
+        //convertir una imagen en swift en estos 2 aspectos
+        /*connection.imageUploadRequest(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = UserModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }*/
+    }
+    
+    func forgotPasswordRequest(fake: String? = nil, email: String? , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/reset_password?userMail=\(String(describing: email))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postForgotPassword(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            //Como en esta petición, se devuelve un "email enviado", lo que usamos es el true para saber si fue un 200 y
+            // enviar un alert al usuario de que le tiene que llegar un mail para la nueva contraseña
+            if self.checkHttpStatus(httpCode: httpStatus){
+                completion(true, nil, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func updateUserRequest(fake: String? = nil, inputUpdateUser: InputUpdateUser , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/update"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.put(url, params: inputUpdateUser.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let updatedUser = UserModel(jsonData: try? json.rawData())
+                completion(true, updatedUser, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func updateUserPasswordRequest(fake: String? = nil, inputUpdatePassword: InputUpdatePassword , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/update_password"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.put(url, params: inputUpdatePassword.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let updatedUserPassword = UserModel(jsonData: try? json.rawData())
+                completion(true, updatedUserPassword, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func deleteUserRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/user/delete_account"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.delete(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus) {
+                completion(true, nil, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    //MARK:: WISH REQUESTS --------------------------------------------------------------
+    
     func wishPostRequest(fake: String? = nil, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
            
            var url = "/wishes/"
@@ -110,11 +272,13 @@ class DataMapper {
                httpStatus, json, responseHeaders, error in
                
                if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                   let result = Wish(jsonData: try? json.rawData())
+                   let result = WishModel(jsonData: try? json.rawData())
                    completion(true, result, nil)
                } else {
                    completion(false ,nil, error)
                }
            }
        }
+    
+    //MARK:: FRIENDS REQUESTS --------------------------------------------------------------
 }

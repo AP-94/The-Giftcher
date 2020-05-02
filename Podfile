@@ -15,6 +15,10 @@ pod 'AlamofireImage', '~> 3.5'
 #Custom Indicator View
 pod 'SVProgressHUD', '2.2.5'
 
+pod 'MaterialComponents/ActivityIndicator'
+
+pod 'NotificationBannerSwift', '~> 3.0.0'
+
 # Pods for the-giftcher-ios
 
 end

@@ -26,9 +26,15 @@
 		237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */; };
 		237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */; };
 		801336C2617B27D3754CEF27 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */; };
+		C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */; };
+		C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */; };
+		C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */; };
+		C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAD245D98B0007865B4 /* InputWishImage.swift */; };
+		C68B5AB2245D9DBB007865B4 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */; };
+		C68B5AB4245DA057007865B4 /* UserFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AB3245DA057007865B4 /* UserFriendModel.swift */; };
 		C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF33245C90A10021E9DE /* InputRegister.swift */; };
 		C6A3EF36245CBCCF0021E9DE /* InputWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF35245CBCCF0021E9DE /* InputWish.swift */; };
-		C6A3EF38245CBD190021E9DE /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF37245CBD190021E9DE /* Wish.swift */; };
+		C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF37245CBD190021E9DE /* WishModel.swift */; };
 		C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887B244C660500CB0A7A /* HomeVC.swift */; };
 		C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887D244C673F00CB0A7A /* BaseVC.swift */; };
 		C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08881244C68A800CB0A7A /* ProfileVC.swift */; };
@@ -72,9 +78,15 @@
 		237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
 		555E94C1DB5489E4E04AF4EB /* Pods-the-giftcher-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.release.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.release.xcconfig"; sourceTree = "<group>"; };
 		57E344FF23855232109D91C8 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdateUser.swift; sourceTree = "<group>"; };
+		C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdatePassword.swift; sourceTree = "<group>"; };
+		C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProfileImage.swift; sourceTree = "<group>"; };
+		C68B5AAD245D98B0007865B4 /* InputWishImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWishImage.swift; sourceTree = "<group>"; };
+		C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
+		C68B5AB3245DA057007865B4 /* UserFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendModel.swift; sourceTree = "<group>"; };
 		C6A3EF33245C90A10021E9DE /* InputRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRegister.swift; sourceTree = "<group>"; };
 		C6A3EF35245CBCCF0021E9DE /* InputWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWish.swift; sourceTree = "<group>"; };
-		C6A3EF37245CBD190021E9DE /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
+		C6A3EF37245CBD190021E9DE /* WishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishModel.swift; sourceTree = "<group>"; };
 		C6C0887B244C660500CB0A7A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C6C0887D244C673F00CB0A7A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		C6C08881244C68A800CB0A7A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -200,10 +212,16 @@
 			isa = PBXGroup;
 			children = (
 				C6E1A0012459F0B800C864A9 /* UserModel.swift */,
+				C6A3EF37245CBD190021E9DE /* WishModel.swift */,
+				C68B5AB3245DA057007865B4 /* UserFriendModel.swift */,
+				C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */,
 				C6E1A0152459F96900C864A9 /* InputLogin.swift */,
 				C6A3EF33245C90A10021E9DE /* InputRegister.swift */,
 				C6A3EF35245CBCCF0021E9DE /* InputWish.swift */,
-				C6A3EF37245CBD190021E9DE /* Wish.swift */,
+				C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */,
+				C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */,
+				C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */,
+				C68B5AAD245D98B0007865B4 /* InputWishImage.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -212,9 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				C6E19FFD2459F05300C864A9 /* Connection.swift */,
+				C6E1A00F2459F6AB00C864A9 /* MockConnection.swift */,
 				C6E19FFF2459F07900C864A9 /* Session.swift */,
 				C6E1A00A2459F34B00C864A9 /* Constants.swift */,
-				C6E1A00F2459F6AB00C864A9 /* MockConnection.swift */,
 			);
 			path = "Session & Connection";
 			sourceTree = "<group>";
@@ -370,14 +388,19 @@
 			files = (
 				C6E1A0002459F07900C864A9 /* Session.swift in Sources */,
 				C6E1A0092459F29E00C864A9 /* String+Utils.swift in Sources */,
+				C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */,
 				C6E1A0022459F0B800C864A9 /* UserModel.swift in Sources */,
 				C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */,
+				C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */,
 				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
+				C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */,
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
+				C68B5AB2245D9DBB007865B4 /* FriendsModel.swift in Sources */,
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
 				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
 				235FD042245C920B00B5F7B2 /* ContactFormVC.swift in Sources */,
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
+				C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */,
 				235FD038245AD62D00B5F7B2 /* SettingsVC.swift in Sources */,
 				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
 				C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */,
@@ -393,10 +416,11 @@
 				235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */,
-				C6A3EF38245CBD190021E9DE /* Wish.swift in Sources */,
+				C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,
 				C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */,
+				C68B5AB4245DA057007865B4 /* UserFriendModel.swift in Sources */,
 				237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */,
 				237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */,
 				237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */,

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialActivityIndicator
+
 extension CALayer {
 
     func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
@@ -39,9 +41,14 @@ extension CALayer {
 
 class BaseVC: UIViewController {
 
+    let activityIndicator = MDCActivityIndicator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationModifier()
+        
+        activityIndicator.sizeToFit()
+        view.addSubview(activityIndicator)
 
     }
     
