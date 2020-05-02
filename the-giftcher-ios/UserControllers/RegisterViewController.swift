@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class RegisterViewController: BaseVC {
     
@@ -50,20 +51,30 @@ class RegisterViewController: BaseVC {
     
     
     @IBAction func doRegisterRequest(_ sender: Any) {
-        fieldsValidator()
-        let inputRegister = InputRegister(name: nameInput.text, username: userNameInput.text, lastName: surnameInput.text, mail: emailInput.text, password: passwordInput.text, birthday: birthdayInput.text)
-        doRegisterRequest(inputRegister: inputRegister)
-    }
-    
-    func fieldsValidator() {
-        if nameInput.text == "" || userNameInput.text == "" || surnameInput.text == "" || emailInput.text == "" || passwordInput.text == "" || birthdayInput.text == "" {
+        if nameInput.text != "" || userNameInput.text != "" || surnameInput.text != "" || emailInput.text != "" || passwordInput.text != "" || birthdayInput.text != "" {
             if emailInput.text!.isValidEmail {
-                
+                if passwordInput.text!.isValidPassword {
+                    if passwordInput.text == repPasswordInput.text {
+                        let inputRegister = InputRegister(name: nameInput.text, username: userNameInput.text, lastName: surnameInput.text, mail: emailInput.text, password: passwordInput.text, birthday: birthdayInput.text)
+                        doRegisterRequest(inputRegister: inputRegister)
+                    } else {
+                        let banner = NotificationBanner(title: "Error", subtitle: "Las contraseñas no coinciden", style: .danger)
+                                         banner.show()
+                    }
+                } else {
+                    let banner = GrowingNotificationBanner(title: "Error", subtitle: "La contraseña debe contener: \n - 1 letra minúscula, \n - 1 letra mayúscula, \n - 1 símbolo de los siguientes @#!$%, \n - 1 número \n - contener 8-20 caracteres", style: .danger)
+                    banner.show()
+                }
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "Debes introducir un mail valido", style: .danger)
+                banner.show()
             }
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .danger)
+            banner.show()
+            
         }
-        
     }
-    
     
     @IBAction func backToLoginAction(_ sender: UIButton) {
         self.performSegue(withIdentifier: "LoginVC", sender: nil)
@@ -106,7 +117,7 @@ class RegisterViewController: BaseVC {
     
     func convertBirthday() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let dateToString = dateFormatter.string(from: datePicker.date)
         birthdayInput.text = dateToString

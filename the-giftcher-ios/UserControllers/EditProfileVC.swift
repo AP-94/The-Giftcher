@@ -102,7 +102,7 @@ class EditProfileVC: BaseVC {
     
     func convertBirthday() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let dateToString = dateFormatter.string(from: birthdayChangeDP.date)
         birthdaytextLabel.text = dateToString

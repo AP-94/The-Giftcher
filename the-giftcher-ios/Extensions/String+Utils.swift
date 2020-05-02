@@ -18,6 +18,11 @@ extension String {
         return NSPredicate(format:"SELF MATCHES %@", phoneRegEx).evaluate(with: self)
     }
     
+    var isValidPassword: Bool {
+        let passwordRegEx = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%]).{8,20})"
+        return NSPredicate(format:"SELF MATCHES %@", passwordRegEx).evaluate(with: self)
+    }
+    
     var isValidEmail: Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: self)
