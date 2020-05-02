@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialActivityIndicator
 
 extension CALayer {
 
@@ -42,11 +41,13 @@ extension CALayer {
 class BaseVC: UIViewController {
 
     let dataMapper = DataMapper()
-    let activityIndicator = MDCActivityIndicator()
+    let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationModifier()
+        
+        
     }
     
     func navigationModifier() {

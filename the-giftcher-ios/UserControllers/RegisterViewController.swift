@@ -8,8 +8,9 @@
 
 import UIKit
 import NotificationBannerSwift
+import NVActivityIndicatorView
 
-class RegisterViewController: BaseVC {
+class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
     
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var surnameInput: UITextField!
@@ -58,19 +59,19 @@ class RegisterViewController: BaseVC {
                         let inputRegister = InputRegister(name: nameInput.text, username: userNameInput.text, lastName: surnameInput.text, mail: emailInput.text, password: passwordInput.text, birthday: birthdayInput.text)
                         doRegisterRequest(inputRegister: inputRegister)
                     } else {
-                        let banner = NotificationBanner(title: "Error", subtitle: "Las contraseñas no coinciden", style: .danger)
+                        let banner = NotificationBanner(title: "Error", subtitle: "Las contraseñas no coinciden", style: .warning)
                                          banner.show()
                     }
                 } else {
-                    let banner = GrowingNotificationBanner(title: "Error", subtitle: "La contraseña debe contener: \n - 1 letra minúscula, \n - 1 letra mayúscula, \n - 1 símbolo de los siguientes @#!$%, \n - 1 número \n - contener 8-20 caracteres", style: .danger)
+                    let banner = GrowingNotificationBanner(title: "Error", subtitle: "La contraseña debe contener: \n - 1 letra minúscula, \n - 1 letra mayúscula, \n - 1 símbolo de los siguientes @#!$%, \n - 1 número \n - contener 8-20 caracteres", style: .warning)
                     banner.show()
                 }
             } else {
-                let banner = NotificationBanner(title: "Error", subtitle: "Debes introducir un mail valido", style: .danger)
+                let banner = NotificationBanner(title: "Error", subtitle: "Debes introducir un mail valido", style: .warning)
                 banner.show()
             }
         } else {
-            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .danger)
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
             banner.show()
             
         }
@@ -82,6 +83,7 @@ class RegisterViewController: BaseVC {
     
     func doRegisterRequest(inputRegister: InputRegister) {
         print("Do Register Request")
+        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.registerRequest(inputRegister: inputRegister) {
             success, result, error in
             if let result = result as? UserModel {
@@ -97,11 +99,12 @@ class RegisterViewController: BaseVC {
                 Session.save()
                 
                 if Session.isValid() {
+                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
                     self.performSegue(withIdentifier: "HomeViewR", sender: nil)
                 }
-            } else {
-                print("ERROR EN LA PETICIÓN DE REGISTRO")
             }
+            
+             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
         
     }

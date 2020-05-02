@@ -295,6 +295,9 @@
                                 <state key="normal" title="Cerrar sesión">
                                     <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logOutButton:" destination="7MH-f2-bDu" eventType="touchUpInside" id="DcQ-8k-gsi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -967,7 +970,7 @@
         <!--gghgg-->
         <scene sceneID="aVq-zp-FdT">
             <objects>
-                <tabBarController id="nlZ-0Z-7X6" customClass="MainTabBarController" customModule="the_giftcher_ios" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeView" id="nlZ-0Z-7X6" customClass="MainTabBarController" customModule="the_giftcher_ios" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="gghgg" id="m0y-j5-L42">
                         <barButtonItem key="rightBarButtonItem" title="Logo" image="icono_blanco24px" landscapeImage="icono_blanco24px" largeContentSizeImage="icono_blanco24px" id="oYK-gA-GX9"/>
                     </navigationItem>
@@ -1047,7 +1050,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="dfN-Y5-M7E" secondAttribute="trailing" id="4mc-ne-YMh"/>
                                                     <constraint firstAttribute="bottom" secondItem="dfN-Y5-M7E" secondAttribute="bottom" id="Aj9-YJ-jDK"/>

@@ -113,7 +113,7 @@ class EditProfileVC: BaseVC {
             let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
             doUpdateRequest(inputUpdateUser: inputUser)
         } else {
-            let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .danger)
+            let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
             banner.show()
         }
         
@@ -135,11 +135,7 @@ class EditProfileVC: BaseVC {
                 print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
                 
                 Session.save()
-                
-            } else {
-                print("ERROR EN LA PETICIÓN DE USER UPDATE")
             }
-            
         }
     }
 

@@ -8,9 +8,9 @@
 
 import UIKit
 import NotificationBannerSwift
-import MaterialComponents.MaterialActivityIndicator
+import NVActivityIndicatorView
 
-class LoginViewController: BaseVC {
+class LoginViewController: BaseVC, NVActivityIndicatorViewable {
     
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -41,11 +41,11 @@ class LoginViewController: BaseVC {
                 let inputLogin = InputLogin(username: userInput.text, pass: passwordInput.text)
                 doLoginRequest(inputLogin: inputLogin)
             } else {
-                let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo contraseña", style: .danger)
+                let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo contraseña", style: .warning)
                 banner.show()
             }
         } else {
-            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo de usuario", style: .danger)
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar el campo de usuario", style: .warning)
             banner.show()
             
         }
@@ -53,10 +53,7 @@ class LoginViewController: BaseVC {
     
     func doLoginRequest(inputLogin: InputLogin){
         print("Do Login Request")
-        activityIndicator.sizeToFit()
-        activityIndicator.alignmentRect(forFrame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height+150))
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.loginRequest(inputLogin: inputLogin) {
             success, result, error in
             if let result = result as? UserModel {
@@ -72,14 +69,13 @@ class LoginViewController: BaseVC {
                 Session.save()
                 
                 if Session.isValid() {
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
                     self.performSegue(withIdentifier: "HomeView", sender: nil)
                 }
-            } else {
-                print("ERROR EN LA PETICIÓN DE LOGIN")
             }
             
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
-        activityIndicator.stopAnimating()
     }
     
     

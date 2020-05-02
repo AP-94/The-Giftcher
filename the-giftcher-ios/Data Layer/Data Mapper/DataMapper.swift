@@ -9,48 +9,63 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import NotificationBannerSwift
 
 class DataMapper {
-      typealias DataMapperCompletion = (_ success: Bool?,_ result: Any?, _ error: Error?) -> Void
-      
-      let locale = "es"
-      let timestamp = NSDate().timeIntervalSince1970
-      let session = Session.current
-      var connection: RestManager = Connection()
-      let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
-      
-      func checkHttpStatus(httpCode: Int) -> Bool{
-          
-          switch httpCode {
-          case 200..<299:
-              return true
-          case 401:
-              print("problema de autorizacion, password o user incorrecto")
-              return false
-          case 403:
-              Session.clean()
-              print("Aquí deberiamos enviar al usuario a log in")
-              return false
-          case 404:
-              print("Not Found")
-              return false
-          case 409:
-              print("Error de usuario existente")
-              return false
-          case 460...499:
-              print("error interno sin especificar")
-              return false
-          case 500...503:
-              print("network down")
-              return false
-          case 0:
-              print("no hay conexión")
-              return false
-          default:
-              print("Error de conexión")
-              return false
-          }
-      }
+    typealias DataMapperCompletion = (_ success: Bool?,_ result: Any?, _ error: Error?) -> Void
+    
+    let locale = "es"
+    let timestamp = NSDate().timeIntervalSince1970
+    let session = Session.current
+    var connection: RestManager = Connection()
+    let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+    
+    func checkHttpStatus(httpCode: Int) -> Bool{
+        
+        switch httpCode {
+        case 200..<299:
+            return true
+        case 401:
+            print("problema de autorizacion, password o user incorrecto")
+            let banner = NotificationBanner(title: "Error", subtitle: "Usuario o contreseña incorrecta", style: .danger)
+            banner.show()
+            return false
+        case 403:
+            Session.clean()
+            print("Aquí deberiamos enviar al usuario a log in")
+            return false
+        case 404:
+            let banner = NotificationBanner(title: "Not Found", subtitle: "Error al intentar ejecutar la acción", style: .warning)
+            banner.show()
+            print("Not Found")
+            return false
+        case 409:
+            let banner = NotificationBanner(title: "Error", subtitle: "Error inesperado, vuelve a intentarlo", style: .warning)
+            banner.show()
+            print("Error de usuario existente")
+            return false
+        case 460...499:
+            let banner = NotificationBanner(title: "Error", subtitle: "Error inesperado, vuelve a intentarlo", style: .warning)
+                       banner.show()
+            print("error interno sin especificar")
+            return false
+        case 500...503:
+            let banner = NotificationBanner(title: "Error", subtitle: "No hay conexión con el servidor", style: .warning)
+            banner.show()
+            print("network down")
+            return false
+        case 0:
+            let banner = NotificationBanner(title: "Error", subtitle: "No hay conexión a internet", style: .warning)
+            banner.show()
+            print("no hay conexión")
+            return false
+        default:
+            let banner = NotificationBanner(title: "Error", subtitle: "Error de conexión", style: .warning)
+            banner.show()
+            print("Error de conexión")
+            return false
+        }
+    }
     
     //MARK:: USERS REQUESTS --------------------------------------------------------------
     
@@ -157,15 +172,15 @@ class DataMapper {
         //Invesitgar como enviar imagen swift, con este imageUploadRequest tenemos que enviar paramentros e Data, buscar más informacion de como
         //convertir una imagen en swift en estos 2 aspectos
         /*connection.imageUploadRequest(url, encode: JSONEncoding.default) {
-            httpStatus, json, responseHeaders, error in
-            
-            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let result = UserModel(jsonData: try? json.rawData())
-                completion(true, result, nil)
-            } else {
-                completion(false ,nil, error)
-            }
-        }*/
+         httpStatus, json, responseHeaders, error in
+         
+         if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+         let result = UserModel(jsonData: try? json.rawData())
+         completion(true, result, nil)
+         } else {
+         completion(false ,nil, error)
+         }
+         }*/
     }
     
     func forgotPasswordRequest(fake: String? = nil, email: String? , completion: @escaping DataMapperCompletion) {
@@ -259,26 +274,26 @@ class DataMapper {
     //MARK:: WISH REQUESTS --------------------------------------------------------------
     
     func wishPostRequest(fake: String? = nil, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
-           
-           var url = "/wishes/"
-           if fake != nil  {
-               url = fake!
-               connection = MockConnection()
-           }else{
-               connection = Connection()
-           }
-           
-           connection.post(url, params: inputWish.params, encode: JSONEncoding.default) {
-               httpStatus, json, responseHeaders, error in
-               
-               if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                   let result = WishModel(jsonData: try? json.rawData())
-                   completion(true, result, nil)
-               } else {
-                   completion(false ,nil, error)
-               }
-           }
-       }
+        
+        var url = "/wishes/"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.post(url, params: inputWish.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = WishModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
     
     //MARK:: FRIENDS REQUESTS --------------------------------------------------------------
 }

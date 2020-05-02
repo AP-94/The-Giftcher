@@ -14,27 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MDFInternationalization.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MarqueeLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MaterialComponents.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MotionAnimator.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MotionInterchange.xcscheme</key>
+		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -45,11 +30,6 @@
 			<false/>
 		</dict>
 		<key>Pods-the-giftcher-ios.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

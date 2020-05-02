@@ -29,5 +29,13 @@ class SettingsVC: BaseVC {
 
     }
     
-
+    @IBAction func logOutButton(_ sender: Any) {
+        Session.clean()
+        let mainstoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = mainstoryboard.instantiateViewController(withIdentifier: "LoginView")
+        
+        let navigationController = UINavigationController(rootViewController: mainController)
+        navigationController.modalPresentationStyle = .fullScreen
+    }
+    
 }

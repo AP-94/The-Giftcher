@@ -25,7 +25,7 @@
 		237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC662450FA1800AC8F98 /* Mappable.swift */; };
 		237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */; };
 		237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */; };
-		801336C2617B27D3754CEF27 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */; };
+		55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */; };
 		C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */; };
 		C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */; };
 		C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */; };
@@ -55,7 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0593010E74EC088BF0C3A454 /* Pods-the-giftcher-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.release.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.release.xcconfig"; sourceTree = "<group>"; };
 		235FD037245AD62D00B5F7B2 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		235FD039245AD72A00B5F7B2 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		235FD03B245AD77800B5F7B2 /* TermsAndConditionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsVC.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 		237BFC662450FA1800AC8F98 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
 		237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
-		555E94C1DB5489E4E04AF4EB /* Pods-the-giftcher-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.release.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.release.xcconfig"; sourceTree = "<group>"; };
-		57E344FF23855232109D91C8 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		2A0C0AF8719D59F67F8D4AB9 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdateUser.swift; sourceTree = "<group>"; };
 		C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdatePassword.swift; sourceTree = "<group>"; };
 		C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProfileImage.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				801336C2617B27D3754CEF27 /* Pods_the_giftcher_ios.framework in Frameworks */,
+				55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 				237BFC45244915FF00AC8F98 /* Products */,
 				237BFC7B2454913900AC8F98 /* Recovered References */,
 				F2306A8293197C94553A43A8 /* Pods */,
-				CA10516D7F3F289F24CEB6D0 /* Frameworks */,
+				9EFBAD988882C0C104533F5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +187,14 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		9EFBAD988882C0C104533F5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C6DCF41D2459DDD4006C94F1 /* Data Layer */ = {
@@ -254,19 +262,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CA10516D7F3F289F24CEB6D0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0194E8A957EEC2F0A9590F88 /* Pods_the_giftcher_ios.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F2306A8293197C94553A43A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				57E344FF23855232109D91C8 /* Pods-the-giftcher-ios.debug.xcconfig */,
-				555E94C1DB5489E4E04AF4EB /* Pods-the-giftcher-ios.release.xcconfig */,
+				2A0C0AF8719D59F67F8D4AB9 /* Pods-the-giftcher-ios.debug.xcconfig */,
+				0593010E74EC088BF0C3A454 /* Pods-the-giftcher-ios.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -278,11 +278,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 237BFC582449160500AC8F98 /* Build configuration list for PBXNativeTarget "the-giftcher-ios" */;
 			buildPhases = (
-				912BBC13F65B87A9EFE430D2 /* [CP] Check Pods Manifest.lock */,
+				B2F96F4833CD52F8D9E234C2 /* [CP] Check Pods Manifest.lock */,
 				237BFC40244915FF00AC8F98 /* Sources */,
 				237BFC41244915FF00AC8F98 /* Frameworks */,
 				237BFC42244915FF00AC8F98 /* Resources */,
-				CE19F4F87597971588B7F811 /* [CP] Embed Pods Frameworks */,
+				D36EB58D6597A310E2CD6A5A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -340,7 +340,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		912BBC13F65B87A9EFE430D2 /* [CP] Check Pods Manifest.lock */ = {
+		B2F96F4833CD52F8D9E234C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,7 +362,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE19F4F87597971588B7F811 /* [CP] Embed Pods Frameworks */ = {
+		D36EB58D6597A310E2CD6A5A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -568,7 +568,7 @@
 		};
 		237BFC592449160500AC8F98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57E344FF23855232109D91C8 /* Pods-the-giftcher-ios.debug.xcconfig */;
+			baseConfigurationReference = 2A0C0AF8719D59F67F8D4AB9 /* Pods-the-giftcher-ios.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BPL4R75T5;
@@ -586,7 +586,7 @@
 		};
 		237BFC5A2449160500AC8F98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 555E94C1DB5489E4E04AF4EB /* Pods-the-giftcher-ios.release.xcconfig */;
+			baseConfigurationReference = 0593010E74EC088BF0C3A454 /* Pods-the-giftcher-ios.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9BNC5UMV9K;
