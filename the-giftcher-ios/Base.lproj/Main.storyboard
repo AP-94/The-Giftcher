@@ -646,6 +646,9 @@
                                                 <state key="normal" title="GUARDAR">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveChanges:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="hnT-nH-C8B"/>
+                                                </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9w-TX-15P">
                                                 <rect key="frame" x="0.0" y="549" width="414" height="162"/>

@@ -41,6 +41,7 @@ extension CALayer {
 
 class BaseVC: UIViewController {
 
+    let dataMapper = DataMapper()
     let activityIndicator = MDCActivityIndicator()
     
     override func viewDidLoad() {

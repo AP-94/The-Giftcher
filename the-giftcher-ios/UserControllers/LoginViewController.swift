@@ -12,8 +12,6 @@ import MaterialComponents.MaterialActivityIndicator
 
 class LoginViewController: BaseVC {
     
-    let dataMapper = DataMapper()
-    
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var forgotPsswdButton: UIButton!
@@ -55,6 +53,7 @@ class LoginViewController: BaseVC {
     
     func doLoginRequest(inputLogin: InputLogin){
         print("Do Login Request")
+        activityIndicator.startAnimating()
         dataMapper.loginRequest(inputLogin: inputLogin) {
             success, result, error in
             if let result = result as? UserModel {
@@ -77,6 +76,7 @@ class LoginViewController: BaseVC {
             }
             
         }
+        activityIndicator.stopAnimating()
     }
     
     

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class EditProfileVC: BaseVC {
-
+    
     @IBOutlet weak var editUserProfileImage: UIImageView!
     @IBOutlet weak var editUserImageButton: UIButton!
     
@@ -106,6 +107,42 @@ class EditProfileVC: BaseVC {
         let dateToString = dateFormatter.string(from: birthdayChangeDP.date)
         birthdaytextLabel.text = dateToString
     }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        if !editNameTF.text!.isEmpty || !editSurnameTF.text!.isEmpty || !editUsernameTF.text!.isEmpty || !birthdaytextLabel.text!.isEmpty {
+            let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
+            doUpdateRequest(inputUpdateUser: inputUser)
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .danger)
+            banner.show()
+        }
+        
+    }
+    
+    func doUpdateRequest(inputUpdateUser: InputUpdateUser){
+        print("Do Login Request")
+        dataMapper.updateUserRequest(inputUpdateUser: inputUpdateUser) {
+            success, result, error in
+            if let result = result as? UserModel {
+                
+                Session.clean()
+                let currentSession = Session.current
+                currentSession.token = result.token
+                currentSession.userName = result.username
+                currentSession.id = result.id
+                currentSession.userModel = result
+                
+                print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
+                
+                Session.save()
+                
+            } else {
+                print("ERROR EN LA PETICIÓN DE USER UPDATE")
+            }
+            
+        }
+    }
+
     
 
 }

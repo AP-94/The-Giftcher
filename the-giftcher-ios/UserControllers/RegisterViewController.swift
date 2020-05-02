@@ -10,8 +10,6 @@ import UIKit
 
 class RegisterViewController: BaseVC {
     
-    var dataMapper = DataMapper()
-    
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var surnameInput: UITextField!
     @IBOutlet weak var emailInput: UITextField!
