@@ -286,10 +286,19 @@
                                     <segue destination="tFo-Up-zOJ" kind="show" id="Ton-um-4fp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgN-kx-ncc">
+                                <rect key="frame" x="0.0" y="559" width="414" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="CK5-4f-3NI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Cerrar sesión">
+                                    <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cNq-6j-Zqg" firstAttribute="bottom" secondItem="8GT-2i-NCV" secondAttribute="bottom" constant="215" id="1jR-9u-IU0"/>
                             <constraint firstItem="1du-rx-R3u" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" constant="45" id="32q-IK-GhV"/>
                             <constraint firstItem="1du-rx-R3u" firstAttribute="centerX" secondItem="OSw-qm-Lru" secondAttribute="centerX" id="5DA-ai-GoU"/>
                             <constraint firstItem="vCh-Xc-Dap" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" id="A4P-zc-6zo"/>
@@ -301,9 +310,12 @@
                             <constraint firstItem="cNq-6j-Zqg" firstAttribute="trailing" secondItem="vCh-Xc-Dap" secondAttribute="trailing" id="OUu-kd-QOx"/>
                             <constraint firstItem="4kL-by-12e" firstAttribute="top" secondItem="vCh-Xc-Dap" secondAttribute="bottom" id="Ob7-K9-0Dv"/>
                             <constraint firstItem="h3r-aH-Dsu" firstAttribute="top" secondItem="1du-rx-R3u" secondAttribute="bottom" constant="41" id="OqQ-7e-RWJ"/>
+                            <constraint firstItem="pgN-kx-ncc" firstAttribute="trailing" secondItem="cNq-6j-Zqg" secondAttribute="trailing" id="QDp-wX-tNv"/>
                             <constraint firstItem="h3r-aH-Dsu" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" id="Vck-Gm-pXJ"/>
                             <constraint firstItem="vCh-Xc-Dap" firstAttribute="top" secondItem="h3r-aH-Dsu" secondAttribute="bottom" id="cJa-MS-6he"/>
                             <constraint firstItem="4kL-by-12e" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" id="ddJ-1X-8zv"/>
+                            <constraint firstItem="pgN-kx-ncc" firstAttribute="top" secondItem="8GT-2i-NCV" secondAttribute="bottom" id="ma8-LR-ygX"/>
+                            <constraint firstItem="pgN-kx-ncc" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" id="nVB-xA-BBT"/>
                             <constraint firstItem="8GT-2i-NCV" firstAttribute="leading" secondItem="cNq-6j-Zqg" secondAttribute="leading" id="xx9-eV-2dj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cNq-6j-Zqg"/>
@@ -311,6 +323,7 @@
                     <navigationItem key="navigationItem" id="pZV-yN-UoB"/>
                     <connections>
                         <outlet property="editProfileButton" destination="h3r-aH-Dsu" id="4yE-kO-xFd"/>
+                        <outlet property="endSessionButton" destination="pgN-kx-ncc" id="en7-bE-csY"/>
                         <outlet property="helpButton" destination="8GT-2i-NCV" id="F1j-37-fyg"/>
                         <outlet property="logoImage" destination="1du-rx-R3u" id="bsn-dg-Pt8"/>
                         <outlet property="privacyPolicyButton" destination="4kL-by-12e" id="gbK-xz-XpN"/>
@@ -956,7 +969,7 @@
             <objects>
                 <tabBarController id="nlZ-0Z-7X6" customClass="MainTabBarController" customModule="the_giftcher_ios" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="gghgg" id="m0y-j5-L42">
-                        <barButtonItem key="rightBarButtonItem" image="icono_blanco24px-1" id="oYK-gA-GX9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logo" image="icono_blanco24px" landscapeImage="icono_blanco24px" largeContentSizeImage="icono_blanco24px" id="oYK-gA-GX9"/>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EwR-cP-YX7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -2448,7 +2461,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="cna-C0-n9X"/>
         <segue reference="UwN-2p-7jH"/>
-        <segue reference="RGE-dQ-Ly5"/>
+        <segue reference="IYu-Ci-Ceb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="001-lupa" width="24" height="24"/>
@@ -2462,7 +2475,7 @@
         <image name="edit" width="512" height="512"/>
         <image name="gear" width="512" height="512"/>
         <image name="icono tg white mode" width="872" height="936"/>
-        <image name="icono_blanco24px-1" width="8" height="8"/>
+        <image name="icono_blanco24px" width="24" height="24"/>
         <image name="images" width="183" height="275"/>
         <image name="logo tg white mode" width="818" height="654"/>
         <image name="teclado" width="466" height="418"/>
