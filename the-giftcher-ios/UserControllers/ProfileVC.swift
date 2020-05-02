@@ -27,7 +27,7 @@ class ProfileVC: BaseVC {
         
         userNameLabel.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
         userBirthdayLabel.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
-        userNameLabel.text = (Session.current.userModel?.name ?? "") + " " + (Session.current.userModel?.lastName ?? "")
+        userNameLabel.text = "\(Session.current.userModel?.name ?? "") \(Session.current.userModel?.lastName ?? "") (\(Session.current.userModel?.username ?? ""))"
         userBirthdayLabel.text = Session.current.userModel?.birthday ?? ""
         
         
