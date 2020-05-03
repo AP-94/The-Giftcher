@@ -25,6 +25,7 @@
 		237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC662450FA1800AC8F98 /* Mappable.swift */; };
 		237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */; };
 		237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */; };
+		23DBF47B245F63E0003E1A11 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */; };
 		55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */; };
 		C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */; };
 		C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */; };
@@ -76,6 +77,7 @@
 		237BFC662450FA1800AC8F98 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetailVC.swift; sourceTree = "<group>"; };
 		237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
+		23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		2A0C0AF8719D59F67F8D4AB9 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdateUser.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				235FD03D245AD7C300B5F7B2 /* PrivacyPolicyVC.swift */,
 				235FD03F245AD7F700B5F7B2 /* HelpVC.swift */,
 				235FD041245C920B00B5F7B2 /* ContactFormVC.swift */,
+				23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */,
 			);
 			path = UserControllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,
 				C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */,
 				C68B5AB4245DA057007865B4 /* UserFriendModel.swift in Sources */,
+				23DBF47B245F63E0003E1A11 /* ChangePasswordVC.swift in Sources */,
 				237BFC48244915FF00AC8F98 /* AppDelegate.swift in Sources */,
 				237BFC7024538B4800AC8F98 /* AddFriendsVC.swift in Sources */,
 				237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */,

@@ -797,21 +797,168 @@
             </objects>
             <point key="canvasLocation" x="921.73913043478262" y="2488.3928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Change PasswordVC-->
         <scene sceneID="XIY-MI-p11">
             <objects>
-                <viewController id="3uf-lM-TYi" sceneMemberID="viewController">
+                <viewController id="3uf-lM-TYi" customClass="ChangePasswordVC" customModule="the_giftcher_ios" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hGt-Nt-INF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BSX-qJ-rzi">
+                                <rect key="frame" x="43" y="47" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="lCX-E3-MjI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="53t-g1-ya0"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña anterior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGK-9X-FeW">
+                                <rect key="frame" x="65" y="38" width="140" height="18"/>
+                                <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="hAn-0E-AkN"/>
+                                    <constraint firstAttribute="height" constant="18" id="zml-4m-fRD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdY-Ah-i7u">
+                                <rect key="frame" x="43" y="121" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="bBe-wr-sqK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81h-Y0-b3u">
+                                <rect key="frame" x="336" y="127" width="27" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Y7w-lh-aPm"/>
+                                </constraints>
+                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="eye" catalog="system"/>
+                                <connections>
+                                    <action selector="showNewPassword:" destination="3uf-lM-TYi" eventType="touchUpInside" id="3ps-Ht-A1g"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nueva contraseña" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiv-6N-JbF">
+                                <rect key="frame" x="65" y="112" width="133" height="18"/>
+                                <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="133" id="9kF-rO-ura"/>
+                                    <constraint firstAttribute="height" constant="18" id="bgL-IF-5NU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocT-Bk-VbD">
+                                <rect key="frame" x="43" y="195" width="329" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Qwa-dy-Cn5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-q9-GK8">
+                                <rect key="frame" x="336" y="201" width="27" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="etZ-8e-Kaw"/>
+                                </constraints>
+                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="eye" catalog="system"/>
+                                <connections>
+                                    <action selector="showRepNewPassword:" destination="3uf-lM-TYi" eventType="touchUpInside" id="Vrc-iq-lYQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repetir nueva contraseña" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9u-ml-kiW">
+                                <rect key="frame" x="65" y="186" width="181" height="18"/>
+                                <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="5hy-bo-MP9"/>
+                                    <constraint firstAttribute="height" constant="18" id="Ztd-4d-Qlq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIW-oV-FYc">
+                                <rect key="frame" x="336" y="53" width="27" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="993-U0-YEW"/>
+                                </constraints>
+                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="eye" catalog="system"/>
+                                <connections>
+                                    <action selector="showOldPassword:" destination="3uf-lM-TYi" eventType="touchUpInside" id="ULg-RC-9Ys"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uU-rk-ej9">
+                                <rect key="frame" x="70" y="318" width="275" height="42"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="0fn-mG-Pra"/>
+                                    <constraint firstAttribute="width" constant="275" id="EPB-En-9yD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="GUARDAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveChanges:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="TM8-8e-3ZR"/>
+                                    <action selector="updatePassword:" destination="3uf-lM-TYi" eventType="touchUpInside" id="vLz-st-box"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="glS-OH-TXF" firstAttribute="trailing" secondItem="ocT-Bk-VbD" secondAttribute="trailing" constant="42" id="1j6-38-pZR"/>
+                            <constraint firstItem="1uU-rk-ej9" firstAttribute="leading" secondItem="glS-OH-TXF" secondAttribute="leading" constant="70" id="6p3-IJ-Hyp"/>
+                            <constraint firstItem="glS-OH-TXF" firstAttribute="trailing" secondItem="BSX-qJ-rzi" secondAttribute="trailing" constant="42" id="7gQ-JQ-hV9"/>
+                            <constraint firstItem="81h-Y0-b3u" firstAttribute="centerY" secondItem="VdY-Ah-i7u" secondAttribute="centerY" id="9Hm-NQ-Hs9"/>
+                            <constraint firstItem="FIW-oV-FYc" firstAttribute="centerY" secondItem="BSX-qJ-rzi" secondAttribute="centerY" id="9kY-Q5-jhY"/>
+                            <constraint firstItem="81h-Y0-b3u" firstAttribute="leading" secondItem="VdY-Ah-i7u" secondAttribute="trailing" constant="-36" id="AHm-OA-LFa"/>
+                            <constraint firstItem="BSX-qJ-rzi" firstAttribute="leading" secondItem="yGK-9X-FeW" secondAttribute="trailing" constant="-162" id="Aam-oH-T2O"/>
+                            <constraint firstItem="FIW-oV-FYc" firstAttribute="leading" secondItem="BSX-qJ-rzi" secondAttribute="trailing" constant="-36" id="AuF-o7-vaa"/>
+                            <constraint firstItem="glS-OH-TXF" firstAttribute="trailing" secondItem="1uU-rk-ej9" secondAttribute="trailing" constant="69" id="CiK-F9-eHq"/>
+                            <constraint firstItem="glS-OH-TXF" firstAttribute="trailing" secondItem="VdY-Ah-i7u" secondAttribute="trailing" constant="42" id="FFJ-js-bPy"/>
+                            <constraint firstItem="ocT-Bk-VbD" firstAttribute="top" secondItem="VdY-Ah-i7u" secondAttribute="bottom" constant="40" id="Huy-De-NHm"/>
+                            <constraint firstItem="ocT-Bk-VbD" firstAttribute="top" secondItem="o9u-ml-kiW" secondAttribute="bottom" constant="-9" id="KA3-yb-bHb"/>
+                            <constraint firstItem="1uU-rk-ej9" firstAttribute="top" secondItem="ocT-Bk-VbD" secondAttribute="bottom" constant="89" id="LlX-2D-1Ft"/>
+                            <constraint firstItem="VdY-Ah-i7u" firstAttribute="leading" secondItem="glS-OH-TXF" secondAttribute="leading" constant="43" id="ORt-E3-hXI"/>
+                            <constraint firstItem="VdY-Ah-i7u" firstAttribute="top" secondItem="BSX-qJ-rzi" secondAttribute="bottom" constant="40" id="PM4-iM-Edw"/>
+                            <constraint firstItem="ocT-Bk-VbD" firstAttribute="leading" secondItem="o9u-ml-kiW" secondAttribute="trailing" constant="-203" id="TMN-zV-wfH"/>
+                            <constraint firstItem="BSX-qJ-rzi" firstAttribute="leading" secondItem="glS-OH-TXF" secondAttribute="leading" constant="43" id="WRo-Hc-rf1"/>
+                            <constraint firstItem="VdY-Ah-i7u" firstAttribute="top" secondItem="eiv-6N-JbF" secondAttribute="bottom" constant="-9" id="XAd-Iw-Cxy"/>
+                            <constraint firstItem="ocT-Bk-VbD" firstAttribute="leading" secondItem="glS-OH-TXF" secondAttribute="leading" constant="43" id="b89-Dd-wT4"/>
+                            <constraint firstItem="VdY-Ah-i7u" firstAttribute="leading" secondItem="eiv-6N-JbF" secondAttribute="trailing" constant="-155" id="i6f-xU-Hbn"/>
+                            <constraint firstItem="BSX-qJ-rzi" firstAttribute="top" secondItem="glS-OH-TXF" secondAttribute="top" constant="47" id="iGA-ge-Vwk"/>
+                            <constraint firstItem="BSX-qJ-rzi" firstAttribute="top" secondItem="yGK-9X-FeW" secondAttribute="bottom" constant="-9" id="jw4-Ln-mmx"/>
+                            <constraint firstItem="tA5-q9-GK8" firstAttribute="centerY" secondItem="ocT-Bk-VbD" secondAttribute="centerY" id="xcC-R5-MGN"/>
+                            <constraint firstItem="tA5-q9-GK8" firstAttribute="leading" secondItem="ocT-Bk-VbD" secondAttribute="trailing" constant="-36" id="zl1-hA-7na"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="glS-OH-TXF"/>
                     </view>
                     <navigationItem key="navigationItem" id="E5E-JX-W23"/>
+                    <connections>
+                        <outlet property="changePassSubmitButton" destination="1uU-rk-ej9" id="fRi-S3-jxl"/>
+                        <outlet property="newPassVisibilityButton" destination="81h-Y0-b3u" id="6ze-qS-ZVf"/>
+                        <outlet property="newPasswordTF" destination="VdY-Ah-i7u" id="NNL-Q0-fp3"/>
+                        <outlet property="oldPassVisibilityButton" destination="FIW-oV-FYc" id="dfA-Qj-2Kr"/>
+                        <outlet property="oldPasswordTF" destination="BSX-qJ-rzi" id="c9Q-HY-LdF"/>
+                        <outlet property="repNewPassVisibilityButton" destination="tA5-q9-GK8" id="A9G-lH-dq4"/>
+                        <outlet property="repNewPasswordTF" destination="ocT-Bk-VbD" id="SMz-Vu-jhI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mB5-TW-4yd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5Rm-0z-z3i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="922" y="3269"/>
+            <point key="canvasLocation" x="921.73913043478262" y="3268.5267857142858"/>
         </scene>
         <!--Buscar-->
         <scene sceneID="HzU-3e-34J">
@@ -2476,6 +2623,7 @@
         <image name="calendar" width="64" height="64"/>
         <image name="degradado_navBar" width="4167" height="4167"/>
         <image name="edit" width="512" height="512"/>
+        <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gear" width="512" height="512"/>
         <image name="icono tg white mode" width="872" height="936"/>
         <image name="icono_blanco24px" width="24" height="24"/>
