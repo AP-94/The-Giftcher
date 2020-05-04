@@ -15,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Thread.sleep(forTimeInterval: 3.0)
+        var window: UIWindow
         
         if Session.isValid(){
+            print("Session is valid, going to home view")
             setupViewController(viewController: "HomeView", storyBoard: "Main")
         }
         
@@ -45,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.modalPresentationStyle = .fullScreen
         
     }
-
 
 }
 

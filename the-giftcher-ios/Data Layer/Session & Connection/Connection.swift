@@ -18,7 +18,7 @@ protocol RestManager {
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     //POSTS
     func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
-     func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func postWithoutToken(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String: Any]?, completion: @escaping ConnectionCompletion)
     func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
@@ -28,6 +28,7 @@ protocol RestManager {
     func getPdf(_ endpoint: String, params: [String: Any]?, completion: @escaping ConnectionPdf)
     //PUTS
     func put(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
+    func putWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     //DELETES
     func delete(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     
@@ -348,10 +349,15 @@ class Connection: RestManager {
         connect(to: completeUrlString(forEndpoint: endpoint), method: .put, params: params, encode: encode,  completion: completion)
     }
     
+    func putWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        withoutParamsConnect(to: completeUrlString(forEndpoint: endpoint), method: .put, encode: encode,  completion: completion)
+        
+    }
+    
     func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
         connectNoParamsNoToken(to: completeUrlString(forEndpoint: endpoint), method: .post, encode: encode,  completion: completion)
     }
-        
+    
     
     
 }

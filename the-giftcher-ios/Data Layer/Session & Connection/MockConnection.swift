@@ -50,6 +50,14 @@ class MockConnection: RestManager {
         completion(200, nil, [:], nil)
     }
     
+    func putWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        processFake(endpoint, params: [:], completion:  completion)
+    }
+    
+    func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        processFake(endpoint, params: [:], completion:  completion)
+    }
+    
     func postWithoutToken(_ endpoint: String, params: [String : Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
         processFake(endpoint, params: [:], completion:  completion)
     }

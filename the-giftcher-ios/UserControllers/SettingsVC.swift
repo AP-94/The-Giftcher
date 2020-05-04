@@ -31,6 +31,7 @@ class SettingsVC: BaseVC {
     
     @IBAction func logOutButton(_ sender: Any) {
         Session.clean()
+        print("LogOUT Tapped...")
         let mainstoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainController = mainstoryboard.instantiateViewController(withIdentifier: "LoginView")
         

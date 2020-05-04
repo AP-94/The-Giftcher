@@ -46,7 +46,7 @@ class DataMapper {
             return false
         case 460...499:
             let banner = NotificationBanner(title: "Error", subtitle: "Error inesperado, vuelve a intentarlo", style: .warning)
-                       banner.show()
+            banner.show()
             print("error interno sin especificar")
             return false
         case 500...503:
@@ -198,8 +198,9 @@ class DataMapper {
             
             //Como en esta petición, se devuelve un "email enviado", lo que usamos es el true para saber si fue un 200 y
             // enviar un alert al usuario de que le tiene que llegar un mail para la nueva contraseña
-            if self.checkHttpStatus(httpCode: httpStatus){
-                completion(true, nil, nil)
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json{
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }
@@ -263,8 +264,9 @@ class DataMapper {
         connection.delete(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             
-            if self.checkHttpStatus(httpCode: httpStatus) {
-                completion(true, nil, nil)
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }
@@ -273,57 +275,33 @@ class DataMapper {
     
     //MARK:: WISH REQUESTS --------------------------------------------------------------
     
-       func oneWishRequest(fake: String? = nil, id: Int? , completion: @escaping DataMapperCompletion) {
-              
-              var url = "/wishes/\(String(describing: id))"
-           
-              if fake != nil  {
-                  url = fake!
-                  connection = MockConnection()
-              }else{
-                  connection = Connection()
-              }
-              
-              connection.postWithoutParams(url, encode: JSONEncoding.default) {
-                  httpStatus, json, responseHeaders, error in
-                  
-                  if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                      let result = WishModel(jsonData: try? json.rawData())
-                      completion(true, result, nil)
-                  } else {
-                      completion(false ,nil, error)
-                  }
-              }
-          }
-    
-       func getAllWishesRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
-              
-              var url = "/wishes/all_wishes"
-           
-              if fake != nil  {
-                  url = fake!
-                  connection = MockConnection()
-              }else{
-                  connection = Connection()
-              }
-              
-              connection.postWithoutParams(url, encode: JSONEncoding.default) {
-                  httpStatus, json, responseHeaders, error in
-                  if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                    let array = json.arrayValue.compactMap {
-                        return WishModel(jsonData: try? $0.rawData())
-                    }
-                      completion(true, array, nil)
-                  } else {
-                      completion(false ,nil, error)
-                  }
-              }
-          }
-    
-    func getAllWishesOfUserRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+    func oneWishRequest(fake: String? = nil, id: Int? , completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/"
-     
+        var url = "/wishes/\(String(describing: id))"
+        
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = WishModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func getAllWishesRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/all_wishes"
+        
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -334,9 +312,57 @@ class DataMapper {
         connection.postWithoutParams(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-              let array = json.arrayValue.compactMap {
-                  return WishModel(jsonData: try? $0.rawData())
-              }
+                let array = json.arrayValue.compactMap {
+                    return WishModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func getAllWishesByCategoryIdRequest(fake: String? = nil, categoryId: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/categories/\(String(describing: categoryId))"
+        
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return WishModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func getAllWishesOfUserRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/"
+        
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return WishModel(jsonData: try? $0.rawData())
+                }
                 completion(true, array, nil)
             } else {
                 completion(false ,nil, error)
@@ -434,7 +460,191 @@ class DataMapper {
          }*/
     }
     
+    func getFriendWishesRequest(fake: String? = nil, userId: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/userId/\(String(describing: userId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return WishModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func deleteWishByIdRequest(fake: String? = nil, wishId: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/\(String(describing: wishId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.delete(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    
     //MARK:: FRIENDS REQUESTS --------------------------------------------------------------
     
+    func getAllFriendsOfUserRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return FriendsModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
     
+    
+    func getFriendsRequests(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends/requests"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return FriendRequestModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func confirmFriendRequest(fake: String? = nil, idFriendRequest: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends/\(String(describing: idFriendRequest))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.putWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return FriendRequestModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func friendPostRequest(fake: String? = nil, inputFriendRequest: InputFriendRequest, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.post(url, params: inputFriendRequest.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func deleteFriendRequestRequest(fake: String? = nil, friendRequestId: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends/requests/\(String(describing: friendRequestId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.delete(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func deleteFriendRequest(fake: String? = nil, friendRequestId: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/friends/\(String(describing: friendRequestId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.delete(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
 }

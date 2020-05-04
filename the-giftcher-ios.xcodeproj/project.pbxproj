@@ -29,6 +29,9 @@
 		55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */; };
 		C64A2DF024608A65005FBFA5 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DEF24608A65005FBFA5 /* TutorialVC.swift */; };
 		C64A2DF224608A80005FBFA5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64A2DF124608A80005FBFA5 /* Tutorial.storyboard */; };
+		C64A2DF424608EA2005FBFA5 /* FriendRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF324608EA2005FBFA5 /* FriendRequestModel.swift */; };
+		C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF52460955A005FBFA5 /* SingletonModel.swift */; };
+		C64A2DF8246095A1005FBFA5 /* InputFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */; };
 		C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */; };
 		C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */; };
 		C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */; };
@@ -84,6 +87,9 @@
 		BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64A2DEF24608A65005FBFA5 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		C64A2DF124608A80005FBFA5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		C64A2DF324608EA2005FBFA5 /* FriendRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestModel.swift; sourceTree = "<group>"; };
+		C64A2DF52460955A005FBFA5 /* SingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonModel.swift; sourceTree = "<group>"; };
+		C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFriendRequest.swift; sourceTree = "<group>"; };
 		C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdateUser.swift; sourceTree = "<group>"; };
 		C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdatePassword.swift; sourceTree = "<group>"; };
 		C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProfileImage.swift; sourceTree = "<group>"; };
@@ -232,6 +238,8 @@
 				C6A3EF37245CBD190021E9DE /* WishModel.swift */,
 				C68B5AB3245DA057007865B4 /* UserFriendModel.swift */,
 				C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */,
+				C64A2DF324608EA2005FBFA5 /* FriendRequestModel.swift */,
+				C64A2DF52460955A005FBFA5 /* SingletonModel.swift */,
 				C6E1A0152459F96900C864A9 /* InputLogin.swift */,
 				C6A3EF33245C90A10021E9DE /* InputRegister.swift */,
 				C6A3EF35245CBCCF0021E9DE /* InputWish.swift */,
@@ -239,6 +247,7 @@
 				C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */,
 				C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */,
 				C68B5AAD245D98B0007865B4 /* InputWishImage.swift */,
+				C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -405,6 +414,7 @@
 				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
 				C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */,
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
+				C64A2DF424608EA2005FBFA5 /* FriendRequestModel.swift in Sources */,
 				C68B5AB2245D9DBB007865B4 /* FriendsModel.swift in Sources */,
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
 				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
@@ -419,11 +429,13 @@
 				237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */,
 				C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */,
 				235FD03C245AD77800B5F7B2 /* TermsAndConditionsVC.swift in Sources */,
+				C64A2DF8246095A1005FBFA5 /* InputFriendRequest.swift in Sources */,
 				C6E1A00D2459F4B300C864A9 /* MSMutableDataExtension.swift in Sources */,
 				C6E19FFE2459F05300C864A9 /* Connection.swift in Sources */,
 				C6E1A0122459F6E000C864A9 /* DataMapper.swift in Sources */,
 				235FD03A245AD72A00B5F7B2 /* EditProfileVC.swift in Sources */,
 				235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */,
+				C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */,
 				C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */,

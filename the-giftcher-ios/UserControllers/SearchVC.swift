@@ -15,13 +15,13 @@ class SearchVC: BaseVC, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = "Search"
+        self.tabBarController?.title = "Buscar"
         self.searchEngine.delegate = self
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tabBarController?.title = "Search"
+        self.tabBarController?.title = "Buscar"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
