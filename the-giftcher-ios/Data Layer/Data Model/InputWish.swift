@@ -13,24 +13,24 @@ class InputWish: Mappable {
     var description: String = ""
     var price: Float?
     var shop: String = ""
-    var image_names: String = ""
-    var image_paths: String = ""
+    var imageName: String = ""
+    var imagePath: String = ""
     var reserved: Bool = false
     var location: String = ""
-    var online_shop: String?
+    var onlineShop: String?
     var category: Int?
     
     
-    init(name: String?, description: String?, price: Float?, shop: String?, image_names: String?, image_paths: String?, reserved: Bool?, location: String?, online_shop: String?, category: Int?) {
+    init(name: String?, description: String?, price: Float?, shop: String?, imageName: String?, imagePath: String?, reserved: Bool?, location: String?, onlineShop: String?, category: Int?) {
         self.name = name ?? ""
         self.description = description ?? ""
         self.price = price
         self.shop = shop ?? ""
-        self.image_names = image_names ?? ""
-        self.image_paths = image_paths ?? ""
+        self.imageName = imageName ?? ""
+        self.imagePath = imagePath ?? ""
         self.reserved = reserved ?? false
         self.location = location ?? ""
-        self.online_shop = online_shop ?? ""
+        self.onlineShop = onlineShop ?? ""
         self.category = category
         
     }
@@ -40,11 +40,11 @@ class InputWish: Mappable {
                 "description": description,
                 "price": price,
                 "shop": shop,
-                "image_names": image_names,
-                "image_paths": image_paths,
+                "imageName": imageName,
+                "imagePath": imagePath,
                 "reserved": reserved,
                 "location": location,
-                "online_shop": online_shop,
+                "onlineShop": onlineShop,
                 "category": category]
     }
 }

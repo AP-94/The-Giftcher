@@ -18,6 +18,7 @@ protocol RestManager {
     func connect(to url: String, method: HTTPMethod, params: [String: Any]?, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     //POSTS
     func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
+     func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func postWithoutToken(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String: Any]?, completion: @escaping ConnectionCompletion)
     func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
@@ -333,6 +334,10 @@ class Connection: RestManager {
     
     func getWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
         withoutParamsConnect(to: completeUrlString(forEndpoint: endpoint), method: .get, encode: encode,  completion: completion)
+    }
+    
+    func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) {
+        withoutParamsConnect(to: completeUrlString(forEndpoint: endpoint), method: .post, encode: encode,  completion: completion)
     }
     
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion) {

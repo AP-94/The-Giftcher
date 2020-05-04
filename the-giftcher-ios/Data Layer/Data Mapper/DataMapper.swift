@@ -273,6 +273,99 @@ class DataMapper {
     
     //MARK:: WISH REQUESTS --------------------------------------------------------------
     
+       func oneWishRequest(fake: String? = nil, id: Int? , completion: @escaping DataMapperCompletion) {
+              
+              var url = "/wishes/\(String(describing: id))"
+           
+              if fake != nil  {
+                  url = fake!
+                  connection = MockConnection()
+              }else{
+                  connection = Connection()
+              }
+              
+              connection.postWithoutParams(url, encode: JSONEncoding.default) {
+                  httpStatus, json, responseHeaders, error in
+                  
+                  if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                      let result = WishModel(jsonData: try? json.rawData())
+                      completion(true, result, nil)
+                  } else {
+                      completion(false ,nil, error)
+                  }
+              }
+          }
+    
+       func getAllWishesRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+              
+              var url = "/wishes/all_wishes"
+           
+              if fake != nil  {
+                  url = fake!
+                  connection = MockConnection()
+              }else{
+                  connection = Connection()
+              }
+              
+              connection.postWithoutParams(url, encode: JSONEncoding.default) {
+                  httpStatus, json, responseHeaders, error in
+                  if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                    let array = json.arrayValue.compactMap {
+                        return WishModel(jsonData: try? $0.rawData())
+                    }
+                      completion(true, array, nil)
+                  } else {
+                      completion(false ,nil, error)
+                  }
+              }
+          }
+    
+    func getAllWishesOfUserRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/"
+     
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+              let array = json.arrayValue.compactMap {
+                  return WishModel(jsonData: try? $0.rawData())
+              }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func wishModifyRequest(fake: String? = nil, idWish: Int?, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/\(String(describing: idWish))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.put(url, params: inputWish.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = WishModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
     func wishPostRequest(fake: String? = nil, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
         
         var url = "/wishes/"
@@ -295,5 +388,53 @@ class DataMapper {
         }
     }
     
+    func copyWishFromUserRequest(fake: String? = nil, userId: Int?, idWish: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/copy/userId/\(String(describing: userId))/id/\(String(describing: idWish))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = WishModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func addWishImageRequest(fake: String? = nil, wishId: String?, inputWishImage: InputWishImage , completion: @escaping DataMapperCompletion) {
+        
+        var url = "/wishes/google_cloud_wish_image/\(String(describing: wishId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        //Invesitgar como enviar imagen swift, con este imageUploadRequest tenemos que enviar paramentros e Data, buscar más informacion de como
+        //convertir una imagen en swift en estos 2 aspectos
+        /*connection.imageUploadRequest(url, encode: JSONEncoding.default) {
+         httpStatus, json, responseHeaders, error in
+         
+         if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+         let result = UserModel(jsonData: try? json.rawData())
+         completion(true, result, nil)
+         } else {
+         completion(false ,nil, error)
+         }
+         }*/
+    }
+    
     //MARK:: FRIENDS REQUESTS --------------------------------------------------------------
+    
+    
 }
