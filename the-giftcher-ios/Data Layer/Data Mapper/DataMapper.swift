@@ -39,6 +39,11 @@ class DataMapper {
             banner.show()
             print("Not Found")
             return false
+        case 406:
+            let banner = NotificationBanner(title: "Not Found", subtitle: "Ningún usuario registrado con ese email", style: .warning)
+            banner.show()
+            print("Not Found")
+            return false
         case 409:
             let banner = NotificationBanner(title: "Error", subtitle: "Error inesperado, vuelve a intentarlo", style: .warning)
             banner.show()
@@ -185,7 +190,7 @@ class DataMapper {
     
     func forgotPasswordRequest(fake: String? = nil, email: String? , completion: @escaping DataMapperCompletion) {
         
-        var url = "/user/reset_password?userMail=\(String(describing: email))"
+        var url = "/user/reset_password?userMail=\(email!)"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -193,11 +198,11 @@ class DataMapper {
             connection = Connection()
         }
         
-        connection.postForgotPassword(url, encode: JSONEncoding.default) {
+        let parameters: Parameters = [
+            "userMail": email!]
+        
+        connection.postWithoutToken(url, params: parameters ,encode: URLEncoding.queryString) {
             httpStatus, json, responseHeaders, error in
-            
-            //Como en esta petición, se devuelve un "email enviado", lo que usamos es el true para saber si fue un 200 y
-            // enviar un alert al usuario de que le tiene que llegar un mail para la nueva contraseña
             if self.checkHttpStatus(httpCode: httpStatus), let json = json{
                 let result = SingletonModel(jsonData: try? json.rawData())
                 completion(true, result, nil)
@@ -629,6 +634,76 @@ class DataMapper {
     func deleteFriendRequest(fake: String? = nil, friendRequestId: Int?, completion: @escaping DataMapperCompletion) {
         
         var url = "/friends/\(String(describing: friendRequestId))"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.delete(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    //MARK:: RESERVED WISH REQUESTS --------------------------------------------------------------
+    
+    func getReservedWishesRequest(fake: String? = nil, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/reserved_wishes"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let array = json.arrayValue.compactMap {
+                    return ReservedWishesModel(jsonData: try? $0.rawData())
+                }
+                completion(true, array, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func reservedWishesPostRequest(fake: String? = nil, inputReservedWish: InputReservedWish, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/reserved_wishes"
+        if fake != nil  {
+            url = fake!
+            connection = MockConnection()
+        }else{
+            connection = Connection()
+        }
+        
+        connection.post(url, params: inputReservedWish.params, encode: JSONEncoding.default) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
+    }
+    
+    func deleteReservedWish(fake: String? = nil, id: Int?, completion: @escaping DataMapperCompletion) {
+        
+        var url = "/reserved_wishes/\(String(describing: id))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()

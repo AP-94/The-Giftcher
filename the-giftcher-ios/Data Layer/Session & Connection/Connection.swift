@@ -274,7 +274,7 @@ class Connection: RestManager {
         }
     }
     
-    func connectNoParamsNoToken(to url: String, method: HTTPMethod, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
+    func    connectNoParamsNoToken(to url: String, method: HTTPMethod, encode: ParameterEncoding, completion: @escaping ConnectionCompletion) -> Void {
         if let url = URL(string: url){
             var request = URLRequest(url: url)
             
