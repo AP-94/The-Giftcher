@@ -30,13 +30,28 @@ class SettingsVC: BaseVC {
     }
     
     @IBAction func logOutButton(_ sender: Any) {
-        Session.clean()
-        print("LogOUT Tapped...")
-        let mainstoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainController = mainstoryboard.instantiateViewController(withIdentifier: "LoginView")
+        showConfirm() {
+            Session.clean()
+            print("LogOut Tapped...")
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    func showConfirm(completion: @escaping () -> Void) {
+        let message = UIAlertController(title: "Confirmar", message: "¿Estás seguro que deseas cerrar sesión?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) -> Void in
+            print("ok")
+            completion()
+        }
         
-        let navigationController = UINavigationController(rootViewController: mainController)
-        navigationController.modalPresentationStyle = .fullScreen
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel) { (UIAlertAction) -> Void in
+            print("cancel")
+        }
+        
+        message.addAction(ok)
+        message.addAction(cancel)
+        
+        self.present(message, animated: true, completion: nil)
     }
     
 }

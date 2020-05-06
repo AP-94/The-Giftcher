@@ -22,7 +22,10 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
         super.viewDidLoad()
         setModifiers()
         keyboardActions()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkSession()
     }
     
     func setModifiers() {
@@ -75,6 +78,15 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
             }
             
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+        }
+    }
+
+    func checkSession() {
+        if Session.isValid(){
+            print("Session is valid, going to home view")
+            self.performSegue(withIdentifier: "HomeView", sender: nil)
+        } else {
+            print("Session invalid, goin to log in view")
         }
     }
     

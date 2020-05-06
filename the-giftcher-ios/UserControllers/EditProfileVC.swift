@@ -8,8 +8,9 @@
 
 import UIKit
 import NotificationBannerSwift
+import NVActivityIndicatorView
 
-class EditProfileVC: BaseVC {
+class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     
     @IBOutlet weak var editUserProfileImage: UIImageView!
     @IBOutlet weak var editUserImageButton: UIButton!
@@ -39,6 +40,7 @@ class EditProfileVC: BaseVC {
         super.viewDidLoad()
         self.title = "Editar Perfil"
         customSettings()
+        keyboardActions()
         
     }
     
@@ -121,6 +123,7 @@ class EditProfileVC: BaseVC {
     
     func doUpdateRequest(inputUpdateUser: InputUpdateUser){
         print("Do Update Request")
+        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.updateUserRequest(inputUpdateUser: inputUpdateUser) {
             success, result, error in
             if let result = result as? UserModel {
@@ -136,6 +139,8 @@ class EditProfileVC: BaseVC {
                 
                 Session.save()
             }
+            
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
     }
 
