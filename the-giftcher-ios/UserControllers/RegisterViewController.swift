@@ -22,6 +22,8 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var backToLoginButton: UIButton!
     @IBOutlet weak var birthdayInput: UILabel!
+    @IBOutlet weak var passwordEye: UIButton!
+    @IBOutlet weak var repeatPassEye: UIButton!
     
     //DatePicker ViewOutlets
     @IBOutlet weak var datePickerBackground: UIView!
@@ -31,7 +33,6 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setModifiers()
-        keyboardActions()
         
     }
     
@@ -41,6 +42,12 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
         confirmButton.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
         confirmButton.backgroundColor = UIColor.white
         backToLoginButton.layer.cornerRadius = 20
+        nameInput.delegate = self
+        surnameInput.delegate = self
+        emailInput.delegate = self
+        userNameInput.delegate = self
+        passwordInput.delegate = self
+        repPasswordInput.delegate = self
     }
     
     
@@ -125,5 +132,11 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
         let dateToString = dateFormatter.string(from: datePicker.date)
         birthdayInput.text = dateToString
     }
+    @IBAction func passwordEyeController(_ sender: Any) {
+        
+    }
     
+    @IBAction func repPassEyeController(_ sender: Any) {
+        
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactFormVC: UIViewController {
+class ContactFormVC: BaseVC {
 
     @IBOutlet weak var formNameField: UITextField!
     @IBOutlet weak var formEmailField: UITextField!
@@ -52,8 +52,10 @@ class ContactFormVC: UIViewController {
         
         //formSubmitButton atributes
         formSubmitButton.layer.cornerRadius = 20
-
+        
+        formNameField.delegate = self
+        formEmailField.delegate = self
+        formAffairField.delegate = self
     }
-    
 
 }

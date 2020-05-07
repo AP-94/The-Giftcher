@@ -527,6 +527,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de usuario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNb-t5-xVW">
                                                 <rect key="frame" x="64" y="245" width="128" height="18"/>
@@ -558,6 +563,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnF-T9-FbC">
                                                 <rect key="frame" x="64" y="319" width="56" height="17"/>
@@ -577,6 +587,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apellidos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwB-SB-mpG">
                                                 <rect key="frame" x="64" y="391" width="66" height="18"/>
@@ -713,7 +728,7 @@
                                                 </constraints>
                                             </view>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7M-ct-nok">
-                                                <rect key="frame" x="124" y="59" width="166" height="125"/>
+                                                <rect key="frame" x="123" y="59" width="166" height="125"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="166" id="x3Q-eW-cD9"/>
                                                     <constraint firstAttribute="height" constant="125" id="zPW-ya-ZGf"/>
@@ -790,11 +805,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="L7M-ct-nok" firstAttribute="leading" secondItem="EjI-ao-1fJ" secondAttribute="leading" constant="123" id="6yw-Ze-rcZ"/>
                             <constraint firstItem="L7M-ct-nok" firstAttribute="top" secondItem="EjI-ao-1fJ" secondAttribute="top" constant="59" id="RtB-v8-tnP"/>
                             <constraint firstItem="kEc-bO-BfJ" firstAttribute="top" secondItem="EjI-ao-1fJ" secondAttribute="top" id="SeU-9M-MfP"/>
                             <constraint firstItem="kEc-bO-BfJ" firstAttribute="trailing" secondItem="EjI-ao-1fJ" secondAttribute="trailing" id="Vfx-9K-KfG"/>
                             <constraint firstItem="kEc-bO-BfJ" firstAttribute="leading" secondItem="EjI-ao-1fJ" secondAttribute="leading" id="gEf-QU-n8r"/>
-                            <constraint firstItem="L7M-ct-nok" firstAttribute="leading" secondItem="EjI-ao-1fJ" secondAttribute="leading" constant="124" id="jQl-4P-u76"/>
                             <constraint firstAttribute="bottom" secondItem="kEc-bO-BfJ" secondAttribute="bottom" id="mmx-Sf-yDO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EjI-ao-1fJ"/>
@@ -816,6 +831,7 @@
                         <outlet property="nameTitleLabel" destination="OnF-T9-FbC" id="Fga-Eq-Pw7"/>
                         <outlet property="passwordChangeButton" destination="dr2-tS-2EP" id="1BN-fh-upx"/>
                         <outlet property="privateProfileSwitch" destination="n2j-Yi-qAZ" id="qb2-Fs-0Gh"/>
+                        <outlet property="profileImageLabel" destination="L7M-ct-nok" id="9MC-qx-a15"/>
                         <outlet property="surnameTitleLabel" destination="xwB-SB-mpG" id="jwU-XS-njh"/>
                         <outlet property="userNameTitleLabel" destination="yNb-t5-xVW" id="zbX-eD-ByI"/>
                     </connections>
@@ -839,6 +855,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="53t-g1-ya0"/>
                                 </connections>
@@ -861,6 +882,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81h-Y0-b3u">
                                 <rect key="frame" x="336" y="127" width="27" height="22"/>
@@ -891,6 +917,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-q9-GK8">
                                 <rect key="frame" x="336" y="201" width="27" height="22"/>
@@ -2168,14 +2199,24 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qeB-ro-yBA">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qeB-ro-yBA">
                                 <rect key="frame" x="66" y="338" width="282" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="GIX-zh-PhW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s70-Aa-U1L">
                                 <rect key="frame" x="73" y="476" width="275" height="42"/>
@@ -2217,16 +2258,32 @@
                                     <segue destination="YjC-37-d4A" kind="presentation" id="Fth-8M-I2U"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acC-fy-ibY">
+                                <rect key="frame" x="315" y="344" width="27" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="KY7-Dz-lsK"/>
+                                    <constraint firstAttribute="height" constant="22" id="NUt-5F-FV3"/>
+                                </constraints>
+                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="eye" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="passwordEyeController:" destination="Rkh-mW-wGT" eventType="touchUpInside" id="jpC-W6-PGg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="s70-Aa-U1L" firstAttribute="top" secondItem="3lt-6F-yqE" secondAttribute="bottom" constant="66" id="0Al-6A-QbE"/>
                             <constraint firstItem="opY-0D-oFV" firstAttribute="top" secondItem="s70-Aa-U1L" secondAttribute="bottom" constant="20" id="0sO-4D-7sj"/>
                             <constraint firstItem="opY-0D-oFV" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="73" id="2lP-o7-3ES"/>
+                            <constraint firstItem="acC-fy-ibY" firstAttribute="top" secondItem="oB9-U2-3OJ" secondAttribute="bottom" constant="25" id="7B6-Dd-CQ9"/>
                             <constraint firstItem="fxg-D4-X0n" firstAttribute="trailing" secondItem="3lt-6F-yqE" secondAttribute="trailing" constant="66" id="CSH-Z5-2TM"/>
                             <constraint firstItem="qeB-ro-yBA" firstAttribute="top" secondItem="oB9-U2-3OJ" secondAttribute="bottom" constant="19" id="Cj1-aj-p2p"/>
                             <constraint firstItem="oOp-lG-d1h" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="66" id="Cli-kZ-AXh"/>
                             <constraint firstItem="oB9-U2-3OJ" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="66" id="FFm-2f-cIf"/>
+                            <constraint firstItem="acC-fy-ibY" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="315" id="GWP-Gy-5hL"/>
                             <constraint firstItem="s70-Aa-U1L" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="73" id="IMc-z3-URc"/>
                             <constraint firstItem="3lt-6F-yqE" firstAttribute="leading" secondItem="fxg-D4-X0n" secondAttribute="leading" constant="66" id="MlX-mr-lgp"/>
                             <constraint firstItem="fxg-D4-X0n" firstAttribute="trailing" secondItem="qeB-ro-yBA" secondAttribute="trailing" constant="66" id="Qd7-rD-4zD"/>
@@ -2246,6 +2303,7 @@
                     <connections>
                         <outlet property="forgotPsswdButton" destination="3lt-6F-yqE" id="yZQ-E7-VcS"/>
                         <outlet property="loginButton" destination="s70-Aa-U1L" id="n2L-Qv-u0n"/>
+                        <outlet property="passwordEye" destination="acC-fy-ibY" id="ELR-L0-AFn"/>
                         <outlet property="passwordInput" destination="qeB-ro-yBA" id="1rX-Yg-IOj"/>
                         <outlet property="registerButton" destination="opY-0D-oFV" id="C7f-UW-IBb"/>
                         <outlet property="userInput" destination="oB9-U2-3OJ" id="8Zy-k6-AQK"/>
@@ -2285,6 +2343,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellidos" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s1f-jd-VHm">
                                                 <rect key="frame" x="66" y="240" width="282" height="34"/>
@@ -2294,6 +2357,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7AU-g1-ui0">
                                                 <rect key="frame" x="66" y="292" width="282" height="34"/>
@@ -2303,6 +2371,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de Usuario" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="H6e-A4-gCs">
                                                 <rect key="frame" x="66" y="344" width="282" height="34"/>
@@ -2312,8 +2385,13 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mSO-GO-tey">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSO-GO-tey">
                                                 <rect key="frame" x="66" y="396" width="282" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Xc2-Wh-GKD"/>
@@ -2321,8 +2399,13 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repetir Contraseña" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TEd-dG-OAo">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repetir Contraseña" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TEd-dG-OAo">
                                                 <rect key="frame" x="66" y="448" width="282" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="3yn-Qo-vxi"/>
@@ -2330,6 +2413,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anG-bn-Cay">
                                                 <rect key="frame" x="70" y="537" width="261" height="64"/>
@@ -2434,13 +2522,53 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-bK-nyQ">
+                                                <rect key="frame" x="70" y="619" width="278" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="278" id="DrY-Ep-uE5"/>
+                                                    <constraint firstAttribute="height" constant="18" id="Smz-L3-NYp"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="tFo-Up-zOJ" kind="show" id="HbX-Zk-hMU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ht-ta-TPF">
+                                                <rect key="frame" x="312" y="402" width="27" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="cyu-Mx-Y8d"/>
+                                                    <constraint firstAttribute="width" constant="27" id="mum-jZ-zBt"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="eye" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="passwordEyeController:" destination="F3N-hg-SIZ" eventType="touchUpInside" id="IPE-nX-QLZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpV-nc-wVW">
+                                                <rect key="frame" x="312" y="454" width="27" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="27" id="2iv-nO-DcK"/>
+                                                    <constraint firstAttribute="height" constant="22" id="449-mG-C35"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="eye" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="repPassEyeController:" destination="F3N-hg-SIZ" eventType="touchUpInside" id="qW1-Rp-Zs5"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="pBl-Jq-Q5j" firstAttribute="top" secondItem="anG-bn-Cay" secondAttribute="bottom" constant="18" id="1mE-su-mXa"/>
                                             <constraint firstItem="pBl-Jq-Q5j" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="66" id="1xe-yP-KnS"/>
                                             <constraint firstItem="CaA-DS-vzO" firstAttribute="top" secondItem="TEd-dG-OAo" secondAttribute="bottom" constant="13" id="2nx-ga-bSJ"/>
+                                            <constraint firstItem="kpV-nc-wVW" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="312" id="414-6F-rgU"/>
                                             <constraint firstItem="s1f-jd-VHm" firstAttribute="top" secondItem="R8D-z5-cfG" secondAttribute="bottom" constant="18" id="8Jg-rJ-gER"/>
+                                            <constraint firstItem="VVY-bK-nyQ" firstAttribute="top" secondItem="anG-bn-Cay" secondAttribute="bottom" constant="18" id="99i-iL-FXE"/>
                                             <constraint firstItem="425-kD-kwt" firstAttribute="top" secondItem="gaN-nG-1BN" secondAttribute="bottom" constant="8" id="AWf-US-cxS"/>
                                             <constraint firstAttribute="trailing" secondItem="gaN-nG-1BN" secondAttribute="trailing" constant="69" id="Avs-sn-b7E"/>
                                             <constraint firstAttribute="trailing" secondItem="rNH-nv-9wE" secondAttribute="trailing" constant="87" id="Cvo-Db-yRG"/>
@@ -2449,11 +2577,13 @@
                                             <constraint firstAttribute="trailing" secondItem="TEd-dG-OAo" secondAttribute="trailing" constant="66" id="LRC-ZD-PsW"/>
                                             <constraint firstItem="mSO-GO-tey" firstAttribute="top" secondItem="H6e-A4-gCs" secondAttribute="bottom" constant="18" id="LtI-3r-U9d"/>
                                             <constraint firstItem="mSO-GO-tey" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="66" id="Nun-hM-5hD"/>
+                                            <constraint firstItem="1Ht-ta-TPF" firstAttribute="top" secondItem="H6e-A4-gCs" secondAttribute="bottom" constant="24" id="QNL-01-wjZ"/>
                                             <constraint firstItem="gaN-nG-1BN" firstAttribute="top" secondItem="pBl-Jq-Q5j" secondAttribute="bottom" constant="19" id="Qy1-ZV-uYg"/>
                                             <constraint firstAttribute="bottom" secondItem="8G5-u7-Scp" secondAttribute="bottom" constant="211" id="R2P-DZ-YYF"/>
                                             <constraint firstAttribute="trailing" secondItem="ZmS-L1-GdD" secondAttribute="trailing" id="St2-k9-chI"/>
                                             <constraint firstItem="8G5-u7-Scp" firstAttribute="top" secondItem="CaA-DS-vzO" secondAttribute="bottom" constant="8" id="Urd-ps-cyk"/>
                                             <constraint firstItem="anG-bn-Cay" firstAttribute="top" secondItem="CaA-DS-vzO" secondAttribute="bottom" constant="8" id="Vee-hu-OkJ"/>
+                                            <constraint firstItem="kpV-nc-wVW" firstAttribute="top" secondItem="mSO-GO-tey" secondAttribute="bottom" constant="24" id="WdQ-oG-baX"/>
                                             <constraint firstItem="7AU-g1-ui0" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="66" id="XBW-DF-kwK"/>
                                             <constraint firstItem="8G5-u7-Scp" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="114" id="XR3-ty-j9F"/>
                                             <constraint firstAttribute="bottom" secondItem="ZmS-L1-GdD" secondAttribute="bottom" id="ZIb-3s-kma"/>
@@ -2473,8 +2603,10 @@
                                             <constraint firstItem="rNH-nv-9wE" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="87" id="pAE-X5-Ntm"/>
                                             <constraint firstItem="gaN-nG-1BN" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="70" id="rRq-hO-rht"/>
                                             <constraint firstItem="ZmS-L1-GdD" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" id="rgg-SM-WLg"/>
+                                            <constraint firstItem="1Ht-ta-TPF" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="312" id="sCd-ie-n9g"/>
                                             <constraint firstAttribute="trailing" secondItem="s1f-jd-VHm" secondAttribute="trailing" constant="66" id="sel-J0-Iyj"/>
                                             <constraint firstItem="R8D-z5-cfG" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="66" id="tnc-XQ-GD5"/>
+                                            <constraint firstItem="VVY-bK-nyQ" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="70" id="tqJ-Cb-brX"/>
                                             <constraint firstItem="rNH-nv-9wE" firstAttribute="top" secondItem="d7S-8D-AvB" secondAttribute="top" constant="26" id="tyj-F2-xZv"/>
                                             <constraint firstItem="ZmS-L1-GdD" firstAttribute="top" secondItem="d7S-8D-AvB" secondAttribute="top" constant="649" id="uby-VY-Hok"/>
                                             <constraint firstItem="CaA-DS-vzO" firstAttribute="leading" secondItem="d7S-8D-AvB" secondAttribute="leading" constant="66" id="w9r-n1-kLV"/>
@@ -2512,8 +2644,10 @@
                         <outlet property="dondeButton" destination="CR9-Uc-UGd" id="cvU-Tw-ieu"/>
                         <outlet property="emailInput" destination="7AU-g1-ui0" id="JT0-Iq-yRq"/>
                         <outlet property="nameInput" destination="R8D-z5-cfG" id="5jv-eP-lPL"/>
+                        <outlet property="passwordEye" destination="1Ht-ta-TPF" id="Tum-BJ-zEh"/>
                         <outlet property="passwordInput" destination="mSO-GO-tey" id="X2E-oI-RpE"/>
                         <outlet property="repPasswordInput" destination="TEd-dG-OAo" id="YPP-xh-23h"/>
+                        <outlet property="repeatPassEye" destination="kpV-nc-wVW" id="WjE-vy-Dtj"/>
                         <outlet property="surnameInput" destination="s1f-jd-VHm" id="QuL-fk-Dwz"/>
                         <outlet property="userNameInput" destination="H6e-A4-gCs" id="em5-aE-UqA"/>
                         <segue destination="nlZ-0Z-7X6" kind="show" identifier="HomeViewR" id="cna-C0-n9X"/>
@@ -3182,8 +3316,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pUc-A2-F3D"/>
+        <segue reference="cna-C0-n9X"/>
         <segue reference="RGE-dQ-Ly5"/>
+        <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="001-lupa" width="24" height="24"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 private let reuseIdentifier = "homeCell"
 private let itemsPerRow = 7
@@ -27,7 +28,7 @@ class HomeVC: BaseVC {
         self.tabBarController?.title = "Home"
         setModifieres()
         setStacksView()
-        
+        welcomeBack()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +42,13 @@ class HomeVC: BaseVC {
         }
         
     func setStacksView() {
+    }
+    
+    func welcomeBack() {
+        let banner = NotificationBanner(title: "Hola!", subtitle: "Bienvenido de vuelta")
+        banner.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        banner.show()
+        
     }
 
 }

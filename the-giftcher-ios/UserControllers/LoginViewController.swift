@@ -17,11 +17,12 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
     @IBOutlet weak var forgotPsswdButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var passwordEye: UIButton!
+    var iconClick = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setModifiers()
-        keyboardActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,9 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
         loginButton.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
         loginButton.backgroundColor = UIColor.white
         registerButton.layer.cornerRadius = 20
+        userInput.checkMaxLength(textField: userInput)
+        userInput.delegate = self
+        passwordInput.delegate = self
         
     }
     
@@ -90,5 +94,16 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
         }
     }
     
+    @IBAction func passwordEyeController(_ sender: UIButton) {
+        if(iconClick == true) {
+                   passwordInput.isSecureTextEntry = false
+                    passwordEye.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+               } else {
+                   passwordInput.isSecureTextEntry = true
+                   passwordEye.setImage(UIImage(systemName: "eye"), for: .normal)
+               }
+
+               iconClick = !iconClick
+    }
     
 }

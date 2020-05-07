@@ -17,7 +17,6 @@ class ForgotPasswordVC: BaseVC, NVActivityIndicatorViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setModifiers()
-        keyboardActions()
     }
     
     func setModifiers() {

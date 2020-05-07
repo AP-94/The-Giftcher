@@ -35,7 +35,6 @@ class AddWishVC: BaseVC {
         super.viewDidLoad()
         self.tabBarController?.title = "Añadir deseo"
         customSettings()
-        keyboardActions()
         
     }
     
@@ -104,5 +103,11 @@ class AddWishVC: BaseVC {
         dataInputSV.layer.masksToBounds = false
         dataInputSV.layer.shadowRadius = 2.0
         dataInputSV.layer.shadowOpacity = 0.6
+        
+        wishNameTF.delegate = self
+        wishShopTF.delegate = self
+        wishLocationTF.delegate = self
+        wishPriceTF.delegate = self
+        
     }
 }

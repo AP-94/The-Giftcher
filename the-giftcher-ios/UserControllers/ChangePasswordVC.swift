@@ -8,8 +8,9 @@
 
 import UIKit
 import NotificationBannerSwift
+import NVActivityIndicatorView
 
-class ChangePasswordVC: BaseVC {
+class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
 
     @IBOutlet weak var oldPasswordTF: UITextField!
     @IBOutlet weak var oldPassVisibilityButton: UIButton!
@@ -58,6 +59,10 @@ class ChangePasswordVC: BaseVC {
         
         //formSubmitButton atributes
         changePassSubmitButton.layer.cornerRadius = 20
+        
+        oldPasswordTF.delegate = self
+        newPasswordTF.delegate = self
+        repNewPasswordTF.delegate = self
     }
     
     @IBAction func showOldPassword(_ sender: Any) {
@@ -112,6 +117,7 @@ class ChangePasswordVC: BaseVC {
     
     func doUpdateRequest(inputUpdatePassword: InputUpdatePassword){
         print("Do Update Request")
+        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.updateUserPasswordRequest(inputUpdatePassword: inputUpdatePassword) {
             success, result, error in
             if let result = result as? UserModel {
@@ -127,6 +133,7 @@ class ChangePasswordVC: BaseVC {
                 
                 Session.save()
             }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
     }
     

@@ -41,8 +41,12 @@ class ProfileVC: BaseVC {
     }
     
     func callInfo(){
-        userNameLabel.text = "\(user?.name ?? "") \(user?.lastName ?? "") (\(user?.username ?? ""))"
-        userBirthdayLabel.text = Session.current.userModel?.birthday ?? ""
+        let name = user?.name ?? ""
+        let lastName = user?.lastName ?? ""
+        let userName = user?.username ?? ""
+        
+        userNameLabel.text = "\(name) \(lastName) (\(userName))"
+        userBirthdayLabel.text = user?.birthday ?? ""
     }
     
     func setAvatar() {
