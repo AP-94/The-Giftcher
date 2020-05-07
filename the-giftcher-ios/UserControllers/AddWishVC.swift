@@ -10,9 +10,10 @@ import UIKit
 import NotificationBannerSwift
 import NVActivityIndicatorView
 
-class AddWishVC: BaseVC {
+class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imagePicker: UIImageView!
+    @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var dataInputView: UIView!
     @IBOutlet weak var dataInputSV: UIScrollView!
     
@@ -31,16 +32,26 @@ class AddWishVC: BaseVC {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var associateButton: UIButton!
     
+    var pickerData: [String] = [String]()
+    let imagePickerContr = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Añadir deseo"
         customSettings()
         
+        pickerData = ["Agricultura", "Coleccionismo", "Construcción", "Deporte", "Electrodomésticos", "Foto", "Hogar", "Informática", "Jardín", "Libros", "Moda", "Motor", "Móviles", "Música", "Niños y Bebés", "Otros", "Servicios", "TV", "Videojuegos"]
+        
+        self.categoryPicker.delegate = self
+        self.categoryPicker.dataSource = self
+        
+        imagePickerContr.delegate = self
+        
     }
     
     func customSettings() {
         //imagePicker atributes
-        imagePicker.layer.cornerRadius = 10
+        imagePicker.layer.cornerRadius = 2
         imagePicker.layer.borderWidth = 3
         imagePicker.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
         imagePicker.layer.shadowColor = UIColor.black.cgColor
@@ -109,5 +120,61 @@ class AddWishVC: BaseVC {
         wishLocationTF.delegate = self
         wishPriceTF.delegate = self
         
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    // The data to return fopr the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    // Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let categorySelected = pickerData[row] as String
+        categoryNameLabel.text = categorySelected
+    }
+    @IBAction func setCategory(_ sender: Any) {
+        categoryPickerView.layer.isHidden = false
+        categoryPicker.layer.isHidden = false
+        doneButton.layer.isHidden = false
+    }
+    @IBAction func hidePicker(_ sender: Any) {
+        categoryPickerView.layer.isHidden = true
+        categoryPicker.layer.isHidden = true
+        doneButton.layer.isHidden = true
+    }
+    
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+        imagePickerContr.allowsEditing = false
+        imagePickerContr.sourceType = .photoLibrary
+        
+        present(imagePickerContr, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imagePicker.contentMode = .scaleToFill
+            imagePicker.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -1793,21 +1793,33 @@
                                 <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="WLg-0W-jSh"/>
+                                    <constraint firstAttribute="width" constant="100" id="cRS-vR-NhT"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JA2-O3-oSv">
+                                <rect key="frame" x="20" y="18" width="100" height="100"/>
+                                <connections>
+                                    <action selector="loadImageButtonTapped:" destination="Ha0-uh-sIt" eventType="touchUpInside" id="R1h-Yf-JaU"/>
+                                </connections>
+                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VgD-A0-g3P">
                                 <rect key="frame" x="20" y="138" width="374" height="493"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNM-DW-abA">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="493"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-Qg-Qyf">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8VY-Qg-Qyf">
                                                 <rect key="frame" x="23" y="17" width="329" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="VFP-mP-Eet"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="EsZ-EV-YcR"/>
                                                 </connections>
@@ -1823,13 +1835,18 @@
                                                 <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-27-kLI">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-27-kLI">
                                                 <rect key="frame" x="23" y="75" width="329" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="t3H-VX-qfU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="Agj-y1-AVj"/>
                                                 </connections>
@@ -1845,13 +1862,18 @@
                                                 <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRN-Cf-0LP">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fRN-Cf-0LP">
                                                 <rect key="frame" x="23" y="133" width="329" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="wgA-M2-Iry"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" textContentType="address-level2"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="IdG-se-Rux"/>
                                                 </connections>
@@ -1867,7 +1889,7 @@
                                                 <color key="textColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VrI-jo-kPX">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VrI-jo-kPX">
                                                 <rect key="frame" x="23" y="193" width="117" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="117" id="7To-GP-ckP"/>
@@ -1875,6 +1897,11 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="qHs-so-ye7"/>
                                                 </connections>
@@ -1908,6 +1935,9 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="arrowtriangle.down.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="setCategory:" destination="Ha0-uh-sIt" eventType="touchUpInside" id="JAj-u6-iYD"/>
+                                                </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descripción del producto" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IPl-yi-Dc8">
                                                 <rect key="frame" x="23" y="251" width="329" height="221"/>
@@ -1939,6 +1969,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="hideDatePickerView:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="e8U-SD-JyX"/>
+                                                            <action selector="hidePicker:" destination="Ha0-uh-sIt" eventType="touchUpInside" id="geH-bQ-2cL"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -2025,20 +2056,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="JA2-O3-oSv" firstAttribute="leading" secondItem="y5f-77-QBB" secondAttribute="leading" id="3U4-SD-b5W"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="trailing" secondItem="Rdp-cu-xC2" secondAttribute="trailing" id="4Z0-lL-3Z6"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="top" secondItem="y5f-77-QBB" secondAttribute="bottom" constant="20" id="7Y2-ht-XV9"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="VgD-A0-g3P" secondAttribute="trailing" constant="20" id="8og-EK-oYj"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="Agm-9p-8lb"/>
+                            <constraint firstItem="JA2-O3-oSv" firstAttribute="width" secondItem="y5f-77-QBB" secondAttribute="width" id="KD9-rq-kl4"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="y5f-77-QBB" secondAttribute="trailing" constant="294" id="N5S-ql-C5f"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="xVm-hg-B0K" secondAttribute="trailing" constant="20" id="Py5-sz-fLA"/>
                             <constraint firstItem="y5f-77-QBB" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" constant="18" id="VSj-rr-jLf"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" id="XQf-jj-HZl"/>
                             <constraint firstItem="74M-Hq-EgY" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="YNZ-kw-vjZ"/>
                             <constraint firstItem="y5f-77-QBB" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="YwP-lI-nJp"/>
+                            <constraint firstItem="JA2-O3-oSv" firstAttribute="top" secondItem="y5f-77-QBB" secondAttribute="top" id="c7C-yK-pi3"/>
                             <constraint firstItem="74M-Hq-EgY" firstAttribute="top" secondItem="VgD-A0-g3P" secondAttribute="bottom" constant="29" id="jn3-pM-Dlk"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" id="lOw-uK-MqQ"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="bottom" secondItem="Rdp-cu-xC2" secondAttribute="bottom" id="mB0-sk-yN8"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="bottom" secondItem="74M-Hq-EgY" secondAttribute="bottom" constant="23" id="qmK-op-x50"/>
+                            <constraint firstItem="JA2-O3-oSv" firstAttribute="height" secondItem="y5f-77-QBB" secondAttribute="height" id="sqL-Oa-96K"/>
                             <constraint firstItem="xVm-hg-B0K" firstAttribute="baseline" secondItem="74M-Hq-EgY" secondAttribute="baseline" id="v53-Be-6eb"/>
                             <constraint firstItem="xVm-hg-B0K" firstAttribute="leading" secondItem="74M-Hq-EgY" secondAttribute="trailing" constant="48" id="yCg-pp-1ms"/>
                         </constraints>
@@ -2054,7 +2089,8 @@
                         <outlet property="dataInputSV" destination="VgD-A0-g3P" id="fjv-nw-7LB"/>
                         <outlet property="dataInputView" destination="DNM-DW-abA" id="TWl-A3-XED"/>
                         <outlet property="doneButton" destination="jcS-hh-sIW" id="UPJ-RG-swz"/>
-                        <outlet property="imagePicker" destination="y5f-77-QBB" id="SjE-dL-E7f"/>
+                        <outlet property="imagePicker" destination="y5f-77-QBB" id="Tgh-9I-Wfe"/>
+                        <outlet property="imagePickerButton" destination="JA2-O3-oSv" id="KxO-2Q-Tt4"/>
                         <outlet property="saveButton" destination="74M-Hq-EgY" id="mwR-zS-vkZ"/>
                         <outlet property="wishDescriptionTV" destination="IPl-yi-Dc8" id="WPE-61-POi"/>
                         <outlet property="wishLocationTF" destination="fRN-Cf-0LP" id="JAz-ii-u9z"/>
