@@ -65,6 +65,7 @@
 		C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E1A00F2459F6AB00C864A9 /* MockConnection.swift */; };
 		C6E1A0122459F6E000C864A9 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E1A0112459F6E000C864A9 /* DataMapper.swift */; };
 		C6E1A0162459F96900C864A9 /* InputLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E1A0152459F96900C864A9 /* InputLogin.swift */; };
+		C6E7E93F2465D77100EBA638 /* WishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E7E93E2465D77100EBA638 /* WishesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		C6E1A00F2459F6AB00C864A9 /* MockConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockConnection.swift; sourceTree = "<group>"; };
 		C6E1A0112459F6E000C864A9 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		C6E1A0152459F96900C864A9 /* InputLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLogin.swift; sourceTree = "<group>"; };
+		C6E7E93E2465D77100EBA638 /* WishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				C6C08881244C68A800CB0A7A /* ProfileVC.swift */,
 				C6C08883244C68DA00CB0A7A /* AddWishVC.swift */,
 				C6C08885244C68FE00CB0A7A /* SearchVC.swift */,
+				C6E7E93E2465D77100EBA638 /* WishesCell.swift */,
 				C6C08887244C69CB00CB0A7A /* FriendsVC.swift */,
 				C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */,
 				237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */,
@@ -450,6 +453,7 @@
 				C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */,
 				C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */,
 				C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */,
+				C6E7E93F2465D77100EBA638 /* WishesCell.swift in Sources */,
 				237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */,
 				237BFC6C2453884700AC8F98 /* FriendDetailVC.swift in Sources */,
 				C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */,

@@ -8,6 +8,8 @@
 
 import UIKit
 import NotificationBannerSwift
+import AVKit
+import Photos
 
 private let reuseIdentifier = "homeCell"
 private let itemsPerRow = 7
@@ -29,6 +31,7 @@ class HomeVC: BaseVC {
         setModifieres()
         setStacksView()
         welcomeBack()
+        requestPermissions()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +52,16 @@ class HomeVC: BaseVC {
         banner.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         banner.show()
         
+    }
+    
+    func requestPermissions() {
+        PHPhotoLibrary.requestAuthorization { status in
+            if status == .authorized {
+                
+            } else {
+                
+            }
+        }
     }
 
 }

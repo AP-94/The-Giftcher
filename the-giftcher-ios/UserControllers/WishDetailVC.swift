@@ -10,6 +10,7 @@ import UIKit
 
 class WishDetailVC: ViewController {
     
+    var wish: WishModel?
     //Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var uiViewsOutlet: UIView!
@@ -27,6 +28,7 @@ class WishDetailVC: ViewController {
         super.viewDidLoad()
         self.tabBarController?.title = "Detalle"
         setModifiers()
+        loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +55,21 @@ class WishDetailVC: ViewController {
         
         shareButtonView.layer.cornerRadius = 10
         buttonSaveView.layer.cornerRadius = 10
+        
+    }
+    
+    func loadData() {
+        wishName.text = wish?.name
+        wishPrice.text = String(describing: wish?.price ?? 0)
+        wishDescription.text = wish?.description
+        wishCategory.text = String(describing: wish?.category ?? 0)
+        wishStore.text = wish?.shop
+
+        if let avatar = wish?.imagePath {
+            imageView.loadUrl(from: avatar, contentMode: .scaleAspectFill)
+        } else {
+            imageView.image = UIImage(named: "placeholder")
+        }
         
     }
     
