@@ -40,7 +40,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         self.tabBarController?.title = "Añadir deseo"
         customSettings()
         
-        pickerData = ["Agricultura", "Coleccionismo", "Construcción", "Deporte", "Electrodomésticos", "Foto", "Hogar", "Informática", "Jardín", "Libros", "Moda", "Motor", "Móviles", "Música", "Niños y Bebés", "Otros", "Servicios", "TV", "Videojuegos"]
+        pickerData = ["Agricultura", "Coleccionismo", "Construcción", "Deporte", "Electrodomésticos", "Foto", "Hogar", "Informática", "Jardín", "Libros", "Moda", "Motoor", "Móviles", "Música", "Niños y Bebés", "Otros", "Servicios", "TV", "Videojuegos"]
         
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
