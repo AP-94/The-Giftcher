@@ -1059,7 +1059,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CB1-Cp-dP5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="132"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="126"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpX-H7-Shh">
                                                             <rect key="frame" x="13" y="13" width="143" height="21"/>
@@ -1082,28 +1082,29 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="auA-xF-mNi">
-                                                            <rect key="frame" x="179" y="11" width="166" height="110"/>
+                                                            <rect key="frame" x="179" y="7" width="166" height="110"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="110" id="PTM-Gf-i8X"/>
                                                                 <constraint firstAttribute="width" constant="166" id="m8R-hp-Utc"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="xYF-YL-hPV" firstAttribute="leading" secondItem="CB1-Cp-dP5" secondAttribute="leading" constant="13" id="GPH-iI-rp6"/>
                                                         <constraint firstItem="XpX-H7-Shh" firstAttribute="top" secondItem="CB1-Cp-dP5" secondAttribute="top" constant="13" id="SAA-sO-0IO"/>
                                                         <constraint firstItem="auA-xF-mNi" firstAttribute="leading" secondItem="XpX-H7-Shh" secondAttribute="trailing" constant="23" id="Xny-mZ-ptd"/>
+                                                        <constraint firstItem="auA-xF-mNi" firstAttribute="top" secondItem="CB1-Cp-dP5" secondAttribute="top" constant="7" id="hIC-kd-LZv"/>
                                                         <constraint firstItem="xYF-YL-hPV" firstAttribute="top" secondItem="XpX-H7-Shh" secondAttribute="bottom" constant="8" id="hNj-Rj-ID9"/>
-                                                        <constraint firstItem="auA-xF-mNi" firstAttribute="top" secondItem="CB1-Cp-dP5" secondAttribute="top" constant="11" id="lKY-PS-bzf"/>
                                                         <constraint firstItem="XpX-H7-Shh" firstAttribute="leading" secondItem="CB1-Cp-dP5" secondAttribute="leading" constant="13" id="sUa-vh-Fiu"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="CB1-Cp-dP5" secondAttribute="bottom" id="13K-ZM-7zg"/>
                                                 <constraint firstItem="CB1-Cp-dP5" firstAttribute="top" secondItem="Kvy-hk-NdU" secondAttribute="top" id="Mtt-C5-28w"/>
                                                 <constraint firstItem="CB1-Cp-dP5" firstAttribute="leading" secondItem="Kvy-hk-NdU" secondAttribute="leading" id="ob3-Zp-pzS"/>
                                                 <constraint firstAttribute="trailing" secondItem="CB1-Cp-dP5" secondAttribute="trailing" id="r19-eN-4Wo"/>
+                                                <constraint firstAttribute="bottom" secondItem="CB1-Cp-dP5" secondAttribute="bottom" constant="6" id="x0Z-n7-uTs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1176,7 +1177,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-y4-2W7">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="dqe-y4-2W7">
                                 <rect key="frame" x="20" y="41" width="374" height="311"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="311" id="gKn-Ze-RzJ"/>
@@ -1293,10 +1294,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZe-q9-wtQ">
-                                        <rect key="frame" x="238" y="29" width="112" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZe-q9-wtQ">
+                                        <rect key="frame" x="229" y="8" width="112" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="112" id="bNI-Xe-pKM"/>
+                                            <constraint firstAttribute="height" constant="62" id="dIV-tr-GxA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1305,11 +1307,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EZe-q9-wtQ" secondAttribute="trailing" constant="33" id="6Yt-dC-fD8"/>
                                     <constraint firstAttribute="height" constant="78" id="8mH-i6-Wlv"/>
-                                    <constraint firstItem="EZe-q9-wtQ" firstAttribute="top" secondItem="WsE-Me-XHf" secondAttribute="top" constant="29" id="Dd1-CY-z1X"/>
-                                    <constraint firstAttribute="trailing" secondItem="EZe-q9-wtQ" secondAttribute="trailing" constant="24" id="IOd-j9-KS7"/>
                                     <constraint firstItem="22S-XN-w4w" firstAttribute="leading" secondItem="WsE-Me-XHf" secondAttribute="leading" constant="15" id="JEk-Zv-Fth"/>
                                     <constraint firstItem="22S-XN-w4w" firstAttribute="top" secondItem="WsE-Me-XHf" secondAttribute="top" constant="29" id="TuS-zQ-3aH"/>
+                                    <constraint firstItem="EZe-q9-wtQ" firstAttribute="top" secondItem="WsE-Me-XHf" secondAttribute="top" constant="8" id="u64-oC-Fjr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1488,7 +1490,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qGi-8q-qpj">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qGi-8q-qpj">
                                                                                     <rect key="frame" x="8" y="8" width="112" height="75"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="75" id="gUU-uz-6Wu"/>

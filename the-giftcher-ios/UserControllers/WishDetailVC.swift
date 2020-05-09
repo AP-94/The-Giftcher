@@ -54,6 +54,9 @@ class WishDetailVC: ViewController, NVActivityIndicatorViewable {
         uiViews3Outlet.layer.borderColor = UIColor.red.cgColor
         uiViews3Outlet.layer.borderWidth = 0.5
         
+        buttonSaveView.layer.cornerRadius = 5.0
+        shareButtonView.layer.cornerRadius = 5.0
+        
     }
     
     func loadData() {

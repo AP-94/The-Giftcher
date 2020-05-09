@@ -60,7 +60,7 @@ class DataMapper {
             print("network down")
             return false
         case 0:
-            let banner = NotificationBanner(title: "Error", subtitle: "No hay conexión a internet", style: .warning)
+            let banner = NotificationBanner(title: "Error", subtitle: "No hay conexión con el servidor", style: .warning)
             banner.show()
             print("no hay conexión")
             return false

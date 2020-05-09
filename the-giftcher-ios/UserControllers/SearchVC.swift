@@ -19,13 +19,14 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     @IBOutlet weak var searchEngine: UISearchBar!
     @IBOutlet weak var noWishesLabel: UILabel!
     var wishes: [WishModel?] = []
-    var filteredData: [WishModel?] = []
+    var filteredData = [WishModel?]()
     var selectedCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Buscar"
         self.searchEngine.delegate = self
+        searchEngine.searchTextField.clearButtonMode = .never
         navigationModifier()
         loadData()
         tableViewModifiers()
@@ -37,15 +38,25 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
         self.tabBarController?.title = "Buscar"
     }
     
-    /*func updateSearchResults(for searchController: UISearchController) {
-        filteredData.removeAll(keepingCapacity: false)
-
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (wishes as NSArray).filtered(using: searchPredicate)
-        filteredData = array as! [WishModel?]
-
-        self.tableView.reloadData()
-    }*/
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        print("filterContentForSearchText: \(searchText)")
+        filteredData.removeAll()
+        var text = searchText.lowercased()
+        text = text.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+        
+        for index in wishes{
+            if var name = index?.name?.lowercased(), var description = index?.description?.lowercased(), var shop = index?.shop?.lowercased() {
+                name = name.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+                description = description.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+                shop = shop.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+                if name.lowercased().contains(text.lowercased()) || description.lowercased().contains(text.lowercased()) || shop.lowercased().contains(text.lowercased()) {
+                    filteredData.append(index)
+                }
+            }
+        }
+        
+        tableView.reloadData()
+    }
     
     @objc private func refreshData(_ sender: Any) {
         loadData()
@@ -53,14 +64,19 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         searchEngine.endEditing(true)
+        filteredData.removeAll()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchEngine.endEditing(true)
+        filteredData.removeAll()
+        loadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         searchEngine.resignFirstResponder()
+        filterContentForSearchText(searchEngine.text!)
+        
     }
     
     func tableViewModifiers() {
@@ -96,12 +112,26 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
             noWishesLabel.isHidden = true
         }
         
-        return count
+        if !filteredData.isEmpty {
+            return filteredData.count
+        } else {
+            return count
+        }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WishesCell.identifier, for: indexPath) as? WishesCell {
+            
+            if !filteredData.isEmpty {
+                cell.backgroundColor = UIColor.clear
+                cell.wish = nil
+                cell.wish = filteredData[indexPath.row]
+                cell.delegate = self
+                cell.selectionStyle = .none
+                return cell
+            }
+            
+            cell.backgroundColor = UIColor.clear
             cell.wish = nil
             cell.wish = wishes[indexPath.row]
             cell.delegate = self
@@ -109,6 +139,7 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
             return cell
         }
         return UITableViewCell()
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
