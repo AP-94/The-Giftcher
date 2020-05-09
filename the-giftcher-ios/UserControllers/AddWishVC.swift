@@ -144,7 +144,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     // Capture the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let categorySelected = pickerData[row] as String
+        let categorySelected = pickerData[row]
         categoryNameLabel.text = categorySelected
     }
     @IBAction func setCategory(_ sender: Any) {
@@ -176,5 +176,8 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func addWish(_ sender: Any) {
+       
     }
 }
