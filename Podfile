@@ -18,4 +18,6 @@ pod 'NVActivityIndicatorView'
 
 # Pods for the-giftcher-ios
 
+pod 'CropViewController'
+
 end

@@ -1399,7 +1399,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrU-HT-dh4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9" y="159"/>
+            <point key="canvasLocation" x="3" y="160"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -2076,17 +2076,31 @@
                                     <action selector="saveChanges:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="ICe-tF-wcD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LX-uo-gXj">
+                                <rect key="frame" x="135" y="53" width="114" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Pmh-cV-r50"/>
+                                    <constraint firstAttribute="width" constant="114" id="vfE-yx-dag"/>
+                                </constraints>
+                                <state key="normal" title="Ajustar foto">
+                                    <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="5LX-uo-gXj" secondAttribute="trailing" constant="165" id="1Gq-Au-Q0e"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="leading" secondItem="y5f-77-QBB" secondAttribute="leading" id="3U4-SD-b5W"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="trailing" secondItem="Rdp-cu-xC2" secondAttribute="trailing" id="4Z0-lL-3Z6"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="top" secondItem="y5f-77-QBB" secondAttribute="bottom" constant="20" id="7Y2-ht-XV9"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="VgD-A0-g3P" secondAttribute="trailing" constant="20" id="8og-EK-oYj"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="Agm-9p-8lb"/>
+                            <constraint firstItem="VgD-A0-g3P" firstAttribute="top" secondItem="5LX-uo-gXj" secondAttribute="bottom" constant="55" id="JrO-AN-rPX"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="width" secondItem="y5f-77-QBB" secondAttribute="width" id="KD9-rq-kl4"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="y5f-77-QBB" secondAttribute="trailing" constant="294" id="N5S-ql-C5f"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="xVm-hg-B0K" secondAttribute="trailing" constant="20" id="Py5-sz-fLA"/>
+                            <constraint firstItem="5LX-uo-gXj" firstAttribute="leading" secondItem="y5f-77-QBB" secondAttribute="trailing" constant="15" id="R2W-12-7OD"/>
                             <constraint firstItem="y5f-77-QBB" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" constant="18" id="VSj-rr-jLf"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" id="XQf-jj-HZl"/>
                             <constraint firstItem="74M-Hq-EgY" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="YNZ-kw-vjZ"/>
@@ -2095,6 +2109,7 @@
                             <constraint firstItem="74M-Hq-EgY" firstAttribute="top" secondItem="VgD-A0-g3P" secondAttribute="bottom" constant="29" id="jn3-pM-Dlk"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" id="lOw-uK-MqQ"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="bottom" secondItem="Rdp-cu-xC2" secondAttribute="bottom" id="mB0-sk-yN8"/>
+                            <constraint firstItem="5LX-uo-gXj" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" constant="53" id="npg-07-zXX"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="bottom" secondItem="74M-Hq-EgY" secondAttribute="bottom" constant="23" id="qmK-op-x50"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="height" secondItem="y5f-77-QBB" secondAttribute="height" id="sqL-Oa-96K"/>
                             <constraint firstItem="xVm-hg-B0K" firstAttribute="baseline" secondItem="74M-Hq-EgY" secondAttribute="baseline" id="v53-Be-6eb"/>
