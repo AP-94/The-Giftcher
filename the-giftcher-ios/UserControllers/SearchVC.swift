@@ -70,12 +70,18 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchEngine.endEditing(true)
         filteredData.removeAll()
+        searchEngine.searchTextField.text = ""
         loadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
         searchEngine.resignFirstResponder()
-        filterContentForSearchText(searchEngine.text!)
+        if searchEngine.text!.isEmpty {
+            loadData()
+        } else {
+            filterContentForSearchText(searchEngine.text!)
+            
+        }
         
     }
     
@@ -112,7 +118,12 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
             noWishesLabel.isHidden = true
         }
         
-        if !filteredData.isEmpty {
+        if !searchEngine.searchTextField.text!.isEmpty {
+            if filteredData.isEmpty {
+                noWishesLabel.isHidden = false
+            } else {
+                noWishesLabel.isHidden = true
+            }
             return filteredData.count
         } else {
             return count
@@ -122,13 +133,13 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WishesCell.identifier, for: indexPath) as? WishesCell {
             
-            if !filteredData.isEmpty {
-                cell.backgroundColor = UIColor.clear
-                cell.wish = nil
-                cell.wish = filteredData[indexPath.row]
-                cell.delegate = self
-                cell.selectionStyle = .none
-                return cell
+            if !searchEngine.text!.isEmpty {
+                    cell.backgroundColor = UIColor.clear
+                    cell.wish = nil
+                    cell.wish = filteredData[indexPath.row]
+                    cell.delegate = self
+                    cell.selectionStyle = .none
+                    return cell
             }
             
             cell.backgroundColor = UIColor.clear
