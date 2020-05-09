@@ -11,6 +11,7 @@ import UIKit
 class WishDetailVC: ViewController {
     
     var wish: WishModel?
+    var categoryString: String?
     //Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var uiViewsOutlet: UIView!
@@ -60,7 +61,7 @@ class WishDetailVC: ViewController {
     
     func loadData() {
         wishName.text = wish?.name
-        wishPrice.text = String(describing: wish?.price ?? 0)
+        wishPrice.text = "\(String(describing: wish?.price ?? 0))€"
         wishDescription.text = wish?.description
         wishCategory.text = String(describing: wish?.category ?? 0)
         wishStore.text = wish?.shop
@@ -77,6 +78,41 @@ class WishDetailVC: ViewController {
     }
     
     @IBAction func shareWish(_ sender: Any) {
+    }
+    
+    func setCategory(category: Int) {
+        switch category {
+        case 1:
+            categoryString = "Videojuegos"
+        case 2:
+            categoryString = "Hogar"
+            case 3:
+            categoryString = "Hogar"
+            case 4:
+            categoryString = "Hogar"
+            case 5:
+            categoryString = "Hogar"
+            case 6:
+            categoryString = "Hogar"
+            case 7:
+            categoryString = "Hogar"
+            case 8:
+            categoryString = "Hogar"
+            case 9:
+            categoryString = "Hogar"
+            case 10:
+            categoryString = "Hogar"
+            case 11:
+            categoryString = "Hogar"
+            case 12:
+                       categoryString = "Hogar"
+            case 13:
+                       categoryString = "Hogar"
+            
+            
+        default:
+            categoryString = "None"
+        }
     }
     
 }

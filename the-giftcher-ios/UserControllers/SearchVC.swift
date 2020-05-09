@@ -9,25 +9,45 @@
 import UIKit
 import NVActivityIndicatorView
 
-class SearchVC: BaseVC, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, WishesCellDelegate, NVActivityIndicatorViewable {
+class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, WishesCellDelegate, NVActivityIndicatorViewable {
+    
+    let dataMapper = DataMapper()
+    let sizeOfIndivatorView = CGSize(width: 40, height: 40)
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchEngine: UISearchBar!
     @IBOutlet weak var noWishesLabel: UILabel!
     var wishes: [WishModel?] = []
+    var filteredData: [WishModel?] = []
     var selectedCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Buscar"
         self.searchEngine.delegate = self
+        navigationModifier()
+        loadData()
+        tableViewModifiers()
         
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.clear
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Buscar"
+    }
+    
+    /*func updateSearchResults(for searchController: UISearchController) {
+        filteredData.removeAll(keepingCapacity: false)
+
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (wishes as NSArray).filtered(using: searchPredicate)
+        filteredData = array as! [WishModel?]
+
+        self.tableView.reloadData()
+    }*/
+    
+    @objc private func refreshData(_ sender: Any) {
         loadData()
     }
     
@@ -43,6 +63,14 @@ class SearchVC: BaseVC, UISearchBarDelegate, UITableViewDelegate, UITableViewDat
         searchEngine.resignFirstResponder()
     }
     
+    func tableViewModifiers() {
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        tableView.refreshControl = refreshControl
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
     func loadData() {
         print("Do Get All wishes request")
         startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
@@ -53,6 +81,7 @@ class SearchVC: BaseVC, UISearchBarDelegate, UITableViewDelegate, UITableViewDat
                 self.tableView.reloadData()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -70,13 +99,10 @@ class SearchVC: BaseVC, UISearchBarDelegate, UITableViewDelegate, UITableViewDat
         return count
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Row \(indexPath.row) selected")
-        self.performSegue(withIdentifier: "WishDetailSegue", sender: nil)
-    }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WishesCell.identifier, for: indexPath) as? WishesCell {
+            cell.wish = nil
             cell.wish = wishes[indexPath.row]
             cell.delegate = self
             return cell
@@ -97,5 +123,12 @@ class SearchVC: BaseVC, UISearchBarDelegate, UITableViewDelegate, UITableViewDat
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
             }
         }
+    }
+    
+    func navigationModifier() {
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        //self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
     }
 }
