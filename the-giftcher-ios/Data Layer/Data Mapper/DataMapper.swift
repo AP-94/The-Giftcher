@@ -314,13 +314,13 @@ class DataMapper {
             connection = Connection()
         }
         
-        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let array = json.arrayValue.compactMap {
+                let result = json.arrayValue.compactMap {
                     return WishModel(jsonData: try? $0.rawData())
                 }
-                completion(true, array, nil)
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }
@@ -338,7 +338,7 @@ class DataMapper {
             connection = Connection()
         }
         
-        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
                 let array = json.arrayValue.compactMap {
@@ -362,7 +362,7 @@ class DataMapper {
             connection = Connection()
         }
         
-        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
                 let array = json.arrayValue.compactMap {

@@ -13,7 +13,7 @@ class WishModel: Mappable {
     var userId: Int?
     var name: String?
     var description: String?
-    var price: Float?
+    var price: Double?
     var shop: String?
     var imageName: String?
     var imagePath: String?
@@ -21,6 +21,6 @@ class WishModel: Mappable {
     var location: String?
     var onlineShop: String?
     var category: Int?
-    var date: Date?
+    var date: String?
 }
 

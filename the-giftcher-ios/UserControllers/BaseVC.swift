@@ -47,8 +47,6 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
         navigationModifier()
         keyboardActions()
-        
-        
     }
     
     func navigationModifier() {

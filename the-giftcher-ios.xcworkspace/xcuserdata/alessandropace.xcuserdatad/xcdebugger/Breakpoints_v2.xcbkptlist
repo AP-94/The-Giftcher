@@ -3,4 +3,134 @@
    uuid = "830E26DE-533E-4140-B4E7-D0EC5EA6FB54"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF58EEB9-2106-4955-A52B-B941274D2FF7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/UserControllers/SearchVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A78FAF4-D6F3-49EF-AD69-A596D8311BCB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/UserControllers/SearchVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "loadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CF07D899-9B20-471D-AE43-7E9831A97280"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "getAllWishesRequest(fake:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CF07D899-9B20-471D-AE43-7E9831A97280 - e843939d6ea2c087"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, Swift.Optional&lt;SwiftyJSON.JSON&gt;, Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in the_giftcher_ios.DataMapper.getAllWishesRequest(fake: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Optional&lt;Swift.Bool&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "the-giftcher-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alessandropace/Desktop/TheGiftcher/the-giftcher-ios/the-giftcher-ios/Data%20Layer/Data%20Mapper/DataMapper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "444">
+               </Location>
+               <Location
+                  uuid = "CF07D899-9B20-471D-AE43-7E9831A97280 - 71b99fe652bc3b0d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftyJSON.JSON) -&gt; Swift.Optional&lt;the_giftcher_ios.WishModel&gt; in closure #1 (Swift.Int, Swift.Optional&lt;SwiftyJSON.JSON&gt;, Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in the_giftcher_ios.DataMapper.getAllWishesRequest(fake: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Optional&lt;Swift.Bool&gt;, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "the-giftcher-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alessandropace/Desktop/TheGiftcher/the-giftcher-ios/the-giftcher-ios/Data%20Layer/Data%20Mapper/DataMapper.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2293517A-B933-4C2C-8742-659B72118730"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "getAllWishesRequest(fake:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0ADC79E1-EB9E-496B-8A18-1BD817650333"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "loginRequest(fake:inputLogin:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB127361-3F00-4000-BC24-226AC68EEB6E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "loginRequest(fake:inputLogin:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
