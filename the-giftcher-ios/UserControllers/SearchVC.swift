@@ -73,7 +73,7 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     
     func loadData() {
         print("Do Get All wishes request")
-        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.getAllWishesRequest() {
             success, result, error in
             if let result = result as? [WishModel] {
@@ -105,6 +105,7 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
             cell.wish = nil
             cell.wish = wishes[indexPath.row]
             cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()

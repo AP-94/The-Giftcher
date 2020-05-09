@@ -17,6 +17,7 @@ class Session: Codable {
     var token: String?
     var userName: String?
     var userModel: UserModel?
+    var userCategories: [String?] = []
     
     private init() {
 
@@ -26,6 +27,7 @@ class Session: Codable {
                 userName = savedSession.userName
                 id = savedSession.id
                 userModel = savedSession.userModel
+                userCategories = savedSession.userCategories
             }
         }
     }

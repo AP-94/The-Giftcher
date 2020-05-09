@@ -38,7 +38,7 @@ internal class WishesCell: UITableViewCell {
         wishDescription.text = wish?.description
         
         containerView.layer.borderColor = UIColor.red.cgColor
-        containerView.layer.borderWidth = 2.0
+        containerView.layer.borderWidth = 0.5
         
         if let avatar = wish?.imagePath {
             wishImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)

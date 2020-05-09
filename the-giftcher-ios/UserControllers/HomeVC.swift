@@ -72,15 +72,15 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
        }
        
        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return 5
+           return 1
        }
        
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: "holaCelda", for: indexPath) as? MyCollectionViewCell
            
-           cell?.myLabel.text = "Ineex: \(indexPath.row)"
-           
-           
+        cell?.wishNam.text = "SCROLLVIEW"
+        cell?.wishImage.image = UIImage(named: "placeholder")
+        
            return cell!
        }
 }

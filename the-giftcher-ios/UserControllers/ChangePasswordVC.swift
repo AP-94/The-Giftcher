@@ -117,7 +117,7 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
     
     func doUpdateRequest(inputUpdatePassword: InputUpdatePassword){
         print("Do Update Request")
-        startAnimating(sizeOfIndivatorView, message: "Loading...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.updateUserPasswordRequest(inputUpdatePassword: inputUpdatePassword) {
             success, result, error in
             if let result = result as? UserModel {

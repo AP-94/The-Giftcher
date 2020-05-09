@@ -421,7 +421,7 @@ class DataMapper {
     
     func copyWishFromUserRequest(fake: String? = nil, userId: Int?, idWish: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/copy/userId/\(String(describing: userId))/id/\(String(describing: idWish))"
+        var url = "/wishes/copy/userId/\(String(describing: userId.unsafelyUnwrapped))/id/\(String(describing: idWish.unsafelyUnwrapped))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
