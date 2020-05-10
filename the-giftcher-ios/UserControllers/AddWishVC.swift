@@ -10,7 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import NVActivityIndicatorView
 
-class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NVActivityIndicatorViewable {
 
     @IBOutlet weak var imagePicker: UIImageView!
     @IBOutlet weak var imagePickerButton: UIButton!
@@ -40,13 +40,17 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         self.tabBarController?.title = "Añadir deseo"
         customSettings()
         
-        pickerData = ["Agricultura", "Coleccionismo", "Construcción", "Deporte", "Electrodomésticos", "Foto", "Hogar", "Informática", "Jardín", "Libros", "Moda", "Motoor", "Móviles", "Música", "Niños y Bebés", "Otros", "Servicios", "TV", "Videojuegos"]
+        pickerData = ["Agricultura", "Coleccionismo", "Construcción", "Deporte", "Electrodomésticos", "Foto", "Hogar", "Informática", "Jardín", "Libros", "Moda", "Motor", "Móviles", "Música", "Niños y Bebés", "Otros", "Servicios", "TV", "Videojuegos"]
         
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         
         imagePickerContr.delegate = self
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        customSettings()
     }
     
     func customSettings() {
@@ -178,6 +182,99 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addWish(_ sender: Any) {
-       
+       if wishNameTF.text != "" || wishShopTF.text != "" || wishLocationTF.text != "" || wishPriceTF.text != "" || wishDescriptionTV.text != "" || categoryNameLabel.text != "" {
+        let priceText = wishPriceTF.text
+        let priceFloat = (priceText! as NSString).floatValue
+        let reserveStatus = false
+        let onlineShopDefault = ""
+        setCategory(category: categoryNameLabel.text ?? "Otros")
+        let imagePathDef = ""
+        let imageName = ""
+        
+        
+        let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: wishLocationTF.text, onlineShop: onlineShopDefault, category: categoryInt)
+                       doAddWishRequest(inputWish: inputWish)
+        afterWishAdd()
+                   
+           
+       } else {
+           let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
+           banner.show()
+           
+       }
     }
+    
+    func doAddWishRequest(inputWish: InputWish) {
+        print("Do AddWish Request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.wishPostRequest(inputWish: inputWish) {
+            success, result, error in
+            if (result as? WishModel) != nil {
+                
+                let banner = NotificationBanner(title: "Deseo Añadido", subtitle: "Nuevo deseo añadido", style: .info)
+                banner.show()
+                
+                Session.save()
+            }
+            
+             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+        }
+        
+    }
+    var categoryInt = Int()
+    func setCategory(category: String) {
+        switch category {
+        case "Videojuegos":
+            categoryInt = 1
+        case "Hogar":
+            categoryInt = 2
+        case "Motor":
+            categoryInt = 3
+        case "Electrodomésticos":
+            categoryInt = 4
+        case "Moda":
+            categoryInt = 5
+        case "Jardín":
+            categoryInt = 6
+        case "TV":
+            categoryInt = 7
+        case "Música":
+            categoryInt = 8
+        case "Foto":
+            categoryInt = 9
+        case "Móviles":
+            categoryInt = 10
+        case "Informática":
+            categoryInt = 11
+        case "Deporte":
+            categoryInt = 12
+        case "Libros":
+            categoryInt = 13
+        case "Niños y bebés":
+            categoryInt = 14
+        case "Agricultura":
+            categoryInt = 15
+        case "Servicios":
+            categoryInt = 16
+        case "Coleccionismo":
+            categoryInt = 17
+        case "Construcción":
+            categoryInt = 18
+        case "Otros":
+            categoryInt = 19
+        default:
+            categoryInt = 1
+        }
+    }
+    
+    func afterWishAdd () {
+        wishNameTF.text = ""
+        wishShopTF.text = ""
+        wishLocationTF.text = ""
+        wishPriceTF.text = ""
+        wishDescriptionTV.text = "Descripción del producto"
+        categoryNameLabel.text = "Agricultura"
+        self.tabBarController?.selectedIndex = 4
+    }
+        
 }

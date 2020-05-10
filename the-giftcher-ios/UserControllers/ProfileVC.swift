@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+private let reuseIdentifier = "MyWishes"
+private let itemsPerRow = 3
+private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
-
-class ProfileVC: BaseVC {
+class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable{
     
+    
+    let dataMapper = DataMapper()
+    let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     var user = Session.current.userModel
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var userProfileImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -20,9 +27,17 @@ class ProfileVC: BaseVC {
     @IBOutlet weak var userWishCollectionView: UICollectionView!
     @IBOutlet weak var profileImageLabel: UILabel!
     
+    var wishes: [WishModel?] = []
+    var reservedWishes: [WishModel?] = []
+    var selectedCell: UICollectionViewCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Perfil"
+        navigationModifier()
+        collectionViewModifiers()
+        loadData()
+        switchData()
         
         userProfileImage.layer.cornerRadius = 90
         userProfileImage.layer.borderWidth = 8
@@ -38,6 +53,66 @@ class ProfileVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         callInfo()
         setAvatar()
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * CGFloat(itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / CGFloat(itemsPerRow)
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let count = wishes.count
+        
+        if wishSegment.selectedSegmentIndex == 0 {
+            return wishes.count
+        } else if wishSegment.selectedSegmentIndex == 1 {
+            return reservedWishes.count
+        } else {
+            return count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = userWishCollectionView.dequeueReusableCell(withReuseIdentifier: "MyWishes", for: indexPath) as? UserSelfWishesCell {
+            
+            if wishSegment.selectedSegmentIndex == 0 {
+                cell.backgroundColor = UIColor.clear
+                cell.wish = nil
+                cell.wish = wishes[indexPath.row]
+                cell.delegate = self
+                return cell
+            } else if wishSegment.selectedSegmentIndex == 1 {
+                cell.backgroundColor = UIColor.clear
+                cell.wish = nil
+                cell.wish = reservedWishes[indexPath.row]
+                cell.delegate = self
+                return cell
+            }
+            
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125.0
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        loadData()
+        switchData()
     }
     
     func callInfo(){
@@ -71,4 +146,61 @@ class ProfileVC: BaseVC {
             }
         }
     }
-}
+    
+    func collectionViewModifiers() {
+        userWishCollectionView.backgroundColor = UIColor.clear
+        userWishCollectionView.refreshControl = refreshControl
+        userWishCollectionView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    
+    func navigationModifier() {
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        //self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
+    }
+    
+    func loadData() {
+        print("Do Get All wishes request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.getAllWishesOfUserRequest() {
+            success, result, error in
+            if let result = result as? [WishModel] {
+                self.wishes = result
+                self.userWishCollectionView.reloadData()
+            }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func switchData() {
+        print("Do Get All reserved wishes request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.getReservedWishesRequest() {
+            success, result, error in
+            if let result = result as? [WishModel] {
+                self.reservedWishes = result
+                self.userWishCollectionView.reloadData()
+            }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WishDetailSegue", let cell = sender as? UserSelfWishesCell {
+            selectedCell = cell
+            
+            if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
+                wishDetailVC.wish = wishes[indexPath.row]
+                print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+            }
+        }
+    }
+    
+
+    }
+    
+

@@ -38,13 +38,13 @@ class InputWish: Mappable {
     var params: [String: Any] {
         return ["name": name,
                 "description": description,
-                "price": price,
+                "price": price ?? 0,
                 "shop": shop,
                 "imageName": imageName,
                 "imagePath": imagePath,
                 "reserved": reserved,
                 "location": location,
-                "onlineShop": onlineShop,
-                "category": category]
+                "onlineShop": onlineShop ?? "",
+                "category": category ?? ""]
     }
 }
