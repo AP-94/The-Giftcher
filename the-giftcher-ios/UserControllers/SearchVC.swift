@@ -39,7 +39,7 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        print("filterContentForSearchText: \(searchText)")
+        print("Filtrando contenido por: \(searchText)")
         filteredData.removeAll()
         var text = searchText.lowercased()
         text = text.folding(options: .diacriticInsensitive, locale: NSLocale.current)
@@ -99,6 +99,7 @@ class SearchVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITabl
         dataMapper.getAllWishesRequest() {
             success, result, error in
             if let result = result as? [WishModel] {
+                self.wishes.removeAll()
                 self.wishes = result
                 self.tableView.reloadData()
             }

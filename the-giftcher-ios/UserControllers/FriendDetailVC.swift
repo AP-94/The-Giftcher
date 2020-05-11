@@ -10,11 +10,13 @@ import UIKit
 
 class FriendDetailVC: UIViewController {
 
+    var friend: UserFriendModel?
     @IBOutlet weak var friendProfilePic: UIImageView!
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendBirthday: UILabel!
     @IBOutlet weak var wishTabs: UISegmentedControl!
     @IBOutlet weak var friendWishesCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
