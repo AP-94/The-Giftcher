@@ -28,6 +28,7 @@ class WishDetailVC: ViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var wishDescription: UILabel!
     @IBOutlet weak var wishCategory: UILabel!
     @IBOutlet weak var wishStore: UILabel!
+    @IBOutlet weak var getWishButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,16 @@ class WishDetailVC: ViewController, NVActivityIndicatorViewable {
         
         buttonSaveView.layer.cornerRadius = 5.0
         shareButtonView.layer.cornerRadius = 5.0
+        
+        getWishButton.layer.cornerRadius = 5
+        
+        let url = wish?.onlineShop ?? ""
+        
+        if !url.isEmpty {
+            getWishButton.isHidden = false
+        } else {
+            getWishButton.isHidden = true
+        }
         
     }
     
@@ -109,6 +120,12 @@ class WishDetailVC: ViewController, NVActivityIndicatorViewable {
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
+    }
+    
+    @IBAction func getWish(_ sender: Any) {
+        let stringUrl = wish?.onlineShop ?? ""
+        let url = URL(string: stringUrl)
+        UIApplication.shared.open(url!)
     }
     
     func setCategory(category: Int) {

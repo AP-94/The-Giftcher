@@ -467,7 +467,7 @@ class DataMapper {
     
     func getFriendWishesRequest(fake: String? = nil, userId: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/userId/\(String(describing: userId))"
+        var url = "/wishes/userId/\(String(describing: userId!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -528,10 +528,8 @@ class DataMapper {
             httpStatus, json, responseHeaders, error in
             
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let array = json.arrayValue.compactMap {
-                    return FriendsModel(jsonData: try? $0.rawData())
-                }
-                completion(true, array, nil)
+                let result = FriendsModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }
@@ -669,10 +667,8 @@ class DataMapper {
             httpStatus, json, responseHeaders, error in
             
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let array = json.arrayValue.compactMap {
-                    return ReservedWishesModel(jsonData: try? $0.rawData())
-                }
-                completion(true, array, nil)
+                let result = ReservedWishesModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }

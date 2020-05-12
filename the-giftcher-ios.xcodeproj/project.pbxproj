@@ -67,6 +67,7 @@
 		C6E1A0122459F6E000C864A9 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E1A0112459F6E000C864A9 /* DataMapper.swift */; };
 		C6E1A0162459F96900C864A9 /* InputLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E1A0152459F96900C864A9 /* InputLogin.swift */; };
 		C6E7E93F2465D77100EBA638 /* WishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E7E93E2465D77100EBA638 /* WishesCell.swift */; };
+		C6F67C342469AC0200BFC29E /* FriendsOfUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F67C332469AC0200BFC29E /* FriendsOfUserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +136,7 @@
 		C6E1A0112459F6E000C864A9 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		C6E1A0152459F96900C864A9 /* InputLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputLogin.swift; sourceTree = "<group>"; };
 		C6E7E93E2465D77100EBA638 /* WishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesCell.swift; sourceTree = "<group>"; };
+		C6F67C332469AC0200BFC29E /* FriendsOfUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsOfUserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				C6C08885244C68FE00CB0A7A /* SearchVC.swift */,
 				C6E7E93E2465D77100EBA638 /* WishesCell.swift */,
 				C6C08887244C69CB00CB0A7A /* FriendsVC.swift */,
+				C6F67C332469AC0200BFC29E /* FriendsOfUserCell.swift */,
 				C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */,
 				237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */,
 				237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */,
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6E1A0002459F07900C864A9 /* Session.swift in Sources */,
+				C6F67C342469AC0200BFC29E /* FriendsOfUserCell.swift in Sources */,
 				C6E1A0092459F29E00C864A9 /* String+Utils.swift in Sources */,
 				C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */,
 				C6E1A0022459F0B800C864A9 /* UserModel.swift in Sources */,

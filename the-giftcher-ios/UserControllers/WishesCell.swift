@@ -16,7 +16,6 @@ internal class WishesCell: UITableViewCell {
     
     static let identifier = "WishCellIdentifier"
     var delegate: WishesCellDelegate?
-    var selectable = false
     var wish: WishModel?{
         didSet { renderUI() }
     }
@@ -47,27 +46,5 @@ internal class WishesCell: UITableViewCell {
         }
     }
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        if selectable {
-            if highlighted {
-                self.alpha = 0.6
-            } else {
-                self.alpha = 1.0
-            }
-        }
-    }
-
 }
 
-extension UIView {
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if parentResponder is UIViewController {
-                return parentResponder as? UIViewController
-            }
-        }
-        return nil
-    }
-}
