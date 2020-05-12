@@ -21,6 +21,18 @@ class UserSelfWishesCell: UICollectionViewCell {
         didSet { renderUI() }
     }
     
+    var reservedWish: ReservedWishesModel?{
+        didSet { renderUI() }
+    }
+    
+    var reservedFriend: ReservedFriendModel?{
+        didSet { renderUI() }
+    }
+    
+    var finalReservedWish: WishModel?{
+        didSet { renderUI() }
+    }
+    
     @IBOutlet weak var cellContainer: UIView!
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishName: UILabel!

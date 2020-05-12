@@ -28,7 +28,9 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
     @IBOutlet weak var profileImageLabel: UILabel!
     
     var wishes: [WishModel?] = []
-    var reservedWishes: [WishModel?] = []
+    var reservedWishes: [ReservedWishesModel?] = []
+    var reservedWishes2: [ReservedFriendModel?] = []
+    var reservedWishes3: [WishModel?] = []
     var selectedCell: UICollectionViewCell?
     
     override func viewDidLoad() {
@@ -55,6 +57,20 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         setAvatar()
     }
     
+    func dataConvert() {
+//        for index in reservedWishes {
+//            if var friendArray = index?.friendArray {
+//                friendArray = reservedWishes2
+//                for index in friendArray {
+//                    if let friendReservedWishes = index?.friendReservedWishes {
+//                        reservedWishes3.append(contentsOf: friendReservedWishes)
+//                    }
+//                }
+//                }
+//            }
+//        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * CGFloat(itemsPerRow + 1)
@@ -75,7 +91,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         if wishSegment.selectedSegmentIndex == 0 {
             return wishes.count
         } else if wishSegment.selectedSegmentIndex == 1 {
-            return reservedWishes.count
+            return reservedWishes3.count
         } else {
             return count
         }
@@ -97,7 +113,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
             } else if wishSegment.selectedSegmentIndex == 1 {
                 cell.backgroundColor = UIColor.clear
                 cell.wish = nil
-                cell.wish = reservedWishes[indexPath.row]
+                cell.wish = reservedWishes3[indexPath.row]
                 cell.delegate = self
                 return cell
             }
@@ -180,7 +196,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.getReservedWishesRequest() {
             success, result, error in
-            if let result = result as? [WishModel] {
+            if let result = result as? [ReservedWishesModel] {
                 self.reservedWishes = result
                 self.userWishCollectionView.reloadData()
             }
