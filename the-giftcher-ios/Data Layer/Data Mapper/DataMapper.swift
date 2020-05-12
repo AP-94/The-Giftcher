@@ -467,7 +467,7 @@ class DataMapper {
     
     func getFriendWishesRequest(fake: String? = nil, userId: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/userId/\(String(describing: userId))"
+        var url = "/wishes/userId/\(String(describing: userId!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()

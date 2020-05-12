@@ -60,7 +60,6 @@ class FriendsOfUserCell: UITableViewCell {
         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
         if let date = dateFormatterGet.date(from: birthday) {
-            print(dateFormatterPrint.string(from: date))
             cleanBirthday = dateFormatterPrint.string(from: date)
         }
     }
