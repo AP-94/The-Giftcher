@@ -629,9 +629,9 @@ class DataMapper {
         }
     }
     
-    func deleteFriendRequest(fake: String? = nil, friendRequestId: Int?, completion: @escaping DataMapperCompletion) {
+    func deleteFriendRequest(fake: String? = nil, friendshipId: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/friends/\(String(describing: friendRequestId))"
+        var url = "/friends/\(String(describing: friendshipId!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()

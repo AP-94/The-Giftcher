@@ -47,6 +47,7 @@
 		C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF33245C90A10021E9DE /* InputRegister.swift */; };
 		C6A3EF36245CBCCF0021E9DE /* InputWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF35245CBCCF0021E9DE /* InputWish.swift */; };
 		C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF37245CBD190021E9DE /* WishModel.swift */; };
+		C6B7D63C246C56FB0046B726 /* FriendWishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B7D63B246C56FB0046B726 /* FriendWishCell.swift */; };
 		C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887B244C660500CB0A7A /* HomeVC.swift */; };
 		C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C0887D244C673F00CB0A7A /* BaseVC.swift */; };
 		C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C08881244C68A800CB0A7A /* ProfileVC.swift */; };
@@ -115,6 +116,7 @@
 		C6A3EF33245C90A10021E9DE /* InputRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRegister.swift; sourceTree = "<group>"; };
 		C6A3EF35245CBCCF0021E9DE /* InputWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWish.swift; sourceTree = "<group>"; };
 		C6A3EF37245CBD190021E9DE /* WishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishModel.swift; sourceTree = "<group>"; };
+		C6B7D63B246C56FB0046B726 /* FriendWishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWishCell.swift; sourceTree = "<group>"; };
 		C6C0887B244C660500CB0A7A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C6C0887D244C673F00CB0A7A /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		C6C08881244C68A800CB0A7A /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				C6F67C332469AC0200BFC29E /* FriendsOfUserCell.swift */,
 				C6DEBF3A245209B800F3F156 /* MyCollectionViewCell.swift */,
 				237BFC6B2453884700AC8F98 /* FriendDetailVC.swift */,
+				C6B7D63B246C56FB0046B726 /* FriendWishCell.swift */,
 				237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */,
 				C6E19FFB2459E3F300C864A9 /* WishDetailVC.swift */,
 				235FD037245AD62D00B5F7B2 /* SettingsVC.swift */,
@@ -479,6 +482,7 @@
 				C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */,
 				237BFC4C244915FF00AC8F98 /* ViewController.swift in Sources */,
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,
+				C6B7D63C246C56FB0046B726 /* FriendWishCell.swift in Sources */,
 				C6E19FFC2459E3F300C864A9 /* WishDetailVC.swift in Sources */,
 				C68B5AB4245DA057007865B4 /* UserFriendModel.swift in Sources */,
 				23DBF47B245F63E0003E1A11 /* ChangePasswordVC.swift in Sources */,
