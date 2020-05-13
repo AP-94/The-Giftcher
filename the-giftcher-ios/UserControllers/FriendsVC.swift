@@ -25,11 +25,13 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Amigos"
-        self.friendSearchBar.delegate = self
+        friendSearchBar.delegate = self
         friendSearchBar.searchTextField.clearButtonMode = .never
         navigationModifier()
         loadData()
         tableViewModifiers()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData(_:)), name: NSNotification.Name(rawValue: "aFriendWasEliminated"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -176,7 +178,5 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
     }
     
-    @IBAction func friendsearchSubmit(_ sender: UIButton) {
-    }
 }
 
