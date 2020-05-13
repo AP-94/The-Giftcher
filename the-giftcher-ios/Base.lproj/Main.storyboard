@@ -123,6 +123,9 @@
                                                     <segment title="REGALOS ASOCIADOS"/>
                                                 </segments>
                                                 <color key="selectedSegmentTintColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <action selector="wishChangeSegment:" destination="llb-NQ-xbT" eventType="valueChanged" id="l1u-3p-o8I"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

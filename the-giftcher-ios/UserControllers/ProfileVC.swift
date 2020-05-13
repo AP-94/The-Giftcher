@@ -40,6 +40,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         collectionViewModifiers()
         loadData()
         switchData()
+        dataConvert()
         
         userProfileImage.layer.cornerRadius = 90
         userProfileImage.layer.borderWidth = 8
@@ -57,19 +58,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         setAvatar()
     }
     
-    func dataConvert() {
-//        for index in reservedWishes {
-//            if var friendArray = index?.friendArray {
-//                friendArray = reservedWishes2
-//                for index in friendArray {
-//                    if let friendReservedWishes = index?.friendReservedWishes {
-//                        reservedWishes3.append(contentsOf: friendReservedWishes)
-//                    }
-//                }
-//                }
-//            }
-//        }
-    }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -87,12 +76,14 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = wishes.count
+        let count2 = reservedWishes3.count
         
-        if wishSegment.selectedSegmentIndex == 0 {
-            return wishes.count
-        } else if wishSegment.selectedSegmentIndex == 1 {
-            return reservedWishes3.count
-        } else {
+        switch wishSegment.selectedSegmentIndex {
+        case 0:
+            return count
+        case 1:
+            return count2
+        default:
             return count
         }
     }
@@ -196,12 +187,36 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.getReservedWishesRequest() {
             success, result, error in
-            if let result = result as? [ReservedWishesModel] {
-                self.reservedWishes = result
+            if let result = result as? [WishModel] {
+                self.reservedWishes3 = result
                 self.userWishCollectionView.reloadData()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             self.refreshControl.endRefreshing()
+        }
+    }
+    
+    func dataConvert() {
+        for index in reservedWishes {
+            if var friendArray = index?.friendArray {
+                friendArray = reservedWishes2
+                for index in friendArray {
+                    if let friendReservedWishes = index?.friendReservedWishes {
+                        reservedWishes3.append(contentsOf: friendReservedWishes)
+                    }
+                }
+                }
+            }
+        }
+    
+    @IBAction func wishChangeSegment(_ sender: UISegmentedControl) {
+        switch wishSegment.selectedSegmentIndex {
+        case 0:
+            loadData()
+        case 1:
+            switchData()
+        default:
+            loadData()
         }
     }
     
@@ -214,9 +229,11 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
             }
         }
+        
+        
+        
+        }
     }
-    
 
-    }
     
 
