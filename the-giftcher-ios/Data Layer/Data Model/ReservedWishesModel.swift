@@ -9,5 +9,5 @@
 import Foundation
 
 class ReservedWishesModel: Mappable {
-    var friendArray: [ReservedFriendModel?]
+    var reservedWishes: [ReservedFriendModel?]
 }
