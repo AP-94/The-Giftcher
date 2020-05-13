@@ -40,7 +40,6 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         collectionViewModifiers()
         loadData()
         switchData()
-        dataConvert()
         
         userProfileImage.layer.cornerRadius = 90
         userProfileImage.layer.borderWidth = 8
@@ -118,8 +117,14 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
     }
     
     @objc private func refreshData(_ sender: Any) {
-        loadData()
-        switchData()
+        switch wishSegment.selectedSegmentIndex {
+               case 0:
+                   loadData()
+               case 1:
+                   switchData()
+               default:
+                   loadData()
+               }
     }
     
     func callInfo(){
@@ -174,6 +179,7 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         dataMapper.getAllWishesOfUserRequest() {
             success, result, error in
             if let result = result as? [WishModel] {
+                self.wishes.removeAll()
                 self.wishes = result
                 self.userWishCollectionView.reloadData()
             }
@@ -187,27 +193,22 @@ class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDel
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.getReservedWishesRequest() {
             success, result, error in
-            if let result = result as? [WishModel] {
-                self.reservedWishes3 = result
+            if let result = result as? ReservedWishesModel {
+                self.reservedWishes.removeAll()
+                self.reservedWishes2.removeAll()
+                self.reservedWishes3.removeAll()
+                
+                self.reservedWishes2 = result.reservedWishes
+                for friend in self.reservedWishes2 {
+                    self.reservedWishes3.append(contentsOf: (friend?.friendReservedWishes)!)
+                }
+                
                 self.userWishCollectionView.reloadData()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             self.refreshControl.endRefreshing()
         }
     }
-    
-    func dataConvert() {
-        for index in reservedWishes {
-            if var friendArray = index?.friendArray {
-                friendArray = reservedWishes2
-                for index in friendArray {
-                    if let friendReservedWishes = index?.friendReservedWishes {
-                        reservedWishes3.append(contentsOf: friendReservedWishes)
-                    }
-                }
-                }
-            }
-        }
     
     @IBAction func wishChangeSegment(_ sender: UISegmentedControl) {
         switch wishSegment.selectedSegmentIndex {
