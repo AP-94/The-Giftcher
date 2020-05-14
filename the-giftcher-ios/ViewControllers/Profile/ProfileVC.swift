@@ -56,6 +56,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     override func viewWillAppear(_ animated: Bool) {
         callInfo()
         setAvatar()
+        loadData()
     }
     
     
@@ -78,22 +79,20 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         let count = wishes.count
         let count2 = reservedWishes3.count
         
-        if count == 0 {
-            noWishLabel.isHidden = false
-        } else {
-            noWishLabel.isHidden = true
-        }
-        
-        if count2 == 0 {
-            noWishLabel.isHidden = false
-        } else {
-            noWishLabel.isHidden = true
-        }
-        
         switch wishSegment.selectedSegmentIndex {
         case 0:
+            if count == 0 && wishes.isEmpty {
+                noWishLabel.isHidden = false
+            } else {
+                noWishLabel.isHidden = true
+            }
             return count
         case 1:
+            if count2 == 0 && reservedWishes3.isEmpty {
+                noWishLabel.isHidden = false
+            } else {
+                noWishLabel.isHidden = true
+            }
             return count2
         default:
             return count
@@ -106,6 +105,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = userWishCollectionView.dequeueReusableCell(withReuseIdentifier: "MyWishes", for: indexPath) as? UserSelfWishesCell {
+            
             
             if !wishes.isEmpty || !reservedWishes3.isEmpty {
                 if wishSegment.selectedSegmentIndex == 0 {
