@@ -75,7 +75,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMZ-G1-85x">
-                                                <rect key="frame" x="124" y="102" width="166" height="125"/>
+                                                <rect key="frame" x="124" y="185" width="166" height="125"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="125" id="AKT-8u-eCh"/>
                                                     <constraint firstAttribute="width" constant="166" id="Mwp-FL-9QX"/>
@@ -190,6 +190,7 @@
                                                     <outlet property="cellContainer" destination="bB9-fd-6G5" id="HYR-rM-fNQ"/>
                                                     <outlet property="wishImage" destination="vWI-ll-3iI" id="5Ya-P1-yeE"/>
                                                     <outlet property="wishName" destination="oe6-wZ-zr7" id="BxZ-EN-Iww"/>
+                                                    <segue destination="F7D-wI-qnJ" kind="show" identifier="WishDetailSegue" id="DEk-8I-ajV"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -197,12 +198,24 @@
                                             <outlet property="dataSource" destination="llb-NQ-xbT" id="vax-Pg-Vwu"/>
                                         </connections>
                                     </collectionView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tienes deseos aun :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nW-Uc-C3r">
+                                        <rect key="frame" x="8" y="550.66666666666663" width="398" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="398" id="TNJ-Sp-1Ee"/>
+                                            <constraint firstAttribute="height" constant="37" id="w7o-Ek-8mY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4KP-mQ-Xwx" secondAttribute="bottom" constant="448" id="0Mf-9X-ys6"/>
+                                    <constraint firstItem="8nW-Uc-C3r" firstAttribute="top" secondItem="Pvk-cx-Fdq" secondAttribute="bottom" constant="140.66999999999999" id="7kV-rb-cWI"/>
                                     <constraint firstItem="ywd-HH-HYy" firstAttribute="leading" secondItem="itk-xN-Ga1" secondAttribute="leading" id="9Ym-ut-y05"/>
                                     <constraint firstItem="ywd-HH-HYy" firstAttribute="top" secondItem="Pvk-cx-Fdq" secondAttribute="bottom" id="AZ6-Ir-5vy"/>
                                     <constraint firstAttribute="height" constant="808" id="Kef-XD-ej2"/>
+                                    <constraint firstAttribute="trailing" secondItem="8nW-Uc-C3r" secondAttribute="trailing" constant="8" id="NSW-vT-kEV"/>
                                     <constraint firstItem="Pvk-cx-Fdq" firstAttribute="top" secondItem="itk-xN-Ga1" secondAttribute="top" constant="358" id="QA3-6v-6Ai"/>
                                     <constraint firstAttribute="width" constant="414" id="Tdt-RJ-6ZQ"/>
                                     <constraint firstAttribute="bottom" secondItem="ywd-HH-HYy" secondAttribute="bottom" id="UP8-2w-X9e"/>
@@ -215,6 +228,7 @@
                                     <constraint firstItem="4KP-mQ-Xwx" firstAttribute="top" secondItem="itk-xN-Ga1" secondAttribute="top" id="kSC-k1-lBm"/>
                                     <constraint firstAttribute="trailing" secondItem="ywd-HH-HYy" secondAttribute="trailing" id="nKj-m0-qqK"/>
                                     <constraint firstItem="4KP-mQ-Xwx" firstAttribute="leading" secondItem="itk-xN-Ga1" secondAttribute="leading" id="wBC-W2-hin"/>
+                                    <constraint firstItem="8nW-Uc-C3r" firstAttribute="leading" secondItem="itk-xN-Ga1" secondAttribute="leading" constant="8" id="xSx-8h-10k"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -230,6 +244,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Perfil" image="005-cerebro" landscapeImage="005-cerebro" largeContentSizeImage="005-cerebro" selectedImage="005-cerebro" id="Zka-Gp-ECh"/>
                     <connections>
+                        <outlet property="noWishLabel" destination="8nW-Uc-C3r" id="HUu-Il-Rdx"/>
                         <outlet property="profileImageLabel" destination="yMZ-G1-85x" id="dWu-Y6-KlX"/>
                         <outlet property="userBirthdayLabel" destination="Day-DZ-ibJ" id="vIM-bi-dDi"/>
                         <outlet property="userNameLabel" destination="ESo-8T-Uc7" id="MJN-Ht-Spk"/>
@@ -240,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gR1-RP-eRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="1283"/>
+            <point key="canvasLocation" x="2.8985507246376816" y="1282.3660714285713"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="7qD-yX-Cnz">
@@ -3648,7 +3663,11 @@
         <segue reference="K9a-EC-kfN"/>
         <segue reference="IWC-L8-Ukj"/>
         <segue reference="0UQ-K5-ByD"/>
+<<<<<<< HEAD
         <segue reference="cjL-WS-uAF"/>
+=======
+        <segue reference="DEk-8I-ajV"/>
+>>>>>>> origin/development
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>

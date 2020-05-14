@@ -26,6 +26,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     @IBOutlet weak var wishSegment: UISegmentedControl!
     @IBOutlet weak var userWishCollectionView: UICollectionView!
     @IBOutlet weak var profileImageLabel: UILabel!
+    @IBOutlet weak var noWishLabel: UILabel!
     
     var wishes: [WishModel?] = []
     var reservedWishes: [ReservedWishesModel?] = []
@@ -77,6 +78,18 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         let count = wishes.count
         let count2 = reservedWishes3.count
         
+        if count == 0 {
+            noWishLabel.isHidden = false
+        } else {
+            noWishLabel.isHidden = true
+        }
+        
+        if count2 == 0 {
+            noWishLabel.isHidden = false
+        } else {
+            noWishLabel.isHidden = true
+        }
+        
         switch wishSegment.selectedSegmentIndex {
         case 0:
             return count
@@ -94,18 +107,21 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = userWishCollectionView.dequeueReusableCell(withReuseIdentifier: "MyWishes", for: indexPath) as? UserSelfWishesCell {
             
-            if wishSegment.selectedSegmentIndex == 0 {
-                cell.backgroundColor = UIColor.clear
-                cell.wish = nil
-                cell.wish = wishes[indexPath.row]
-                cell.delegate = self
-                return cell
-            } else if wishSegment.selectedSegmentIndex == 1 {
-                cell.backgroundColor = UIColor.clear
-                cell.wish = nil
-                cell.wish = reservedWishes3[indexPath.row]
-                cell.delegate = self
-                return cell
+            if !wishes.isEmpty || !reservedWishes3.isEmpty {
+                if wishSegment.selectedSegmentIndex == 0 {
+                    cell.backgroundColor = UIColor.clear
+                    cell.wish = nil
+                    cell.wish = wishes[indexPath.row]
+                    cell.delegate = self
+                    return cell
+                } else if wishSegment.selectedSegmentIndex == 1 {
+                    cell.backgroundColor = UIColor.clear
+                    cell.wish = nil
+                    cell.wish = reservedWishes3[indexPath.row]
+                    cell.delegate = self
+                    return cell
+                }
+                
             }
             
         }
@@ -225,10 +241,25 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         if segue.identifier == "WishDetailSegue", let cell = sender as? UserSelfWishesCell {
             selectedCell = cell
             
-            if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
-                wishDetailVC.wish = wishes[indexPath.row]
-                print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+            switch wishSegment.selectedSegmentIndex {
+            case 0:
+                if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
+                    wishDetailVC.wish = wishes[indexPath.row]
+                    print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                }
+            case 1:
+                if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
+                    wishDetailVC.wish = reservedWishes3[indexPath.row]
+                    print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                }
+            default:
+                if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
+                    wishDetailVC.wish = wishes[indexPath.row]
+                    print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                }
             }
+            
+            
         }
         
         
