@@ -1,5 +1,5 @@
 //
-//  FriendsVC.swift
+//  SearchVC.swift
 //  the-giftcher-ios
 //
 //  Created by Alessandro Pace on 19/04/2020.
@@ -8,34 +8,34 @@
 
 import UIKit
 import NVActivityIndicatorView
-import NotificationBannerSwift
 
-class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, FriendsOfUserCellDelegate, NVActivityIndicatorViewable {
+class SearchVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, WishesCellDelegate, NVActivityIndicatorViewable {
     
-    @IBOutlet weak var friendTableView: UITableView!
-    @IBOutlet weak var friendSearchBar: UISearchBar!
-    @IBOutlet weak var noFriendsLabel: UILabel!
     let dataMapper = DataMapper()
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     private let refreshControl = UIRefreshControl()
-    var friends: [UserFriendModel?] = []
-    var filteredData = [UserFriendModel?]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchEngine: UISearchBar!
+    @IBOutlet weak var noWishesLabel: UILabel!
+    var wishes: [WishModel?] = []
+    var filteredData = [WishModel?]()
     var selectedCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = "Amigos"
-        friendSearchBar.delegate = self
-        friendSearchBar.searchTextField.clearButtonMode = .never
+        self.tabBarController?.title = "Buscar"
+        self.searchEngine.delegate = self
+        searchEngine.searchTextField.clearButtonMode = .never
         navigationModifier()
         loadData()
         tableViewModifiers()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshData(_:)), name: NSNotification.Name(rawValue: "aFriendWasEliminated"), object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tabBarController?.title = "Amigos"
+        self.tabBarController?.title = "Buscar"
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
@@ -44,18 +44,18 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
         var text = searchText.lowercased()
         text = text.folding(options: .diacriticInsensitive, locale: NSLocale.current)
         
-        for index in friends{
-            if var name = index?.name?.lowercased(), var userName = index?.username?.lowercased(), var lastName = index?.lastName?.lowercased() {
+        for index in wishes{
+            if var name = index?.name?.lowercased(), var description = index?.description?.lowercased(), var shop = index?.shop?.lowercased() {
                 name = name.folding(options: .diacriticInsensitive, locale: NSLocale.current)
-                userName = userName.folding(options: .diacriticInsensitive, locale: NSLocale.current)
-                lastName = lastName.folding(options: .diacriticInsensitive, locale: NSLocale.current)
-                if name.lowercased().contains(text.lowercased()) || userName.lowercased().contains(text.lowercased()) || lastName.lowercased().contains(text.lowercased()) {
+                description = description.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+                shop = shop.folding(options: .diacriticInsensitive, locale: NSLocale.current)
+                if name.lowercased().contains(text.lowercased()) || description.lowercased().contains(text.lowercased()) || shop.lowercased().contains(text.lowercased()) {
                     filteredData.append(index)
                 }
             }
         }
         
-        friendTableView.reloadData()
+        tableView.reloadData()
     }
     
     @objc private func refreshData(_ sender: Any) {
@@ -63,48 +63,45 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        friendSearchBar.endEditing(true)
+        searchEngine.endEditing(true)
         filteredData.removeAll()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        friendSearchBar.endEditing(true)
+        searchEngine.endEditing(true)
         filteredData.removeAll()
-        friendSearchBar.searchTextField.text = ""
+        searchEngine.searchTextField.text = ""
         loadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)  {
-        friendSearchBar.resignFirstResponder()
-        if friendSearchBar.text!.isEmpty {
+        searchEngine.resignFirstResponder()
+        if searchEngine.text!.isEmpty {
             loadData()
         } else {
-            filterContentForSearchText(friendSearchBar.text!)
+            filterContentForSearchText(searchEngine.text!)
             
         }
         
     }
     
     func tableViewModifiers() {
-        friendTableView.separatorStyle = .none
-        friendTableView.backgroundColor = UIColor.clear
-        friendTableView.refreshControl = refreshControl
-        friendTableView.addSubview(refreshControl)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        tableView.refreshControl = refreshControl
+        tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     func loadData() {
-        print("Do get friends of user request")
+        print("Do Get All wishes request")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        dataMapper.getAllFriendsOfUserRequest() {
+        dataMapper.getAllWishesRequest() {
             success, result, error in
-            if let result = result as? FriendsModel {
-                self.friends.removeAll()
-                for friend in result.friends {
-                    self.friends.append(friend)
-                }
-
-                self.friendTableView.reloadData()
+            if let result = result as? [WishModel] {
+                self.wishes.removeAll()
+                self.wishes = result
+                self.tableView.reloadData()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             self.refreshControl.endRefreshing()
@@ -114,20 +111,19 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     // MARK: TableView Delegates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = friends.count
+        let count = wishes.count
         
         if count == 0 {
-            noFriendsLabel.isHidden = false
+            noWishesLabel.isHidden = false
         } else {
-            noFriendsLabel.isHidden = true
+            noWishesLabel.isHidden = true
         }
         
-        if !friendSearchBar.searchTextField.text!.isEmpty {
+        if !searchEngine.searchTextField.text!.isEmpty {
             if filteredData.isEmpty {
-                noFriendsLabel.isHidden = false
-                noFriendsLabel.text = "Ningún resultado"
+                noWishesLabel.isHidden = false
             } else {
-                noFriendsLabel.isHidden = true
+                noWishesLabel.isHidden = true
             }
             return filteredData.count
         } else {
@@ -136,20 +132,20 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = friendTableView.dequeueReusableCell(withIdentifier: FriendsOfUserCell.identifier, for: indexPath) as? FriendsOfUserCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: WishesCell.identifier, for: indexPath) as? WishesCell {
             
-            if !friendSearchBar.text!.isEmpty {
-                cell.backgroundColor = UIColor.clear
-                cell.friend = nil
-                cell.friend = filteredData[indexPath.row]
-                cell.delegate = self
-                cell.selectionStyle = .none
-                return cell
+            if !searchEngine.text!.isEmpty {
+                    cell.backgroundColor = UIColor.clear
+                    cell.wish = nil
+                    cell.wish = filteredData[indexPath.row]
+                    cell.delegate = self
+                    cell.selectionStyle = .none
+                    return cell
             }
             
             cell.backgroundColor = UIColor.clear
-            cell.friend = nil
-            cell.friend = friends[indexPath.row]
+            cell.wish = nil
+            cell.wish = wishes[indexPath.row]
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
@@ -163,11 +159,12 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "friendDetail", let cell = sender as? FriendsOfUserCell {
+        if segue.identifier == "WishDetailSegue", let cell = sender as? WishesCell {
             selectedCell = cell
-            if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = friendTableView.indexPath(for: cell) {
-                friendDetailVC.friend = friends[indexPath.row]
-                print("FRIEND -> \(String(describing: friendDetailVC.friend?.name))")
+            
+            if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = tableView.indexPath(for: cell) {
+                wishDetailVC.wish = wishes[indexPath.row]
+                print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
             }
         }
     }
@@ -175,8 +172,7 @@ class FriendsVC: ViewController, UISearchBarDelegate, UITableViewDelegate, UITab
     func navigationModifier() {
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        //self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
     }
-    
 }
-

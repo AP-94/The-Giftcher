@@ -12,7 +12,7 @@ private let reuseIdentifier = "MyWishes"
 private let itemsPerRow = 3
 private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
 
-class ProfileVC: ViewController, UserSelfWishesCellDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable{
+class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable{
     
     
     let dataMapper = DataMapper()

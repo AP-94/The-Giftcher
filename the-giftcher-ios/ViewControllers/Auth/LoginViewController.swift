@@ -77,7 +77,12 @@ class LoginViewController: BaseVC, NVActivityIndicatorViewable {
                 
                 if Session.isValid() {
                     NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
-                    self.performSegue(withIdentifier: "HomeView", sender: nil)
+                    if currentSession.userCategories.isEmpty {
+                        self.performSegue(withIdentifier: "TutorialSegue", sender: nil)
+                    } else {
+                        self.performSegue(withIdentifier: "HomeView", sender: nil)
+                    }
+                    
                 }
             }
             

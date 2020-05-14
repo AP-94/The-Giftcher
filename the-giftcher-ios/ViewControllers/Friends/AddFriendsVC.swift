@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AddFriendsVC: ViewController {
+class AddFriendsVC: UIViewController {
     
-
-    @IBOutlet weak var findNewFriendsSearchBar: UISearchBar!
-    @IBOutlet weak var instructionLabel: UILabel!
-    @IBOutlet weak var foundFriendsTableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchEngine: UISearchBar!
+    @IBOutlet weak var noUsersFoundLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

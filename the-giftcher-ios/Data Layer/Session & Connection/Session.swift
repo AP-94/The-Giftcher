@@ -41,8 +41,11 @@ class Session: Codable {
     }
     
     static func clean(){
+        let saveUserCategories = current.userCategories
         UserDefaults.standard.removeObject(forKey: kArchiveKey)
         current = Session()
+        current.userCategories = saveUserCategories
+        
     }
     
     static func save() {

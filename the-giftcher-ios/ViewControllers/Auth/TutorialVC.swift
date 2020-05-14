@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TutorialVC: BaseVC {
+class TutorialVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    func setModifiers() {
     }
     
 }
