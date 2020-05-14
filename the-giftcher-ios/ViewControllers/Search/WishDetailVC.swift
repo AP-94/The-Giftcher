@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import NotificationBannerSwift
 
-class WishDetailVC: ViewController, NVActivityIndicatorViewable {
+class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     
     var wish: WishModel?
     var categoryString: String?

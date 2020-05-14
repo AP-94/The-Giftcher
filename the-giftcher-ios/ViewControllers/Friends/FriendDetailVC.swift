@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import NotificationBannerSwift
 
-class FriendDetailVC: ViewController, NVActivityIndicatorViewable, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     var friend: UserFriendModel?
