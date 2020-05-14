@@ -166,6 +166,7 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
         if segue.identifier == "friendDetail", let cell = sender as? FriendsOfUserCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = friendTableView.indexPath(for: cell) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FriendSearch"), object: nil)
                 friendDetailVC.friend = friends[indexPath.row]
                 print("FRIEND -> \(String(describing: friendDetailVC.friend?.name))")
             }
