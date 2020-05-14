@@ -30,6 +30,7 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     @IBOutlet weak var wishBanner: UILabel!
     @IBOutlet weak var friendWishesCollectionView: UICollectionView!
     @IBOutlet weak var wishesCount: UILabel!
+    @IBOutlet weak var addFriend: UIButton!
     
     
     override func viewDidLoad() {
@@ -70,6 +71,10 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         userProfileImage.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(onRightButtonTap))
+        
+        addFriend.layer.cornerRadius = 10
+        addFriend.layer.borderWidth = 1
+        addFriend.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @objc func onRightButtonTap() {
@@ -182,4 +187,18 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         }
     }
     
+    @IBAction func addFriendRequest(_ sender: Any) {
+        print("Do Add friend request")
+        let inputFriendRequest = InputFriendRequest(friendRequestId: friend?.friendId!)
+        dataMapper.friendPostRequest(inputFriendRequest: inputFriendRequest) {
+            success, result, error in
+            if let result = result as? SingletonModel {
+                print(result.message!)
+                let banner = NotificationBanner(title: "Enviada", subtitle: "Tu petición de amistad fue enviada", style: .info)
+                banner.show()
+                self.addFriend.isHidden = true
+            }
+            
+        }
+    }
 }

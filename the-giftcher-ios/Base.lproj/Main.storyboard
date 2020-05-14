@@ -2956,7 +2956,7 @@
                                     <constraint firstAttribute="width" constant="374" id="o2w-Te-Brg"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user_friend" rowHeight="167" id="Eid-pS-IzG" customClass="FriendsOfUserCell" customModule="the_giftcher_ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user_friend" rowHeight="167" id="Eid-pS-IzG" customClass="AddFriendsTBCell" customModule="the_giftcher_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="167"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eid-pS-IzG" id="r0L-tJ-mXT">
@@ -3028,12 +3028,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="friendBirthday" destination="KIU-YT-0Pk" id="Tjd-BV-A6X"/>
+                                            <outlet property="containerView" destination="xcG-4r-ZyD" id="XTA-Uf-clQ"/>
+                                            <outlet property="friendBirthday" destination="KIU-YT-0Pk" id="6uv-Ab-R9Y"/>
+                                            <outlet property="friendFullName" destination="MXz-je-GPi" id="Jz6-PT-FaY"/>
+                                            <outlet property="friendImage" destination="T3X-Cx-3Tj" id="aja-ft-G6F"/>
                                             <outlet property="friendName" destination="MXz-je-GPi" id="9Cp-b7-yKL"/>
+                                            <outlet property="friendUsername" destination="ajK-ee-1KL" id="0dZ-sb-JtD"/>
                                             <segue destination="2ul-Da-MFC" kind="show" identifier="friendDetail" id="K9a-EC-kfN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RQZ-gy-9QJ" id="F4T-Zl-RK0"/>
+                                    <outlet property="delegate" destination="RQZ-gy-9QJ" id="CM9-yh-ZIk"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Pulsa para buscar usuarios" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5D-rj-K88">
                                 <rect key="frame" x="20" y="0.0" width="374" height="56"/>
@@ -3078,10 +3086,10 @@
             </objects>
             <point key="canvasLocation" x="2209" y="-194"/>
         </scene>
-        <!--View Controller-->
+        <!--Friend RequestVC-->
         <scene sceneID="MZC-nC-ucX">
             <objects>
-                <viewController id="lg4-Wm-fUg" sceneMemberID="viewController">
+                <viewController id="lg4-Wm-fUg" customClass="FriendRequestVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZL3-YX-UMs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3090,14 +3098,22 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="167" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oyC-xg-Olk">
-                                <rect key="frame" x="20" y="153" width="374" height="743"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peticiones de amistad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK2-0x-ZcQ">
+                                <rect key="frame" x="20" y="44" width="374" height="30"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="167" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oyC-xg-Olk">
+                                <rect key="frame" x="20" y="95" width="374" height="801"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="801" id="NmM-PP-nq3"/>
                                     <constraint firstAttribute="width" constant="374" id="SX7-fd-c4a"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user_friend" rowHeight="167" id="tGR-bY-DH8" customClass="FriendCell" customModule="the_giftcher_ios">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="user_friend" rowHeight="167" id="tGR-bY-DH8" customClass="FriendRequestTBCell" customModule="the_giftcher_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="167"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tGR-bY-DH8" id="aPd-2W-hMf">
@@ -3169,34 +3185,45 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="friendBirthday" destination="wmQ-Zu-U8P" id="f6v-aK-GZZ"/>
+                                            <outlet property="containerView" destination="9AX-td-PFg" id="BXk-Rx-3cJ"/>
+                                            <outlet property="friendBirthday" destination="wmQ-Zu-U8P" id="AHW-XA-fKx"/>
+                                            <outlet property="friendFullname" destination="bfL-d8-NAO" id="25Z-YF-BRI"/>
+                                            <outlet property="friendImage" destination="bBn-4z-DFX" id="77R-RW-gmX"/>
                                             <outlet property="friendName" destination="bfL-d8-NAO" id="2UI-Ur-ELd"/>
+                                            <outlet property="friendUsername" destination="bfL-d8-NAO" id="lvG-rl-PlT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lg4-Wm-fUg" id="hK7-Iv-fcN"/>
+                                    <outlet property="delegate" destination="lg4-Wm-fUg" id="j8h-0H-hAh"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Peticiones de amistad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK2-0x-ZcQ">
-                                <rect key="frame" x="20" y="106" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Oar-xu-NEb" firstAttribute="trailing" secondItem="UK2-0x-ZcQ" secondAttribute="trailing" constant="20" id="302-xT-BYv"/>
+                            <constraint firstItem="oyC-xg-Olk" firstAttribute="bottom" secondItem="HSc-qR-E2l" secondAttribute="bottom" id="5yF-ys-Htc"/>
                             <constraint firstAttribute="bottom" secondItem="HSc-qR-E2l" secondAttribute="bottom" id="8LV-Q8-qfs"/>
                             <constraint firstItem="HSc-qR-E2l" firstAttribute="top" secondItem="Oar-xu-NEb" secondAttribute="top" id="Kz7-4B-f7q"/>
+                            <constraint firstItem="UK2-0x-ZcQ" firstAttribute="leading" secondItem="Oar-xu-NEb" secondAttribute="leading" constant="20" id="Q1o-9z-Quu"/>
+                            <constraint firstItem="oyC-xg-Olk" firstAttribute="leading" secondItem="Oar-xu-NEb" secondAttribute="leading" constant="20" id="cGm-kL-qSe"/>
+                            <constraint firstItem="UK2-0x-ZcQ" firstAttribute="top" secondItem="Oar-xu-NEb" secondAttribute="top" id="dpm-IR-3pT"/>
                             <constraint firstAttribute="trailing" secondItem="HSc-qR-E2l" secondAttribute="trailing" id="iK9-Al-6J5"/>
                             <constraint firstItem="HSc-qR-E2l" firstAttribute="leading" secondItem="Oar-xu-NEb" secondAttribute="leading" id="jO5-hW-mWo"/>
+                            <constraint firstItem="Oar-xu-NEb" firstAttribute="trailing" secondItem="oyC-xg-Olk" secondAttribute="trailing" constant="20" id="jSS-3J-qVp"/>
+                            <constraint firstItem="oyC-xg-Olk" firstAttribute="top" secondItem="UK2-0x-ZcQ" secondAttribute="bottom" constant="21" id="z6S-1m-HMG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oar-xu-NEb"/>
                     </view>
+                    <connections>
+                        <outlet property="bannerLabel" destination="UK2-0x-ZcQ" id="Yml-kE-SRb"/>
+                        <outlet property="tableView" destination="oyC-xg-Olk" id="0iA-W6-FRJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZwI-fa-bkA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3251" y="-194"/>
+            <point key="canvasLocation" x="3186.9565217391305" y="-194.19642857142856"/>
         </scene>
         <!--Friend DetailVC-->
         <scene sceneID="uA3-nn-IOk">
@@ -3268,6 +3295,20 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpy-tk-Hpw">
+                                                <rect key="frame" x="312" y="10" width="88" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="4Pl-AM-Dec"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title=" Agregar" image="person.badge.plus.fill" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="thin"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addFriendRequest:" destination="2ul-Da-MFC" eventType="touchUpInside" id="zx8-Fl-T1a"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -3352,11 +3393,13 @@
                                     <constraint firstItem="Mem-TV-cUC" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="23" id="93w-Xy-jhe"/>
                                     <constraint firstAttribute="height" constant="808" id="AKG-Pz-tcx"/>
                                     <constraint firstItem="Iuz-jF-xsv" firstAttribute="width" secondItem="SnC-3n-vNn" secondAttribute="width" id="BMK-dz-rFK"/>
+                                    <constraint firstItem="Dpy-tk-Hpw" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="312" id="EMG-q2-zip"/>
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" id="FPj-zS-fdm"/>
                                     <constraint firstItem="Iuz-jF-xsv" firstAttribute="top" secondItem="aSg-JD-LiW" secondAttribute="bottom" constant="18" id="NmD-a9-rPB"/>
                                     <constraint firstAttribute="trailing" secondItem="Iuz-jF-xsv" secondAttribute="trailing" id="Ou7-Vi-1ju"/>
                                     <constraint firstAttribute="trailing" secondItem="e81-hb-sGf" secondAttribute="trailing" constant="95" id="PF6-Yy-7ba"/>
                                     <constraint firstAttribute="bottom" secondItem="Cc4-ug-Iyi" secondAttribute="bottom" constant="448" id="ZY8-dq-kOo"/>
+                                    <constraint firstItem="Dpy-tk-Hpw" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" constant="10" id="Zj1-OC-YYo"/>
                                     <constraint firstItem="rhR-Yx-qKF" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="8" id="ZsK-eA-H8j"/>
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" id="cTA-kM-thl"/>
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" id="fIl-HV-0MB"/>
@@ -3368,6 +3411,7 @@
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" id="otb-L9-ycq"/>
                                     <constraint firstAttribute="bottom" secondItem="Cc4-ug-Iyi" secondAttribute="bottom" constant="448" id="p1A-Ur-628"/>
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="width" secondItem="SnC-3n-vNn" secondAttribute="width" id="pLH-et-LtH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dpy-tk-Hpw" secondAttribute="trailing" constant="14" id="ri7-JW-d7K"/>
                                     <constraint firstItem="Iuz-jF-xsv" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" id="sWP-Nc-ExX"/>
                                     <constraint firstItem="gXI-LE-mtK" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="270" id="tod-64-xb3"/>
                                 </constraints>
@@ -3386,6 +3430,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bLg-Pe-Qqa"/>
                     <connections>
+                        <outlet property="addFriend" destination="Dpy-tk-Hpw" id="Q3P-6U-Ff7"/>
                         <outlet property="friendBirthday" destination="lnp-Os-1iP" id="Q56-KK-ilM"/>
                         <outlet property="friendName" destination="rhR-Yx-qKF" id="E0Y-TP-SvW"/>
                         <outlet property="friendWishesCollectionView" destination="Iuz-jF-xsv" id="BoV-Y8-tfG"/>
@@ -3396,7 +3441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2c-ll-94Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364" y="-1060"/>
+            <point key="canvasLocation" x="2362.3188405797105" y="-1060.0446428571429"/>
         </scene>
         <!--HelpVC-->
         <scene sceneID="XFN-FA-O4A">
@@ -3603,7 +3648,7 @@
         <segue reference="K9a-EC-kfN"/>
         <segue reference="IWC-L8-Ukj"/>
         <segue reference="0UQ-K5-ByD"/>
-        <segue reference="ZQ6-dV-he2"/>
+        <segue reference="cjL-WS-uAF"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>
@@ -3625,6 +3670,7 @@
         <image name="icono_blanco24px" width="24" height="24"/>
         <image name="interfaz" width="512" height="512"/>
         <image name="logo tg white mode" width="818" height="654"/>
+        <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="placeholder" width="1920" height="1280"/>
         <image name="redes-sociales" width="512" height="512"/>
         <image name="teclado" width="466" height="418"/>

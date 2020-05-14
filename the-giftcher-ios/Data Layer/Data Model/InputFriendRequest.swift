@@ -15,6 +15,6 @@ class InputFriendRequest: Mappable {
     }
     
     var params: [String: Any] {
-        return ["friendRequestId": friendRequestId]
+        return ["friendRequestId": friendRequestId!]
     }
 }

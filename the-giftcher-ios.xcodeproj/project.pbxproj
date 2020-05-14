@@ -29,6 +29,8 @@
 		55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */; };
 		C60036C22463323B00C86D4C /* ImageView+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60036C12463323B00C86D4C /* ImageView+Url.swift */; };
 		C61603FA246DCAD40005728C /* AddFriendsTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61603F9246DCAD40005728C /* AddFriendsTBCell.swift */; };
+		C6160402246DD1590005728C /* FriendRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6160401246DD1590005728C /* FriendRequestVC.swift */; };
+		C6160404246DD18F0005728C /* FriendRequestTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6160403246DD18F0005728C /* FriendRequestTBCell.swift */; };
 		C630B3622461D2380054D5D4 /* ReservedWishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3612461D2380054D5D4 /* ReservedWishesModel.swift */; };
 		C630B3642461D3110054D5D4 /* ReservedFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */; };
 		C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3652461D47F0054D5D4 /* InputReservedWish.swift */; };
@@ -97,6 +99,8 @@
 		BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60036C12463323B00C86D4C /* ImageView+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Url.swift"; sourceTree = "<group>"; };
 		C61603F9246DCAD40005728C /* AddFriendsTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsTBCell.swift; sourceTree = "<group>"; };
+		C6160401246DD1590005728C /* FriendRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestVC.swift; sourceTree = "<group>"; };
+		C6160403246DD18F0005728C /* FriendRequestTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTBCell.swift; sourceTree = "<group>"; };
 		C630B3612461D2380054D5D4 /* ReservedWishesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedWishesModel.swift; sourceTree = "<group>"; };
 		C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedFriendModel.swift; sourceTree = "<group>"; };
 		C630B3652461D47F0054D5D4 /* InputReservedWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReservedWish.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				C6B7D63B246C56FB0046B726 /* FriendWishCell.swift */,
 				237BFC6F24538B4800AC8F98 /* AddFriendsVC.swift */,
 				C61603F9246DCAD40005728C /* AddFriendsTBCell.swift */,
+				C6160401246DD1590005728C /* FriendRequestVC.swift */,
+				C6160403246DD18F0005728C /* FriendRequestTBCell.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -498,6 +504,7 @@
 				C6C08888244C69CB00CB0A7A /* FriendsVC.swift in Sources */,
 				C630B3642461D3110054D5D4 /* ReservedFriendModel.swift in Sources */,
 				235FD042245C920B00B5F7B2 /* ContactFormVC.swift in Sources */,
+				C6160402246DD1590005728C /* FriendRequestVC.swift in Sources */,
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
 				C630B3622461D2380054D5D4 /* ReservedWishesModel.swift in Sources */,
 				C6C7383324646CD0004B02D2 /* TextField+Utils.swift in Sources */,
@@ -521,6 +528,7 @@
 				C60036C22463323B00C86D4C /* ImageView+Url.swift in Sources */,
 				235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */,
 				C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */,
+				C6160404246DD18F0005728C /* FriendRequestTBCell.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */,
 				C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */,
