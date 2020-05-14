@@ -40,6 +40,8 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         fillInfoOfFriend()
         collectionViewModifiers()
         loadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(areFriends(_:)), name: NSNotification.Name(rawValue: "FriendSearch"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +127,11 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     @objc private func refreshData(_ sender: Any) {
         loadData()
     }
+    
+    @objc private func areFriends(_ sender: Any) {
+        print("ENTERED IN AREFRIENDS FUNCTION")
+        addFriend.isHidden = true
+       }
     
     func showConfirm(completion: @escaping () -> Void) {
         let message = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

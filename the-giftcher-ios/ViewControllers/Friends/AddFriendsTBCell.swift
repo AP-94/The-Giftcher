@@ -15,7 +15,7 @@ class AddFriendsTBCell: UITableViewCell {
     
     var delegate: AddFriendsTBCellDelegate?
     var cleanBirthday: String?
-    var friend: UserFriendModel?{
+    var user: UserModel?{
         didSet { renderUI() }
     }
     
@@ -33,21 +33,21 @@ class AddFriendsTBCell: UITableViewCell {
     }
 
     func renderUI() {
-           let name = friend?.name ?? ""
-           let lastName = friend?.lastName ?? ""
+        let name = user?.name ?? ""
+        let lastName = user?.lastName ?? ""
            let fullName = "\(name) \(lastName)"
            
            friendFullName.text = fullName
            
            dateConverter()
            friendBirthday.text = cleanBirthday
-           friendUsername.text = friend?.username!
+           friendUsername.text = user?.username!
         
            
            containerView.layer.borderColor = UIColor.red.cgColor
            containerView.layer.borderWidth = 0.5
            
-           if let avatar = friend?.imagePath {
+        if let avatar = user?.imagePath {
                friendImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
            } else {
                friendImage.image = UIImage(named: "placeholder")
@@ -55,7 +55,7 @@ class AddFriendsTBCell: UITableViewCell {
        }
        
        func dateConverter() {
-           let birthday = friend?.birthday ?? ""
+        let birthday = user?.birthday ?? ""
            let dateFormatterGet = DateFormatter()
            dateFormatterGet.dateFormat = "yyyy-MM-dd"
 

@@ -75,7 +75,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMZ-G1-85x">
-                                                <rect key="frame" x="124" y="185" width="166" height="125"/>
+                                                <rect key="frame" x="124" y="102" width="166" height="125"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="125" id="AKT-8u-eCh"/>
                                                     <constraint firstAttribute="width" constant="166" id="Mwp-FL-9QX"/>
@@ -2985,6 +2985,7 @@
                                                             <rect key="frame" x="13" y="14" width="172" height="128"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="172" id="CXH-Im-TAm"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="QI4-RP-Gri"/>
                                                                 <constraint firstAttribute="height" constant="128" id="gru-5a-guU"/>
                                                             </constraints>
                                                         </imageView>
@@ -3047,7 +3048,6 @@
                                             <outlet property="friendBirthday" destination="KIU-YT-0Pk" id="6uv-Ab-R9Y"/>
                                             <outlet property="friendFullName" destination="MXz-je-GPi" id="Jz6-PT-FaY"/>
                                             <outlet property="friendImage" destination="T3X-Cx-3Tj" id="aja-ft-G6F"/>
-                                            <outlet property="friendName" destination="MXz-je-GPi" id="9Cp-b7-yKL"/>
                                             <outlet property="friendUsername" destination="ajK-ee-1KL" id="0dZ-sb-JtD"/>
                                             <segue destination="2ul-Da-MFC" kind="show" identifier="friendDetail" id="K9a-EC-kfN"/>
                                         </connections>
@@ -3204,7 +3204,6 @@
                                             <outlet property="friendBirthday" destination="wmQ-Zu-U8P" id="AHW-XA-fKx"/>
                                             <outlet property="friendFullname" destination="bfL-d8-NAO" id="25Z-YF-BRI"/>
                                             <outlet property="friendImage" destination="bBn-4z-DFX" id="77R-RW-gmX"/>
-                                            <outlet property="friendName" destination="bfL-d8-NAO" id="2UI-Ur-ELd"/>
                                             <outlet property="friendUsername" destination="bfL-d8-NAO" id="lvG-rl-PlT"/>
                                         </connections>
                                     </tableViewCell>
@@ -3664,7 +3663,6 @@
         <segue reference="IWC-L8-Ukj"/>
         <segue reference="0UQ-K5-ByD"/>
         <segue reference="cjL-WS-uAF"/>
-        <segue reference="DEk-8I-ajV"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>

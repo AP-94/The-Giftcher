@@ -20,8 +20,8 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
     let dataMapper = DataMapper()
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     let refreshControl = UIRefreshControl()
-    var friends: [UserFriendModel?] = []
-    var filteredData = [UserFriendModel?]()
+    var friends: [UserModel?] = []
+    var filteredData = [UserModel?]()
     var selectedCell: UITableViewCell?
     
     override func viewDidLoad() {
@@ -96,12 +96,12 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
     func loadData() {
         print("Do get friends of user request")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        dataMapper.getAllFriendsOfUserRequest() {
+        dataMapper.getAllUsersRequest() {
             success, result, error in
-            if let result = result as? FriendsModel {
+            if let result = result as? [UserModel] {
                 self.friends.removeAll()
-                for friend in result.friends {
-                    self.friends.append(friend)
+                for user in result {
+                    self.friends.append(user)
                 }
                 
                 self.tableView.reloadData()
@@ -140,15 +140,15 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
             
             if !searchEngine.text!.isEmpty {
                 cell.backgroundColor = UIColor.clear
-                cell.friend = nil
-                cell.friend = filteredData[indexPath.row]
+                cell.user = nil
+                cell.user = filteredData[indexPath.row]
                 cell.selectionStyle = .none
                 return cell
             }
             
             cell.backgroundColor = UIColor.clear
-            cell.friend = nil
-            cell.friend = friends[indexPath.row]
+            cell.user = nil
+            cell.user = friends[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }
@@ -164,8 +164,8 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
         if segue.identifier == "friendDetail", let cell = sender as? AddFriendsTBCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = tableView.indexPath(for: cell) {
-                friendDetailVC.friend = friends[indexPath.row]
-                print("USER -> \(String(describing: friendDetailVC.friend?.name))")
+                //friendDetailVC.friend = friends[indexPath.row]
+                //print("USER -> \(String(describing: friendDetailVC.friend?.name))")
             }
         }
     }
