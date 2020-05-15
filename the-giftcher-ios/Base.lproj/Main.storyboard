@@ -3334,7 +3334,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U30-yC-d7s">
-                                                <rect key="frame" x="265" y="14" width="135" height="30"/>
+                                                <rect key="frame" x="265" y="7" width="135" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="135" id="i39-0U-vZL"/>
                                                 </constraints>
@@ -3343,6 +3343,18 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="acceptFriendRequest:" destination="2ul-Da-MFC" eventType="touchUpInside" id="eh7-i7-8Vw"/>
+                                                </connections>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcj-96-wXG">
+                                                <rect key="frame" x="318" y="42" width="82" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="82" id="lmH-Pk-aGy"/>
+                                                </constraints>
+                                                <state key="normal" title="Rechazar">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rejectRequest:" destination="2ul-Da-MFC" eventType="touchUpInside" id="X2E-DE-GEg"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -3354,6 +3366,7 @@
                                             <constraint firstItem="rhR-Yx-qKF" firstAttribute="top" secondItem="wdh-5f-eq2" secondAttribute="bottom" constant="16" id="N6a-ZM-gi3"/>
                                             <constraint firstItem="aSg-JD-LiW" firstAttribute="top" secondItem="lnp-Os-1iP" secondAttribute="bottom" constant="20" id="Rt7-LN-0RS"/>
                                             <constraint firstAttribute="width" constant="414" id="Vfp-a2-LJE"/>
+                                            <constraint firstItem="tcj-96-wXG" firstAttribute="top" secondItem="U30-yC-d7s" secondAttribute="bottom" constant="5" id="cp9-dc-Rjl"/>
                                             <constraint firstAttribute="trailing" secondItem="lnp-Os-1iP" secondAttribute="trailing" constant="8" id="iKx-9H-QxV"/>
                                             <constraint firstItem="lnp-Os-1iP" firstAttribute="top" secondItem="rhR-Yx-qKF" secondAttribute="bottom" constant="3" id="pUG-4z-7Z7"/>
                                             <constraint firstAttribute="trailing" secondItem="wdh-5f-eq2" secondAttribute="trailing" id="rEX-a1-ryP"/>
@@ -3435,13 +3448,14 @@
                                 <constraints>
                                     <constraint firstItem="Mem-TV-cUC" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" constant="18" id="1TY-gK-MRH"/>
                                     <constraint firstAttribute="trailing" secondItem="rhR-Yx-qKF" secondAttribute="trailing" constant="8" id="3mM-L1-FMm"/>
-                                    <constraint firstItem="U30-yC-d7s" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" constant="14" id="46j-8x-eW4"/>
+                                    <constraint firstItem="tcj-96-wXG" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="318" id="6ps-ZB-aMs"/>
                                     <constraint firstItem="Mem-TV-cUC" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="23" id="93w-Xy-jhe"/>
                                     <constraint firstAttribute="height" constant="808" id="AKG-Pz-tcx"/>
                                     <constraint firstItem="Iuz-jF-xsv" firstAttribute="width" secondItem="SnC-3n-vNn" secondAttribute="width" id="BMK-dz-rFK"/>
                                     <constraint firstItem="Dpy-tk-Hpw" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="312" id="EMG-q2-zip"/>
                                     <constraint firstItem="Cc4-ug-Iyi" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" id="FPj-zS-fdm"/>
                                     <constraint firstItem="Iuz-jF-xsv" firstAttribute="top" secondItem="aSg-JD-LiW" secondAttribute="bottom" constant="18" id="NmD-a9-rPB"/>
+                                    <constraint firstItem="U30-yC-d7s" firstAttribute="top" secondItem="SnC-3n-vNn" secondAttribute="top" constant="7" id="Ocu-BK-FBK"/>
                                     <constraint firstAttribute="trailing" secondItem="Iuz-jF-xsv" secondAttribute="trailing" id="Ou7-Vi-1ju"/>
                                     <constraint firstAttribute="trailing" secondItem="e81-hb-sGf" secondAttribute="trailing" constant="95" id="PF6-Yy-7ba"/>
                                     <constraint firstAttribute="trailing" secondItem="U30-yC-d7s" secondAttribute="trailing" constant="14" id="WKO-Ec-aPE"/>
@@ -3465,6 +3479,7 @@
                                     <constraint firstItem="gXI-LE-mtK" firstAttribute="leading" secondItem="SnC-3n-vNn" secondAttribute="leading" constant="270" id="tod-64-xb3"/>
                                     <constraint firstItem="1gH-bF-IJ4" firstAttribute="top" secondItem="aSg-JD-LiW" secondAttribute="bottom" constant="84" id="uPc-AJ-bec"/>
                                     <constraint firstAttribute="trailing" secondItem="1gH-bF-IJ4" secondAttribute="trailing" constant="134.33333333333337" id="xt1-jw-Jme"/>
+                                    <constraint firstAttribute="trailing" secondItem="tcj-96-wXG" secondAttribute="trailing" constant="14" id="yZC-Bm-Mh6"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -3487,6 +3502,7 @@
                         <outlet property="friendName" destination="rhR-Yx-qKF" id="E0Y-TP-SvW"/>
                         <outlet property="friendWishesCollectionView" destination="Iuz-jF-xsv" id="BoV-Y8-tfG"/>
                         <outlet property="noWishesLabel" destination="1gH-bF-IJ4" id="JZk-1c-gAG"/>
+                        <outlet property="rejectRequestButton" destination="tcj-96-wXG" id="1Al-Zi-xiS"/>
                         <outlet property="userProfileImage" destination="Mem-TV-cUC" id="E82-rV-jHY"/>
                         <outlet property="wishBanner" destination="aSg-JD-LiW" id="pLp-43-saA"/>
                         <outlet property="wishesCount" destination="gXI-LE-mtK" id="fHF-uP-EON"/>

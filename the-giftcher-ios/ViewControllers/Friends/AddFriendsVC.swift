@@ -39,7 +39,6 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Amigos"
-        loadFriendsRequests()
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
@@ -207,6 +206,9 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
                     banner.onTap = {
                         banner.dismiss()
                         self.performSegue(withIdentifier: self.segueToRequests, sender: nil)
+                    }
+                    banner.onSwipeUp = {
+                        banner.dismiss()
                     }
                     banner.show()
                 }

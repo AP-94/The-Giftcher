@@ -56,12 +56,17 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             if let result = result as? [FriendRequestModel] {
                 self.friendRequestsIds.removeAll()
                 self.users.removeAll()
-                let orderedResult = result.sorted(by: { $0.userId! > $1.userId! })
+                let orderedResult = result.sorted(by: { $0.userId! < $1.userId! })
                 for request in orderedResult   {
                     self.friendRequestsIds.append(request.id)
                     self.users.append(request.userId)
                 }
                 self.loadUsers()
+            } else {
+                self.users.removeAll()
+                self.friends.removeAll()
+                self.tableView.reloadData()
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             }
             
         }
@@ -119,7 +124,7 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RequestToDetail", let cell = sender as? AddFriendsTBCell {
+        if segue.identifier == "RequestToDetail", let cell = sender as? FriendRequestTBCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = tableView.indexPath(for: cell) {
                 convertUserModelToFriendsModel(user: friends[indexPath.row]!)
