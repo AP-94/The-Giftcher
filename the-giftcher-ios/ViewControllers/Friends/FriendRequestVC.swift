@@ -18,6 +18,7 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var selectedCell: UITableViewCell?
     var userTodeliver: UserFriendModel?
     var users: [Int?] = []
+    var friendRequestsIds: [Int?] = []
     
     //Outlets
     @IBOutlet weak var bannerLabel: UILabel!
@@ -26,7 +27,7 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.title = "Peticiones de Amistad"
+        self.navigationItem.title = "Peticiones de Amistad"
         navigationModifier()
         loadData()
         tableViewModifiers()
@@ -35,7 +36,7 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tabBarController?.title = "Peticiones de Amistad"
+        self.navigationItem.title = "Peticiones de Amistad"
     }
     
     func tableViewModifiers() {
@@ -53,7 +54,11 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         dataMapper.getFriendsRequests() {
             success, result, error in
             if let result = result as? [FriendRequestModel] {
-                for request in result {
+                self.friendRequestsIds.removeAll()
+                self.users.removeAll()
+                let orderedResult = result.sorted(by: { $0.userId! > $1.userId! })
+                for request in orderedResult   {
+                    self.friendRequestsIds.append(request.id)
                     self.users.append(request.userId)
                 }
                 self.loadUsers()
@@ -72,10 +77,10 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     for id in self.users {
                         if user.id == id {
                             self.friends.append(user)
-                            self.tableView.reloadData()
                         }
                     }
                 }
+                self.tableView.reloadData()
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             }
             
@@ -97,7 +102,7 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "friendRequest", for: indexPath) as? FriendRequestTBCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "user_friend", for: indexPath) as? FriendRequestTBCell {
             
             cell.backgroundColor = UIColor.clear
             cell.friend = nil
@@ -114,14 +119,15 @@ class FriendRequestVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "friendDetail", let cell = sender as? AddFriendsTBCell {
+        if segue.identifier == "RequestToDetail", let cell = sender as? AddFriendsTBCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = tableView.indexPath(for: cell) {
                 convertUserModelToFriendsModel(user: friends[indexPath.row]!)
                 friendDetailVC.friendRequest = true
                 friendDetailVC.friend = userTodeliver
-                //friendDetailVC.friendRequestId = 
-                print("USER -> \(userTodeliver?.username ?? "")")
+                friendDetailVC.friendRequestId = friendRequestsIds[indexPath.row]
+                print("FRIEND ID -> \(userTodeliver?.friendId ?? 0)")
+                print("FRIEND REQUEST ID -> \(friendRequestsIds[indexPath.row] ?? 0)")
             }
         }
     }

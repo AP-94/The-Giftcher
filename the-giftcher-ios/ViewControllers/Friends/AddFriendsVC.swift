@@ -24,6 +24,7 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
     var filteredData = [UserModel?]()
     var selectedCell: UITableViewCell?
     var userTodeliver: UserFriendModel?
+    let segueToRequests = "userFriendsRequestsSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,12 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
         navigationModifier()
         loadData()
         tableViewModifiers()
+        loadFriendsRequests()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Amigos"
+        loadFriendsRequests()
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
@@ -191,6 +194,24 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
         userTodeliver?.imagePath = user.imagePath ?? ""
         userTodeliver?.id = 0
         userTodeliver?.friendId = user.id!
+    }
+    
+    func loadFriendsRequests() {
+        print("Do get friends requests request")
+        dataMapper.getFriendsRequests() {
+            success, result, error in
+            if let result = result as? [FriendRequestModel] {
+                if result.count != 0 {
+                    let banner = NotificationBanner(title: "Tienes peticiones de amistad", subtitle: "Pulsa aquí para ver las peticiones", style: .info)
+                    banner.autoDismiss = false
+                    banner.onTap = {
+                        banner.dismiss()
+                        self.performSegue(withIdentifier: self.segueToRequests, sender: nil)
+                    }
+                    banner.show()
+                }
+            }
+        }
     }
     
 }
