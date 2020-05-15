@@ -14,7 +14,7 @@ class FriendRequestTBCell: UITableViewCell {
     
     var delegate: FriendRequestTBCellDelegate?
     var cleanBirthday: String?
-    var friend: UserFriendModel?{
+    var friend: UserModel?{
         didSet { renderUI() }
     }
     

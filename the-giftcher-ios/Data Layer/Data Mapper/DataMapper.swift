@@ -563,7 +563,7 @@ class DataMapper {
     
     func confirmFriendRequest(fake: String? = nil, idFriendRequest: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/friends/\(String(describing: idFriendRequest))"
+        var url = "/friends/\(String(describing: idFriendRequest!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -575,10 +575,8 @@ class DataMapper {
             httpStatus, json, responseHeaders, error in
             
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-                let array = json.arrayValue.compactMap {
-                    return FriendRequestModel(jsonData: try? $0.rawData())
-                }
-                completion(true, array, nil)
+                let result = SingletonModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
             } else {
                 completion(false ,nil, error)
             }

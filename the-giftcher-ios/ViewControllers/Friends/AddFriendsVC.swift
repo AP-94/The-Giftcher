@@ -23,6 +23,7 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
     var friends: [UserModel?] = []
     var filteredData = [UserModel?]()
     var selectedCell: UITableViewCell?
+    var userTodeliver: UserFriendModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +101,7 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
             success, result, error in
             if let result = result as? [UserModel] {
                 self.friends.removeAll()
-                for user in result {
-                    self.friends.append(user)
-                }
-                
+                self.friends.append(contentsOf: result)
                 self.tableView.reloadData()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
@@ -164,8 +162,14 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
         if segue.identifier == "friendDetail", let cell = sender as? AddFriendsTBCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = tableView.indexPath(for: cell) {
-                //friendDetailVC.friend = friends[indexPath.row]
-                //print("USER -> \(String(describing: friendDetailVC.friend?.name))")
+                if !searchEngine.text!.isEmpty {
+                    convertUserModelToFriendsModel(user: filteredData[indexPath.row]!)
+                } else {
+                    convertUserModelToFriendsModel(user: friends[indexPath.row]!)
+                }
+                
+                friendDetailVC.friend = userTodeliver
+                print("USER -> \(userTodeliver?.username ?? "")")
             }
         }
     }
@@ -174,6 +178,19 @@ class AddFriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, 
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
+    }
+    
+    func convertUserModelToFriendsModel(user: UserModel) {
+        userTodeliver = UserFriendModel()
+        userTodeliver?.name = user.name ?? ""
+        userTodeliver?.username = user.username ?? ""
+        userTodeliver?.birthday = user.birthday ?? ""
+        userTodeliver?.lastName = user.lastName ?? ""
+        userTodeliver?.mail = user.mail ?? ""
+        userTodeliver?.imageName = user.imageName ?? ""
+        userTodeliver?.imagePath = user.imagePath ?? ""
+        userTodeliver?.id = 0
+        userTodeliver?.friendId = user.id!
     }
     
 }

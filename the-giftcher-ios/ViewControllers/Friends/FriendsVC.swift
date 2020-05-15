@@ -31,7 +31,7 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
         loadData()
         tableViewModifiers()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshData(_:)), name: NSNotification.Name(rawValue: "aFriendWasEliminated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDataNoti(_:)), name: .didEliminateFriend, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +59,10 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
     }
     
     @objc private func refreshData(_ sender: Any) {
+        loadData()
+    }
+    
+    @objc private func refreshDataNoti(_ notification:Notification) {
         loadData()
     }
     
@@ -166,8 +170,11 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
         if segue.identifier == "friendDetail", let cell = sender as? FriendsOfUserCell {
             selectedCell = cell
             if let friendDetailVC = segue.destination as? FriendDetailVC, let indexPath = friendTableView.indexPath(for: cell) {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FriendSearch"), object: nil)
-                friendDetailVC.friend = friends[indexPath.row]
+                if !friendSearchBar.text!.isEmpty {
+                    friendDetailVC.friend = filteredData[indexPath.row]
+                } else {
+                    friendDetailVC.friend = friends[indexPath.row]
+                }
                 print("FRIEND -> \(String(describing: friendDetailVC.friend?.name))")
             }
         }

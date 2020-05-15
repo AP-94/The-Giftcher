@@ -174,8 +174,8 @@
             filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "670"
-            endingLineNumber = "670"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
             landmarkName = "getReservedWishesRequest(fake:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "the-giftcher-ios/Data Layer/Data Mapper/DataMapper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "671"
-            endingLineNumber = "671"
+            startingLineNumber = "669"
+            endingLineNumber = "669"
             landmarkName = "getReservedWishesRequest(fake:completion:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -21,6 +21,10 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     var selectedCell: UICollectionViewCell?
     private let refreshControl = UIRefreshControl()
     let rightSideOptionButton = UIBarButtonItem()
+    @IBOutlet weak var noWishesLabel: UILabel!
+    var friends: [UserFriendModel?] = []
+    var friendRequest: Bool? = false
+    var friendRequestId: Int?
     
     
     //Outlets
@@ -31,6 +35,7 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     @IBOutlet weak var friendWishesCollectionView: UICollectionView!
     @IBOutlet weak var wishesCount: UILabel!
     @IBOutlet weak var addFriend: UIButton!
+    @IBOutlet weak var acceptRequestButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -39,9 +44,9 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         self.navigationItem.title =  friend?.username!
         fillInfoOfFriend()
         collectionViewModifiers()
+        friendsRequest()
         loadData()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(areFriends(_:)), name: NSNotification.Name(rawValue: "FriendSearch"), object: nil)
+        getFriendsofUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +66,7 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         if let avatar = friend?.imagePath {
             userProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
         } else {
-            userProfileImage.image = UIImage(named: "placeholder")
+            userProfileImage.image = UIImage(named: "profile_placeholder")
         }
     }
     
@@ -77,13 +82,17 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         addFriend.layer.cornerRadius = 10
         addFriend.layer.borderWidth = 1
         addFriend.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        acceptRequestButton.layer.cornerRadius = 10
+        acceptRequestButton.layer.borderWidth = 1
+        acceptRequestButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @objc func onRightButtonTap() {
         showConfirm() {
             self.eliminateFriend()
             self.navigationController?.popViewController(animated: true)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "aFriendWasEliminated"), object: nil)
+            NotificationCenter.default.post(name: .didEliminateFriend, object: nil)
         }
     }
     
@@ -128,11 +137,6 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         loadData()
     }
     
-    @objc private func areFriends(_ sender: Any) {
-        print("ENTERED IN AREFRIENDS FUNCTION")
-        addFriend.isHidden = true
-       }
-    
     func showConfirm(completion: @escaping () -> Void) {
         let message = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let ok = UIAlertAction(title: "Eliminar amigo", style: .destructive) { (UIAlertAction) -> Void in
@@ -153,7 +157,14 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     //MARK: COLLECTION VIEW
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friendWishes.count
+        let count = friendWishes.count
+        
+        if count == 0 {
+            noWishesLabel.isHidden = false
+        } else {
+            noWishesLabel.isHidden = true
+        }
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -203,9 +214,56 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
                 print(result.message!)
                 let banner = NotificationBanner(title: "Enviada", subtitle: "Tu petición de amistad fue enviada", style: .info)
                 banner.show()
-                self.addFriend.isHidden = true
+                self.addFriend.setTitle("Enviado", for: .normal)
+                self.addFriend.isEnabled = false
             }
             
+        }
+    }
+    
+    func getFriendsofUser() {
+        if !friendRequest! {
+            print("Do get friends of user request")
+            dataMapper.getAllFriendsOfUserRequest() {
+                success, result, error in
+                if let result = result as? FriendsModel {
+                    self.friends.removeAll()
+                    for friend in result.friends {
+                        self.friends.append(friend)
+                    }
+                    self.checkFriendship()
+                }
+            }
+        }
+    }
+    
+    func checkFriendship() {
+        for user in friends {
+            if user?.friendId == friend?.friendId {
+                addFriend.isEnabled = false
+                addFriend.setTitle("Amigos", for: .normal)
+            }
+        }
+    }
+    
+    func friendsRequest() {
+        if friendRequest! {
+            addFriend.isHidden = true
+            acceptRequestButton.isHidden = false
+        }
+    }
+    
+    @IBAction func acceptFriendRequest(_ sender: Any) {
+        print("Do Accept Friend Request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.confirmFriendRequest(idFriendRequest: friendRequestId!) {
+            success, result, error in
+            if let result = result as? SingletonModel {
+                print(result)
+                self.navigationController?.popViewController(animated: true)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                NotificationCenter.default.post(name: .didAcceptedRequest, object: nil)
+            }
         }
     }
 }

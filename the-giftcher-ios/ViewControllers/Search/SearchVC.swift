@@ -135,12 +135,12 @@ class SearchVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITa
         if let cell = tableView.dequeueReusableCell(withIdentifier: WishesCell.identifier, for: indexPath) as? WishesCell {
             
             if !searchEngine.text!.isEmpty {
-                    cell.backgroundColor = UIColor.clear
-                    cell.wish = nil
-                    cell.wish = filteredData[indexPath.row]
-                    cell.delegate = self
-                    cell.selectionStyle = .none
-                    return cell
+                cell.backgroundColor = UIColor.clear
+                cell.wish = nil
+                cell.wish = filteredData[indexPath.row]
+                cell.delegate = self
+                cell.selectionStyle = .none
+                return cell
             }
             
             cell.backgroundColor = UIColor.clear
@@ -163,7 +163,11 @@ class SearchVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITa
             selectedCell = cell
             
             if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = tableView.indexPath(for: cell) {
-                wishDetailVC.wish = wishes[indexPath.row]
+                if !searchEngine.text!.isEmpty {
+                    wishDetailVC.wish = filteredData[indexPath.row]
+                } else {
+                    wishDetailVC.wish = wishes[indexPath.row]
+                }
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
             }
         }
