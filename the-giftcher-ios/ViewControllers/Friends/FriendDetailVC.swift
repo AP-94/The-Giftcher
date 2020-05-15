@@ -36,6 +36,7 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
     @IBOutlet weak var wishesCount: UILabel!
     @IBOutlet weak var addFriend: UIButton!
     @IBOutlet weak var acceptRequestButton: UIButton!
+    @IBOutlet weak var rejectRequestButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -86,6 +87,10 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         acceptRequestButton.layer.cornerRadius = 10
         acceptRequestButton.layer.borderWidth = 1
         acceptRequestButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        rejectRequestButton.layer.cornerRadius = 10
+        rejectRequestButton.layer.borderWidth = 1
+        rejectRequestButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @objc func onRightButtonTap() {
@@ -250,6 +255,7 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         if friendRequest! {
             addFriend.isHidden = true
             acceptRequestButton.isHidden = false
+            rejectRequestButton.isHidden = false
         }
     }
     
@@ -257,6 +263,20 @@ class FriendDetailVC: UIViewController, NVActivityIndicatorViewable, UICollectio
         print("Do Accept Friend Request")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.confirmFriendRequest(idFriendRequest: friendRequestId!) {
+            success, result, error in
+            if let result = result as? SingletonModel {
+                print(result)
+                self.navigationController?.popViewController(animated: true)
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                NotificationCenter.default.post(name: .didAcceptedRequest, object: nil)
+            }
+        }
+    }
+    
+    @IBAction func rejectRequest(_ sender: Any) {
+        print("Do Reject Friend Request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.deleteFriendRequest(friendshipId: friendRequestId!) {
             success, result, error in
             if let result = result as? SingletonModel {
                 print(result)
