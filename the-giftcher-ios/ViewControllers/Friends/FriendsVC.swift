@@ -15,6 +15,7 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
     @IBOutlet weak var friendTableView: UITableView!
     @IBOutlet weak var friendSearchBar: UISearchBar!
     @IBOutlet weak var noFriendsLabel: UILabel!
+    @IBOutlet weak var addFriendsBT: UIButton!
     let dataMapper = DataMapper()
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     private let refreshControl = UIRefreshControl()
@@ -184,6 +185,10 @@ class FriendsVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "degradado_navBar")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1)
+    }
+    @IBAction func addFriendsButton(_ sender: UIButton) {
+        addFriendsBT.bounce()
+        self.performSegue(withIdentifier: "AddFriends", sender: nil)
     }
     
 }

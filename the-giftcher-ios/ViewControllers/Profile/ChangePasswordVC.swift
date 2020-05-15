@@ -101,16 +101,17 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
         iconClick = !iconClick
     }
     
-    @IBAction func updatePassword(_ sender: Any) {
-        if !oldPasswordTF.text!.isEmpty || !newPasswordTF.text!.isEmpty || !repNewPasswordTF.text!.isEmpty {
-            if newPasswordTF.text!.isValidPassword {
+    @IBAction func updatePassword(_ sender: UIButton) {
+        changePassSubmitButton.bounce()
+        if oldPasswordTF.text == "" || newPasswordTF.text == "" || repNewPasswordTF.text == "" {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
+            banner.show()
+            } else if newPasswordTF.text!.isValidPassword {
                 if newPasswordTF.text == repNewPasswordTF.text {
                     let inputPassword = InputUpdatePassword(oldPassword: oldPasswordTF.text, newPassword: newPasswordTF.text)
                     doUpdateRequest(inputUpdatePassword: inputPassword)
-                } else {
-                    let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
-                    banner.show()
-                }
+                    let banner = NotificationBanner(title: "Éxito", subtitle: "Password cambiado correctamente", style: .success)
+                banner.show()
             }
         }
     }
@@ -132,6 +133,9 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
                 print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
                 
                 Session.save()
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
+                banner.show()
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }

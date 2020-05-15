@@ -81,7 +81,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         wishShopTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wishShopTF.frame.height))
         wishShopTF.leftViewMode = .always
         
-        //wishLocationTF atributes
+        //onlineShopTF atributes
         onlineShopTF.layer.borderWidth = 1
         onlineShopTF.layer.cornerRadius = 5
         onlineShopTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
@@ -183,7 +183,14 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addWish(_ sender: UIButton) {
-       if wishNameTF.text != "" || wishShopTF.text != "" || onlineShopTF.text != "" || wishPriceTF.text != "" || wishDescriptionTV.text != "" || categoryNameLabel.text != "" {
+        saveButton.bounce()
+       if wishNameTF.text == "" || wishShopTF.text == "" || onlineShopTF.text == "" || wishPriceTF.text == "" || wishDescriptionTV.text == "" || categoryNameLabel.text == "" {
+        
+                   let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
+                             banner.show()
+           
+       } else {
+          
         let priceText = wishPriceTF.text
         let priceFloat = (priceText! as NSString).floatValue
         let reserveStatus = false
@@ -195,11 +202,6 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         
         let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: locationDefault, onlineShop: onlineShopTF.text, category: categoryInt)
                        doAddWishRequest(inputWish: inputWish)
-                   
-           
-       } else {
-           let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
-           banner.show()
            
        }
     }

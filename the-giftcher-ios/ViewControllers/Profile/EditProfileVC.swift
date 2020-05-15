@@ -122,6 +122,7 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     }
     
     @IBAction func saveChanges(_ sender: Any) {
+        editProfileSubmitButton.bounce()
         if !editNameTF.text!.isEmpty || !editSurnameTF.text!.isEmpty || !editUsernameTF.text!.isEmpty || !birthdaytextLabel.text!.isEmpty {
             let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
             doUpdateRequest(inputUpdateUser: inputUser)

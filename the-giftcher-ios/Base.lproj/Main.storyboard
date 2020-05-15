@@ -1938,9 +1938,6 @@
                                                         <integer key="value" value="50"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="oldPasswordTF:" destination="5Rm-0z-z3i" eventType="editingDidEnd" id="IdG-se-Rux"/>
-                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link al deseo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ove-E7-She">
                                                 <rect key="frame" x="45" y="124" width="95" height="18"/>
@@ -2155,9 +2152,9 @@
                         <outlet property="doneButton" destination="jcS-hh-sIW" id="UPJ-RG-swz"/>
                         <outlet property="imagePicker" destination="y5f-77-QBB" id="Tgh-9I-Wfe"/>
                         <outlet property="imagePickerButton" destination="JA2-O3-oSv" id="KxO-2Q-Tt4"/>
+                        <outlet property="onlineShopTF" destination="fRN-Cf-0LP" id="als-d0-2Ug"/>
                         <outlet property="saveButton" destination="74M-Hq-EgY" id="mwR-zS-vkZ"/>
                         <outlet property="wishDescriptionTV" destination="IPl-yi-Dc8" id="WPE-61-POi"/>
-                        <outlet property="wishLocationTF" destination="fRN-Cf-0LP" id="JAz-ii-u9z"/>
                         <outlet property="wishNameTF" destination="8VY-Qg-Qyf" id="x0w-pa-1oS"/>
                         <outlet property="wishPriceTF" destination="VrI-jo-kPX" id="UVf-Ps-hmE"/>
                         <outlet property="wishShopTF" destination="YBJ-27-kLI" id="QLI-5q-It2"/>
@@ -2892,7 +2889,7 @@
                                 </constraints>
                                 <state key="normal" image="addFriend"/>
                                 <connections>
-                                    <segue destination="RQZ-gy-9QJ" kind="show" id="Hki-Bh-wUa"/>
+                                    <action selector="addFriendsButton:" destination="WA8-oK-ad9" eventType="touchUpInside" id="4p6-Bt-8Re"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todavía no tienes amigos :(, agregalos pulsando el botón de abajo a la derecha!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooP-cE-6IW">
@@ -2939,9 +2936,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Amigos" image="002-apoyar" landscapeImage="002-apoyar" largeContentSizeImage="002-apoyar" selectedImage="002-apoyar" id="kEl-S4-PT3"/>
                     <connections>
+                        <outlet property="addFriendsBT" destination="rxe-WT-MqY" id="eHp-UO-gJf"/>
                         <outlet property="friendSearchBar" destination="Ymp-aa-WCw" id="gZ8-bK-gzS"/>
                         <outlet property="friendTableView" destination="hI5-mc-o64" id="L7g-5n-X0v"/>
                         <outlet property="noFriendsLabel" destination="ooP-cE-6IW" id="5Gj-CZ-Jp6"/>
+                        <segue destination="RQZ-gy-9QJ" kind="show" identifier="AddFriends" id="MkA-IO-Azh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hv-kb-WEg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3714,7 +3713,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k93-oJ-K79"/>
+        <segue reference="QnQ-XS-IOR"/>
         <segue reference="IWC-L8-Ukj"/>
         <segue reference="0UQ-K5-ByD"/>
         <segue reference="cjL-WS-uAF"/>
