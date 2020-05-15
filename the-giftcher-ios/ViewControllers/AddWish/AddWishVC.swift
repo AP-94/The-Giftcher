@@ -19,7 +19,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     @IBOutlet weak var wishNameTF: UITextField!
     @IBOutlet weak var wishShopTF: UITextField!
-    @IBOutlet weak var wishLocationTF: UITextField!
+    @IBOutlet weak var onlineShopTF: UITextField!
     @IBOutlet weak var wishPriceTF: UITextField!
     @IBOutlet weak var wishDescriptionTV: UITextView!
     
@@ -46,6 +46,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         self.categoryPicker.dataSource = self
         
         imagePickerContr.delegate = self
+        
         
         
     }
@@ -81,12 +82,12 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         wishShopTF.leftViewMode = .always
         
         //wishLocationTF atributes
-        wishLocationTF.layer.borderWidth = 1
-        wishLocationTF.layer.cornerRadius = 5
-        wishLocationTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
-        wishLocationTF.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
-        wishLocationTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: wishLocationTF.frame.height))
-        wishLocationTF.leftViewMode = .always
+        onlineShopTF.layer.borderWidth = 1
+        onlineShopTF.layer.cornerRadius = 5
+        onlineShopTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
+        onlineShopTF.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
+        onlineShopTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: onlineShopTF.frame.height))
+        onlineShopTF.leftViewMode = .always
         
         //wishPriceTF atributes
         wishPriceTF.layer.borderWidth = 1
@@ -121,7 +122,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         
         wishNameTF.delegate = self
         wishShopTF.delegate = self
-        wishLocationTF.delegate = self
+        onlineShopTF.delegate = self
         wishPriceTF.delegate = self
         
     }
@@ -181,20 +182,19 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func addWish(_ sender: Any) {
-       if wishNameTF.text != "" || wishShopTF.text != "" || wishLocationTF.text != "" || wishPriceTF.text != "" || wishDescriptionTV.text != "" || categoryNameLabel.text != "" {
+    @IBAction func addWish(_ sender: UIButton) {
+       if wishNameTF.text != "" || wishShopTF.text != "" || onlineShopTF.text != "" || wishPriceTF.text != "" || wishDescriptionTV.text != "" || categoryNameLabel.text != "" {
         let priceText = wishPriceTF.text
         let priceFloat = (priceText! as NSString).floatValue
         let reserveStatus = false
-        let onlineShopDefault = ""
+        let locationDefault = ""
         setCategory(category: categoryNameLabel.text ?? "Otros")
         let imagePathDef = ""
         let imageName = ""
         
         
-        let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: wishLocationTF.text, onlineShop: onlineShopDefault, category: categoryInt)
+        let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: locationDefault, onlineShop: onlineShopTF.text, category: categoryInt)
                        doAddWishRequest(inputWish: inputWish)
-        afterWishAdd()
                    
            
        } else {
@@ -213,8 +213,13 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
                 
                 let banner = NotificationBanner(title: "Deseo Añadido", subtitle: "Nuevo deseo añadido", style: .info)
                 banner.show()
+                self.afterWishAdd()
                 
                 Session.save()
+            } else {
+                let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
+                banner.show()
+                
             }
             
              NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
@@ -270,7 +275,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     func afterWishAdd () {
         wishNameTF.text = ""
         wishShopTF.text = ""
-        wishLocationTF.text = ""
+        onlineShopTF.text = ""
         wishPriceTF.text = ""
         wishDescriptionTV.text = "Descripción del producto"
         categoryNameLabel.text = "Agricultura"
