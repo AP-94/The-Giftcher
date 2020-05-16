@@ -25,7 +25,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     @IBOutlet weak var userBirthdayLabel: UILabel!
     @IBOutlet weak var wishSegment: UISegmentedControl!
     @IBOutlet weak var userWishCollectionView: UICollectionView!
-    @IBOutlet weak var profileImageLabel: UILabel!
     @IBOutlet weak var noWishLabel: UILabel!
     
     var wishes: [WishModel?] = []
@@ -155,23 +154,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     func setAvatar() {
         if let avatar = user?.imagePath {
             userProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
-        } else {
-            if user?.imagePath == "" || user?.imagePath == nil {
-                userProfileImage.layer.borderWidth = 1
-                userProfileImage.layer.borderColor = UIColor.gray.cgColor
-                profileImageLabel.isHidden = false
-                var nameLabelText = ""
-                let name = user?.name
-                let lastName = user?.lastName
-                
-                if !name!.isEmpty && !lastName!.isEmpty {
-                    nameLabelText = (name?.prefix(1).uppercased())! + (lastName?.prefix(1).uppercased())!
-                } else {
-                    nameLabelText = (name?.prefix(1).uppercased())!
-                }
-                
-                profileImageLabel.text = nameLabelText
-            }
         }
     }
     
@@ -245,16 +227,19 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             case 0:
                 if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
                     wishDetailVC.wish = wishes[indexPath.row]
+                    wishDetailVC.wishOfUser = true
                     print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
                 }
             case 1:
                 if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
                     wishDetailVC.wish = reservedWishes3[indexPath.row]
+                    wishDetailVC.wishOfUser = true
                     print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
                 }
             default:
                 if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
                     wishDetailVC.wish = wishes[indexPath.row]
+                    wishDetailVC.wishOfUser = true
                     print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
                 }
             }

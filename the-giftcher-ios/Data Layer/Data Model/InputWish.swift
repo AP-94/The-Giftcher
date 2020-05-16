@@ -44,7 +44,7 @@ class InputWish: Mappable {
                 "imagePath": imagePath,
                 "reserved": reserved,
                 "location": location,
-                "onlineShop": onlineShop ?? "",
+                "online_shop": onlineShop ?? "",
                 "category": category ?? ""]
     }
 }

@@ -282,7 +282,7 @@ class DataMapper {
     
     func oneWishRequest(fake: String? = nil, id: Int? , completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/\(String(describing: id))"
+        var url = "/wishes/\(String(describing: id!))"
         
         if fake != nil  {
             url = fake!
@@ -291,7 +291,7 @@ class DataMapper {
             connection = Connection()
         }
         
-        connection.postWithoutParams(url, encode: JSONEncoding.default) {
+        connection.getWithoutParams(url, encode: JSONEncoding.default) {
             httpStatus, json, responseHeaders, error in
             
             if self.checkHttpStatus(httpCode: httpStatus), let json = json {
@@ -377,7 +377,7 @@ class DataMapper {
     
     func wishModifyRequest(fake: String? = nil, idWish: Int?, inputWish: InputWish , completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/\(String(describing: idWish))"
+        var url = "/wishes/\(String(describing: idWish!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -491,7 +491,7 @@ class DataMapper {
     
     func deleteWishByIdRequest(fake: String? = nil, wishId: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/\(String(describing: wishId))"
+        var url = "/wishes/\(String(describing: wishId!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()

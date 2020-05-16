@@ -34,7 +34,6 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     @IBOutlet weak var birthdayChangeDoneButton: UIButton!
     
     @IBOutlet weak var editProfileSubmitButton: UIButton!
-    @IBOutlet weak var profileImageLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -162,23 +161,6 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     func setAvatar() {
            if let avatar = Session.current.userModel?.imagePath {
                editUserProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
-           } else {
-               if Session.current.userModel?.imagePath == "" || Session.current.userModel?.imagePath == nil {
-                   editUserProfileImage.layer.borderWidth = 1
-                   editUserProfileImage.layer.borderColor = UIColor.gray.cgColor
-                   profileImageLabel.isHidden = false
-                   var nameLabelText = ""
-                   let name = Session.current.userModel?.name
-                   let lastName = Session.current.userModel?.lastName
-                   
-                   if !name!.isEmpty && !lastName!.isEmpty {
-                       nameLabelText = (name?.prefix(1).uppercased())! + (lastName?.prefix(1).uppercased())!
-                   } else {
-                       nameLabelText = (name?.prefix(1).uppercased())!
-                   }
-                   
-                   profileImageLabel.text = nameLabelText
-               }
            }
        }
 

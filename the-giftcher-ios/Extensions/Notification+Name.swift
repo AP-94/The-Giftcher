@@ -10,4 +10,5 @@ import Foundation
 extension Notification.Name {
     static let didEliminateFriend = Notification.Name("didEliminateFriend")
     static let didAcceptedRequest = Notification.Name("didAcceptedRequest")
+    static let didEditWishRequest = Notification.Name("didEditWishRequest")
 }

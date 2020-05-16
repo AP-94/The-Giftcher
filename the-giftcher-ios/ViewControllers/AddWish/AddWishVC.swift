@@ -11,7 +11,7 @@ import NotificationBannerSwift
 import NVActivityIndicatorView
 
 class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NVActivityIndicatorViewable {
-
+    
     @IBOutlet weak var imagePicker: UIImageView!
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var dataInputView: UIView!
@@ -33,6 +33,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     var pickerData: [String] = [String]()
     let imagePickerContr = UIImagePickerController()
+    var categoryInt = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +47,8 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         
         imagePickerContr.delegate = self
         
-        
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         customSettings()
     }
@@ -127,7 +127,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // Number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -180,26 +180,26 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     }
     @IBAction func addWish(_ sender: UIButton) {
         saveButton.bounce()
-       if wishNameTF.text == "" || wishShopTF.text == "" || onlineShopTF.text == "" || wishPriceTF.text == "" || wishDescriptionTV.text == "" || categoryNameLabel.text == "" {
-        
-                   let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
-                             banner.show()
-           
-       } else {
-          
-        let priceText = wishPriceTF.text
-        let priceFloat = (priceText! as NSString).floatValue
-        let reserveStatus = false
-        let locationDefault = ""
-        setCategory(category: categoryNameLabel.text ?? "Otros")
-        let imagePathDef = ""
-        let imageName = ""
-        
-        
-        let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: locationDefault, onlineShop: onlineShopTF.text, category: categoryInt)
-                       doAddWishRequest(inputWish: inputWish)
-           
-       }
+        if wishNameTF.text == "" || wishShopTF.text == "" || onlineShopTF.text == "" || wishPriceTF.text == "" || wishDescriptionTV.text == "" || categoryNameLabel.text == "" {
+            
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
+            banner.show()
+            
+        } else {
+            
+            let priceText = wishPriceTF.text
+            let priceFloat = (priceText! as NSString).floatValue
+            let reserveStatus = false
+            let locationDefault = ""
+            setCategory(category: categoryNameLabel.text ?? "Otros")
+            let imagePathDef = ""
+            let imageName = ""
+            
+            
+            let inputWish = InputWish(name: wishNameTF.text, description: wishDescriptionTV.text, price: priceFloat, shop: wishShopTF.text, imageName: imageName, imagePath: imagePathDef, reserved: reserveStatus, location: locationDefault, onlineShop: onlineShopTF.text, category: categoryInt)
+            doAddWishRequest(inputWish: inputWish)
+            
+        }
     }
     
     func doAddWishRequest(inputWish: InputWish) {
@@ -213,18 +213,17 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
                 banner.show()
                 self.afterWishAdd()
                 
-                Session.save()
             } else {
                 let banner = NotificationBanner(title: "Error", subtitle: "Debes rellenar todos los campos", style: .warning)
                 banner.show()
                 
             }
             
-             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
         
     }
-    var categoryInt = Int()
+    
     func setCategory(category: String) {
         switch category {
         case "Videojuegos":
@@ -279,5 +278,5 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         categoryNameLabel.text = "Agricultura"
         self.tabBarController?.selectedIndex = 4
     }
-        
+    
 }

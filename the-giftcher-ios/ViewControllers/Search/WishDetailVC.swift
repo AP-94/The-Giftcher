@@ -16,6 +16,8 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     var categoryString: String?
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     let dataMapper = DataMapper()
+    var wishOfUser: Bool = false
+    
     //Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var uiViewsOutlet: UIView!
@@ -29,16 +31,27 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var wishCategory: UILabel!
     @IBOutlet weak var wishStore: UILabel!
     @IBOutlet weak var getWishButton: UIButton!
+    @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak var trashButtonContainer: UIView!
+    @IBOutlet weak var saveWishButton: UIButton!
+    @IBOutlet weak var editButtonContainer: UIView!
+    @IBOutlet weak var editButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title =  "Detalle de Deseo"
         setModifiers()
         loadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData(_:)), name: .didEditWishRequest, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.navigationItem.title =  "Detalle de Deseo"
+    }
+    
+    @objc private func refreshData(_ notification:Notification) {
+        refreshData()
     }
     
     
@@ -57,6 +70,8 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
         
         buttonSaveView.layer.cornerRadius = 5.0
         shareButtonView.layer.cornerRadius = 5.0
+        trashButtonContainer.layer.cornerRadius = 5.0
+        editButtonContainer.layer.cornerRadius = 5.0
         
         getWishButton.layer.cornerRadius = 5
         
@@ -66,6 +81,20 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
             getWishButton.isHidden = false
         } else {
             getWishButton.isHidden = true
+        }
+        
+        if wishOfUser {
+            trashButton.isHidden = false
+            trashButtonContainer.isHidden = false
+            editButton.isHidden = false
+            editButtonContainer.isHidden = false
+            saveWishButton.isHidden = true
+            buttonSaveView.isHidden = true
+        } else {
+            trashButton.isHidden = true
+            trashButtonContainer.isHidden = true
+            saveWishButton.isHidden = false
+            buttonSaveView.isHidden = false
         }
         
     }
@@ -93,16 +122,20 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     @IBAction func shareWish(_ sender: Any) {
         let firstActivityItem = "Regalame esto: \(wishName.text!)"
         let image : UIImage = imageView.image!
-        let secondActivityItem : NSURL = NSURL(string: "http://www.thegiftcher.com")!
-       
-
+        var secondActivityItem : NSURL = NSURL(string: "http://www.thegiftcher.com")!
+        let url = wish?.onlineShop ?? ""
+        
+        if !url.isEmpty {
+            secondActivityItem = NSURL(string: url)!
+        }
+        
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
-
+        
         activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
-
+        
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
-
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
     
@@ -122,10 +155,47 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
         }
     }
     
+    func deleteWishOfUser() {
+        print("Do delete wish of user")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        let idOfWish = wish?.id!
+        dataMapper.deleteWishByIdRequest(wishId: idOfWish) {
+            success, result, error in
+            if (result as? SingletonModel) != nil {
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                self.navigationController?.popViewController(animated: true)
+            }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+        }
+    }
+    
     @IBAction func getWish(_ sender: Any) {
         let stringUrl = wish?.onlineShop ?? ""
         let url = URL(string: stringUrl)
         UIApplication.shared.open(url!)
+    }
+    
+    @IBAction func deleteWish(_ sender: Any) {
+        showConfirm {
+            self.deleteWishOfUser()
+        }
+    }
+    
+    func showConfirm(completion: @escaping () -> Void) {
+        let message = UIAlertController(title: "Confirmar", message: "¿Estás seguro que deseas eliminar este deseo?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) -> Void in
+            print("ok")
+            completion()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel) { (UIAlertAction) -> Void in
+            print("cancel")
+        }
+        
+        message.addAction(ok)
+        message.addAction(cancel)
+        
+        self.present(message, animated: true, completion: nil)
     }
     
     func setCategory(category: Int) {
@@ -171,4 +241,35 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
         }
     }
     
+    func refreshData() {
+        print("Do get wish request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.oneWishRequest(id: wish?.id!) {
+            success, result, error in
+            if let result = result as? WishModel {
+                self.wishName.text = result.name
+                self.wishPrice.text = "\(String(describing: result.price!))€"
+                self.wishDescription.text = result.description
+                self.setCategory(category: result.category ?? 0)
+                self.wishCategory.text = self.categoryString
+                self.wishStore.text = result.shop
+                
+                if let avatar = result.imagePath {
+                    self.imageView.loadUrl(from: avatar, contentMode: .scaleAspectFill)
+                } else {
+                    self.imageView.image = UIImage(named: "placeholder")
+                }
+            }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "WishEditSegue" {
+            if let editWishVC = segue.destination as? EditWishVC {
+                editWishVC.wish = self.wish
+                print("WISH -> \(String(describing: editWishVC.wish?.name))")
+            }
+        }
+    }
 }
