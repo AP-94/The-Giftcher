@@ -66,4 +66,5 @@ class HelpVC: BaseVC, NVActivityIndicatorViewable {
            self.present(message, animated: true, completion: nil)
        }
     
+    
 }

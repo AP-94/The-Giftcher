@@ -27,6 +27,16 @@
 		23DBF47B245F63E0003E1A11 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */; };
 		23DBF48324685CE1003E1A11 /* UserSelfWishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DBF48224685CE1003E1A11 /* UserSelfWishesCell.swift */; };
 		23EDA0AA246F3E9A00770EDC /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0A9246F3E9A00770EDC /* UIButtonExtension.swift */; };
+		23EDA0AC2470852F00770EDC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EDA0AB2470852F00770EDC /* Tutorial.storyboard */; };
+		23EDA0BF2470893700770EDC /* ChoosePreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0BE2470893700770EDC /* ChoosePreferencesVC.swift */; };
+		23EDA0C124708FC600770EDC /* TutoHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C024708FC600770EDC /* TutoHomeVC.swift */; };
+		23EDA0C32470904D00770EDC /* TutoAddWishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */; };
+		23EDA0C52470906300770EDC /* TutoWishDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C42470906300770EDC /* TutoWishDetailVC.swift */; };
+		23EDA0C72470907900770EDC /* TutoCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C62470907900770EDC /* TutoCategoriesVC.swift */; };
+		23EDA0C92470908E00770EDC /* TutoFindWishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C82470908E00770EDC /* TutoFindWishVC.swift */; };
+		23EDA0CB247090A300770EDC /* TutoFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0CA247090A300770EDC /* TutoFriendsVC.swift */; };
+		23EDA0CD247090C600770EDC /* TutoFriendsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0CC247090C600770EDC /* TutoFriendsDetailVC.swift */; };
+		23EDA0CF247090E500770EDC /* TutoProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0CE247090E500770EDC /* TutoProfileVC.swift */; };
 		55AC49BC05A77B417AB04533 /* Pods_the_giftcher_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */; };
 		C60036C22463323B00C86D4C /* ImageView+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60036C12463323B00C86D4C /* ImageView+Url.swift */; };
 		C61603FA246DCAD40005728C /* AddFriendsTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61603F9246DCAD40005728C /* AddFriendsTBCell.swift */; };
@@ -99,6 +109,16 @@
 		23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		23DBF48224685CE1003E1A11 /* UserSelfWishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfWishesCell.swift; sourceTree = "<group>"; };
 		23EDA0A9246F3E9A00770EDC /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		23EDA0AB2470852F00770EDC /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		23EDA0BE2470893700770EDC /* ChoosePreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePreferencesVC.swift; sourceTree = "<group>"; };
+		23EDA0C024708FC600770EDC /* TutoHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoHomeVC.swift; sourceTree = "<group>"; };
+		23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoAddWishVC.swift; sourceTree = "<group>"; };
+		23EDA0C42470906300770EDC /* TutoWishDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoWishDetailVC.swift; sourceTree = "<group>"; };
+		23EDA0C62470907900770EDC /* TutoCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoCategoriesVC.swift; sourceTree = "<group>"; };
+		23EDA0C82470908E00770EDC /* TutoFindWishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoFindWishVC.swift; sourceTree = "<group>"; };
+		23EDA0CA247090A300770EDC /* TutoFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoFriendsVC.swift; sourceTree = "<group>"; };
+		23EDA0CC247090C600770EDC /* TutoFriendsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoFriendsDetailVC.swift; sourceTree = "<group>"; };
+		23EDA0CE247090E500770EDC /* TutoProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoProfileVC.swift; sourceTree = "<group>"; };
 		2A0C0AF8719D59F67F8D4AB9 /* Pods-the-giftcher-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-the-giftcher-ios.debug.xcconfig"; path = "Target Support Files/Pods-the-giftcher-ios/Pods-the-giftcher-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		BFAC6108526665460B0A8A9D /* Pods_the_giftcher_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_the_giftcher_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60036C12463323B00C86D4C /* ImageView+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Url.swift"; sourceTree = "<group>"; };
@@ -190,8 +210,9 @@
 				237BFC49244915FF00AC8F98 /* SceneDelegate.swift */,
 				237BFC60244B492C00AC8F98 /* MainTabBarController.swift */,
 				237BFC4D244915FF00AC8F98 /* Main.storyboard */,
-				237BFC502449160500AC8F98 /* Assets.xcassets */,
 				237BFC522449160500AC8F98 /* LaunchScreen.storyboard */,
+				23EDA0AB2470852F00770EDC /* Tutorial.storyboard */,
+				237BFC502449160500AC8F98 /* Assets.xcassets */,
 				237BFC552449160500AC8F98 /* Info.plist */,
 			);
 			path = "the-giftcher-ios";
@@ -200,6 +221,7 @@
 		237BFC5F244B245500AC8F98 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				23EDA0AD2470886B00770EDC /* Tutorial */,
 				C6C0887D244C673F00CB0A7A /* BaseVC.swift */,
 				C6160400246DCBCA0005728C /* Profile */,
 				C61603FF246DCBC50005728C /* Home */,
@@ -216,6 +238,22 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		23EDA0AD2470886B00770EDC /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				23EDA0C024708FC600770EDC /* TutoHomeVC.swift */,
+				23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */,
+				23EDA0C62470907900770EDC /* TutoCategoriesVC.swift */,
+				23EDA0C82470908E00770EDC /* TutoFindWishVC.swift */,
+				23EDA0C42470906300770EDC /* TutoWishDetailVC.swift */,
+				23EDA0CA247090A300770EDC /* TutoFriendsVC.swift */,
+				23EDA0CC247090C600770EDC /* TutoFriendsDetailVC.swift */,
+				23EDA0CE247090E500770EDC /* TutoProfileVC.swift */,
+				23EDA0BE2470893700770EDC /* ChoosePreferencesVC.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		9EFBAD988882C0C104533F5F /* Frameworks */ = {
@@ -444,6 +482,7 @@
 			files = (
 				237BFC542449160500AC8F98 /* LaunchScreen.storyboard in Resources */,
 				237BFC512449160500AC8F98 /* Assets.xcassets in Resources */,
+				23EDA0AC2470852F00770EDC /* Tutorial.storyboard in Resources */,
 				237BFC4F244915FF00AC8F98 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,9 +544,12 @@
 				C6E1A0022459F0B800C864A9 /* UserModel.swift in Sources */,
 				C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */,
 				C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */,
+				23EDA0C32470904D00770EDC /* TutoAddWishVC.swift in Sources */,
+				23EDA0C124708FC600770EDC /* TutoHomeVC.swift in Sources */,
 				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
 				C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */,
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
+				23EDA0CD247090C600770EDC /* TutoFriendsDetailVC.swift in Sources */,
 				C64A2DF424608EA2005FBFA5 /* FriendRequestModel.swift in Sources */,
 				C68B5AB2245D9DBB007865B4 /* FriendsModel.swift in Sources */,
 				C6C08884244C68DA00CB0A7A /* AddWishVC.swift in Sources */,
@@ -516,6 +558,7 @@
 				235FD042245C920B00B5F7B2 /* ContactFormVC.swift in Sources */,
 				C6160402246DD1590005728C /* FriendRequestVC.swift in Sources */,
 				C6160406246F035A0005728C /* Notification+Name.swift in Sources */,
+				23EDA0C72470907900770EDC /* TutoCategoriesVC.swift in Sources */,
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
 				C630B3622461D2380054D5D4 /* ReservedWishesModel.swift in Sources */,
 				C6C7383324646CD0004B02D2 /* TextField+Utils.swift in Sources */,
@@ -525,6 +568,7 @@
 				23DBF48324685CE1003E1A11 /* UserSelfWishesCell.swift in Sources */,
 				C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */,
 				C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */,
+				23EDA0CF247090E500770EDC /* TutoProfileVC.swift in Sources */,
 				C6C0887C244C660500CB0A7A /* HomeVC.swift in Sources */,
 				C6E7E93F2465D77100EBA638 /* WishesCell.swift in Sources */,
 				237BFC5E244B243A00AC8F98 /* RegisterViewController.swift in Sources */,
@@ -538,11 +582,15 @@
 				C6E1A0122459F6E000C864A9 /* DataMapper.swift in Sources */,
 				235FD03A245AD72A00B5F7B2 /* EditProfileVC.swift in Sources */,
 				C60036C22463323B00C86D4C /* ImageView+Url.swift in Sources */,
+				23EDA0C92470908E00770EDC /* TutoFindWishVC.swift in Sources */,
 				235FD040245AD7F700B5F7B2 /* HelpVC.swift in Sources */,
+				23EDA0C52470906300770EDC /* TutoWishDetailVC.swift in Sources */,
 				C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */,
 				C6160404246DD18F0005728C /* FriendRequestTBCell.swift in Sources */,
+				23EDA0BF2470893700770EDC /* ChoosePreferencesVC.swift in Sources */,
 				237BFC61244B492C00AC8F98 /* MainTabBarController.swift in Sources */,
 				235FD03E245AD7C300B5F7B2 /* PrivacyPolicyVC.swift in Sources */,
+				23EDA0CB247090A300770EDC /* TutoFriendsVC.swift in Sources */,
 				C6A3EF38245CBD190021E9DE /* WishModel.swift in Sources */,
 				C61603FA246DCAD40005728C /* AddFriendsTBCell.swift in Sources */,
 				C6DEBF3B245209B800F3F156 /* MyCollectionViewCell.swift in Sources */,

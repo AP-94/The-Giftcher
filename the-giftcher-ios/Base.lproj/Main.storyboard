@@ -3872,6 +3872,9 @@
                                 <state key="normal" title="Volver a ver el tutorial">
                                     <color key="titleColor" red="0.1138733849" green="0.1237688139" blue="0.13416311140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="7w1-uP-D2S" kind="show" id="6Ge-8c-aeL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgd-RR-cSh">
                                 <rect key="frame" x="20" y="396" width="374" height="57"/>
@@ -3943,6 +3946,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBI-rp-ULq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1513.0434782608697" y="2385.9375"/>
+        </scene>
+        <!--Tutorial-->
+        <scene sceneID="wwI-SI-aab">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tutorial" id="7w1-uP-D2S" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HRr-7J-pPG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6OR-S3-zrx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2063" y="2278"/>
         </scene>
         <!--Contact FormVC-->
         <scene sceneID="XrN-bm-BIy">
