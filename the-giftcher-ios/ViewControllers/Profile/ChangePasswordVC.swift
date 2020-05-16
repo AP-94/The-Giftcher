@@ -25,6 +25,8 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
     let hidePassImage = UIImage(systemName: "eye.slash")
     let showPassImage = UIImage(systemName: "eye")
     
+    var correctPassword = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         customItems()
@@ -103,16 +105,47 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
     
     @IBAction func updatePassword(_ sender: UIButton) {
         changePassSubmitButton.bounce()
+        
         if oldPasswordTF.text == "" || newPasswordTF.text == "" || repNewPasswordTF.text == "" {
+            
             let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
             banner.show()
+            
             } else if newPasswordTF.text!.isValidPassword {
                 if newPasswordTF.text == repNewPasswordTF.text {
-                    let inputPassword = InputUpdatePassword(oldPassword: oldPasswordTF.text, newPassword: newPasswordTF.text)
-                    doUpdateRequest(inputUpdatePassword: inputPassword)
-                    let banner = NotificationBanner(title: "Éxito", subtitle: "Password cambiado correctamente", style: .success)
-                banner.show()
+                    if newPasswordTF.text != oldPasswordTF.text {
+                        
+                            let inputPassword = InputUpdatePassword(oldPassword: oldPasswordTF.text, newPassword: newPasswordTF.text)
+                                doUpdateRequest(inputUpdatePassword: inputPassword)
+                                
+                        
+                            if correctPassword == true {
+                                
+                                let banner = NotificationBanner(title: "Éxito", subtitle: "Password cambiado correctamente", style: .success)
+                            banner.show()
+                                backToEProf()
+                                self.navigationController?.popViewController(animated: true)
+                            
+                        } else if correctPassword == false {
+                            
+                            print("Contraseñas no coinciden")
+                        }
+                        
+                    } else {
+                        
+                        let banner = NotificationBanner(title: "Error", subtitle: "El password no debe ser el mismo que el anterior", style: .warning)
+                        banner.show()
+                    }
+                    
+                } else {
+                    
+                    let banner = NotificationBanner(title: "Error", subtitle: "Las contraseñas no coinciden", style: .warning)
+                    banner.show()
             }
+        } else {
+            
+            let banner = GrowingNotificationBanner(title: "Error", subtitle: "La contraseña debe contener: \n - 1 letra minúscula, \n - 1 letra mayúscula, \n - 1 símbolo de los siguientes @#!$%, \n - 1 número \n - contener 8-20 caracteres", style: .warning)
+            banner.show()
         }
     }
     
@@ -122,6 +155,8 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
         dataMapper.updateUserPasswordRequest(inputUpdatePassword: inputUpdatePassword) {
             success, result, error in
             if let result = result as? UserModel {
+                
+                self.correctPassword = false
                 
                 Session.clean()
                 let currentSession = Session.current
@@ -134,11 +169,17 @@ class ChangePasswordVC: BaseVC, NVActivityIndicatorViewable {
                 
                 Session.save()
             } else {
-                let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
-                banner.show()
+                
+                self.correctPassword = true
             }
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         }
+    }
+    
+    func backToEProf() {
+        oldPasswordTF.text = ""
+        newPasswordTF.text = ""
+        repNewPasswordTF.text = ""
     }
     
 }

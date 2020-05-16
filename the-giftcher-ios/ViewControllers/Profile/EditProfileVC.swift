@@ -126,6 +126,7 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
         if !editNameTF.text!.isEmpty || !editSurnameTF.text!.isEmpty || !editUsernameTF.text!.isEmpty || !birthdaytextLabel.text!.isEmpty {
             let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
             doUpdateRequest(inputUpdateUser: inputUser)
+            self.navigationController?.popViewController(animated: true)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
             banner.show()

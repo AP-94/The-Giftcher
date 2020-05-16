@@ -657,7 +657,7 @@
                                                     <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="3uf-lM-TYi" kind="show" id="cBc-b0-Qjb"/>
+                                                    <segue destination="3uf-lM-TYi" kind="show" identifier="" id="cBc-b0-Qjb"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cambiar perfil a público" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-Vc-zzl">
@@ -1837,21 +1837,6 @@
                                     <constraint firstAttribute="height" constant="725" id="KMr-Ok-esH"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74M-Hq-EgY">
-                                <rect key="frame" x="20" y="660" width="163" height="42"/>
-                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="LvQ-0A-J6Q"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="163" id="x9o-oo-Fx1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="GUARDAR">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addWish:" destination="Ha0-uh-sIt" eventType="touchUpInside" id="Ta6-bJ-0mg"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_image_icon" translatesAutoresizingMaskIntoConstraints="NO" id="y5f-77-QBB">
                                 <rect key="frame" x="20" y="18" width="100" height="100"/>
                                 <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2099,50 +2084,47 @@
                                     <constraint firstAttribute="height" constant="493" id="ubu-oP-o3f"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVm-hg-B0K">
-                                <rect key="frame" x="231" y="660" width="163" height="42"/>
-                                <color key="backgroundColor" red="0.9999160171" green="1" blue="0.99987202880000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74M-Hq-EgY">
+                                <rect key="frame" x="126" y="649" width="163" height="42"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="Ect-bN-G9C"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="163" id="stC-s8-YqF"/>
+                                    <constraint firstAttribute="height" constant="42" id="LvQ-0A-J6Q"/>
+                                    <constraint firstAttribute="width" constant="163" id="x9o-oo-Fx1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="RESERVAR">
-                                    <color key="titleColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="GUARDAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveChanges:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="ICe-tF-wcD"/>
+                                    <action selector="addWish:" destination="Ha0-uh-sIt" eventType="touchUpInside" id="Ta6-bJ-0mg"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="74M-Hq-EgY" secondAttribute="trailing" constant="125" id="00G-31-OJT"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="leading" secondItem="y5f-77-QBB" secondAttribute="leading" id="3U4-SD-b5W"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="trailing" secondItem="Rdp-cu-xC2" secondAttribute="trailing" id="4Z0-lL-3Z6"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="top" secondItem="y5f-77-QBB" secondAttribute="bottom" constant="20" id="7Y2-ht-XV9"/>
+                            <constraint firstItem="Rdp-cu-xC2" firstAttribute="bottom" secondItem="74M-Hq-EgY" secondAttribute="bottom" constant="34" id="83h-fR-eYg"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="VgD-A0-g3P" secondAttribute="trailing" constant="20" id="8og-EK-oYj"/>
                             <constraint firstItem="VgD-A0-g3P" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="Agm-9p-8lb"/>
+                            <constraint firstItem="74M-Hq-EgY" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="126" id="DKg-c5-dMR"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="width" secondItem="y5f-77-QBB" secondAttribute="width" id="KD9-rq-kl4"/>
                             <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="y5f-77-QBB" secondAttribute="trailing" constant="294" id="N5S-ql-C5f"/>
-                            <constraint firstItem="Rdp-cu-xC2" firstAttribute="trailing" secondItem="xVm-hg-B0K" secondAttribute="trailing" constant="20" id="Py5-sz-fLA"/>
+                            <constraint firstItem="74M-Hq-EgY" firstAttribute="top" secondItem="VgD-A0-g3P" secondAttribute="bottom" constant="18" id="Upe-zv-9L8"/>
                             <constraint firstItem="y5f-77-QBB" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" constant="18" id="VSj-rr-jLf"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="top" secondItem="Rdp-cu-xC2" secondAttribute="top" id="XQf-jj-HZl"/>
-                            <constraint firstItem="74M-Hq-EgY" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="YNZ-kw-vjZ"/>
                             <constraint firstItem="y5f-77-QBB" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" constant="20" id="YwP-lI-nJp"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="top" secondItem="y5f-77-QBB" secondAttribute="top" id="c7C-yK-pi3"/>
-                            <constraint firstItem="74M-Hq-EgY" firstAttribute="top" secondItem="VgD-A0-g3P" secondAttribute="bottom" constant="29" id="jn3-pM-Dlk"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="leading" secondItem="Rdp-cu-xC2" secondAttribute="leading" id="lOw-uK-MqQ"/>
                             <constraint firstItem="hfK-aE-KfS" firstAttribute="bottom" secondItem="Rdp-cu-xC2" secondAttribute="bottom" id="mB0-sk-yN8"/>
-                            <constraint firstItem="Rdp-cu-xC2" firstAttribute="bottom" secondItem="74M-Hq-EgY" secondAttribute="bottom" constant="23" id="qmK-op-x50"/>
                             <constraint firstItem="JA2-O3-oSv" firstAttribute="height" secondItem="y5f-77-QBB" secondAttribute="height" id="sqL-Oa-96K"/>
-                            <constraint firstItem="xVm-hg-B0K" firstAttribute="baseline" secondItem="74M-Hq-EgY" secondAttribute="baseline" id="v53-Be-6eb"/>
-                            <constraint firstItem="xVm-hg-B0K" firstAttribute="leading" secondItem="74M-Hq-EgY" secondAttribute="trailing" constant="48" id="yCg-pp-1ms"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rdp-cu-xC2"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Añadir Deseo" image="003-boton" landscapeImage="003-boton" largeContentSizeImage="003-boton" selectedImage="003-boton" id="IRC-9R-Akh"/>
                     <connections>
-                        <outlet property="associateButton" destination="xVm-hg-B0K" id="NJF-13-xhh"/>
                         <outlet property="categoryButton" destination="XJ6-oq-SwP" id="u1y-l2-7Fh"/>
                         <outlet property="categoryNameLabel" destination="52h-Fy-2IL" id="3rx-eM-fM7"/>
                         <outlet property="categoryPicker" destination="Qul-C8-nbN" id="mG4-Ah-nDp"/>

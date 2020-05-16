@@ -30,7 +30,6 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var associateButton: UIButton!
     
     var pickerData: [String] = [String]()
     let imagePickerContr = UIImagePickerController()
@@ -105,9 +104,6 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         
         //saveButton atributes
         saveButton.layer.cornerRadius = 20
-        
-        //associateButton atributes
-        associateButton.layer.cornerRadius = 20
         
         //dataInputView atributes
         dataInputView.layer.cornerRadius = 5
