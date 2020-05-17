@@ -27,7 +27,6 @@
 		23DBF47B245F63E0003E1A11 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */; };
 		23DBF48324685CE1003E1A11 /* UserSelfWishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DBF48224685CE1003E1A11 /* UserSelfWishesCell.swift */; };
 		23EDA0AA246F3E9A00770EDC /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0A9246F3E9A00770EDC /* UIButtonExtension.swift */; };
-		23EDA0AC2470852F00770EDC /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EDA0AB2470852F00770EDC /* Tutorial.storyboard */; };
 		23EDA0BF2470893700770EDC /* ChoosePreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0BE2470893700770EDC /* ChoosePreferencesVC.swift */; };
 		23EDA0C124708FC600770EDC /* TutoHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C024708FC600770EDC /* TutoHomeVC.swift */; };
 		23EDA0C32470904D00770EDC /* TutoAddWishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */; };
@@ -109,7 +108,6 @@
 		23DBF47A245F63E0003E1A11 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		23DBF48224685CE1003E1A11 /* UserSelfWishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelfWishesCell.swift; sourceTree = "<group>"; };
 		23EDA0A9246F3E9A00770EDC /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
-		23EDA0AB2470852F00770EDC /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		23EDA0BE2470893700770EDC /* ChoosePreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePreferencesVC.swift; sourceTree = "<group>"; };
 		23EDA0C024708FC600770EDC /* TutoHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoHomeVC.swift; sourceTree = "<group>"; };
 		23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoAddWishVC.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				237BFC60244B492C00AC8F98 /* MainTabBarController.swift */,
 				237BFC4D244915FF00AC8F98 /* Main.storyboard */,
 				237BFC522449160500AC8F98 /* LaunchScreen.storyboard */,
-				23EDA0AB2470852F00770EDC /* Tutorial.storyboard */,
 				237BFC502449160500AC8F98 /* Assets.xcassets */,
 				237BFC552449160500AC8F98 /* Info.plist */,
 			);
@@ -482,7 +479,6 @@
 			files = (
 				237BFC542449160500AC8F98 /* LaunchScreen.storyboard in Resources */,
 				237BFC512449160500AC8F98 /* Assets.xcassets in Resources */,
-				23EDA0AC2470852F00770EDC /* Tutorial.storyboard in Resources */,
 				237BFC4F244915FF00AC8F98 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

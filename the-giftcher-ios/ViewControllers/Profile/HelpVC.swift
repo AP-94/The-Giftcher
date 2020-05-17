@@ -66,5 +66,8 @@ class HelpVC: BaseVC, NVActivityIndicatorViewable {
            self.present(message, animated: true, completion: nil)
        }
     
+    @IBAction func goTuto(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "TutorialSegue", sender: nil)
+    }
     
 }
