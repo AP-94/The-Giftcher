@@ -17,7 +17,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     
     let dataMapper = DataMapper()
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
-    var user = Session.current.userModel
     private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var userProfileImage: UIImageView!
@@ -49,7 +48,9 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         userBirthdayLabel.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
         callInfo()
         setAvatar()
-    
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshDataNoti(_:)), name: .didEditProfile, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +58,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         setAvatar()
         loadData()
     }
-    
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * CGFloat(itemsPerRow + 1)
@@ -133,16 +131,22 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     
     @objc private func refreshData(_ sender: Any) {
         switch wishSegment.selectedSegmentIndex {
-               case 0:
-                   loadData()
-               case 1:
-                   switchData()
-               default:
-                   loadData()
-               }
+        case 0:
+            loadData()
+        case 1:
+            switchData()
+        default:
+            loadData()
+        }
+    }
+    
+    @objc private func refreshDataNoti(_ notification:Notification) {
+        callInfo()
+        setAvatar()
     }
     
     func callInfo(){
+        let user = Session.current.userModel
         let name = user?.name ?? ""
         let lastName = user?.lastName ?? ""
         let userName = user?.username ?? ""
@@ -152,7 +156,8 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     }
     
     func setAvatar() {
-        if let avatar = user?.imagePath {
+        userProfileImage.image = nil
+        if let avatar = Session.current.userModel?.imagePath {
             userProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
         }
     }
@@ -249,8 +254,8 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         
         
         
-        }
     }
+}
 
-    
+
 

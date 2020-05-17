@@ -10,10 +10,10 @@ import UIKit
 import NotificationBannerSwift
 import NVActivityIndicatorView
 
-class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NVActivityIndicatorViewable {
+class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, NVActivityIndicatorViewable {
     
-    @IBOutlet weak var imagePicker: UIImageView!
-    @IBOutlet weak var imagePickerButton: UIButton!
+    @IBOutlet weak var wishImageView: UIImageView!
+    @IBOutlet weak var wishImageButton: UIButton!
     @IBOutlet weak var dataInputView: UIView!
     @IBOutlet weak var dataInputSV: UIScrollView!
     
@@ -31,6 +31,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     @IBOutlet weak var saveButton: UIButton!
     
+    var imagePicker: ImagePicker!
     var pickerData: [String] = [String]()
     let imagePickerContr = UIImagePickerController()
     var categoryInt = Int()
@@ -44,8 +45,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
-        
-        imagePickerContr.delegate = self
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
     }
     
@@ -55,14 +55,14 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     
     func customSettings() {
         //imagePicker atributes
-        imagePicker.layer.cornerRadius = 2
-        imagePicker.layer.borderWidth = 3
-        imagePicker.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
-        imagePicker.layer.shadowColor = UIColor.black.cgColor
-        imagePicker.layer.shadowOffset = CGSize(width:0.0, height:2.0)
-        imagePicker.layer.masksToBounds = false
-        imagePicker.layer.shadowRadius = 2.0
-        imagePicker.layer.shadowOpacity = 0.6
+        wishImageView.layer.cornerRadius = 2
+        wishImageView.layer.borderWidth = 3
+        wishImageView.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
+        wishImageView.layer.shadowColor = UIColor.black.cgColor
+        wishImageView.layer.shadowOffset = CGSize(width:0.0, height:2.0)
+        wishImageView.layer.masksToBounds = false
+        wishImageView.layer.shadowRadius = 2.0
+        wishImageView.layer.shadowOpacity = 0.6
         
         //wishNameTF atributes
         wishNameTF.layer.borderWidth = 1
@@ -160,24 +160,9 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
     }
     
     @IBAction func loadImageButtonTapped(_ sender: UIButton) {
-        imagePickerContr.allowsEditing = false
-        imagePickerContr.sourceType = .photoLibrary
-        
-        present(imagePickerContr, animated: true, completion: nil)
+        self.imagePicker.present(from: sender)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imagePicker.contentMode = .scaleToFill
-            imagePicker.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBAction func addWish(_ sender: UIButton) {
         saveButton.bounce()
         if wishNameTF.text == "" || wishShopTF.text == "" || onlineShopTF.text == "" || wishPriceTF.text == "" || wishDescriptionTV.text == "" || categoryNameLabel.text == "" {
@@ -207,8 +192,8 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.wishPostRequest(inputWish: inputWish) {
             success, result, error in
-            if (result as? WishModel) != nil {
-                
+            if let result = result as? WishModel {
+                self.sendWishImageRequest(id: result.id!)
                 let banner = NotificationBanner(title: "Deseo Añadido", subtitle: "Nuevo deseo añadido", style: .info)
                 banner.show()
                 self.afterWishAdd()
@@ -279,4 +264,23 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePi
         self.tabBarController?.selectedIndex = 4
     }
     
+    func sendWishImageRequest(id: Int) {
+        print("Uploading image")
+        let profilePicture = wishImageView.image
+        let image = profilePicture ?? UIImage(named: "placeholder")
+        dataMapper.addWishImageRequest(wishId: id, image: image!) {
+            success, result, error in
+            if let result = result as? WishModel {
+                print("Wish Image Path => \(result.imagePath ?? "NO HAY USUARIO")")
+            }
+        }
+    }
+    
+}
+
+extension AddWishVC: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.wishImageView.image = image
+    }
 }

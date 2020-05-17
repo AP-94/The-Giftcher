@@ -564,6 +564,9 @@
                                                 <state key="normal" image="edit">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="editPictureImage:" destination="9Uf-PM-yfe" eventType="touchUpInside" id="gFn-j0-wNX"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Cs-LP-9ZA">
                                                 <rect key="frame" x="42" y="327" width="329" height="34"/>
@@ -2561,11 +2564,11 @@
                         <outlet property="dataInputSV" destination="VgD-A0-g3P" id="fjv-nw-7LB"/>
                         <outlet property="dataInputView" destination="DNM-DW-abA" id="TWl-A3-XED"/>
                         <outlet property="doneButton" destination="jcS-hh-sIW" id="UPJ-RG-swz"/>
-                        <outlet property="imagePicker" destination="y5f-77-QBB" id="Tgh-9I-Wfe"/>
-                        <outlet property="imagePickerButton" destination="JA2-O3-oSv" id="KxO-2Q-Tt4"/>
                         <outlet property="onlineShopTF" destination="fRN-Cf-0LP" id="als-d0-2Ug"/>
                         <outlet property="saveButton" destination="74M-Hq-EgY" id="mwR-zS-vkZ"/>
                         <outlet property="wishDescriptionTV" destination="IPl-yi-Dc8" id="WPE-61-POi"/>
+                        <outlet property="wishImageButton" destination="JA2-O3-oSv" id="fXr-MD-B9u"/>
+                        <outlet property="wishImageView" destination="y5f-77-QBB" id="b7j-r7-Bh8"/>
                         <outlet property="wishNameTF" destination="8VY-Qg-Qyf" id="x0w-pa-1oS"/>
                         <outlet property="wishPriceTF" destination="VrI-jo-kPX" id="UVf-Ps-hmE"/>
                         <outlet property="wishShopTF" destination="YBJ-27-kLI" id="QLI-5q-It2"/>
@@ -5052,7 +5055,7 @@
         <segue reference="sEO-tt-1US"/>
         <segue reference="k93-oJ-K79"/>
         <segue reference="3iB-GM-9qj"/>
-        <segue reference="Kft-9U-lOg"/>
+        <segue reference="DEk-8I-ajV"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="Ton-um-4fp"/>
     </inferredMetricsTieBreakers>

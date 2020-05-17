@@ -10,13 +10,14 @@ import UIKit
 import NotificationBannerSwift
 import NVActivityIndicatorView
 
-class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate {
     
     var pickerData: [String] = [String]()
     let imagePickerContr = UIImagePickerController()
     var categoryInt = Int()
     var wish: WishModel?
     var categoryString: String?
+    var imagePicker: ImagePicker!
     
     //Outlets
     @IBOutlet weak var wishImage: UIImageView!
@@ -44,8 +45,7 @@ class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIP
         
         self.pickerButton.delegate = self
         self.pickerButton.dataSource = self
-        
-        imagePickerContr.delegate = self
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
     }
     
@@ -134,11 +134,8 @@ class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIP
         
     }
     
-    @IBAction func doSetWishImage(_ sender: Any) {
-        imagePickerContr.allowsEditing = false
-        imagePickerContr.sourceType = .photoLibrary
-        
-        present(imagePickerContr, animated: true, completion: nil)
+    @IBAction func doSetWishImage(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
     }
     
     
@@ -177,8 +174,9 @@ class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIP
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         dataMapper.wishModifyRequest(idWish: wish?.id!,inputWish: inputWish) {
             success, result, error in
-            if (result as? WishModel) != nil {
+            if let result = result as? WishModel {
                 
+                self.sendWishImageRequest(id: result.id!)
                 let banner = NotificationBanner(title: "Deseo Modificado", subtitle: "El deseo ha sido modificado correctamente", style: .info)
                 banner.show()
                 
@@ -213,21 +211,6 @@ class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIP
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let categorySelected = pickerData[row]
         categoryNameLabel.text = categorySelected
-    }
-    
-    //MARK:: IMAGEPICKER DELEGATES
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            wishImage.contentMode = .scaleToFill
-            wishImage.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
     }
     
     func setCategory(category: String) {
@@ -318,4 +301,23 @@ class EditWishVC: BaseVC, NVActivityIndicatorViewable, UIPickerViewDelegate, UIP
         }
     }
     
+    func sendWishImageRequest(id: Int) {
+           print("Uploading image")
+           let profilePicture = wishImage.image
+           let image = profilePicture ?? UIImage(named: "placeholder")
+           dataMapper.addWishImageRequest(wishId: id, image: image!) {
+               success, result, error in
+               if let result = result as? WishModel {
+                   print("Wish Image Path => \(result.imagePath ?? "NO HAY USUARIO")")
+               }
+           }
+       }
+    
+}
+
+extension EditWishVC: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.wishImage.image = image
+    }
 }

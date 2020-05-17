@@ -42,7 +42,7 @@ class MockConnection: RestManager {
         completion(200, nil, [:], nil)
     }
     
-    func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
+    func imageUploadRequest(_ endpoint: String,_ imaeg: UIImage, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
         processFake(endpoint, params: params, completion:  completion)
     }
     

@@ -164,7 +164,7 @@ class DataMapper {
         }
     }
     
-    func addProfileImageRequest(fake: String? = nil, inputProfileImage: InputProfileImage , completion: @escaping DataMapperCompletion) {
+    func addProfileImageRequest(fake: String? = nil, image: UIImage , completion: @escaping DataMapperCompletion) {
         
         var url = "/user/google_cloud_image"
         if fake != nil  {
@@ -174,18 +174,15 @@ class DataMapper {
             connection = Connection()
         }
         
-        //Invesitgar como enviar imagen swift, con este imageUploadRequest tenemos que enviar paramentros e Data, buscar más informacion de como
-        //convertir una imagen en swift en estos 2 aspectos
-        /*connection.imageUploadRequest(url, encode: JSONEncoding.default) {
-         httpStatus, json, responseHeaders, error in
-         
-         if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-         let result = UserModel(jsonData: try? json.rawData())
-         completion(true, result, nil)
-         } else {
-         completion(false ,nil, error)
-         }
-         }*/
+        connection.imageUploadRequest(url, image, params: nil) {
+            httpStatus, json, responseHeaders, error in
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = UserModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
     }
     
     func forgotPasswordRequest(fake: String? = nil, email: String? , completion: @escaping DataMapperCompletion) {
@@ -441,9 +438,9 @@ class DataMapper {
         }
     }
     
-    func addWishImageRequest(fake: String? = nil, wishId: String?, inputWishImage: InputWishImage , completion: @escaping DataMapperCompletion) {
+    func addWishImageRequest(fake: String? = nil, wishId: Int?, image: UIImage, completion: @escaping DataMapperCompletion) {
         
-        var url = "/wishes/google_cloud_wish_image/\(String(describing: wishId))"
+        var url = "/wishes/google_cloud_wish_image/\(String(describing: wishId!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()
@@ -451,18 +448,16 @@ class DataMapper {
             connection = Connection()
         }
         
-        //Invesitgar como enviar imagen swift, con este imageUploadRequest tenemos que enviar paramentros e Data, buscar más informacion de como
-        //convertir una imagen en swift en estos 2 aspectos
-        /*connection.imageUploadRequest(url, encode: JSONEncoding.default) {
-         httpStatus, json, responseHeaders, error in
-         
-         if self.checkHttpStatus(httpCode: httpStatus), let json = json {
-         let result = UserModel(jsonData: try? json.rawData())
-         completion(true, result, nil)
-         } else {
-         completion(false ,nil, error)
-         }
-         }*/
+        connection.imageUploadRequest(url, image, params: nil) {
+            httpStatus, json, responseHeaders, error in
+            
+            if self.checkHttpStatus(httpCode: httpStatus), let json = json {
+                let result = WishModel(jsonData: try? json.rawData())
+                completion(true, result, nil)
+            } else {
+                completion(false ,nil, error)
+            }
+        }
     }
     
     func getFriendWishesRequest(fake: String? = nil, userId: Int?, completion: @escaping DataMapperCompletion) {
