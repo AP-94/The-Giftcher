@@ -27,4 +27,8 @@ class ChoosePreferencesVC: UIViewController {
     }
     */
 
+    @IBAction func continueButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "TutorialToHomeView", sender: nil)
+    }
+    
 }

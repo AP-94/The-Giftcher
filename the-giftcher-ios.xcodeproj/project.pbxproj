@@ -46,7 +46,6 @@
 		C630B3642461D3110054D5D4 /* ReservedFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */; };
 		C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3652461D47F0054D5D4 /* InputReservedWish.swift */; };
 		C630B3682461D8EC0054D5D4 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3672461D8EC0054D5D4 /* ForgotPasswordVC.swift */; };
-		C64A2DF024608A65005FBFA5 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DEF24608A65005FBFA5 /* TutorialVC.swift */; };
 		C64A2DF424608EA2005FBFA5 /* FriendRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF324608EA2005FBFA5 /* FriendRequestModel.swift */; };
 		C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF52460955A005FBFA5 /* SingletonModel.swift */; };
 		C64A2DF8246095A1005FBFA5 /* InputFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */; };
@@ -128,7 +127,6 @@
 		C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedFriendModel.swift; sourceTree = "<group>"; };
 		C630B3652461D47F0054D5D4 /* InputReservedWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReservedWish.swift; sourceTree = "<group>"; };
 		C630B3672461D8EC0054D5D4 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
-		C64A2DEF24608A65005FBFA5 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		C64A2DF324608EA2005FBFA5 /* FriendRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestModel.swift; sourceTree = "<group>"; };
 		C64A2DF52460955A005FBFA5 /* SingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonModel.swift; sourceTree = "<group>"; };
 		C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFriendRequest.swift; sourceTree = "<group>"; };
@@ -218,8 +216,8 @@
 		237BFC5F244B245500AC8F98 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				23EDA0AD2470886B00770EDC /* Tutorial */,
 				C6C0887D244C673F00CB0A7A /* BaseVC.swift */,
+				23EDA0AD2470886B00770EDC /* Tutorial */,
 				C6160400246DCBCA0005728C /* Profile */,
 				C61603FF246DCBC50005728C /* Home */,
 				C61603FE246DCBBE0005728C /* AddWish */,
@@ -264,7 +262,6 @@
 		C61603FB246DCB570005728C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				C64A2DEF24608A65005FBFA5 /* TutorialVC.swift */,
 				237BFC5B244A1A4900AC8F98 /* LoginViewController.swift */,
 				237BFC5D244B243A00AC8F98 /* RegisterViewController.swift */,
 			);
@@ -601,7 +598,6 @@
 				237BFC4A244915FF00AC8F98 /* SceneDelegate.swift in Sources */,
 				C6A3EF36245CBCCF0021E9DE /* InputWish.swift in Sources */,
 				C6E1A0162459F96900C864A9 /* InputLogin.swift in Sources */,
-				C64A2DF024608A65005FBFA5 /* TutorialVC.swift in Sources */,
 				C6E1A00B2459F34B00C864A9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

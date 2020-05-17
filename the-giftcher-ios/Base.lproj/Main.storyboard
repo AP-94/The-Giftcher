@@ -4851,6 +4851,9 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="CONTINUAR"/>
+                                <connections>
+                                    <action selector="continueButton:" destination="7tE-wd-fJF" eventType="touchUpInside" id="WOL-Z8-kyf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elige tus preferencias" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jav-be-L4g">
                                 <rect key="frame" x="24" y="42" width="367" height="36"/>
@@ -4941,6 +4944,9 @@
                         <viewLayoutGuide key="safeArea" id="Tue-qn-Fa5"/>
                     </view>
                     <navigationItem key="navigationItem" id="f13-dn-626"/>
+                    <connections>
+                        <segue destination="nlZ-0Z-7X6" kind="show" identifier="TutorialToHomeView" id="3iB-GM-9qj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJF-KM-frM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4948,9 +4954,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gxj-bz-Jrx"/>
+        <segue reference="7x7-xk-3aV"/>
         <segue reference="k93-oJ-K79"/>
-        <segue reference="pUc-A2-F3D"/>
+        <segue reference="3iB-GM-9qj"/>
         <segue reference="ZQ6-dV-he2"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="HbX-Zk-hMU"/>
