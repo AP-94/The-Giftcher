@@ -50,10 +50,9 @@
 		C64A2DF62460955A005FBFA5 /* SingletonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF52460955A005FBFA5 /* SingletonModel.swift */; };
 		C64A2DF8246095A1005FBFA5 /* InputFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */; };
 		C66EE50A24705CB000B9F844 /* EditWishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66EE50924705CB000B9F844 /* EditWishVC.swift */; };
+		C6719D7E2471A17F00E389C0 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719D7D2471A17F00E389C0 /* ImagePicker.swift */; };
 		C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */; };
 		C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */; };
-		C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */; };
-		C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AAD245D98B0007865B4 /* InputWishImage.swift */; };
 		C68B5AB2245D9DBB007865B4 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */; };
 		C68B5AB4245DA057007865B4 /* UserFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68B5AB3245DA057007865B4 /* UserFriendModel.swift */; };
 		C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3EF33245C90A10021E9DE /* InputRegister.swift */; };
@@ -131,10 +130,9 @@
 		C64A2DF52460955A005FBFA5 /* SingletonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonModel.swift; sourceTree = "<group>"; };
 		C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFriendRequest.swift; sourceTree = "<group>"; };
 		C66EE50924705CB000B9F844 /* EditWishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWishVC.swift; sourceTree = "<group>"; };
+		C6719D7D2471A17F00E389C0 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdateUser.swift; sourceTree = "<group>"; };
 		C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUpdatePassword.swift; sourceTree = "<group>"; };
-		C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputProfileImage.swift; sourceTree = "<group>"; };
-		C68B5AAD245D98B0007865B4 /* InputWishImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWishImage.swift; sourceTree = "<group>"; };
 		C68B5AB1245D9DBB007865B4 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		C68B5AB3245DA057007865B4 /* UserFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFriendModel.swift; sourceTree = "<group>"; };
 		C6A3EF33245C90A10021E9DE /* InputRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRegister.swift; sourceTree = "<group>"; };
@@ -364,8 +362,6 @@
 				C6A3EF35245CBCCF0021E9DE /* InputWish.swift */,
 				C68B5AA7245D8FD3007865B4 /* InputUpdateUser.swift */,
 				C68B5AA9245D9053007865B4 /* InputUpdatePassword.swift */,
-				C68B5AAB245D90F0007865B4 /* InputProfileImage.swift */,
-				C68B5AAD245D98B0007865B4 /* InputWishImage.swift */,
 				C64A2DF7246095A1005FBFA5 /* InputFriendRequest.swift */,
 				C630B3652461D47F0054D5D4 /* InputReservedWish.swift */,
 			);
@@ -401,6 +397,7 @@
 				C6C7383424647393004B02D2 /* ViewController+Utils.swift */,
 				C6160405246F035A0005728C /* Notification+Name.swift */,
 				23EDA0A9246F3E9A00770EDC /* UIButtonExtension.swift */,
+				C6719D7D2471A17F00E389C0 /* ImagePicker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -540,7 +537,6 @@
 				23EDA0C32470904D00770EDC /* TutoAddWishVC.swift in Sources */,
 				23EDA0C124708FC600770EDC /* TutoHomeVC.swift in Sources */,
 				C6C08886244C68FE00CB0A7A /* SearchVC.swift in Sources */,
-				C68B5AAE245D98B0007865B4 /* InputWishImage.swift in Sources */,
 				237BFC672450FA1800AC8F98 /* Mappable.swift in Sources */,
 				23EDA0CD247090C600770EDC /* TutoFriendsDetailVC.swift in Sources */,
 				C64A2DF424608EA2005FBFA5 /* FriendRequestModel.swift in Sources */,
@@ -555,10 +551,10 @@
 				C6C08882244C68A800CB0A7A /* ProfileVC.swift in Sources */,
 				C630B3622461D2380054D5D4 /* ReservedWishesModel.swift in Sources */,
 				C6C7383324646CD0004B02D2 /* TextField+Utils.swift in Sources */,
-				C68B5AAC245D90F0007865B4 /* InputProfileImage.swift in Sources */,
 				235FD038245AD62D00B5F7B2 /* SettingsVC.swift in Sources */,
 				237BFC5C244A1A4900AC8F98 /* LoginViewController.swift in Sources */,
 				23DBF48324685CE1003E1A11 /* UserSelfWishesCell.swift in Sources */,
+				C6719D7E2471A17F00E389C0 /* ImagePicker.swift in Sources */,
 				C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */,
 				C6E1A0102459F6AB00C864A9 /* MockConnection.swift in Sources */,
 				23EDA0CF247090E500770EDC /* TutoProfileVC.swift in Sources */,

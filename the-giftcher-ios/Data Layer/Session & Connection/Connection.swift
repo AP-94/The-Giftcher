@@ -20,7 +20,7 @@ protocol RestManager {
     func post(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
     func postWithoutParams(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     func postWithoutToken(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
-    func imageUploadRequest(_ endpoint: String,_ data: NSData, params: [String: Any]?, completion: @escaping ConnectionCompletion)
+    func imageUploadRequest(_ endpoint: String,_ image: UIImage, params: [String: Any]?, completion: @escaping ConnectionCompletion)
     func postForgotPassword(_ endpoint: String, encode: ParameterEncoding, completion: @escaping ConnectionCompletion)
     //GETS
     func get(_ endpoint: String, params: [String: Any]?, encode: ParameterEncoding,  completion: @escaping ConnectionCompletion)
@@ -119,64 +119,42 @@ class Connection: RestManager {
     }
     
     
-    func uploadImage(_ data: NSData, _ endpoint: String, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
+    func uploadImage(_ image: UIImage, _ endpoint: String, params: [String : Any]?, completion: @escaping ConnectionCompletion) {
         
-        guard  endpoint.isValidUrl else {
-            completion(0, nil, [:], nil)
-            return
-        }
-        
-        let request = NSMutableURLRequest(url: URL(string: endpoint)!)
-        request.httpMethod = "POST"
-        
-        let boundary = "0xKhTmLbOuNdArY"
-        
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.allHTTPHeaderFields = ["Authorization": "Bearer \(Session.current.token ?? "")"]
-        
-        //        let imageData = imageView.jpegData(compressionQuality: 1)
-        let imageData = data
-        
-        //        if(imageData==nil)  { return }
-        
-        request.httpBody = createBodyWithParameters(parameters: params , filePathKey: "file", imageDataKey: imageData as NSData, boundary: boundary) as Data
-        
-        //myActivityIndicator.startAnimating();
-        print("stop")
-        let task =  URLSession.shared.dataTask(with: request as URLRequest){
-            data, response, error in
-            if let data = data {
-                
-                // You can print out response object
-                print("******* response = \(String(describing: response))")
-                
-                print(data.count)
-                // you can use data here
-                
-                // Print out reponse body
-                let responseString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-                
-                var json: JSON? = nil
-                //                let data = respons
-                json = try? JSON(data: data)
-                
-                print("****** response data = \(responseString!)")
-                
-                //                let json =  try!JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
-                
-                print("json value \(String(describing: json))")
-                if let httpResponse = response as? HTTPURLResponse {
-                    completion(httpResponse.statusCode, json, httpResponse.allHeaderFields, error)
+        if let url = URL(string: endpoint) {
+            let imgData = image.jpegData(compressionQuality: 0.2)!
+            
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData, withName: "file",fileName: "file.jpg", mimeType: "image/jpg")
+            },
+                             to: url,
+                             method: .post,
+                             headers:["Authorization": "Bearer \(Session.current.token ?? "")"]
+                )
+            { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        let httpCode = response.response?.statusCode ?? 0
+                        print("---> HTTP code: ", httpCode)
+                        print("---> URL: ", url)
+                        print("---> PARAMS: ", params ?? "")
+                        
+                        let responseHeaders = response.response?.allHeaderFields ?? [AnyHashable: Any]()
+                        
+                        var json: JSON? = nil
+                        if let data = response.data{
+                            json = try? JSON(data: data)
+                            print("---> JSON: \(json ?? "NO JSON")")
+                        }
+                        
+                        completion(httpCode, json, responseHeaders, response.error)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
                 }
-                
-                //var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &err)
-                
-            } else if let error = error {
-                print(error)
-                completion(0, nil, [:], error)
             }
         }
-        task.resume()
     }
     
     
@@ -313,8 +291,8 @@ class Connection: RestManager {
     }
     
     
-    func imageUploadRequest(_ endpoint: String, _ data: NSData, params: [String : Any]?,  completion: @escaping ConnectionCompletion) {
-        uploadImage(data, completeUrlString(forEndpoint: endpoint), params: params,  completion: completion)
+    func imageUploadRequest(_ endpoint: String, _ image: UIImage, params: [String : Any]?,  completion: @escaping ConnectionCompletion) {
+        uploadImage(image, completeUrlString(forEndpoint: endpoint), params: params,  completion: completion)
     }
     
     func delete(_ endpoint: String, encode :ParameterEncoding = URLEncoding.default, completion: @escaping ConnectionCompletion) {

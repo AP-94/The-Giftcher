@@ -35,13 +35,14 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     
     @IBOutlet weak var editProfileSubmitButton: UIButton!
     
+    var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Editar Perfil"
         customSettings()
         setAvatar()
-        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +123,7 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     
     @IBAction func saveChanges(_ sender: Any) {
         editProfileSubmitButton.bounce()
-        if !editNameTF.text!.isEmpty || !editSurnameTF.text!.isEmpty || !editUsernameTF.text!.isEmpty || !birthdaytextLabel.text!.isEmpty {
+        if editNameTF.text != "" || editSurnameTF.text != "" || editUsernameTF.text != "" || birthdaytextLabel.text != ""{
             let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
             doUpdateRequest(inputUpdateUser: inputUser)
             self.navigationController?.popViewController(animated: true)
@@ -150,11 +151,13 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
                 print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
                 
                 Session.save()
+                self.sendProfileImageRequest()
+                NotificationCenter.default.post(name: .didEditProfile, object: nil)
+                let banner = NotificationBanner(title: "Hecho", subtitle: "Cambios realizados correctamente", style: .info)
+                banner.show()
             }
-            
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
-            let banner = NotificationBanner(title: "Hecho", subtitle: "Cambios realizados correctamente", style: .info)
-            banner.show()
+            
         }
     }
     
@@ -164,6 +167,37 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
            }
        }
 
+    func sendProfileImageRequest() {
+        print("Uploading image")
+        let profilePicture = editUserProfileImage.image
+        let image = profilePicture ?? UIImage(named: "placeholder")
+        dataMapper.addProfileImageRequest(image: image!) {
+            success, result, error in
+            if let result = result as? UserModel {
+                
+                Session.clean()
+                let currentSession = Session.current
+                currentSession.token = result.token
+                currentSession.userName = result.username
+                currentSession.id = result.id
+                currentSession.userModel = result
+                
+                print("Image Path => \(currentSession.userModel?.imagePath ?? "NO HAY USUARIO")")
+                
+                Session.save()
+            }
+        }
+    }
     
+    @IBAction func editPictureImage(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
+    }
+    
+}
 
+extension EditProfileVC: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.editUserProfileImage.image = image
+    }
 }
