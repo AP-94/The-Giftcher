@@ -4735,6 +4735,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Hogar"/>
+                                <connections>
+                                    <action selector="selectedHomeCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="r1e-UL-uqp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knM-1Z-4kz">
                                 <rect key="frame" x="226" y="164" width="66" height="30"/>
@@ -4745,6 +4748,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Motor"/>
+                                <connections>
+                                    <action selector="selectedMotorCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="hsP-fE-vov"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMt-JO-U7K">
                                 <rect key="frame" x="20" y="225" width="156" height="30"/>
@@ -4756,6 +4762,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Electrodomésticos"/>
+                                <connections>
+                                    <action selector="selectedHomeApliCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="10a-5Y-3mu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tl3-4b-Zbu">
                                 <rect key="frame" x="194" y="225" width="66" height="30"/>
@@ -4767,6 +4776,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Moda"/>
+                                <connections>
+                                    <action selector="selectedFashionCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="IAz-P8-yDY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYc-YD-P2O">
                                 <rect key="frame" x="278" y="224" width="66" height="32"/>
@@ -4777,6 +4789,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Jardín"/>
+                                <connections>
+                                    <action selector="selectedGardenCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="lGO-E6-11r"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afw-ak-dNO">
                                 <rect key="frame" x="20" y="347" width="104" height="30"/>
@@ -4788,6 +4803,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Informática"/>
+                                <connections>
+                                    <action selector="selectedInformaticCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="xE6-qc-J7B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FD5-TD-Ren">
                                 <rect key="frame" x="142" y="347" width="75" height="30"/>
@@ -4799,6 +4817,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Deporte"/>
+                                <connections>
+                                    <action selector="selectedSportsCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="Mxe-Lm-47V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSM-W3-ETg">
                                 <rect key="frame" x="235" y="347" width="66" height="30"/>
@@ -4810,6 +4831,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Libros"/>
+                                <connections>
+                                    <action selector="selectedBooksCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="171-n8-B9O"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i78-yR-g5c">
                                 <rect key="frame" x="20" y="286" width="83" height="30"/>
@@ -4820,6 +4844,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Televisión"/>
+                                <connections>
+                                    <action selector="selectedTVCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="Iqb-xJ-Muc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtT-jz-2gz">
                                 <rect key="frame" x="121" y="286" width="66" height="30"/>
@@ -4831,6 +4858,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Música"/>
+                                <connections>
+                                    <action selector="selectedMusicCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="bFV-k0-ZPR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9E-jz-Q8H">
                                 <rect key="frame" x="278" y="286" width="73" height="30"/>
@@ -4842,6 +4872,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Móviles"/>
+                                <connections>
+                                    <action selector="selectedCellPhoneCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="0tA-s4-zbM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfR-Bx-txL">
                                 <rect key="frame" x="205" y="286" width="55" height="30"/>
@@ -4853,6 +4886,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Foto"/>
+                                <connections>
+                                    <action selector="selectedFotoCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="Chy-Sd-BlW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXf-HI-dHZ">
                                 <rect key="frame" x="20" y="408" width="122" height="30"/>
@@ -4864,6 +4900,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Niños y Bebés"/>
+                                <connections>
+                                    <action selector="selectedChildCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="x5B-iE-O0b"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM9-oV-sZ7">
                                 <rect key="frame" x="160" y="408" width="97" height="30"/>
@@ -4875,6 +4914,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Agricultura"/>
+                                <connections>
+                                    <action selector="selectedFarmingCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="R3n-Qp-3Y6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6O7-vZ-Odq">
                                 <rect key="frame" x="275" y="408" width="81" height="30"/>
@@ -4886,6 +4928,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Servicios"/>
+                                <connections>
+                                    <action selector="selectedServicesCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="2Zk-hI-PmK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u01-ED-2ZW">
                                 <rect key="frame" x="20" y="469" width="122" height="30"/>
@@ -4897,6 +4942,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Coleccionismo"/>
+                                <connections>
+                                    <action selector="selectedColeccCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="Pk6-H2-TJp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSY-uL-t9m">
                                 <rect key="frame" x="160" y="469" width="116" height="30"/>
@@ -4908,6 +4956,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Construcción"/>
+                                <connections>
+                                    <action selector="selectBuildingCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="Ag2-Ba-TdU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOf-XP-ijo">
                                 <rect key="frame" x="294" y="469" width="61" height="30"/>
@@ -4919,6 +4970,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Otros"/>
+                                <connections>
+                                    <action selector="selectOthersCat:" destination="7tE-wd-fJF" eventType="touchUpInside" id="4r3-S4-xRD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biH-IW-x4I">
                                 <rect key="frame" x="108" y="544" width="199" height="38"/>

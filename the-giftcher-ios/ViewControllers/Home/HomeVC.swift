@@ -30,6 +30,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     var user = Session.current.userModel
     private let refreshControl = UIRefreshControl()
+    var categoryList: [Int] = []
     
     //Colecction View outlets
     @IBOutlet weak var firstCollectionView: UICollectionView!
@@ -114,7 +115,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadFirstCatData() {
         print("Do Get All wishes from Category Id Request1")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 1
+        let categoryId = 2
         dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
             success, result, error in
             if let result = result as? [WishModel] {
@@ -131,7 +132,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadSecondCatData() {
         print("Do Get All wishes from Category Id Request2")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 5
+        let categoryId = 2
         dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
             success, result, error in
             if let result = result as? [WishModel] {
@@ -148,7 +149,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadThirdCatData() {
         print("Do Get All wishes from Category Id Request3")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 7
+        let categoryId = 2
         dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
             success, result, error in
             if let result = result as? [WishModel] {
@@ -165,7 +166,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadFourthCatData() {
         print("Do Get All wishes from Category Id Request4")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 19
+        let categoryId = 2
         dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
             success, result, error in
             if let result = result as? [WishModel] {
@@ -251,39 +252,6 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         }
         
             return cell
-        
-
-        
-//
-//        if let cell2 = secondCollectionView.dequeueReusableCell(withReuseIdentifier: "catTwo", for: indexPath) as? SecondCategoryCell {
-//
-//            cell2.backgroundColor = UIColor.clear
-//            cell2.wish = nil
-//            cell2.wish = secondCatWishes[indexPath.row]
-//            cell2.delegate = self
-//            return cell2
-//
-//        }
-//
-//        if let cell3 = thirdCollectionView.dequeueReusableCell(withReuseIdentifier: "catThree", for: indexPath) as? ThirdCategoryCell {
-//
-//            cell3.backgroundColor = UIColor.clear
-//            cell3.wish = nil
-//            cell3.wish = thirdCatWishes[indexPath.row]
-//            cell3.delegate = self
-//            return cell3
-//
-//        }
-//
-//        if let cell4 = fourthCollectionView.dequeueReusableCell(withReuseIdentifier: "catFour", for: indexPath) as? FourthCategoryCell {
-//
-//            cell4.backgroundColor = UIColor.clear
-//            cell4.wish = nil
-//            cell4.wish = fourthCatWishes[indexPath.row]
-//            cell4.delegate = self
-//            return cell4
-//
-//        }
         
        }
     
