@@ -327,7 +327,7 @@ class DataMapper {
         }
     }
     
-    func getAllWishesByCategoryIdRequest(fake: String? = nil, categoryId: Int?, completion: @escaping DataMapperCompletion) {
+    func getAllWishesByCategoryIdRequest(fake: String? = nil, categoryId: Int, completion: @escaping DataMapperCompletion) {
         
         var url = "/wishes/categories/\(String(describing: categoryId))"
         
