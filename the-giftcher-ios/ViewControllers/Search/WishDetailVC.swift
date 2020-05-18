@@ -17,6 +17,8 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     let dataMapper = DataMapper()
     var wishOfUser: Bool = false
+    var wishOfFriend: Bool = false
+    var friends: [UserFriendModel?] = []
     
     //Outlets
     @IBOutlet weak var imageView: UIImageView!
@@ -36,12 +38,15 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var saveWishButton: UIButton!
     @IBOutlet weak var editButtonContainer: UIView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var reserveWishOfFriend: UIView!
+    @IBOutlet weak var reservedWishOfFriendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title =  "Detalle de Deseo"
         setModifiers()
         loadData()
+        getFriendsofUser()
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData(_:)), name: .didEditWishRequest, object: nil)
     }
@@ -72,6 +77,7 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
         shareButtonView.layer.cornerRadius = 5.0
         trashButtonContainer.layer.cornerRadius = 5.0
         editButtonContainer.layer.cornerRadius = 5.0
+        reserveWishOfFriend.layer.cornerRadius = 5.0
         
         getWishButton.layer.cornerRadius = 5
         
@@ -90,11 +96,28 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
             editButtonContainer.isHidden = false
             saveWishButton.isHidden = true
             buttonSaveView.isHidden = true
+            reserveWishOfFriend.isHidden = true
+            reservedWishOfFriendButton.isHidden = true
         } else {
             trashButton.isHidden = true
             trashButtonContainer.isHidden = true
             saveWishButton.isHidden = false
             buttonSaveView.isHidden = false
+        }
+        
+        if wish?.reserved == false && !wishOfUser {
+            reservedWishOfFriendButton.isHidden = false
+            reserveWishOfFriend.isHidden = false
+        } else {
+            reservedWishOfFriendButton.isHidden = true
+            reserveWishOfFriend.isHidden = true
+        }
+        
+        if wishOfFriend {
+            trashButton.isHidden = false
+            trashButtonContainer.isHidden = false
+            saveWishButton.isHidden = true
+            buttonSaveView.isHidden = true
         }
         
     }
@@ -156,16 +179,30 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     }
     
     func deleteWishOfUser() {
-        print("Do delete wish of user")
-        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let idOfWish = wish?.id!
-        dataMapper.deleteWishByIdRequest(wishId: idOfWish) {
-            success, result, error in
-            if (result as? SingletonModel) != nil {
+        if !wishOfFriend {
+            print("Do delete wish of user")
+            startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+            let idOfWish = wish?.id!
+            dataMapper.deleteWishByIdRequest(wishId: idOfWish) {
+                success, result, error in
+                if (result as? SingletonModel) != nil {
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                    self.navigationController?.popViewController(animated: true)
+                }
                 NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
-                self.navigationController?.popViewController(animated: true)
             }
-            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+        } else {
+            print("Do delete reserved wish")
+            startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+            let idOfWish = wish?.id!
+            dataMapper.deleteReservedWish(id: idOfWish) {
+                success, result, error in
+                if (result as? SingletonModel) != nil {
+                    NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            }
         }
     }
     
@@ -274,6 +311,44 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     }
     
     @IBAction func reserveWish(_ sender: Any) {
-        
+        reservedWishOfFriendButton.bounce()
+        print("Do reserve wish from friend request")
+              startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+            let wishToReserve = InputReservedWish(friendId: wish?.userId, wishId: wish?.id)
+            dataMapper.reservedWishesPostRequest(inputReservedWish: wishToReserve) {
+                  success, result, error in
+                  if let result = result as? SingletonModel {
+                    print("Result -> \(result.message ?? "False")")
+                    self.reservedWishOfFriendButton.isHidden = true
+                    self.reserveWishOfFriend.isHidden = true
+                          let banner = NotificationBanner(title: "Deseo Reservado", subtitle: "Nuevo deseo guardado en tu lista de deseos reservados", style: .info)
+                          banner.show()
+                    
+                  }
+                  NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+              }
+    }
+    
+    func getFriendsofUser() {
+               print("Do get friends of user request")
+               dataMapper.getAllFriendsOfUserRequest() {
+                   success, result, error in
+                   if let result = result as? FriendsModel {
+                       self.friends.removeAll()
+                       for friend in result.friends {
+                           self.friends.append(friend)
+                       }
+                       self.checkFriendship()
+                   }
+               }
+       }
+    
+    func checkFriendship() {
+        for user in friends {
+            if user?.friendId == wish?.userId {
+                reserveWishOfFriend.isHidden = false
+                reservedWishOfFriendButton.isHidden = false
+            }
+        }
     }
 }

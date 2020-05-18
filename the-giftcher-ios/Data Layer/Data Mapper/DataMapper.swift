@@ -692,7 +692,7 @@ class DataMapper {
     
     func deleteReservedWish(fake: String? = nil, id: Int?, completion: @escaping DataMapperCompletion) {
         
-        var url = "/reserved_wishes/\(String(describing: id))"
+        var url = "/reserved_wishes/\(String(describing: id!))"
         if fake != nil  {
             url = fake!
             connection = MockConnection()

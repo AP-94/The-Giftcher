@@ -1451,6 +1451,8 @@
                         <outlet property="editButtonContainer" destination="6CP-5F-FKc" id="1Jw-yQ-dsz"/>
                         <outlet property="getWishButton" destination="BBd-A7-HiP" id="pCG-T7-5tn"/>
                         <outlet property="imageView" destination="dqe-y4-2W7" id="EDp-SP-cuw"/>
+                        <outlet property="reserveWishOfFriend" destination="jKZ-io-hBo" id="OcJ-mM-D2s"/>
+                        <outlet property="reservedWishOfFriendButton" destination="xIA-Kr-fB4" id="i3t-h0-lVm"/>
                         <outlet property="saveWishButton" destination="vyD-KC-TOH" id="Lzj-Gt-sbb"/>
                         <outlet property="shareButtonView" destination="rKf-vJ-3IC" id="flp-ws-BEs"/>
                         <outlet property="trashButton" destination="kPq-pM-EAC" id="9YB-Pf-ikY"/>
