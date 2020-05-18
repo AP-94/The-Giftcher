@@ -64,6 +64,8 @@ class ChoosePreferencesVC: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
         if counter == 4 {
             fillCategoiresArray()
+            Session.current.userCategories = categoryArray
+            Session.save()
             self.performSegue(withIdentifier: "TutorialToHomeView", sender: nil)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "Por favor selecciona 4 categorías antes de avanzar", style: .warning)
@@ -145,6 +147,7 @@ class ChoosePreferencesVC: UIViewController {
             if counter < 4 {
                 counter += 1
                 button.isSelected = true
+                button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             } else {
                 let banner = NotificationBanner(title: "Solo 4", subtitle: "No puedes seleccionar más de 4 categorías", style: .warning)
                 banner.show()
@@ -152,11 +155,12 @@ class ChoosePreferencesVC: UIViewController {
         } else {
             counter -= 1
             button.isSelected = false
+            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "WishEditSegue" {
+        if segue.identifier == "TutorialToHomeView" {
             if let homeVC = segue.destination as? HomeVC {
                 homeVC.categoryList = self.categoryArray
             }

@@ -17,7 +17,7 @@ class Session: Codable {
     var token: String?
     var userName: String?
     var userModel: UserModel?
-    var userCategories: [String?] = []
+    var userCategories: [Int?] = []
     
     private init() {
 
