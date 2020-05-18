@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+
 private let reuseIdentifier = "MyWishes"
 private let itemsPerRow = 3
 private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
@@ -161,6 +162,9 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         userProfileImage.image = nil
         if let avatar = Session.current.userModel?.imagePath {
             userProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
+        } else {
+            userProfileImage.image = UIImage(named: "profile_placeholder")
+            
         }
     }
     
@@ -251,8 +255,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             
             
         }
-        
-        
         
     }
 }

@@ -1796,9 +1796,7 @@
         <scene sceneID="aVq-zp-FdT">
             <objects>
                 <tabBarController storyboardIdentifier="HomeView" id="nlZ-0Z-7X6" customClass="MainTabBarController" customModule="the_giftcher_ios" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="gghgg" id="m0y-j5-L42">
-                        <barButtonItem key="rightBarButtonItem" title="Logo" image="icono_blanco24px" landscapeImage="icono_blanco24px" largeContentSizeImage="icono_blanco24px" id="oYK-gA-GX9"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="gghgg" id="m0y-j5-L42"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EwR-cP-YX7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2275,13 +2273,18 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="bannerView" destination="7DL-Px-9Yl" id="tzK-fr-bau"/>
+                        <outlet property="firstCVLabel" destination="fF4-e6-flJ" id="k7G-tD-CeX"/>
                         <outlet property="firstCollectionView" destination="iKp-zu-jOq" id="Oas-sP-WUy"/>
                         <outlet property="firstSV" destination="zgx-dG-6Ym" id="gvp-1S-p0s"/>
+                        <outlet property="fourthCVLabel" destination="yQF-tU-5Ba" id="UhJ-NE-V7E"/>
                         <outlet property="fourthCollectionView" destination="scx-Cl-Dm5" id="4T7-Gp-38k"/>
                         <outlet property="mainStackV" destination="CyG-34-Gvq" id="29U-5C-2Mi"/>
                         <outlet property="moreInfoButton" destination="87w-iV-RTF" id="7jZ-Z1-OSJ"/>
+                        <outlet property="secondCVLabel" destination="npt-Ap-GzF" id="djh-ci-B2A"/>
                         <outlet property="secondCollectionView" destination="FhK-oe-QoS" id="4q0-wq-woF"/>
+                        <outlet property="thirdCVLabel" destination="GAJ-by-bag" id="03g-xA-CTk"/>
                         <outlet property="thirdCollectionView" destination="EFa-Sk-mkn" id="83p-zl-N7f"/>
+                        <segue destination="lg4-Wm-fUg" kind="show" identifier="HomeToUserFriendsRequestsSegue" id="SrQ-8r-QQ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -5128,6 +5131,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="gxj-bz-Jrx"/>
         <segue reference="k93-oJ-K79"/>
+        <segue reference="SrQ-8r-QQ9"/>
         <segue reference="pUc-A2-F3D"/>
         <segue reference="ntu-Lj-sao"/>
         <segue reference="RGE-dQ-Ly5"/>
@@ -5160,7 +5164,6 @@
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gear" width="512" height="512"/>
         <image name="icono tg white mode" width="872" height="936"/>
-        <image name="icono_blanco24px" width="24" height="24"/>
         <image name="interfaz" width="512" height="512"/>
         <image name="logo tg white mode" width="818" height="654"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>

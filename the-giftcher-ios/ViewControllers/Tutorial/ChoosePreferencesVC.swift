@@ -33,6 +33,7 @@ class ChoosePreferencesVC: UIViewController {
     
     var counter = 0
     var categoryArray: [Int] = []
+    var categoryStringArray: [String] = []
     var categoryInt: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,7 @@ class ChoosePreferencesVC: UIViewController {
         for button in buttonsArray {
             if button!.isSelected {
                 setCategory(category: (button?.currentTitle)!)
+                categoryStringArray.append((button?.currentTitle)!)
                 categoryArray.append(categoryInt!)
             }
         }
@@ -163,6 +165,7 @@ class ChoosePreferencesVC: UIViewController {
         if segue.identifier == "TutorialToHomeView" {
             if let homeVC = segue.destination as? HomeVC {
                 homeVC.categoryList = self.categoryArray
+                homeVC.categoryStringList = self.categoryStringArray
             }
         }
     }

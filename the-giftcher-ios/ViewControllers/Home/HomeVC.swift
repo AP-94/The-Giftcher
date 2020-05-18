@@ -24,13 +24,18 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     @IBOutlet weak var firstSV: UIStackView!
     @IBOutlet weak var mainStackV: UIStackView!
     @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var firstCVLabel: UILabel!
+    @IBOutlet weak var secondCVLabel: UILabel!
+    @IBOutlet weak var thirdCVLabel: UILabel!
+    @IBOutlet weak var fourthCVLabel: UILabel!
     
     var wish: WishModel?
     let dataMapper = DataMapper()
     let sizeOfIndivatorView = CGSize(width: 40, height: 40)
     var user = Session.current.userModel
     private let refreshControl = UIRefreshControl()
-    var categoryList: [Int] = []
+    var categoryList: [Int?] = []
+    var categoryStringList: [String?] = []
     
     //Colecction View outlets
     @IBOutlet weak var firstCollectionView: UICollectionView!
@@ -62,21 +67,31 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Home"
+        loadFriendsRequests()
+        setLabels()
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//           loadFirstCatData()
-//        loadSecondCatData()
-//        loadThirdCatData()
-//        loadFourthCatData()
-//
-//       }
+    
+    //
+    //    override func viewWillAppear(_ animated: Bool) {
+    //           loadFirstCatData()
+    //        loadSecondCatData()
+    //        loadThirdCatData()
+    //        loadFourthCatData()
+    //
+    //       }
     
     func setModifieres() {
         moreInfoButton.layer.cornerRadius = 15
         moreInfoButton.layer.borderWidth = 1
         moreInfoButton.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }
+    }
+    
+    func setLabels() {
+        firstCVLabel.text = categoryStringList.getElement(at: 0) ?? ""
+        secondCVLabel.text = categoryStringList.getElement(at: 1) ?? ""
+        thirdCVLabel.text = categoryStringList.getElement(at: 2) ?? ""
+        fourthCVLabel.text = categoryStringList.getElement(at: 3) ?? ""
+    }
     
     func collectionViewModifiers() {
         firstCollectionView.backgroundColor = UIColor.clear
@@ -118,8 +133,8 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadFirstCatData() {
         print("Do Get All wishes from Category Id Request1")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 2
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
+        let categoryId = categoryList.getElement(at: 0) ?? 1
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId ?? 1) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -135,8 +150,8 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadSecondCatData() {
         print("Do Get All wishes from Category Id Request2")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 2
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
+        let categoryId = categoryList.getElement(at: 1) ?? 2
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId ?? 2) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -152,8 +167,8 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadThirdCatData() {
         print("Do Get All wishes from Category Id Request3")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 2
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
+        let categoryId = categoryList.getElement(at: 2) ?? 3
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId ?? 3) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -169,8 +184,8 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     func loadFourthCatData() {
         print("Do Get All wishes from Category Id Request4")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
-        let categoryId = 2
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId) {
+        let categoryId = categoryList.getElement(at: 3) ?? 4
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: categoryId ?? 4) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -202,21 +217,21 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         }
         
         return count1
-       }
-       
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-       
+        
         let cell = firstCollectionView.dequeueReusableCell(withReuseIdentifier: "catOne", for: indexPath) as! MyCollectionViewCell
-
-            cell.backgroundColor = UIColor.clear
-            cell.wish = nil
-            cell.wish = firstCatWishes[indexPath.row]
-            cell.delegate = self
+        
+        cell.backgroundColor = UIColor.clear
+        cell.wish = nil
+        cell.wish = firstCatWishes[indexPath.row]
+        cell.delegate = self
         
         if collectionView == secondCollectionView {
             let cell2 = secondCollectionView.dequeueReusableCell(withReuseIdentifier: "catTwo", for: indexPath) as! SecondCategoryCell
-
+            
             cell2.backgroundColor = UIColor.clear
             cell2.wish = nil
             cell2.wish = secondCatWishes[indexPath.row]
@@ -226,7 +241,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         
         if collectionView == thirdCollectionView {
             let cell3 = thirdCollectionView.dequeueReusableCell(withReuseIdentifier: "catThree", for: indexPath) as! ThirdCategoryCell
-
+            
             cell3.backgroundColor = UIColor.clear
             cell3.wish = nil
             cell3.wish = thirdCatWishes[indexPath.row]
@@ -236,7 +251,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         
         if collectionView == thirdCollectionView {
             let cell3 = thirdCollectionView.dequeueReusableCell(withReuseIdentifier: "catThree", for: indexPath) as! ThirdCategoryCell
-
+            
             cell3.backgroundColor = UIColor.clear
             cell3.wish = nil
             cell3.wish = thirdCatWishes[indexPath.row]
@@ -246,7 +261,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         
         if collectionView == fourthCollectionView {
             let cell4 = fourthCollectionView.dequeueReusableCell(withReuseIdentifier: "catFour", for: indexPath) as! FourthCategoryCell
-
+            
             cell4.backgroundColor = UIColor.clear
             cell4.wish = nil
             cell4.wish = fourthCatWishes[indexPath.row]
@@ -254,56 +269,84 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
             return cell4
         }
         
-            return cell
+        return cell
         
-       }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    if segue.identifier == "WishDetailSegue", let cell = sender as? MyCollectionViewCell {
-        selectedCell = cell
-        
+        if segue.identifier == "WishDetailSegue", let cell = sender as? MyCollectionViewCell {
+            selectedCell = cell
+            
             if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = firstCollectionView.indexPath(for: cell) {
                 wishDetailVC.wish = firstCatWishes[indexPath.row]
                 wishDetailVC.wishOfUser = true
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                
+            }
             
-        }
-        
-    } else if segue.identifier == "WishDetailSegue2", let cell2 = sender as? SecondCategoryCell {
-        selectedCell2 = cell2
-        
+        } else if segue.identifier == "WishDetailSegue2", let cell2 = sender as? SecondCategoryCell {
+            selectedCell2 = cell2
+            
             if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = secondCollectionView.indexPath(for: cell2) {
                 wishDetailVC.wish = secondCatWishes[indexPath.row]
                 wishDetailVC.wishOfUser = true
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                
+            }
             
-        }
-        
-    } else if segue.identifier == "WishDetailSegue3", let cell = sender as? ThirdCategoryCell {
-        selectedCell3 = cell
-        
+        } else if segue.identifier == "WishDetailSegue3", let cell = sender as? ThirdCategoryCell {
+            selectedCell3 = cell
+            
             if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = thirdCollectionView.indexPath(for: cell) {
                 wishDetailVC.wish = thirdCatWishes[indexPath.row]
                 wishDetailVC.wishOfUser = true
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                
+            }
             
-        }
-        
-    } else if segue.identifier == "WishDetailSegue4", let cell = sender as? FourthCategoryCell {
-        selectedCell4 = cell
-        
+        } else if segue.identifier == "WishDetailSegue4", let cell = sender as? FourthCategoryCell {
+            selectedCell4 = cell
+            
             if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = fourthCollectionView.indexPath(for: cell) {
                 wishDetailVC.wish = fourthCatWishes[indexPath.row]
                 wishDetailVC.wishOfUser = true
                 print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
+                
+            }
             
         }
         
     }
     
+    func loadFriendsRequests() {
+        print("Do get friends requests request")
+        dataMapper.getFriendsRequests() {
+            success, result, error in
+            if let result = result as? [FriendRequestModel] {
+                if result.count != 0 {
+                    let banner = NotificationBanner(title: "Tienes peticiones de amistad", subtitle: "Pulsa aquí para ver las peticiones", style: .info)
+                    banner.autoDismiss = false
+                    banner.onTap = {
+                        banner.dismiss()
+                        self.performSegue(withIdentifier: "HomeToUserFriendsRequestsSegue", sender: nil)
+                    }
+                    banner.onSwipeUp = {
+                        banner.dismiss()
+                    }
+                    banner.show()
+                }
+            }
+        }
     }
+    
+}
 
+extension Array {
+    func getElement(at index: Int) -> Element? {
+        let isValidIndex = index >= 0 && index < count
+        return isValidIndex ? self[index] : nil
+    }
 }
 
 
