@@ -88,6 +88,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             if count2 == 0 && reservedWishes3.isEmpty {
                 noWishLabel.isHidden = false
             } else {
+                noWishLabel.text = "No tienes deseos reservados :("
                 noWishLabel.isHidden = true
             }
             return count2
@@ -217,11 +218,10 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         switch wishSegment.selectedSegmentIndex {
         case 0:
             loadData()
-        case 1:
-            switchData()
         default:
-            loadData()
+            switchData()
         }
+        self.userWishCollectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
