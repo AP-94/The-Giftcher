@@ -30,6 +30,8 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var dondeButton: UIButton!
     
+    var iconClick = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setModifiers()
@@ -136,11 +138,28 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
         let dateToString = dateFormatter.string(from: datePicker.date)
         birthdayInput.text = dateToString
     }
+    
     @IBAction func passwordEyeController(_ sender: Any) {
-        
+        if(iconClick == true) {
+                          passwordInput.isSecureTextEntry = false
+                           passwordEye.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+                      } else {
+                          passwordInput.isSecureTextEntry = true
+                          passwordEye.setImage(UIImage(systemName: "eye"), for: .normal)
+                      }
+
+                      iconClick = !iconClick
     }
     
     @IBAction func repPassEyeController(_ sender: Any) {
-        
+        if(iconClick == true) {
+                          repPasswordInput.isSecureTextEntry = false
+                           repeatPassEye.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+                      } else {
+                          repPasswordInput.isSecureTextEntry = true
+                          repeatPassEye.setImage(UIImage(systemName: "eye"), for: .normal)
+                      }
+
+                      iconClick = !iconClick
     }
 }

@@ -272,4 +272,8 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
             }
         }
     }
+    
+    @IBAction func reserveWish(_ sender: Any) {
+        
+    }
 }

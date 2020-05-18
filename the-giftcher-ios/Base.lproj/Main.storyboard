@@ -1379,6 +1379,32 @@
                                     <constraint firstAttribute="width" constant="41" id="rdd-ol-wvl"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKZ-io-hBo">
+                                <rect key="frame" x="142" y="294" width="41" height="39"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIA-Kr-fB4">
+                                        <rect key="frame" x="6" y="5" width="28" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="92Z-nF-KU5"/>
+                                            <constraint firstAttribute="height" constant="29" id="HHt-79-6St"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="person.badge.plus.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="reserveWish:" destination="F7D-wI-qnJ" eventType="touchUpInside" id="xAf-ap-SIx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="41" id="6wR-Zo-CPD"/>
+                                    <constraint firstItem="xIA-Kr-fB4" firstAttribute="leading" secondItem="jKZ-io-hBo" secondAttribute="leading" constant="6" id="VjO-hp-bcR"/>
+                                    <constraint firstItem="xIA-Kr-fB4" firstAttribute="top" secondItem="jKZ-io-hBo" secondAttribute="top" constant="5" id="aev-vV-iGk"/>
+                                    <constraint firstAttribute="height" constant="39" id="gQd-yU-7sD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1391,12 +1417,14 @@
                             <constraint firstItem="fQZ-n9-31A" firstAttribute="trailing" secondItem="WsE-Me-XHf" secondAttribute="trailing" constant="20" id="7qs-mm-yZU"/>
                             <constraint firstItem="WsE-Me-XHf" firstAttribute="top" secondItem="nJH-Li-rIe" secondAttribute="bottom" constant="4" id="AFb-mE-tmB"/>
                             <constraint firstItem="BBd-A7-HiP" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" constant="20" id="Bvy-IU-tlT"/>
+                            <constraint firstItem="YCd-Y8-25e" firstAttribute="top" secondItem="jKZ-io-hBo" secondAttribute="bottom" constant="23" id="CkI-Tr-vzg"/>
                             <constraint firstItem="Ayp-d4-gCX" firstAttribute="top" secondItem="fQZ-n9-31A" secondAttribute="top" id="Hlq-f4-tdf"/>
                             <constraint firstItem="fQZ-n9-31A" firstAttribute="trailing" secondItem="BBd-A7-HiP" secondAttribute="trailing" constant="20" id="Hzs-Q6-zQ3"/>
                             <constraint firstItem="WsE-Me-XHf" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" constant="20" id="Lht-ts-VOX"/>
                             <constraint firstItem="dqe-y4-2W7" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" constant="20" id="LuX-kW-0xN"/>
                             <constraint firstItem="6CP-5F-FKc" firstAttribute="leading" secondItem="rKf-vJ-3IC" secondAttribute="trailing" constant="12" id="S9T-WO-7tg"/>
                             <constraint firstItem="xy0-8f-cct" firstAttribute="top" secondItem="rKf-vJ-3IC" secondAttribute="top" id="Scx-o8-7Rd"/>
+                            <constraint firstItem="jKZ-io-hBo" firstAttribute="leading" secondItem="6CP-5F-FKc" secondAttribute="trailing" constant="11" id="VBG-sh-9W7"/>
                             <constraint firstItem="LoF-nS-kDl" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" constant="37" id="Ywy-AT-PM6"/>
                             <constraint firstItem="YCd-Y8-25e" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" constant="20" id="ZtO-dt-j3s"/>
                             <constraint firstItem="Ayp-d4-gCX" firstAttribute="leading" secondItem="fQZ-n9-31A" secondAttribute="leading" id="Zv5-9m-H5C"/>
@@ -5109,12 +5137,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sEO-tt-1US"/>
+        <segue reference="7x7-xk-3aV"/>
         <segue reference="k93-oJ-K79"/>
-        <segue reference="3iB-GM-9qj"/>
+        <segue reference="pUc-A2-F3D"/>
         <segue reference="ntu-Lj-sao"/>
         <segue reference="RGE-dQ-Ly5"/>
-        <segue reference="Ton-um-4fp"/>
+        <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="001-lupa" width="24" height="24"/>
