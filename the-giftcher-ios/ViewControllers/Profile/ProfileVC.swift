@@ -54,6 +54,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.title = "Perfil"
         callInfo()
         setAvatar()
         loadData()

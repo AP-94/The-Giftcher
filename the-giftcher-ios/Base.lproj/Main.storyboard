@@ -1833,6 +1833,9 @@
                                                         <state key="normal" title="MÁS INFORMACIÓN">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="goToWebButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H39-Nq-Njo"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE GIFTCHER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEX-yG-Ab6">
                                                         <rect key="frame" x="143" y="47" width="128" height="21"/>
@@ -5109,7 +5112,7 @@
         <segue reference="sEO-tt-1US"/>
         <segue reference="k93-oJ-K79"/>
         <segue reference="3iB-GM-9qj"/>
-        <segue reference="DEk-8I-ajV"/>
+        <segue reference="ntu-Lj-sao"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="Ton-um-4fp"/>
     </inferredMetricsTieBreakers>

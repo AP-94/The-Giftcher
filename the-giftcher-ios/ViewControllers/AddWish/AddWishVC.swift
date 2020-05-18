@@ -50,6 +50,7 @@ class AddWishVC: BaseVC, UIPickerViewDelegate, UIPickerViewDataSource, UINavigat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.title = "Añadir deseo"
         customSettings()
     }
     

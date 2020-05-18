@@ -50,8 +50,8 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.title = "Home"
+        self.tabBarController?.navigationItem.hidesBackButton = true
         setModifieres()
-        setStacksView()
         welcomeBack()
         requestPermissions()
         loadFirstCatData()
@@ -84,8 +84,11 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         firstCollectionView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
-        
-    func setStacksView() {
+    
+    @IBAction func goToWebButton(_ sender: Any) {
+        let stringUrl = "http://www.thegiftcher.com"
+        let url = URL(string: stringUrl)
+        UIApplication.shared.open(url!)
     }
     
     func welcomeBack() {
