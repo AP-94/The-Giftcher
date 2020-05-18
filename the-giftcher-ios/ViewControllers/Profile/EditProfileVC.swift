@@ -9,6 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 import NVActivityIndicatorView
+import Photos
 
 class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     
@@ -190,9 +191,26 @@ class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
     }
     
     @IBAction func editPictureImage(_ sender: UIButton) {
-        self.imagePicker.present(from: sender)
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            self.imagePicker.present(from: sender)
+        case .denied, .restricted:
+            let banner = NotificationBanner(title: "Sin permisos", subtitle: "Debes conceder permisos a fotos a la app para poder realizar esta operación", style: .warning)
+            banner.show()
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    
+                } else {
+                    
+                }
+            }
+        default:
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes conceder permisos a fotos a la app para poder realizar esta operación", style: .info)
+            banner.show()
+        }
     }
-    
 }
 
 extension EditProfileVC: ImagePickerDelegate {

@@ -88,10 +88,10 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     }
     
     func setLabels() {
-        firstCVLabel.text = categoryStringList.getElement(at: 0) ?? ""
-        secondCVLabel.text = categoryStringList.getElement(at: 1) ?? ""
-        thirdCVLabel.text = categoryStringList.getElement(at: 2) ?? ""
-        fourthCVLabel.text = categoryStringList.getElement(at: 3) ?? ""
+        firstCVLabel.text = "Videojuegos"
+        secondCVLabel.text = "Moda"
+        thirdCVLabel.text = "TV"
+        fourthCVLabel.text = "Agricultura"
     }
     
     func collectionViewModifiers() {
@@ -135,7 +135,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         print("Do Get All wishes from Category Id Request1")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         //let categoryId = categoryList.getElement(at: 0) ?? 1
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 2) {
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 1) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -152,7 +152,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         print("Do Get All wishes from Category Id Request2")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         //let categoryId = categoryList.getElement(at: 1) ?? 2
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 2) {
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 5) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -169,7 +169,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         print("Do Get All wishes from Category Id Request3")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         //let categoryId = categoryList.getElement(at: 2) ?? 3
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 2) {
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 7) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
@@ -186,7 +186,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
         print("Do Get All wishes from Category Id Request4")
         startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
         //let categoryId = categoryList.getElement(at: 3) ?? 4
-        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 2) {
+        dataMapper.getAllWishesByCategoryIdRequest( categoryId: 15) {
             success, result, error in
             if let result = result as? [WishModel] {
                 
