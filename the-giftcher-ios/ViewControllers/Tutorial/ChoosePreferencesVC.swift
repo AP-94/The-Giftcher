@@ -31,13 +31,12 @@ class ChoosePreferencesVC: UIViewController {
     @IBOutlet weak var constructionCat: UIButton!
     @IBOutlet weak var othersCat: UIButton!
     
-    var selectionStatus = false
-    var categoryInt: [Int] = []
+    var counter = 0
+    var categoryArray: [Int] = []
+    var categoryInt: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         customSettings()
-        maxCatSelected()
-
     }
     
     func customSettings() {
@@ -63,231 +62,149 @@ class ChoosePreferencesVC: UIViewController {
     }
     
     @IBAction func continueButton(_ sender: Any) {
-        if selectionStatus == true {
+        if counter == 4 {
+            fillCategoiresArray()
             self.performSegue(withIdentifier: "TutorialToHomeView", sender: nil)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "Por favor selecciona 4 categorías antes de avanzar", style: .warning)
             banner.show()
-            selectionStatus = false
+        }
+    }
+    
+    func fillCategoiresArray() {
+        let buttonsArray = [videogamesCat,homeCat,motorCat,homeAppliancesCat,fashionCat,gardenCat,televisionCat,musicCat,photoCat,cellphoneCat,informaticCat,sportsCat,bookCat,childsCat,farmingCat,servicesCat,collectiblesCat,constructionCat,othersCat]
+        
+        for button in buttonsArray {
+            if button!.isSelected {
+                setCategory(category: (button?.currentTitle)!)
+                categoryArray.append(categoryInt!)
+            }
         }
     }
     
     @IBAction func selectedVideoGameCat(_ sender: UIButton) {
-        if videogamesCat.isEnabled {
-            videogamesCat.whiteAndRedRoundedSelected()
-            setCategory(category: videogamesCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            videogamesCat.whiteAndRedRounded()
-        }
+        setButton(button: videogamesCat)
     }
-    
     @IBAction func selectedHomeCat(_ sender: UIButton) {
-        if homeCat.isEnabled {
-            homeCat.whiteAndRedRoundedSelected()
-            setCategory(category: homeCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            homeCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: homeCat)
     }
     @IBAction func selectedMotorCat(_ sender: UIButton) {
-        if motorCat.isEnabled {
-            motorCat.whiteAndRedRoundedSelected()
-            setCategory(category: motorCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            motorCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: motorCat)
     }
     @IBAction func selectedHomeApliCat(_ sender: UIButton) {
-        if homeAppliancesCat.isEnabled {
-            homeAppliancesCat.whiteAndRedRoundedSelected()
-            setCategory(category: homeAppliancesCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            homeAppliancesCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: homeAppliancesCat)
     }
     @IBAction func selectedFashionCat(_ sender: UIButton) {
-        if fashionCat.isEnabled {
-            fashionCat.whiteAndRedRoundedSelected()
-            setCategory(category: fashionCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            fashionCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: fashionCat)
     }
     @IBAction func selectedGardenCat(_ sender: UIButton) {
-        if gardenCat.isEnabled {
-            gardenCat.whiteAndRedRoundedSelected()
-            setCategory(category: gardenCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            gardenCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: gardenCat)
     }
     @IBAction func selectedTVCat(_ sender: UIButton) {
-        if televisionCat.isEnabled {
-            televisionCat.whiteAndRedRoundedSelected()
-            setCategory(category: televisionCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            televisionCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: televisionCat)
     }
     @IBAction func selectedMusicCat(_ sender: UIButton) {
-        if musicCat.isEnabled {
-            musicCat.whiteAndRedRoundedSelected()
-            setCategory(category: musicCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            musicCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: musicCat)
     }
     @IBAction func selectedFotoCat(_ sender: UIButton) {
-        if photoCat.isEnabled {
-            photoCat.whiteAndRedRoundedSelected()
-            setCategory(category: photoCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            photoCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: photoCat)
     }
     @IBAction func selectedCellPhoneCat(_ sender: UIButton) {
-        if cellphoneCat.isEnabled {
-            cellphoneCat.whiteAndRedRoundedSelected()
-            setCategory(category: cellphoneCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            cellphoneCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: cellphoneCat)
     }
     @IBAction func selectedInformaticCat(_ sender: UIButton) {
-        if informaticCat.isEnabled {
-            informaticCat.whiteAndRedRoundedSelected()
-            setCategory(category: informaticCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            informaticCat.whiteAndRedRounded()
-        }
-        
+        setButton(button: informaticCat)
     }
     @IBAction func selectedSportsCat(_ sender: UIButton) {
-        if sportsCat.isEnabled {
-            sportsCat.whiteAndRedRoundedSelected()
-            setCategory(category: sportsCat.titleLabel?.text ?? "")
-            categoryInt.append(contentsOf: categoryInt)
-        } else {
-            sportsCat.whiteAndRedRounded()
-        }
-        sportsCat.whiteAndRedRoundedSelected()
-        setCategory(category: sportsCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: sportsCat)
     }
     @IBAction func selectedBooksCat(_ sender: UIButton) {
-        bookCat.whiteAndRedRoundedSelected()
-        setCategory(category: bookCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: bookCat)
     }
     @IBAction func selectedChildCat(_ sender: UIButton) {
-        childsCat.whiteAndRedRoundedSelected()
-        setCategory(category: childsCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: childsCat)
     }
     @IBAction func selectedFarmingCat(_ sender: UIButton) {
-        farmingCat.whiteAndRedRoundedSelected()
-        setCategory(category: farmingCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: farmingCat)
     }
     @IBAction func selectedServicesCat(_ sender: UIButton) {
-        servicesCat.whiteAndRedRoundedSelected()
-        setCategory(category: servicesCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: servicesCat)
     }
     @IBAction func selectedColeccCat(_ sender: UIButton) {
-        collectiblesCat.whiteAndRedRoundedSelected()
-        setCategory(category: collectiblesCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: collectiblesCat)
     }
     @IBAction func selectBuildingCat(_ sender: UIButton) {
-        constructionCat.whiteAndRedRoundedSelected()
-        setCategory(category: constructionCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: constructionCat)
     }
     @IBAction func selectOthersCat(_ sender: UIButton) {
-        othersCat.whiteAndRedRoundedSelected()
-        setCategory(category: othersCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+        setButton(button: othersCat)
     }
-    func maxCatSelected() {
-        if categoryInt.count >= 4 {
-            let banner = NotificationBanner(title: "Error", subtitle: "No puedes seleccionar más de 4 categorías", style: .warning)
-            banner.show()
-            selectionStatus = false
-        } else if categoryInt.count == 4 {
-            let banner = NotificationBanner(title: "Éxito", subtitle: "Ya puedes pasar a la siguiente pantalla", style: .success)
-            banner.show()
-            selectionStatus = true
+    
+    func setButton(button: UIButton) {
+        if button.isSelected == false {
+            if counter < 4 {
+                counter += 1
+                button.isSelected = true
+            } else {
+                let banner = NotificationBanner(title: "Solo 4", subtitle: "No puedes seleccionar más de 4 categorías", style: .warning)
+                banner.show()
+            }
+        } else {
+            counter -= 1
+            button.isSelected = false
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let catListPass = segue.destination as! HomeVC
-        catListPass.categoryList = self.categoryInt
+        if segue.identifier == "WishEditSegue" {
+            if let homeVC = segue.destination as? HomeVC {
+                homeVC.categoryList = self.categoryArray
+            }
+        }
     }
     
     func setCategory(category: String) {
         switch category {
         case "Videojuegos":
-            categoryInt = [1]
+            categoryInt = 1
         case "Hogar":
-            categoryInt = [2]
+            categoryInt = 2
         case "Motor":
-            categoryInt = [3]
+            categoryInt = 3
         case "Electrodomésticos":
-            categoryInt = [4]
+            categoryInt = 4
         case "Moda":
-            categoryInt = [5]
+            categoryInt = 5
         case "Jardín":
-            categoryInt = [6]
+            categoryInt = 6
         case "TV":
-            categoryInt = [7]
+            categoryInt = 7
         case "Música":
-            categoryInt = [8]
+            categoryInt = 8
         case "Foto":
-            categoryInt = [9]
+            categoryInt = 9
         case "Móviles":
-            categoryInt = [10]
+            categoryInt = 10
         case "Informática":
-            categoryInt = [11]
+            categoryInt = 11
         case "Deporte":
-            categoryInt = [12]
+            categoryInt = 12
         case "Libros":
-            categoryInt = [13]
+            categoryInt = 13
         case "Niños y bebés":
-            categoryInt = [14]
+            categoryInt = 14
         case "Agricultura":
-            categoryInt = [15]
+            categoryInt = 15
         case "Servicios":
-            categoryInt = [16]
+            categoryInt = 16
         case "Coleccionismo":
-            categoryInt = [17]
+            categoryInt = 17
         case "Construcción":
-            categoryInt = [18]
+            categoryInt = 18
         case "Otros":
-            categoryInt = [19]
+            categoryInt = 19
         default:
-            categoryInt = [1]
+            categoryInt = 1
         }
     }
 }
