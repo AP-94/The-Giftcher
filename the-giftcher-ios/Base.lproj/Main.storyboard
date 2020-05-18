@@ -3997,7 +3997,7 @@
                                     <color key="titleColor" red="0.1138733849" green="0.1237688139" blue="0.13416311140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="72P-xA-Gna" kind="show" id="cqt-o4-h8D"/>
+                                    <segue destination="9Xz-Vx-D3G" kind="show" id="dxO-Yd-9Oo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-G3-eN6">
@@ -4045,18 +4045,71 @@
             <point key="canvasLocation" x="1513.0434782608697" y="2385.9375"/>
         </scene>
         <!--Contact FormVC-->
-        <scene sceneID="XrN-bm-BIy">
+        <scene sceneID="YR5-Pt-ay7">
             <objects>
-                <viewController id="72P-xA-Gna" customClass="ContactFormVC" customModule="the_giftcher_ios" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bcX-Ub-7hS">
+                <viewController id="9Xz-Vx-D3G" customClass="ContactFormVC" customModule="the_giftcher_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h6n-O3-KJA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCm-6N-f0j">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plane" translatesAutoresizingMaskIntoConstraints="NO" id="J8r-Jx-5T7">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="774" id="kOH-wZ-Bza"/>
+                                    <constraint firstAttribute="width" constant="414" id="rUg-ce-NQV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpi-JW-OMP">
+                                <rect key="frame" x="70" y="638" width="275" height="42"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="LSH-ic-RMw"/>
+                                    <constraint firstAttribute="height" constant="42" id="oT2-1h-vAP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="¡CONTÁCTANOS!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailButtonTapped:" destination="9Xz-Vx-D3G" eventType="touchUpInside" id="K2O-Rs-odg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Tn7-3V-O1M" firstAttribute="trailing" secondItem="fpi-JW-OMP" secondAttribute="trailing" constant="69" id="FbZ-3b-7Qy"/>
+                            <constraint firstItem="J8r-Jx-5T7" firstAttribute="top" secondItem="Tn7-3V-O1M" secondAttribute="top" id="MWV-17-TjG"/>
+                            <constraint firstItem="fpi-JW-OMP" firstAttribute="leading" secondItem="Tn7-3V-O1M" secondAttribute="leading" constant="70" id="QdF-es-Az9"/>
+                            <constraint firstItem="Tn7-3V-O1M" firstAttribute="bottom" secondItem="fpi-JW-OMP" secondAttribute="bottom" constant="94" id="grO-0f-Oyl"/>
+                            <constraint firstItem="J8r-Jx-5T7" firstAttribute="bottom" secondItem="Tn7-3V-O1M" secondAttribute="bottom" id="jII-jG-yZ1"/>
+                            <constraint firstItem="J8r-Jx-5T7" firstAttribute="trailing" secondItem="Tn7-3V-O1M" secondAttribute="trailing" id="mJA-kj-XnF"/>
+                            <constraint firstItem="J8r-Jx-5T7" firstAttribute="leading" secondItem="Tn7-3V-O1M" secondAttribute="leading" id="pJy-7u-Byq"/>
+                            <constraint firstItem="fpi-JW-OMP" firstAttribute="top" secondItem="Tn7-3V-O1M" secondAttribute="top" constant="638" id="qSO-Mu-NkU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tn7-3V-O1M"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZPW-SA-ZvF"/>
+                    <connections>
+                        <outlet property="contactButton" destination="fpi-JW-OMP" id="XYG-N4-RdG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fmt-Jv-NIh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2498.5507246376815" y="2390.625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XrN-bm-BIy">
+            <objects>
+                <viewController id="72P-xA-Gna" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bcX-Ub-7hS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCm-6N-f0j">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A8X-gx-IuI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Formulario de contacto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-rI-am1">
                                                 <rect key="frame" x="8" y="8" width="398" height="51"/>
@@ -4092,14 +4145,14 @@
                                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Escribe aquí tu mensaje" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2G7-eS-T41">
-                                                <rect key="frame" x="38" y="250" width="338" height="277"/>
+                                                <rect key="frame" x="38" y="250" width="338" height="321"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YI-3p-zXk">
-                                                <rect key="frame" x="70" y="562" width="275" height="42"/>
+                                                <rect key="frame" x="70" y="606" width="275" height="42"/>
                                                 <color key="backgroundColor" red="0.85098039219999999" green="0.18823529410000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="mKy-Ly-1QV"/>
@@ -4164,7 +4217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kr3-ev-QCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613" y="2386"/>
+            <point key="canvasLocation" x="3867" y="2312"/>
         </scene>
         <!--Tuto HomeVC-->
         <scene sceneID="dHA-5K-3OU">
@@ -5168,6 +5221,7 @@
         <image name="logo tg white mode" width="818" height="654"/>
         <image name="person.badge.plus.fill" catalog="system" width="128" height="116"/>
         <image name="placeholder" width="1920" height="1280"/>
+        <image name="plane" width="600" height="750"/>
         <image name="profile_placeholder" width="300" height="300"/>
         <image name="redes-sociales" width="512" height="512"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>

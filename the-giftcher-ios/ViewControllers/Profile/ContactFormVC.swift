@@ -7,55 +7,59 @@
 //
 
 import UIKit
+import MessageUI
 
-class ContactFormVC: BaseVC {
+class ContactFormVC: UIViewController {
 
-    @IBOutlet weak var formNameField: UITextField!
-    @IBOutlet weak var formEmailField: UITextField!
-    @IBOutlet weak var formAffairField: UITextField!
-    @IBOutlet weak var formMessageField: UITextView!
-    @IBOutlet weak var formSubmitButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Contacto"
         
-        //formNameField atributes
-        formNameField.layer.borderWidth = 1
-        formNameField.layer.cornerRadius = 5
-        formNameField.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
-        formNameField.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
-        formNameField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: formNameField.frame.height))
-        formNameField.leftViewMode = .always
-        
-        //formEmailField atributes
-        formEmailField.layer.borderWidth = 1
-        formEmailField.layer.cornerRadius = 5
-        formEmailField.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
-        formEmailField.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
-        formEmailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: formEmailField.frame.height))
-        formEmailField.leftViewMode = .always
-        
-        //formAffairField atributes
-        formAffairField.layer.borderWidth = 1
-        formAffairField.layer.cornerRadius = 5
-        formAffairField.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
-        formAffairField.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
-        formAffairField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: formAffairField.frame.height))
-        formAffairField.leftViewMode = .always
-        
-        //formMessageField atributes
-        formMessageField.layer.borderWidth = 1
-        formMessageField.layer.cornerRadius = 5
-        formMessageField.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
-        formMessageField.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
-        
         //formSubmitButton atributes
-        formSubmitButton.layer.cornerRadius = 20
+        contactButton.layer.cornerRadius = 20
         
-        formNameField.delegate = self
-        formEmailField.delegate = self
-        formAffairField.delegate = self
     }
 
+    @IBAction func emailButtonTapped(_ sender: UIButton) {
+        showMailComposer()
+    }
+    
+    func showMailComposer() {
+        
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["thegiftcher@gmail.com"])
+        composer.setSubject("Ayuda! Necesito información sobre...")
+        composer.setMessageBody("Escriba aquí su consulta...", isHTML: false)
+        
+        present(composer, animated: true)
+    }
+}
+
+extension ContactFormVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if let _ = error {
+            controller.dismiss(animated: true)
+        }
+        
+        switch result {
+        case .cancelled:
+            print("Cancelled")
+        case .failed:
+            print("Failed to send")
+        case .saved:
+            print("Saved")
+        case .sent:
+            print("Email sent")
+        
+        }
+        
+        controller.dismiss(animated: true)
+    }
 }
