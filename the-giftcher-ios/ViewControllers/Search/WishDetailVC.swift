@@ -345,7 +345,7 @@ class WishDetailVC: UIViewController, NVActivityIndicatorViewable {
     
     func checkFriendship() {
         for user in friends {
-            if user?.friendId == wish?.userId {
+            if user?.friendId == wish?.userId && wish?.reserved == false {
                 reserveWishOfFriend.isHidden = false
                 reservedWishOfFriendButton.isHidden = false
             }
