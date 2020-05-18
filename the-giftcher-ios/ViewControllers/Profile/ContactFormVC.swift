@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ContactFormVC: UIViewController {
+class ContactFormVC: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var contactButton: UIButton!
     
@@ -27,39 +27,33 @@ class ContactFormVC: UIViewController {
     }
     
     func showMailComposer() {
+        if MFMailComposeViewController.canSendMail() {
+            let composer = MFMailComposeViewController()
+            composer.mailComposeDelegate = self
+            composer.setToRecipients(["thegiftcher@gmail.com"])
+            composer.setSubject("Ayuda! Necesito información sobre...")
+            composer.setMessageBody("Escriba aquí su consulta...", isHTML: false)
         
-        guard MFMailComposeViewController.canSendMail() else {
-            return
+            present(composer, animated: true, completion: nil)
+        } else {
+            print("Cannot send mail")
         }
-        
-        let composer = MFMailComposeViewController()
-        composer.mailComposeDelegate = self
-        composer.setToRecipients(["thegiftcher@gmail.com"])
-        composer.setSubject("Ayuda! Necesito información sobre...")
-        composer.setMessageBody("Escriba aquí su consulta...", isHTML: false)
-        
-        present(composer, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Cancelled")
+        case MFMailComposeResult.saved.rawValue:
+            print("Saved")
+            case MFMailComposeResult.sent.rawValue:
+            print("Sent")
+            case MFMailComposeResult.failed.rawValue:
+            print("Error")
+        default:
+            break
+        }
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
-extension ContactFormVC: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        if let _ = error {
-            controller.dismiss(animated: true)
-        }
-        
-        switch result {
-        case .cancelled:
-            print("Cancelled")
-        case .failed:
-            print("Failed to send")
-        case .saved:
-            print("Saved")
-        case .sent:
-            print("Email sent")
-        
-        }
-        
-        controller.dismiss(animated: true)
-    }
-}
