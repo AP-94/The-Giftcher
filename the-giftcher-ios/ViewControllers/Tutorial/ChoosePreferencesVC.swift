@@ -47,101 +47,109 @@ class ChoosePreferencesVC: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
         if selectionStatus == true {
             self.performSegue(withIdentifier: "TutorialToHomeView", sender: nil)
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "Por favor selecciona 4 categorías antes de avanzar", style: .warning)
+            banner.show()
+            selectionStatus = false
         }
     }
     
-    @IBAction func selectedVideoGameCat(_ sender: Any) {
-        videogamesCat.whiteAndRedRoundedSelected()
-        setCategory(category: videogamesCat.titleLabel?.text ?? "")
-        categoryInt.append(contentsOf: categoryInt)
+    @IBAction func selectedVideoGameCat(_ sender: UIButton) {
+        if videogamesCat.isEnabled {
+            videogamesCat.whiteAndRedRoundedSelected()
+            setCategory(category: videogamesCat.titleLabel?.text ?? "")
+            categoryInt.append(contentsOf: categoryInt)
+        } else {
+            videogamesCat.whiteAndRedRounded()
+        }
     }
     
-    @IBAction func selectedHomeCat(_ sender: Any) {
+    @IBAction func selectedHomeCat(_ sender: UIButton) {
         homeCat.whiteAndRedRoundedSelected()
         setCategory(category: homeCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedMotorCat(_ sender: Any) {
+    @IBAction func selectedMotorCat(_ sender: UIButton) {
         motorCat.whiteAndRedRoundedSelected()
         setCategory(category: motorCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedHomeApliCat(_ sender: Any) {
+    @IBAction func selectedHomeApliCat(_ sender: UIButton) {
         homeAppliancesCat.whiteAndRedRoundedSelected()
         setCategory(category: homeAppliancesCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedFashionCat(_ sender: Any) {
+    @IBAction func selectedFashionCat(_ sender: UIButton) {
         fashionCat.whiteAndRedRoundedSelected()
         setCategory(category: fashionCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedGardenCat(_ sender: Any) {
+    @IBAction func selectedGardenCat(_ sender: UIButton) {
         gardenCat.whiteAndRedRoundedSelected()
         setCategory(category: gardenCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedTVCat(_ sender: Any) {
+    @IBAction func selectedTVCat(_ sender: UIButton) {
         televisionCat.whiteAndRedRoundedSelected()
         setCategory(category: televisionCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedMusicCat(_ sender: Any) {
+    @IBAction func selectedMusicCat(_ sender: UIButton) {
         musicCat.whiteAndRedRoundedSelected()
         setCategory(category: musicCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedFotoCat(_ sender: Any) {
+    @IBAction func selectedFotoCat(_ sender: UIButton) {
         photoCat.whiteAndRedRoundedSelected()
         setCategory(category: photoCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedCellPhoneCat(_ sender: Any) {
+    @IBAction func selectedCellPhoneCat(_ sender: UIButton) {
         cellphoneCat.whiteAndRedRoundedSelected()
         setCategory(category: cellphoneCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedInformaticCat(_ sender: Any) {
+    @IBAction func selectedInformaticCat(_ sender: UIButton) {
         informaticCat.whiteAndRedRoundedSelected()
         setCategory(category: informaticCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedSportsCat(_ sender: Any) {
+    @IBAction func selectedSportsCat(_ sender: UIButton) {
         sportsCat.whiteAndRedRoundedSelected()
         setCategory(category: sportsCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedBooksCat(_ sender: Any) {
+    @IBAction func selectedBooksCat(_ sender: UIButton) {
         bookCat.whiteAndRedRoundedSelected()
         setCategory(category: bookCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedChildCat(_ sender: Any) {
+    @IBAction func selectedChildCat(_ sender: UIButton) {
         childsCat.whiteAndRedRoundedSelected()
         setCategory(category: childsCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedFarmingCat(_ sender: Any) {
+    @IBAction func selectedFarmingCat(_ sender: UIButton) {
         farmingCat.whiteAndRedRoundedSelected()
         setCategory(category: farmingCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedServicesCat(_ sender: Any) {
+    @IBAction func selectedServicesCat(_ sender: UIButton) {
         servicesCat.whiteAndRedRoundedSelected()
         setCategory(category: servicesCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectedColeccCat(_ sender: Any) {
+    @IBAction func selectedColeccCat(_ sender: UIButton) {
         collectiblesCat.whiteAndRedRoundedSelected()
         setCategory(category: collectiblesCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectBuildingCat(_ sender: Any) {
+    @IBAction func selectBuildingCat(_ sender: UIButton) {
         constructionCat.whiteAndRedRoundedSelected()
         setCategory(category: constructionCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
     }
-    @IBAction func selectOthersCat(_ sender: Any) {
+    @IBAction func selectOthersCat(_ sender: UIButton) {
         othersCat.whiteAndRedRoundedSelected()
         setCategory(category: othersCat.titleLabel?.text ?? "")
         categoryInt.append(contentsOf: categoryInt)
@@ -151,7 +159,7 @@ class ChoosePreferencesVC: UIViewController {
             let banner = NotificationBanner(title: "Error", subtitle: "No puedes seleccionar más de 4 categorías", style: .warning)
             banner.show()
             selectionStatus = false
-        } else if categoryInt.count <= 3 {
+        } else if categoryInt.count == 4 {
             let banner = NotificationBanner(title: "Éxito", subtitle: "Ya puedes pasar a la siguiente pantalla", style: .success)
             banner.show()
             selectionStatus = true

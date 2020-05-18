@@ -13,7 +13,6 @@ class HelpVC: BaseVC, NVActivityIndicatorViewable {
 
     @IBOutlet weak var helpLogoImage: UIImageView!
     @IBOutlet weak var tutorialButton: UIButton!
-    @IBOutlet weak var faqButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
@@ -22,7 +21,6 @@ class HelpVC: BaseVC, NVActivityIndicatorViewable {
         self.title = "Ayuda"
 
         tutorialButton.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
-        faqButton.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
         contactButton.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
         deleteButton.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
        

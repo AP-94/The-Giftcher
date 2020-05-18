@@ -3970,6 +3970,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pl-wl-5RO">
                                 <rect key="frame" x="20" y="331" width="374" height="57"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="0NQ-3l-yex"/>
                                     <constraint firstAttribute="height" constant="57" id="qEj-T8-UWJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -3980,19 +3981,10 @@
                                     <action selector="goTuto:" destination="fEU-Hr-MLU" eventType="touchUpInside" id="gmO-BB-8nT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgd-RR-cSh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1v-f5-jjk">
                                 <rect key="frame" x="20" y="396" width="374" height="57"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="lsd-Tb-zvB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="FAQ (ver en la web)">
-                                    <color key="titleColor" red="0.1138733849" green="0.1237688139" blue="0.13416311140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1v-f5-jjk">
-                                <rect key="frame" x="20" y="461" width="374" height="57"/>
-                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="DyS-z2-A72"/>
                                     <constraint firstAttribute="height" constant="57" id="Ush-Re-G6C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -4004,9 +3996,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-G3-eN6">
-                                <rect key="frame" x="20" y="521" width="374" height="57"/>
+                                <rect key="frame" x="20" y="461" width="374" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="3iW-3g-U2R"/>
+                                    <constraint firstAttribute="width" constant="374" id="qLc-xt-9m9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Eliminar cuenta">
@@ -4019,22 +4012,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="UrP-La-pSD" firstAttribute="centerX" secondItem="tgd-RR-cSh" secondAttribute="centerX" id="8Wu-yg-2tG"/>
-                            <constraint firstItem="Dcn-G3-eN6" firstAttribute="leading" secondItem="eii-9s-c4Z" secondAttribute="leading" constant="20" id="DDU-bV-3fe"/>
-                            <constraint firstItem="tgd-RR-cSh" firstAttribute="top" secondItem="fjC-vd-3Ns" secondAttribute="top" constant="396" id="DOL-i7-Gai"/>
-                            <constraint firstItem="tgd-RR-cSh" firstAttribute="leading" secondItem="0pl-wl-5RO" secondAttribute="leading" id="EHU-nj-e1a"/>
-                            <constraint firstItem="tgd-RR-cSh" firstAttribute="leading" secondItem="u1v-f5-jjk" secondAttribute="leading" id="Kvo-dV-hjb"/>
-                            <constraint firstItem="UrP-La-pSD" firstAttribute="centerX" secondItem="u1v-f5-jjk" secondAttribute="centerX" id="N8E-Fk-17s"/>
+                            <constraint firstItem="eii-9s-c4Z" firstAttribute="trailing" secondItem="Dcn-G3-eN6" secondAttribute="trailing" constant="20" id="7lO-sf-IhE"/>
+                            <constraint firstItem="eii-9s-c4Z" firstAttribute="trailing" secondItem="u1v-f5-jjk" secondAttribute="trailing" constant="20" id="NCe-4T-d6F"/>
+                            <constraint firstItem="u1v-f5-jjk" firstAttribute="leading" secondItem="eii-9s-c4Z" secondAttribute="leading" constant="20" id="SV3-oU-Ajl"/>
                             <constraint firstItem="UrP-La-pSD" firstAttribute="centerX" secondItem="fjC-vd-3Ns" secondAttribute="centerX" id="cB6-aQ-FHd"/>
-                            <constraint firstItem="tgd-RR-cSh" firstAttribute="top" secondItem="0pl-wl-5RO" secondAttribute="bottom" constant="8" id="dd1-fR-GiG"/>
-                            <constraint firstItem="eii-9s-c4Z" firstAttribute="trailing" secondItem="Dcn-G3-eN6" secondAttribute="trailing" constant="20" id="fYV-MK-O5V"/>
-                            <constraint firstItem="tgd-RR-cSh" firstAttribute="leading" secondItem="fjC-vd-3Ns" secondAttribute="leadingMargin" id="h6e-Ei-Nlk"/>
                             <constraint firstItem="0pl-wl-5RO" firstAttribute="top" secondItem="UrP-La-pSD" secondAttribute="bottom" constant="41" id="hKm-9F-Lsk"/>
                             <constraint firstItem="UrP-La-pSD" firstAttribute="centerX" secondItem="0pl-wl-5RO" secondAttribute="centerX" id="hRt-Z3-HPQ"/>
+                            <constraint firstItem="Dcn-G3-eN6" firstAttribute="leading" secondItem="eii-9s-c4Z" secondAttribute="leading" constant="20" id="nfA-Qi-geF"/>
                             <constraint firstItem="UrP-La-pSD" firstAttribute="leading" secondItem="eii-9s-c4Z" secondAttribute="leading" constant="45" id="ppO-8U-Vq2"/>
+                            <constraint firstItem="Dcn-G3-eN6" firstAttribute="top" secondItem="u1v-f5-jjk" secondAttribute="bottom" constant="8" id="sC9-4J-lv1"/>
                             <constraint firstItem="UrP-La-pSD" firstAttribute="top" secondItem="eii-9s-c4Z" secondAttribute="top" id="sUk-Ph-IF1"/>
-                            <constraint firstItem="Dcn-G3-eN6" firstAttribute="top" secondItem="u1v-f5-jjk" secondAttribute="bottom" constant="3" id="tZQ-03-r3M"/>
-                            <constraint firstItem="u1v-f5-jjk" firstAttribute="top" secondItem="tgd-RR-cSh" secondAttribute="bottom" constant="8" id="z41-cq-L9T"/>
+                            <constraint firstItem="u1v-f5-jjk" firstAttribute="top" secondItem="0pl-wl-5RO" secondAttribute="bottom" constant="8" id="zxE-ly-Pi4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eii-9s-c4Z"/>
                     </view>
@@ -4042,7 +4030,6 @@
                     <connections>
                         <outlet property="contactButton" destination="u1v-f5-jjk" id="Zx2-7s-kSA"/>
                         <outlet property="deleteButton" destination="Dcn-G3-eN6" id="04n-9d-iJO"/>
-                        <outlet property="faqButton" destination="tgd-RR-cSh" id="PT1-10-yhb"/>
                         <outlet property="helpLogoImage" destination="UrP-La-pSD" id="hiw-T6-Geg"/>
                         <outlet property="tutorialButton" destination="0pl-wl-5RO" id="SM8-cZ-4OH"/>
                         <segue destination="xJu-Od-rkd" kind="show" identifier="TutorialSegue" id="gxj-bz-Jrx"/>
@@ -5137,7 +5124,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7x7-xk-3aV"/>
+        <segue reference="gxj-bz-Jrx"/>
         <segue reference="k93-oJ-K79"/>
         <segue reference="pUc-A2-F3D"/>
         <segue reference="ntu-Lj-sao"/>

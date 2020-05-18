@@ -245,7 +245,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             default:
                 if let wishDetailVC = segue.destination as? WishDetailVC, let indexPath = userWishCollectionView.indexPath(for: cell) {
                     wishDetailVC.wish = wishes[indexPath.row]
-                    wishDetailVC.wishOfUser = true
                     print("WISH -> \(String(describing: wishDetailVC.wish?.name))")
                 }
             }
