@@ -23,6 +23,8 @@ class FriendWishCell: UICollectionViewCell {
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishName: UILabel!
     @IBOutlet weak var wishContainer: UIView!
+    @IBOutlet weak var reservedLabel: UILabel!
+    @IBOutlet weak var reservedBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +41,17 @@ class FriendWishCell: UICollectionViewCell {
             } else {
                 wishImage.image = UIImage(named: "placeholder")
             }
+        
+        if wish?.reserved == true {
+            reservedLabel.isHidden = false
+            reservedBackground.isHidden = false
+            reservedLabel.layer.cornerRadius = 5.0
+            wishContainer.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+             reservedLabel.layer.masksToBounds = true
+        } else {
+            reservedLabel.isHidden = true
+            reservedBackground.isHidden = true
         }
+    }
         
 }

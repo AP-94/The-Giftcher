@@ -14,28 +14,19 @@ internal protocol UserSelfWishesCellDelegate {
 
 class UserSelfWishesCell: UICollectionViewCell {
     
-//    static let identifier = "UserSelfWishCellIdentifier"
     var delegate: UserSelfWishesCellDelegate?
     var selectable = false
+    var reserved = false
+    
     var wish: WishModel?{
-        didSet { renderUI() }
-    }
-    
-    var reservedWish: ReservedWishesModel?{
-        didSet { renderUI() }
-    }
-    
-    var reservedFriend: ReservedFriendModel?{
-        didSet { renderUI() }
-    }
-    
-    var finalReservedWish: WishModel?{
         didSet { renderUI() }
     }
     
     @IBOutlet weak var cellContainer: UIView!
     @IBOutlet weak var wishImage: UIImageView!
     @IBOutlet weak var wishName: UILabel!
+    @IBOutlet weak var reservedLabel: UILabel!
+    @IBOutlet weak var reservedContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +43,19 @@ class UserSelfWishesCell: UICollectionViewCell {
             } else {
                 wishImage.image = UIImage(named: "placeholder")
             }
+        
+        if wish?.reserved == true && reserved == false {
+            reservedLabel.isHidden = false
+            cellContainer.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            reservedContainer.isHidden = false
+            reservedLabel.layer.masksToBounds = true
+            reservedLabel.layer.cornerRadius = 5.0
+        } else {
+            reservedLabel.isHidden = true
+            reservedContainer.isHidden = true
+            reservedLabel.layer.masksToBounds = true
+        }
+        
         }
         
 

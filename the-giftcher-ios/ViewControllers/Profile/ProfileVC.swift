@@ -110,12 +110,14 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             if !wishes.isEmpty || !reservedWishes3.isEmpty {
                 if wishSegment.selectedSegmentIndex == 0 {
                     cell.backgroundColor = UIColor.clear
+                    cell.reserved = false
                     cell.wish = nil
                     cell.wish = wishes[indexPath.row]
                     cell.delegate = self
                     return cell
                 } else if wishSegment.selectedSegmentIndex == 1 {
                     cell.backgroundColor = UIColor.clear
+                    cell.reserved = true
                     cell.wish = nil
                     cell.wish = reservedWishes3[indexPath.row]
                     cell.delegate = self

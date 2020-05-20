@@ -69,7 +69,7 @@ class HomeVC: UIViewController, NVActivityIndicatorViewable, UICollectionViewDel
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.title = "Home"
         loadFriendsRequests()
-        //setLabels()
+        setLabels()
     }
     
     //
