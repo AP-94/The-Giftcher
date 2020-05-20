@@ -164,20 +164,43 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asR-jR-dkW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="123"/>
+                                                            <color key="backgroundColor" white="0.33333333333333331" alpha="0.36370933219178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrU-Rv-voc">
+                                                            <rect key="frame" x="15" y="52" width="95" height="19.333333333333329"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="95" id="5XK-tj-zdp"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="oe6-wZ-zr7" secondAttribute="bottom" id="18X-cz-sKs"/>
                                                         <constraint firstItem="vWI-ll-3iI" firstAttribute="leading" secondItem="bB9-fd-6G5" secondAttribute="leading" constant="3" id="6fe-Yh-a4a"/>
+                                                        <constraint firstItem="MrU-Rv-voc" firstAttribute="centerY" secondItem="bB9-fd-6G5" secondAttribute="centerY" id="8Dd-AW-TKf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="asR-jR-dkW" secondAttribute="bottom" id="8dW-Zj-Kkg"/>
+                                                        <constraint firstItem="asR-jR-dkW" firstAttribute="leading" secondItem="bB9-fd-6G5" secondAttribute="leading" id="Eao-qI-8e7"/>
+                                                        <constraint firstItem="asR-jR-dkW" firstAttribute="top" secondItem="bB9-fd-6G5" secondAttribute="top" id="SCv-gf-Ce1"/>
                                                         <constraint firstItem="oe6-wZ-zr7" firstAttribute="leading" secondItem="bB9-fd-6G5" secondAttribute="leading" constant="3" id="Txy-51-oHk"/>
+                                                        <constraint firstItem="MrU-Rv-voc" firstAttribute="centerX" secondItem="bB9-fd-6G5" secondAttribute="centerX" id="cx5-Ib-9GQ"/>
                                                         <constraint firstItem="vWI-ll-3iI" firstAttribute="top" secondItem="bB9-fd-6G5" secondAttribute="top" constant="3" id="gEV-61-rTL"/>
                                                         <constraint firstItem="oe6-wZ-zr7" firstAttribute="top" secondItem="vWI-ll-3iI" secondAttribute="bottom" constant="8" id="xaS-fZ-IPf"/>
                                                         <constraint firstAttribute="trailing" secondItem="vWI-ll-3iI" secondAttribute="trailing" constant="3" id="xd1-E8-Ccs"/>
                                                         <constraint firstAttribute="trailing" secondItem="oe6-wZ-zr7" secondAttribute="trailing" constant="3" id="xs4-V7-jUS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="asR-jR-dkW" secondAttribute="trailing" id="ygd-OB-7yZ"/>
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="125" height="123"/>
                                                 <connections>
                                                     <outlet property="cellContainer" destination="bB9-fd-6G5" id="HYR-rM-fNQ"/>
+                                                    <outlet property="reservedContainer" destination="asR-jR-dkW" id="QYF-GX-6aX"/>
+                                                    <outlet property="reservedLabel" destination="MrU-Rv-voc" id="url-d7-bVw"/>
                                                     <outlet property="wishImage" destination="vWI-ll-3iI" id="5Ya-P1-yeE"/>
                                                     <outlet property="wishName" destination="oe6-wZ-zr7" id="BxZ-EN-Iww"/>
                                                     <segue destination="F7D-wI-qnJ" kind="show" identifier="WishDetailSegue" id="DEk-8I-ajV"/>
@@ -3856,9 +3879,34 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEF-yn-Khm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="123"/>
+                                                            <subviews>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reservado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qJ-OI-AhT">
+                                                                    <rect key="frame" x="15" y="52" width="95" height="19.333333333333329"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="95" id="Khz-Xj-dym"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="0.83468000856164382" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="1qJ-OI-AhT" firstAttribute="centerY" secondItem="hEF-yn-Khm" secondAttribute="centerY" id="cpa-Ys-T3d"/>
+                                                                <constraint firstItem="1qJ-OI-AhT" firstAttribute="centerX" secondItem="hEF-yn-Khm" secondAttribute="centerX" id="yOk-EY-0EK"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="hEF-yn-Khm" secondAttribute="trailing" id="2gs-2P-yr5"/>
+                                                        <constraint firstItem="hEF-yn-Khm" firstAttribute="leading" secondItem="Ube-p1-mx6" secondAttribute="leading" id="8Z6-kH-lZa"/>
+                                                        <constraint firstItem="hEF-yn-Khm" firstAttribute="top" secondItem="Ube-p1-mx6" secondAttribute="top" id="9L4-yT-ukt"/>
                                                         <constraint firstAttribute="bottom" secondItem="d5n-b2-lvw" secondAttribute="bottom" id="ALM-lI-Ssx"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hEF-yn-Khm" secondAttribute="bottom" id="ETn-j9-RxB"/>
                                                         <constraint firstItem="d5n-b2-lvw" firstAttribute="top" secondItem="XbT-ZA-HJY" secondAttribute="bottom" constant="8" id="GoI-rk-7I3"/>
                                                         <constraint firstAttribute="trailing" secondItem="XbT-ZA-HJY" secondAttribute="trailing" constant="3" id="HHD-Js-ka2"/>
                                                         <constraint firstAttribute="trailing" secondItem="d5n-b2-lvw" secondAttribute="trailing" constant="3" id="jqB-jX-8o7"/>
@@ -3869,6 +3917,8 @@
                                                 </collectionViewCellContentView>
                                                 <size key="customSize" width="125" height="123"/>
                                                 <connections>
+                                                    <outlet property="reservedBackground" destination="hEF-yn-Khm" id="IGR-q3-ets"/>
+                                                    <outlet property="reservedLabel" destination="1qJ-OI-AhT" id="im7-VY-zZx"/>
                                                     <outlet property="wishContainer" destination="Ube-p1-mx6" id="UPs-Sz-TOV"/>
                                                     <outlet property="wishImage" destination="XbT-ZA-HJY" id="dEe-Jb-jVX"/>
                                                     <outlet property="wishName" destination="d5n-b2-lvw" id="jwU-eh-WRS"/>
@@ -5186,7 +5236,7 @@
         <segue reference="k93-oJ-K79"/>
         <segue reference="SrQ-8r-QQ9"/>
         <segue reference="pUc-A2-F3D"/>
-        <segue reference="ntu-Lj-sao"/>
+        <segue reference="DEk-8I-ajV"/>
         <segue reference="RGE-dQ-Ly5"/>
         <segue reference="HbX-Zk-hMU"/>
     </inferredMetricsTieBreakers>
