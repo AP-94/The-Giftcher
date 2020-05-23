@@ -110,7 +110,7 @@ class RegisterViewController: BaseVC, NVActivityIndicatorViewable {
                 if Session.isValid() {
                      NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
                     if currentSession.userCategories.isEmpty {
-                        self.performSegue(withIdentifier: "registerToTutorialVC", sender: nil)
+                        self.performSegue(withIdentifier: "TutorialSegue", sender: nil)
                     } else {
                         self.performSegue(withIdentifier: "HomeView", sender: nil)
                     }

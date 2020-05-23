@@ -26,11 +26,8 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
     @IBOutlet weak var wishSegment: UISegmentedControl!
     @IBOutlet weak var userWishCollectionView: UICollectionView!
     @IBOutlet weak var noWishLabel: UILabel!
-    @IBOutlet weak var frindsCounterLabel: UILabel!
-    @IBOutlet weak var wishCounterLabel: UILabel!
     
     var wishes: [WishModel?] = []
-    var friends: [UserFriendModel?] = []
     var reservedWishes: [ReservedWishesModel?] = []
     var reservedWishes2: [ReservedFriendModel?] = []
     var reservedWishes3: [WishModel?] = []
@@ -49,6 +46,7 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
         userProfileImage.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
         
         userNameLabel.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
+        userBirthdayLabel.layer.addBorder(edge: UIRectEdge.top, color: UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1), thickness: 1)
         callInfo()
         setAvatar()
         
@@ -196,8 +194,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
                 self.wishes = result
                 self.userWishCollectionView.reloadData()
             }
-            self.wishCounterLabel.text = "\(self.wishes.count)"
-            self.loadFriendsData()
             NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
             self.refreshControl.endRefreshing()
         }
@@ -224,20 +220,6 @@ class ProfileVC: UIViewController, UserSelfWishesCellDelegate, UICollectionViewD
             self.refreshControl.endRefreshing()
         }
     }
-    
-    func loadFriendsData() {
-          print("Do get friends of user request")
-          dataMapper.getAllFriendsOfUserRequest() {
-              success, result, error in
-              if let result = result as? FriendsModel {
-                  self.friends.removeAll()
-                  for friend in result.friends {
-                      self.friends.append(friend)
-                  }
-                self.frindsCounterLabel.text = "\(self.friends.count)"
-              }
-          }
-      }
     
     @IBAction func wishChangeSegment(_ sender: UISegmentedControl) {
         switch wishSegment.selectedSegmentIndex {
