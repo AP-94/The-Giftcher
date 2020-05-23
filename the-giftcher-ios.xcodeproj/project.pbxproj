@@ -752,13 +752,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9BPL4R75T5;
+				DEVELOPMENT_TEAM = 9BNC5UMV9K;
 				INFOPLIST_FILE = "the-giftcher-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = TheGiftcher;
+				PRODUCT_BUNDLE_IDENTIFIER = "the-giftcher-ios";
 				PRODUCT_NAME = "the-giftcher-ios";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
