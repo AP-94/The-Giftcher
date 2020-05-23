@@ -1,0 +1,221 @@
+//
+//  EditProfileVC.swift
+//  the-giftcher-ios
+//
+//  Created by Rafael Juan Llabrés Socías on 30/04/2020.
+//  Copyright © 2020 Rafael Juan Llabrés Socías. All rights reserved.
+//
+
+import UIKit
+import NotificationBannerSwift
+import NVActivityIndicatorView
+import Photos
+
+class EditProfileVC: BaseVC, NVActivityIndicatorViewable {
+    
+    @IBOutlet weak var editUserProfileImage: UIImageView!
+    @IBOutlet weak var editUserImageButton: UIButton!
+    
+    @IBOutlet weak var userNameTitleLabel: UILabel!
+    @IBOutlet weak var editUsernameTF: UITextField!
+    
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var editNameTF: UITextField!
+    
+    @IBOutlet weak var surnameTitleLabel: UILabel!
+    @IBOutlet weak var editSurnameTF: UITextField!
+    
+    @IBOutlet weak var passwordChangeButton: UIButton!
+    @IBOutlet weak var privateProfileSwitch: UISwitch!
+    
+    @IBOutlet weak var birthdayChangeButton: UIButton!
+    @IBOutlet weak var birthdayChangeDP: UIDatePicker!
+    @IBOutlet weak var birthdaytextLabel: UILabel!
+    @IBOutlet weak var dateBackground: UIView!
+    @IBOutlet weak var birthdayChangeDoneButton: UIButton!
+    
+    @IBOutlet weak var editProfileSubmitButton: UIButton!
+    
+    var imagePicker: ImagePicker!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Editar Perfil"
+        customSettings()
+        setAvatar()
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        customSettings()
+        setAvatar()
+    }
+    
+    func customSettings() {
+        //editUserProfileImage atributes
+        editUserProfileImage.layer.cornerRadius = 90
+        editUserProfileImage.layer.borderWidth = 8
+        editUserProfileImage.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
+        
+        //editUserImageButton atributes
+        editUserImageButton.layer.cornerRadius = 25
+        editUserImageButton.layer.borderWidth = 3
+        editUserImageButton.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/225, alpha: 1).cgColor
+
+        //editUsernameTF atributes
+        editUsernameTF.layer.borderWidth = 1
+        editUsernameTF.layer.cornerRadius = 5
+        editUsernameTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
+        editUsernameTF.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
+        editUsernameTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: editUsernameTF.frame.height))
+        editUsernameTF.leftViewMode = .always
+        editUsernameTF.text = Session.current.userModel?.username
+        
+        //editNameTF atributes
+        editNameTF.layer.borderWidth = 1
+        editNameTF.layer.cornerRadius = 5
+        editNameTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
+        editNameTF.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
+        editNameTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: editNameTF.frame.height))
+        editNameTF.leftViewMode = .always
+        editNameTF.text = Session.current.userModel?.name
+        
+        //editSurnameTF atributes
+        editSurnameTF.layer.borderWidth = 1
+        editSurnameTF.layer.cornerRadius = 5
+        editSurnameTF.layer.borderColor = UIColor(red: 217/255, green: 48/255, blue: 69/225, alpha: 1).cgColor
+        editSurnameTF.textColor = UIColor(red: 1/255, green: 1/255, blue: 1/225, alpha: 1)
+        editSurnameTF.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: editSurnameTF.frame.height))
+        editSurnameTF.leftViewMode = .always
+        editSurnameTF.text = Session.current.userModel?.lastName
+        
+        //formSubmitButton atributes
+        editProfileSubmitButton.layer.cornerRadius = 20
+        
+        birthdaytextLabel.text = Session.current.userModel?.birthday
+        
+        editNameTF.delegate = self
+        editUsernameTF.delegate = self
+        editSurnameTF.delegate = self
+        
+    }
+    
+    @IBAction func editBirthday(_ sender: Any) {
+        dateBackground.layer.isHidden = false
+        birthdayChangeDP.layer.isHidden = false
+        birthdayChangeDoneButton.layer.isHidden = false
+    }
+    
+    @IBAction func hideDatePickerView(_ sender: UIButton) {
+        convertBirthday()
+        dateBackground.layer.isHidden = true
+        birthdayChangeDP.layer.isHidden = true
+        birthdayChangeDoneButton.layer.isHidden = true
+        
+    }
+    
+    func convertBirthday() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let dateToString = dateFormatter.string(from: birthdayChangeDP.date)
+        birthdaytextLabel.text = dateToString
+    }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        editProfileSubmitButton.bounce()
+        if editNameTF.text != "" || editSurnameTF.text != "" || editUsernameTF.text != "" || birthdaytextLabel.text != ""{
+            let inputUser = InputUpdateUser(name: editNameTF.text, username: editUsernameTF.text, lastName: editSurnameTF.text, birthday: birthdaytextLabel.text )
+            doUpdateRequest(inputUpdateUser: inputUser)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "Ningún campo debe estar vacío", style: .warning)
+            banner.show()
+        }
+        
+    }
+    
+    func doUpdateRequest(inputUpdateUser: InputUpdateUser){
+        print("Do Update Request")
+        startAnimating(sizeOfIndivatorView, message: "Cargando...", type: .ballBeat, color: UIColor.black, backgroundColor: UIColor(white: 1, alpha: 0.7), textColor: UIColor.black, fadeInAnimation: nil)
+        dataMapper.updateUserRequest(inputUpdateUser: inputUpdateUser) {
+            success, result, error in
+            if let result = result as? UserModel {
+                
+                Session.clean()
+                let currentSession = Session.current
+                currentSession.token = result.token
+                currentSession.userName = result.username
+                currentSession.id = result.id
+                currentSession.userModel = result
+                
+                print("USUERNAME => \(currentSession.userName ?? "NO HAY USUARIO")")
+                
+                Session.save()
+                self.sendProfileImageRequest()
+                NotificationCenter.default.post(name: .didEditProfile, object: nil)
+                let banner = NotificationBanner(title: "Hecho", subtitle: "Cambios realizados correctamente", style: .info)
+                banner.show()
+            }
+            NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
+            
+        }
+    }
+    
+    func setAvatar() {
+           if let avatar = Session.current.userModel?.imagePath {
+               editUserProfileImage.loadUrl(from: avatar, contentMode: .scaleAspectFill)
+           }
+       }
+
+    func sendProfileImageRequest() {
+        print("Uploading image")
+        let profilePicture = editUserProfileImage.image
+        let image = profilePicture ?? UIImage(named: "placeholder")
+        dataMapper.addProfileImageRequest(image: image!) {
+            success, result, error in
+            if let result = result as? UserModel {
+                
+                Session.clean()
+                let currentSession = Session.current
+                currentSession.token = result.token
+                currentSession.userName = result.username
+                currentSession.id = result.id
+                currentSession.userModel = result
+                
+                print("Image Path => \(currentSession.userModel?.imagePath ?? "NO HAY USUARIO")")
+                
+                Session.save()
+            }
+        }
+    }
+    
+    @IBAction func editPictureImage(_ sender: UIButton) {
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .authorized:
+            self.imagePicker.present(from: sender)
+        case .denied, .restricted:
+            let banner = NotificationBanner(title: "Sin permisos", subtitle: "Debes conceder permisos a fotos a la app para poder realizar esta operación", style: .warning)
+            banner.show()
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    
+                } else {
+                    
+                }
+            }
+        default:
+            let banner = NotificationBanner(title: "Error", subtitle: "Debes conceder permisos a fotos a la app para poder realizar esta operación", style: .info)
+            banner.show()
+        }
+    }
+}
+
+extension EditProfileVC: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.editUserProfileImage.image = image
+    }
+}

@@ -45,6 +45,8 @@
 		C6160402246DD1590005728C /* FriendRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6160401246DD1590005728C /* FriendRequestVC.swift */; };
 		C6160404246DD18F0005728C /* FriendRequestTBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6160403246DD18F0005728C /* FriendRequestTBCell.swift */; };
 		C6160406246F035A0005728C /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6160405246F035A0005728C /* Notification+Name.swift */; };
+		C618361E24794EC600C5EFA4 /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618361D24794EC600C5EFA4 /* TutorialVC.swift */; };
+		C618362024794F1900C5EFA4 /* TutorialPreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C618361F24794F1900C5EFA4 /* TutorialPreferencesVC.swift */; };
 		C630B3622461D2380054D5D4 /* ReservedWishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3612461D2380054D5D4 /* ReservedWishesModel.swift */; };
 		C630B3642461D3110054D5D4 /* ReservedFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */; };
 		C630B3662461D47F0054D5D4 /* InputReservedWish.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630B3652461D47F0054D5D4 /* InputReservedWish.swift */; };
@@ -128,6 +130,8 @@
 		C6160401246DD1590005728C /* FriendRequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestVC.swift; sourceTree = "<group>"; };
 		C6160403246DD18F0005728C /* FriendRequestTBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTBCell.swift; sourceTree = "<group>"; };
 		C6160405246F035A0005728C /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		C618361D24794EC600C5EFA4 /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
+		C618361F24794F1900C5EFA4 /* TutorialPreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreferencesVC.swift; sourceTree = "<group>"; };
 		C630B3612461D2380054D5D4 /* ReservedWishesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedWishesModel.swift; sourceTree = "<group>"; };
 		C630B3632461D3110054D5D4 /* ReservedFriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedFriendModel.swift; sourceTree = "<group>"; };
 		C630B3652461D47F0054D5D4 /* InputReservedWish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReservedWish.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 		23EDA0AD2470886B00770EDC /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				C618361D24794EC600C5EFA4 /* TutorialVC.swift */,
+				C618361F24794F1900C5EFA4 /* TutorialPreferencesVC.swift */,
 				23EDA0C024708FC600770EDC /* TutoHomeVC.swift */,
 				23EDA0C22470904D00770EDC /* TutoAddWishVC.swift */,
 				23EDA0C62470907900770EDC /* TutoCategoriesVC.swift */,
@@ -540,6 +546,7 @@
 				C6E1A0092459F29E00C864A9 /* String+Utils.swift in Sources */,
 				23EDA0AA246F3E9A00770EDC /* UIButtonExtension.swift in Sources */,
 				C68B5AA8245D8FD3007865B4 /* InputUpdateUser.swift in Sources */,
+				C618362024794F1900C5EFA4 /* TutorialPreferencesVC.swift in Sources */,
 				C6E1A0022459F0B800C864A9 /* UserModel.swift in Sources */,
 				C6A3EF34245C90A10021E9DE /* InputRegister.swift in Sources */,
 				C68B5AAA245D9053007865B4 /* InputUpdatePassword.swift in Sources */,
@@ -576,6 +583,7 @@
 				C6C0887E244C673F00CB0A7A /* BaseVC.swift in Sources */,
 				235FD03C245AD77800B5F7B2 /* TermsAndConditionsVC.swift in Sources */,
 				23EDA0D12471871A00770EDC /* SecondCategoryCell.swift in Sources */,
+				C618361E24794EC600C5EFA4 /* TutorialVC.swift in Sources */,
 				C64A2DF8246095A1005FBFA5 /* InputFriendRequest.swift in Sources */,
 				23EDA0D524718C6100770EDC /* FourthCategoryCell.swift in Sources */,
 				C6E1A00D2459F4B300C864A9 /* MSMutableDataExtension.swift in Sources */,
