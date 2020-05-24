@@ -17,7 +17,8 @@ class Session: Codable {
     var token: String?
     var userName: String?
     var userModel: UserModel?
-    var userCategories: [Int?] = []
+    var userIntCategories: [Int?] = []
+    var userStringCategories: [String?] = []
     
     private init() {
 
@@ -27,7 +28,8 @@ class Session: Codable {
                 userName = savedSession.userName
                 id = savedSession.id
                 userModel = savedSession.userModel
-                userCategories = savedSession.userCategories
+                userIntCategories = savedSession.userIntCategories
+                userStringCategories = savedSession.userStringCategories
             }
         }
     }
@@ -41,10 +43,12 @@ class Session: Codable {
     }
     
     static func clean(){
-        let saveUserCategories = current.userCategories
+        let saveUserIntCategories = current.userIntCategories
+        let saveUserStringCategories = current.userStringCategories
         UserDefaults.standard.removeObject(forKey: kArchiveKey)
         current = Session()
-        current.userCategories = saveUserCategories
+        current.userIntCategories = saveUserIntCategories
+        current.userStringCategories = saveUserStringCategories
         
     }
     

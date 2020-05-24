@@ -65,7 +65,8 @@ class ChoosePreferencesVC: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
         if counter == 4 {
             fillCategoiresArray()
-            Session.current.userCategories = categoryArray
+            Session.current.userIntCategories = categoryArray
+            Session.current.userStringCategories = categoryStringArray
             Session.save()
             self.performSegue(withIdentifier: "TutorialToHomeView", sender: nil)
         } else {
@@ -166,6 +167,8 @@ class ChoosePreferencesVC: UIViewController {
             if let homeVC = segue.destination as? HomeVC {
                 homeVC.categoryList = self.categoryArray
                 homeVC.categoryStringList = self.categoryStringArray
+            } else {
+                print("Soy un perdedor")
             }
         }
     }
@@ -184,7 +187,7 @@ class ChoosePreferencesVC: UIViewController {
             categoryInt = 5
         case "Jardín":
             categoryInt = 6
-        case "TV":
+        case "Televisión":
             categoryInt = 7
         case "Música":
             categoryInt = 8
@@ -211,7 +214,8 @@ class ChoosePreferencesVC: UIViewController {
         case "Otros":
             categoryInt = 19
         default:
-            categoryInt = 1
+            print("")
+            break
         }
     }
 }
